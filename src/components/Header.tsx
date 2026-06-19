@@ -117,7 +117,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden absolute top-20 left-0 w-full border-b border-white/10 bg-[#070707]/95 backdrop-blur-xl"
+            className="md:hidden absolute top-20 left-0 w-full border-b border-white/10 bg-[#070707]/95 backdrop-blur-xl z-[90]"
           >
             <div className="px-6 pt-4 pb-8 flex flex-col gap-6">
               
