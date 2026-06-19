@@ -6,6 +6,7 @@ export const AddPostForm = () => {
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [content, setContent] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -20,11 +21,13 @@ export const AddPostForm = () => {
         title,
         slug,
         content,
+        imageUrl,
         author: auth.currentUser.uid,
       });
       setTitle('');
       setSlug('');
       setContent('');
+      setImageUrl('');
       alert('Post created successfully!');
     } catch (error) {
       console.error('Error adding post:', error);
@@ -52,6 +55,13 @@ export const AddPostForm = () => {
         onChange={(e) => setSlug(e.target.value)}
         className="w-full bg-white/5 p-2 rounded mb-4 text-white"
         required
+      />
+      <input
+        type="text"
+        placeholder="Image URL"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+        className="w-full bg-white/5 p-2 rounded mb-4 text-white"
       />
       <textarea
         placeholder="Markdown Content"

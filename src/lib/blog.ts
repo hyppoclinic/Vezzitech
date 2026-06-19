@@ -8,6 +8,7 @@ export interface Post {
   createdAt: any;
   slug: string;
   author: string;
+  imageUrl?: string;
 }
 
 export const getPosts = (callback: (posts: Post[]) => void) => {
