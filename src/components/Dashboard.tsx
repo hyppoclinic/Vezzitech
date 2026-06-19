@@ -234,37 +234,45 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#070707] text-white font-sans max-w-7xl mx-auto px-4 py-8">
-      {/* Header Panel */}
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/10 pb-6 mb-8 gap-4">
-        <div>
-          <VezzitechLogo className="h-8 mb-2" />
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Painel Executivo
+    <div className="min-h-screen bg-[#070707] text-white font-sans pt-24">
+      {/* Admin Top Menu */}
+      <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between w-full">
+          <div className="flex items-center gap-6">
+            <VezzitechLogo className="text-[24px]" />
+            <div className="hidden md:flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Painel Executivo
+            </div>
           </div>
-          <p className="text-sm text-gray-400 mt-1">
-            Conectado como: <span className="text-white font-mono text-xs">{user.email}</span>
-          </p>
-        </div>
 
-        <div className="flex items-center gap-3">
-          <a 
-            href="/"
-            className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-xl text-sm transition-all"
-          >
-            <Home size={16} /> Ver Site
-          </a>
-          <button 
-            onClick={handleLogout}
-            className="flex items-center gap-2 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 hover:border-rose-500/40 text-rose-400 px-4 py-2 rounded-xl text-sm transition-all"
-          >
-            <LogOut size={16} /> Sair
-          </button>
-        </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:block text-xs text-gray-400 mr-2">
+              <span className="text-white font-mono">{user.email}</span>
+            </div>
+            <a 
+              href="/"
+              className="flex items-center gap-2 text-gray-400 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors"
+            >
+              <Globe size={16} /> <span className="hidden sm:inline">Ver Site</span>
+            </a>
+            <button 
+              onClick={handleLogout}
+              className="flex items-center gap-2 text-rose-400 hover:text-rose-300 text-xs font-bold uppercase tracking-wider transition-colors"
+            >
+              <LogOut size={16} /> <span className="hidden sm:inline">Sair</span>
+            </button>
+          </div>
+        </nav>
       </header>
 
-      {/* Stats Widget + Search */}
+      <main className="max-w-7xl mx-auto px-4 pb-12">
+        <div className="md:hidden flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20 w-fit mb-6">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Painel Executivo
+        </div>
+
+        {/* Stats Widget + Search */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
         <div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex items-center justify-between">
@@ -664,6 +672,7 @@ export const Dashboard = () => {
           </div>
         </div>
       )}
+      </main>
     </div>
   );
 };
