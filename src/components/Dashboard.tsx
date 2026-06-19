@@ -16,7 +16,8 @@ import {
   Eye, 
   ChevronRight,
   Globe,
-  Settings
+  Settings,
+  Upload
 } from 'lucide-react';
 
 export const Dashboard = () => {
@@ -31,6 +32,8 @@ export const Dashboard = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [content, setContent] = useState('');
   const [editorTab, setEditorTab] = useState<'write' | 'preview'>('write');
+  const [imageSource, setImageSource] = useState<'upload' | 'url'>('upload');
+  const [dragActive, setDragActive] = useState(false);
   
   // Status State
   const [loading, setLoading] = useState(false);
@@ -80,6 +83,11 @@ export const Dashboard = () => {
     setSlug(post.slug);
     setImageUrl(post.imageUrl || '');
     setContent(post.content);
+    if (post.imageUrl && post.imageUrl.startsWith('data:')) {
+      setImageSource('upload');
+    } else {
+      setImageSource('url');
+    }
     setActiveTab('editor');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -108,12 +116,63 @@ export const Dashboard = () => {
     setSlug('');
     setImageUrl('');
     setContent('');
+    setImageSource('upload');
     setActiveTab('editor');
   };
 
   const handleLogout = async () => {
     await signOut(auth);
     window.location.href = '/login';
+  };
+
+  // Drag and Drop & Computer Upload handlers
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      const file = e.dataTransfer.files[0];
+      processFile(file);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      processFile(file);
+    }
+  };
+
+  const processFile = (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      showStatus('error', 'Por favor, selecione apenas arquivos de imagem.');
+      return;
+    }
+    // Max 3MB
+    if (file.size > 3 * 1024 * 1024) {
+      showStatus('error', 'A imagem é muito grande. Escolha uma imagem de até 3MB.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      if (event.target?.result) {
+        setImageUrl(event.target.result as string);
+        showStatus('success', 'Imagem carregada com sucesso do computador!');
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -131,7 +190,7 @@ export const Dashboard = () => {
         title: title.trim(),
         slug: slugify(slug.trim()).substring(0, 200),
         content,
-        imageUrl: imageUrl.trim() || undefined,
+        imageUrl: imageUrl.trim() || '', // Safe empty string to reset the field, avoids undefined Firestore issue
         author: auth.currentUser.uid,
       };
 
@@ -376,15 +435,103 @@ export const Dashboard = () => {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-1.5 uppercase tracking-wide">URL da Imagem de Capa (Opcional)</label>
-                  <input
-                    type="url"
-                    placeholder="Cole um link de imagem de alta resolução (Ex: Unsplash, Pexels)"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:border-[#33BC65] focus:outline-none transition-colors text-white text-sm"
-                  />
+                {/* Image Upload/Link section */}
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wide">Imagem de Capa (Opcional)</label>
+                    
+                    {/* Source Tab Pickers */}
+                    <div className="flex border border-white/10 rounded-lg overflow-hidden bg-white/5 text-xs">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setImageSource('upload');
+                          setImageUrl('');
+                        }}
+                        className={`px-3 py-1.5 font-medium transition-colors ${imageSource === 'upload' ? 'bg-[#33BC65] text-black font-bold' : 'text-gray-400 hover:text-white'}`}
+                      >
+                        Do computador
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setImageSource('url');
+                          setImageUrl('');
+                        }}
+                        className={`px-3 py-1.5 font-medium transition-colors ${imageSource === 'url' ? 'bg-[#33BC65] text-black font-bold' : 'text-gray-400 hover:text-white'}`}
+                      >
+                        Link da Internet
+                      </button>
+                    </div>
+                  </div>
+
+                  {imageSource === 'upload' ? (
+                    <div 
+                      onDragEnter={handleDrag}
+                      onDragOver={handleDrag}
+                      onDragLeave={handleDrag}
+                      onDrop={handleDrop}
+                      className={`relative border-2 border-dashed rounded-2xl p-6 transition-all flex flex-col items-center justify-center min-h-[160px] text-center ${
+                        dragActive 
+                          ? 'border-[#12DCEF] bg-[#12DCEF]/5' 
+                          : imageUrl && imageUrl.startsWith('data:')
+                          ? 'border-[#33BC65]/40 bg-[#33BC65]/5'
+                          : 'border-white/15 bg-white/[0.01] hover:bg-white/[0.03] hover:border-white/30'
+                      }`}
+                    >
+                      <input 
+                        type="file" 
+                        id="computer-file-upload"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="hidden"
+                      />
+
+                      {imageUrl && imageUrl.startsWith('data:') ? (
+                        <div className="space-y-3 w-full max-w-sm flex flex-col items-center">
+                          <img 
+                            src={imageUrl} 
+                            alt="Preview" 
+                            className="w-32 h-20 rounded-xl object-cover border border-white/10 shadow"
+                          />
+                          <div className="text-center">
+                            <p className="text-xs text-emerald-300 font-medium">Imagem carregada com sucesso!</p>
+                            <button
+                              type="button"
+                              onClick={() => setImageUrl('')}
+                              className="mt-2 text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 mx-auto"
+                            >
+                              <Trash2 size={12} /> Remover Imagem
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <label 
+                          htmlFor="computer-file-upload" 
+                          className="cursor-pointer flex flex-col items-center justify-center space-y-2 group w-full h-full py-4 text-gray-400 hover:text-white active:scale-[0.99] transition-all"
+                        >
+                          <div className="p-3 bg-white/5 rounded-full border border-white/5 group-hover:border-white/10 group-hover:bg-white/10 transition-all text-[#33BC65]">
+                            <Upload size={24} />
+                          </div>
+                          <div className="text-sm font-medium">
+                            <span className="text-[#33BC65] font-semibold">Arraste e solte</span> ou <span className="text-[#12DCEF] font-semibold">clique para carregar</span>
+                          </div>
+                          <p className="text-[11px] text-gray-500 font-medium">Aceita imagens PNG, JPEG ou WEBP de até 3MB</p>
+                        </label>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      <input
+                        type="url"
+                        placeholder="Cole a URL de uma imagem de alta resolução (Ex: https://images.unsplash.com/...)"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                        className="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:border-[#33BC65] focus:outline-none transition-colors text-white text-sm font-mono"
+                      />
+                      <p className="text-[10px] text-gray-500 mt-1">Insira um link HTTP/HTTPS direto até o arquivo de imagem.</p>
+                    </div>
+                  )}
                 </div>
 
                 <div>
