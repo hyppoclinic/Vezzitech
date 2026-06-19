@@ -84,7 +84,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
         </div>
  
         {/* Mobile Hamburger Trigger */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-3 z-[60] relative">
           {/* Mobile Language selector inside trigger bar */}
           <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-lg p-0.5">
             <button 
