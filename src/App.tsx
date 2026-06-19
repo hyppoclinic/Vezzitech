@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './sections/Hero';
 import { Services } from './sections/Services';
@@ -16,10 +16,20 @@ import { FAQ } from './sections/FAQ';
 import { Scheduling } from './sections/Scheduling';
 import { Footer } from './components/Footer';
 import { Chatbot } from './components/Chatbot';
+import { Login } from './components/Login';
 import { Language, translations } from './translations';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
+  const [isLogin, setIsLogin] = useState(window.location.pathname === '/login');
+
+  useEffect(() => {
+    setIsLogin(window.location.pathname === '/login');
+  }, []);
+
+  if (isLogin) {
+    return <Login />;
+  }
 
   const t = translations[lang];
 
