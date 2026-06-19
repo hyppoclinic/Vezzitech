@@ -17,18 +17,23 @@ import { Scheduling } from './sections/Scheduling';
 import { Footer } from './components/Footer';
 import { Chatbot } from './components/Chatbot';
 import { Login } from './components/Login';
+import { Dashboard } from './components/Dashboard';
 import { Language, translations } from './translations';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
-  const [isLogin, setIsLogin] = useState(window.location.pathname === '/login');
+  const [route, setRoute] = useState(window.location.pathname);
 
   useEffect(() => {
-    setIsLogin(window.location.pathname === '/login');
+    setRoute(window.location.pathname);
   }, []);
 
-  if (isLogin) {
+  if (route === '/login') {
     return <Login />;
+  }
+
+  if (route === '/dashboard') {
+    return <Dashboard />;
   }
 
   const t = translations[lang];
