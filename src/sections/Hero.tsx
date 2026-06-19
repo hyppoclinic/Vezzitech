@@ -106,8 +106,8 @@ export const Hero = ({ lang }: HeroProps) => {
 
       </div>
 
-      {/* Trust Banner Marquee Slider (Elegant, fluid, modern, overlap-free) */}
-      <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-[#0d0d0e]/40 backdrop-blur-md border-y border-white/[0.06] text-[#e4e4e7] py-6 mt-24 overflow-hidden select-none group/marquee">
+      {/* Trust Banner Marquee Slider (Elegant, fluid, modern, overflow-safe) */}
+      <div className="relative -mx-6 w-[calc(100%+3rem)] bg-[#0d0d0e]/40 backdrop-blur-md border-y border-white/[0.06] text-[#e4e4e7] py-6 mt-24 overflow-hidden select-none group/marquee">
         {/* Soft edge ambient mask gradient for a premium touch */}
         <div className="absolute inset-y-0 left-0 w-12 md:w-36 bg-gradient-to-r from-[#070708] via-[#070708]/60 to-transparent z-10 pointer-events-none"></div>
         <div className="absolute inset-y-0 right-0 w-12 md:w-36 bg-gradient-to-l from-[#070708] via-[#070708]/60 to-transparent z-10 pointer-events-none"></div>

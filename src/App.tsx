@@ -35,7 +35,7 @@ export default function App() {
       {/* Premium Navigation Header with Language modifier */}
       <Header lang={lang} setLang={setLang} />
       
-      <main className="relative">
+      <main className="relative overflow-x-hidden w-full">
         {/* Dynamic decorative premium visual gradients (Aesthetic Ambient Blur spots) */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#33BC65]/10 via-[#12DCEF]/5 to-transparent rounded-full blur-[140px] pointer-events-none"></div>
         <div className="absolute top-[25%] -left-40 w-[600px] h-[600px] bg-gradient-to-tr from-[#12DCEF]/8 via-[#33BC65]/8 to-transparent rounded-full blur-[150px] pointer-events-none"></div>

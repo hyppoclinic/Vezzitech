@@ -22,7 +22,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
-      <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between w-full">
         
         {/* Brand logo */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 cursor-pointer text-left z-50">
@@ -62,17 +62,17 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
         {/* Actions - Desktop */}
         <div className="hidden md:flex items-center gap-4">
           
-          {/* Language selector */}
-          <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-xl p-1">
+          {/* Language selector - Desktop */}
+          <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 h-9">
             <button 
               onClick={() => setLang('pt')}
-              className={`px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${lang === 'pt' ? 'bg-[#33BC65] text-black shadow-md font-bold' : 'text-gray-400 hover:text-white'}`}>
-              BR 🇧🇷
+              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'pt' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}>
+              BR
             </button>
             <button 
               onClick={() => setLang('en')}
-              className={`px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${lang === 'en' ? 'bg-[#33BC65] text-black shadow-md font-bold' : 'text-gray-400 hover:text-white'}`}>
-              EN 🇺🇸
+              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'en' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}>
+              EN
             </button>
           </div>
  
@@ -84,24 +84,24 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
         </div>
  
         {/* Mobile Hamburger Trigger */}
-        <div className="flex md:hidden items-center gap-3 z-[60] relative">
+        <div className="flex md:hidden items-center gap-3.5 z-[60] relative">
           {/* Mobile Language selector inside trigger bar */}
-          <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-lg p-0.5">
+          <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 h-9">
             <button 
               onClick={() => setLang('pt')}
-              className={`px-2 py-0.5 text-[8px] font-bold rounded transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}>
+              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}>
               BR
             </button>
             <button 
               onClick={() => setLang('en')}
-              className={`px-2 py-0.5 text-[8px] font-bold rounded transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}>
+              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}>
               EN
             </button>
           </div>
  
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-white hover:text-[#33BC65] transition-colors focus:outline-none cursor-pointer z-50"
+            className="p-2 text-white hover:text-[#33BC65] transition-colors focus:outline-none cursor-pointer z-50 mr-0.5"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -119,10 +119,10 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="md:hidden absolute top-20 left-0 w-full border-b border-white/10 bg-[#070707]/95 backdrop-blur-xl z-[90] max-h-[calc(100vh-80px)] overflow-y-auto"
           >
-            <div className="px-6 pt-4 pb-8 flex flex-col gap-6">
+            <div className="max-w-7xl mx-auto px-6 pt-4 pb-8 flex flex-col gap-6 w-full">
               
               {/* Divider lines / items */}
-              <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest text-[#33BC65]/90">
+              <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest text-[#33BC65]/90 w-full">
                 <button 
                   onClick={() => scrollToSection('servicos')} 
                   className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
@@ -161,22 +161,22 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
               {/* Mobile CTA */}
               <button 
                 onClick={() => scrollToSection('consultoria')}
-                className="gradient-orange py-4 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#33BC65]/10 flex items-center justify-center gap-2 cursor-pointer mt-2">
+                className="gradient-orange py-4 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#33BC65]/10 flex items-center justify-center gap-2 cursor-pointer mt-2 w-full">
                 <Calendar className="w-4 h-4" />
                 {t.nav.cta}
               </button>
 
-              {/* Duplicate Language selector inside mobile drawer */}
-              <div className="flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-xl p-2 mt-4">
+              {/* Duplicate Language selector inside mobile drawer without flags and perfectly styled as capsule */}
+              <div className="flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-full p-1 mt-4 max-w-[200px] mx-auto w-full">
                 <button 
                   onClick={() => setLang('pt')}
-                  className={`px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
-                  BR 🇧🇷
+                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
+                  BR
                 </button>
                 <button 
                   onClick={() => setLang('en')}
-                  className={`px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
-                  EN 🇺🇸
+                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
+                  EN
                 </button>
               </div>
             </div>
