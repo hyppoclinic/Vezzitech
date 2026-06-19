@@ -21,7 +21,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
+    <header className="fixed top-0 left-0 w-full z-[100] border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
       <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
         {/* Brand logo */}
@@ -117,7 +117,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden border-b border-white/10 bg-[#070707]/95 backdrop-blur-xl overflow-hidden"
+            className="md:hidden absolute top-20 left-0 w-full border-b border-white/10 bg-[#070707]/95 backdrop-blur-xl"
           >
             <div className="px-6 pt-4 pb-8 flex flex-col gap-6">
               
@@ -166,6 +166,19 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
                 {t.nav.cta}
               </button>
 
+              {/* Duplicate Language selector inside mobile drawer */}
+              <div className="flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-xl p-2 mt-4">
+                <button 
+                  onClick={() => setLang('pt')}
+                  className={`px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
+                  BR 🇧🇷
+                </button>
+                <button 
+                  onClick={() => setLang('en')}
+                  className={`px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
+                  EN 🇺🇸
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
