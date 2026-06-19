@@ -18,13 +18,12 @@ service cloud.firestore {
 
     match /posts/{postId} {
       allow read: if true;
-      allow create: if isSignedIn() && isValidPost(request.resource.data) && request.resource.data.author == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.author == request.auth.uid;
       allow update: if isSignedIn() && 
                     request.resource.data.author == resource.data.author &&
                     (isAdmin() || request.resource.data.author == request.auth.uid) &&
                     request.resource.data.createdAt == resource.data.createdAt &&
-                    request.resource.data.slug == resource.data.slug &&
-                    isValidPost(request.resource.data);
+                    request.resource.data.slug == resource.data.slug;
       allow delete: if isSignedIn() && (isAdmin() || resource.data.author == request.auth.uid);
     }
   }
