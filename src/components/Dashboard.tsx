@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { getPosts, addPost, updatePost, deletePost, Post } from '../lib/blog';
 import { auth } from '../lib/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { VezzitechLogo } from './VezzitechLogo';
 import { 
   PlusCircle, 
   FileText, 
@@ -17,13 +18,21 @@ import {
   ChevronRight,
   Globe,
   Settings,
-  Upload
+  Upload,
+  Search
 } from 'lucide-react';
 
 export const Dashboard = () => {
   const [user, setUser] = useState(auth.currentUser);
   const [posts, setPosts] = useState<Post[]>([]);
   const [activeTab, setActiveTab] = useState<'manage' | 'editor'>('manage');
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  // Filtered posts based on search query
+  const filteredPosts = posts.filter(post => 
+    post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    post.slug.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   
   // Form State
   const [editingPost, setEditingPost] = useState<Post | null>(null);
@@ -229,11 +238,11 @@ export const Dashboard = () => {
       {/* Header Panel */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/10 pb-6 mb-8 gap-4">
         <div>
+          <VezzitechLogo className="h-8 mb-2" />
           <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-1">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             Painel Executivo
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight">Vezzitech Blog Desk</h1>
           <p className="text-sm text-gray-400 mt-1">
             Conectado como: <span className="text-white font-mono text-xs">{user.email}</span>
           </p>
@@ -255,35 +264,52 @@ export const Dashboard = () => {
         </div>
       </header>
 
-      {/* Stats Widget */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex items-center justify-between">
-          <div>
-            <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Total de Artigos</p>
-            <p className="text-3xl font-bold mt-1 text-white">{posts.length}</p>
+      {/* Stats Widget + Search */}
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
+        <div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex items-center justify-between">
+            <div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Total de Artigos</p>
+              <p className="text-3xl font-bold mt-1 text-white">{posts.length}</p>
+            </div>
+            <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-400">
+              <FileText size={24} />
+            </div>
           </div>
-          <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-400">
-            <FileText size={24} />
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex items-center justify-between">
+            <div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Status de SEO</p>
+              <p className="text-md font-bold mt-1 text-emerald-400 flex items-center gap-1">
+                <PlusCircle size={14} /> Ativo & Saudável
+              </p>
+            </div>
+            <div className="p-3 bg-cyan-500/10 rounded-xl text-cyan-400">
+              <Globe size={24} />
+            </div>
+          </div>
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex items-center justify-between">
+            <div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Banco de Dados</p>
+              <p className="text-md font-bold mt-1 text-white font-mono text-xs">Cloud Firestore</p>
+            </div>
+            <div className="p-3 bg-amber-500/10 rounded-xl text-amber-400">
+              <Settings size={24} />
+            </div>
           </div>
         </div>
-        <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex items-center justify-between">
-          <div>
-            <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Status de SEO</p>
-            <p className="text-md font-bold mt-1 text-emerald-400 flex items-center gap-1">
-              <PlusCircle size={14} /> Ativo & Saudável
-            </p>
-          </div>
-          <div className="p-3 bg-cyan-500/10 rounded-xl text-cyan-400">
-            <Globe size={24} />
-          </div>
-        </div>
-        <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex items-center justify-between">
-          <div>
-            <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Banco de Dados</p>
-            <p className="text-md font-bold mt-1 text-white font-mono text-xs">Cloud Firestore</p>
-          </div>
-          <div className="p-3 bg-amber-500/10 rounded-xl text-amber-400">
-            <Settings size={24} />
+        
+        {/* Search Input */}
+        <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex flex-col justify-center">
+          <label className="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-2">Buscar Artigos</label>
+          <div className="relative">
+            <Search className="absolute left-3 top-3 text-gray-500" size={18} />
+            <input 
+              type="text" 
+              placeholder="Título ou slug..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 py-2.5 pl-10 pr-4 rounded-xl text-sm text-white focus:border-[#33BC65] focus:outline-none"
+            />
           </div>
         </div>
       </div>
@@ -330,21 +356,21 @@ export const Dashboard = () => {
       {/* Content views */}
       {activeTab === 'manage' ? (
         <div className="bg-white/[0.01] border border-white/5 rounded-2xl overflow-hidden shadow-xl animate-fadeIn">
-          {posts.length === 0 ? (
+          {filteredPosts.length === 0 ? (
             <div className="p-12 text-center text-gray-500 flex flex-col items-center justify-center">
               <FileText size={48} className="mb-4 text-white/20" />
-              <p className="text-lg font-medium text-white">Nenhum artigo publicado ainda</p>
-              <p className="text-sm text-gray-400 mt-1">Comece criando um novo artigo com inteligência e imagens inspiradoras.</p>
+              <p className="text-lg font-medium text-white">Nenhum artigo encontrado</p>
+              <p className="text-sm text-gray-400 mt-1">Tente ajustar sua busca ou crie um novo artigo.</p>
               <button 
                 onClick={handleNewPostClick}
                 className="mt-6 bg-[#33BC65] text-black hover:opacity-90 font-bold px-6 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2"
               >
-                <PlusCircle size={16} /> Escrever Primeiro Post
+                <PlusCircle size={16} /> Escrever Novo Post
               </button>
             </div>
           ) : (
             <div className="divide-y divide-white/5">
-              {posts.map((post) => (
+              {filteredPosts.map((post) => (
                 <div key={post.id} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-white/[0.02] transition-colors">
                   <div className="flex gap-4 items-start max-w-2xl">
                     {post.imageUrl ? (
