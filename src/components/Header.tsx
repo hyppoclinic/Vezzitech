@@ -77,7 +77,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
           </div>
  
           <button 
-            onClick={() => scrollToSection('consultoria')} 
+            onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0kCxWH9YNz5VRbo1Fe-VURvK9FOgYkNpUoCNBk9a_q2ywucr3S5r0zzTewhmAmePmi0V09CZjw', '_blank')}
             className="gradient-orange px-6 py-2.5 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#33BC65]/10 hover:scale-[1.03] active:scale-95 transition cursor-pointer">
             {t.nav.cta}
           </button>
@@ -160,7 +160,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
 
               {/* Mobile CTA */}
               <button 
-                onClick={() => scrollToSection('consultoria')}
+                onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0kCxWH9YNz5VRbo1Fe-VURvK9FOgYkNpUoCNBk9a_q2ywucr3S5r0zzTewhmAmePmi0V09CZjw', '_blank')}
                 className="gradient-orange py-4 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#33BC65]/10 flex items-center justify-center gap-2 cursor-pointer mt-2 w-full">
                 <Calendar className="w-4 h-4" />
                 {t.nav.cta}

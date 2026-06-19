@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
+import { google } from "googleapis";
 
 async function startServer() {
   const app = express();
@@ -9,6 +10,14 @@ async function startServer() {
 
   // Middleware for parsing JSON requests
   app.use(express.json());
+
+  // OAuth Setup Check
+  // Note: This relies on the platform providing necessary OAuth env vars after running set_up_oauth
+  const oauth2Client = new google.auth.OAuth2(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_REDIRECT_URI
+  );
 
   // API Route for GenAI Plan Agent
   app.post("/api/gemini/plan", async (req, res) => {
@@ -130,6 +139,18 @@ async function startServer() {
       console.error("Gemini Plan Error:", error);
       res.status(500).json({ error: error?.message || "Failed to generate customized implementation plan." });
     }
+  });
+
+  // Calendar API Skeleton
+  app.get("/api/calendar/events", async (req, res) => {
+    // Requires valid OAuth token
+    res.json({ message: "Calendar API endpoint - Implement with OAuth token" });
+  });
+
+  // Meet API Skeleton
+  app.post("/api/meet/create", async (req, res) => {
+    // Requires valid OAuth token
+    res.json({ message: "Meet API endpoint - Implement with OAuth token" });
   });
 
   // Vite middleware for development
