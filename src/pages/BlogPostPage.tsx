@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { getPosts, Post } from '../lib/blog';
 import { Language, translations } from '../translations';
-import { Share2, Clock, X, Calendar, User, Link2, Linkedin, Twitter, MessageSquare, Check, ArrowLeft } from 'lucide-react';
+import { Clock, Calendar, User, Link2, Check, ArrowLeft } from 'lucide-react';
+import { FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
@@ -135,19 +136,19 @@ export const BlogPostPage = ({ slug, lang }: BlogPostPageProps) => {
               onClick={(e) => openShareWindow('linkedin', e)}
               className="flex items-center gap-2 bg-sky-950/20 hover:bg-sky-950/40 border border-sky-500/20 text-sky-400 text-sm py-2 px-4 rounded-xl transition-all"
             >
-              <Linkedin size={16} /> <span className="hidden sm:inline">LinkedIn</span>
+              <FaLinkedin size={16} /> <span className="hidden sm:inline">LinkedIn</span>
             </button>
             <button 
               onClick={(e) => openShareWindow('twitter', e)}
               className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-white text-sm py-2 px-4 rounded-xl transition-all"
             >
-              <Twitter size={16} /> <span className="hidden sm:inline">X (Twitter)</span>
+              <FaTwitter size={16} /> <span className="hidden sm:inline">X (Twitter)</span>
             </button>
             <button 
               onClick={(e) => openShareWindow('whatsapp', e)}
               className="flex items-center gap-2 bg-emerald-950/20 hover:bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 text-sm py-2 px-4 rounded-xl transition-all"
             >
-              <MessageSquare size={16} /> <span className="hidden sm:inline">WhatsApp</span>
+              <FaWhatsapp size={16} /> <span className="hidden sm:inline">WhatsApp</span>
             </button>
             <button 
               onClick={(e) => handleCopyLink(e)}

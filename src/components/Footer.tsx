@@ -1,4 +1,5 @@
-import { Linkedin, Twitter, Instagram, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { translations, Language } from '../translations';
 
 interface FooterProps {
@@ -29,13 +30,13 @@ export const Footer = ({ lang }: FooterProps) => {
           </p>
           <div className="flex gap-4">
             <a href="https://linkedin.com/company/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/30 transition">
-              <Linkedin className="w-4 h-4" />
+              <FaLinkedin className="w-4 h-4" />
             </a>
             <a href="https://instagram.com/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 hover:border-pink-500/30 transition">
-              <Instagram className="w-4 h-4" />
+              <FaInstagram className="w-4 h-4" />
             </a>
             <a href="https://twitter.com/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-sky-400 hover:bg-sky-400/10 hover:border-sky-400/30 transition">
-              <Twitter className="w-4 h-4" />
+              <FaTwitter className="w-4 h-4" />
             </a>
           </div>
         </div>

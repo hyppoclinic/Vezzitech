@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { getPosts, Post } from '../lib/blog';
 import { Language, translations } from '../translations';
-import { Share2, Clock, X, Calendar, User, Link2, Linkedin, Twitter, MessageSquare, Check } from 'lucide-react';
+import { Clock, Link2, Check } from 'lucide-react';
+import { FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 interface BlogProps {
   lang: Language;
@@ -163,14 +164,14 @@ export const Blog = ({ lang }: BlogProps) => {
                         className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-all"
                         title="Compartilhar no LinkedIn"
                       >
-                        <Linkedin size={14} />
+                        <FaLinkedin size={14} />
                       </button>
                       <button 
                         onClick={(e) => openShareWindow('twitter', post, e)}
                         className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-all"
                         title="Compartilhar no X (Twitter)"
                       >
-                        <Twitter size={14} />
+                        <FaTwitter size={14} />
                       </button>
                       <button 
                         onClick={(e) => handleCopyLink(post, e)}
