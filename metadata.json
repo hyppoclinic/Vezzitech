@@ -1,0 +1,6 @@
+{
+  "name": "Vezzitech - Agência de IA",
+  "description": "Site institucional de alta conversão para a agência Vezzitech, especializada em IA e ecossistema Google.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
