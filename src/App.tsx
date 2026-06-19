@@ -18,6 +18,7 @@ import { Footer } from './components/Footer';
 import { Chatbot } from './components/Chatbot';
 import { Login } from './components/Login';
 import { Dashboard } from './components/Dashboard';
+import { BlogPostPage } from './pages/BlogPostPage';
 import { Language, translations } from './translations';
 
 export default function App() {
@@ -34,6 +35,11 @@ export default function App() {
 
   if (route === '/dashboard') {
     return <Dashboard />;
+  }
+
+  if (route.startsWith('/blog/')) {
+    const slug = route.split('/blog/')[1];
+    return <BlogPostPage slug={slug} lang={lang} />;
   }
 
   const t = translations[lang];

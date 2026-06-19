@@ -1,4 +1,4 @@
-import { Linkedin, Github, MessageSquare, MapPin } from 'lucide-react';
+import { Linkedin, Twitter, Instagram, MapPin } from 'lucide-react';
 import { translations, Language } from '../translations';
 
 interface FooterProps {
@@ -28,14 +28,14 @@ export const Footer = ({ lang }: FooterProps) => {
             {t.footerSection.desc}
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#33BC65] hover:bg-emerald-500/10 hover:border-[#33BC65]/30 transition">
+            <a href="https://linkedin.com/company/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/30 transition">
               <Linkedin className="w-4 h-4" />
             </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#33BC65] hover:bg-emerald-500/10 hover:border-[#33BC65]/30 transition">
-              <Github className="w-4 h-4" />
+            <a href="https://instagram.com/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 hover:border-pink-500/30 transition">
+              <Instagram className="w-4 h-4" />
             </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#33BC65] hover:bg-emerald-500/10 hover:border-[#33BC65]/30 transition">
-              <MessageSquare className="w-4 h-4" />
+            <a href="https://twitter.com/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-sky-400 hover:bg-sky-400/10 hover:border-sky-400/30 transition">
+              <Twitter className="w-4 h-4" />
             </a>
           </div>
         </div>

@@ -10,7 +10,6 @@ interface BlogProps {
 
 export const Blog = ({ lang }: BlogProps) => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const t = translations[lang];
@@ -109,10 +108,12 @@ export const Blog = ({ lang }: BlogProps) => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map(post => (
-              <article 
+              <a 
                 key={post.id} 
-                onClick={() => setSelectedPost(post)}
-                className="group bg-white/[0.02] border border-white/5 hover:border-[#33BC65]/30 p-6 rounded-2xl flex flex-col transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                href={`/blog/${post.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white/[0.02] border border-white/5 hover:border-[#33BC65]/30 p-6 rounded-2xl flex flex-col transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
               >
                 {post.imageUrl ? (
                   <div className="overflow-hidden rounded-xl h-48 mb-6 border border-white/10 relative">
@@ -156,7 +157,7 @@ export const Blog = ({ lang }: BlogProps) => {
                     </span>
 
                     {/* Mini Quick Share Toolbar */}
-                    <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex items-center gap-2" onClick={(e) => e.preventDefault()}>
                       <button 
                         onClick={(e) => openShareWindow('linkedin', post, e)}
                         className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-all"
@@ -181,113 +182,11 @@ export const Blog = ({ lang }: BlogProps) => {
                     </div>
                   </div>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
         )}
       </div>
-
-      {/* Modern Overlay Full Immersive Modal Reader */}
-      {selectedPost && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-[#070707]/95 backdrop-blur-md flex justify-center py-10 px-4 animate-fadeIn">
-          <div className="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-4xl relative shadow-2xl h-fit overflow-hidden">
-            
-            {/* Top Close Control bar */}
-            <div className="sticky top-0 bg-zinc-950/90 backdrop-blur-sm border-b border-white/10 py-4 px-6 flex justify-between items-center z-15">
-              <span className="text-xs font-mono text-gray-400 uppercase tracking-widest flex items-center gap-1">
-                <Clock size={12} className="text-[#33BC65]" /> {getReadingTime(selectedPost.content)} de leitura
-              </span>
-              <button 
-                onClick={() => setSelectedPost(null)}
-                className="bg-white/5 hover:bg-white/15 p-2 rounded-xl transition-all border border-white/10 hover:border-white/20 text-gray-400 hover:text-white"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            {/* Banner Cover image */}
-            {selectedPost.imageUrl && (
-              <div className="w-full h-[320px] overflow-hidden border-b border-white/5 relative">
-                <img src={selectedPost.imageUrl} alt="" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
-              </div>
-            )}
-
-            <div className="p-6 sm:p-10">
-              {/* Metadata */}
-              <div className="flex flex-wrap gap-4 items-center text-sm text-gray-400 mb-6">
-                <span className="flex items-center gap-1.5">
-                  <User size={14} className="text-[#33BC65]" /> Time de Engenharia Vezzitech
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1.5">
-                  <Calendar size={14} /> {formatDate(selectedPost.createdAt)}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-8 leading-tight">
-                {selectedPost.title}
-              </h1>
-
-              {/* Share Ribbon */}
-              <div className="flex flex-wrap gap-3 items-center justify-between border-y border-white/10 py-4 mb-8">
-                <span className="text-sm font-semibold text-gray-400">Gostando desse conteúdo? Compartilhe:</span>
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={(e) => openShareWindow('linkedin', selectedPost, e)}
-                    className="flex items-center gap-1.5 bg-sky-950/20 hover:bg-sky-950/40 border border-sky-500/20 text-sky-400 text-xs py-1.5 px-3 rounded-lg transition-all"
-                  >
-                    <Linkedin size={13} /> LinkedIn
-                  </button>
-                  <button 
-                    onClick={(e) => openShareWindow('twitter', selectedPost, e)}
-                    className="flex items-center gap-1.5 bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-white text-xs py-1.5 px-3 rounded-lg transition-all"
-                  >
-                    <Twitter size={13} /> X (Twitter)
-                  </button>
-                  <button 
-                    onClick={(e) => openShareWindow('whatsapp', selectedPost, e)}
-                    className="flex items-center gap-1.5 bg-emerald-950/20 hover:bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 text-xs py-1.5 px-3 rounded-lg transition-all"
-                  >
-                    <MessageSquare size={13} /> WhatsApp
-                  </button>
-                  <button 
-                    onClick={(e) => handleCopyLink(selectedPost, e)}
-                    className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs py-1.5 px-3 rounded-lg transition-all"
-                  >
-                    {copiedId === selectedPost.id ? (
-                      <>
-                        <Check size={13} className="text-emerald-400" /> Copiado!
-                      </>
-                    ) : (
-                      <>
-                        <Link2 size={13} /> Copiar Link
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* Immersive prose markdown */}
-              <div className="prose prose-invert prose-emerald max-w-none text-gray-200 leading-relaxed text-base sm:text-lg space-y-6">
-                <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
-              </div>
-
-              {/* Bottom footer overlay close */}
-              <div className="border-t border-white/10 pt-8 mt-12 flex justify-center">
-                <button 
-                  onClick={() => setSelectedPost(null)}
-                  className="bg-[linear-gradient(135deg,#33BC65_0%,#12DCEF_100%)] hover:opacity-90 active:scale-[0.98] text-black font-extrabold px-8 py-3 rounded-xl transition-all shadow-lg text-sm tracking-wide"
-                >
-                  CONCLUIR LEITURA
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      )}
     </section>
   );
 };
