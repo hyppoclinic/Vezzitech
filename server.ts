@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import { google } from "googleapis";
@@ -159,12 +160,87 @@ async function startServer() {
       server: { middlewareMode: true },
       appType: "spa",
     });
+    
+    // Add middleware for Dev OG Tags injection before Vite
+    app.use(async (req, res, next) => {
+      if (req.path.startsWith('/blog/') && req.headers.accept?.includes('text/html')) {
+        const slug = req.path.split('/blog/')[1];
+        if (slug && !slug.includes('.')) {
+          console.log(`[SSR] Generating OG tags for dev blog: ${slug}`);
+        }
+      }
+      next();
+    });
+    
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+    app.use(express.static(distPath, { index: false })); // Do not serve index.html automatically so we can catch it
+    
+    app.get('*', async (req, res) => {
+      const indexPath = path.join(distPath, 'index.html');
+      if (!fs.existsSync(indexPath)) {
+        return res.status(404).send('Not found');
+      }
+      
+      let html = fs.readFileSync(indexPath, 'utf-8');
+      
+      if (req.path.startsWith('/blog/')) {
+        const slug = req.path.split('/blog/')[1];
+        if (slug) {
+          try {
+             // Fetch from Firestore REST API
+             const projectId = "ai-studio-e3eadbca-51b5-4741-a00d-86d6fa45a98d";
+             const queryUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents:runQuery`;
+             const response = await fetch(queryUrl, {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({
+                 structuredQuery: {
+                   from: [{ collectionId: "posts" }],
+                   where: {
+                     fieldFilter: {
+                       field: { fieldPath: "slug" },
+                       op: "EQUAL",
+                       value: { stringValue: slug }
+                     }
+                   },
+                   limit: 1
+                 }
+               })
+             });
+             
+             if (response.ok) {
+               const data = await response.json();
+               if (data && data.length > 0 && data[0].document) {
+                 const doc = data[0].document.fields;
+                 const title = doc.title?.stringValue || "Vezzitech Blog";
+                 let description = doc.content?.stringValue ? doc.content.stringValue.substring(0, 160).replace(/\\n/g, ' ') : "Acompanhe nosso blog";
+                 const imageUrl = doc.imageUrl?.stringValue || "https://vezzitech.com.br/og-image.png";
+
+                 // Inject OG meta tags
+                 html = html.replace(/<title>.*?<\/title>/, `<title>${title} | Vezzitech</title>`);
+                 html = html.replace(/<meta property="og:title" content=".*?"\s*\/>/, `<meta property="og:title" content="${title}" />`);
+                 html = html.replace(/<meta property="og:description" content=".*?"\s*\/>/, `<meta property="og:description" content="${description}" />`);
+                 html = html.replace(/<meta property="twitter:title" content=".*?"\s*\/>/, `<meta property="twitter:title" content="${title}" />`);
+                 html = html.replace(/<meta property="twitter:description" content=".*?"\s*\/>/, `<meta property="twitter:description" content="${description}" />`);
+                 
+                 if (imageUrl) {
+                   html = html.replace(/<meta property="og:image" content=".*?"\s*\/>/, `<meta property="og:image" content="${imageUrl}" />`);
+                   if (html.includes('<meta property="twitter:image"')) {
+                     html = html.replace(/<meta property="twitter:image" content=".*?"\s*\/>/, `<meta property="twitter:image" content="${imageUrl}" />`);
+                   } else {
+                     html = html.replace(/<meta property="twitter:description" content=".*?"\s*\/>/, `<meta property="twitter:description" content="${description}" />\n    <meta property="twitter:image" content="${imageUrl}" />`);
+                   }
+                 }
+               }
+             }
+          } catch (e) {
+             console.error("Failed to fetch blog post for SSR:", e);
+          }
+        }
+      }
+      res.send(html);
     });
   }
 
