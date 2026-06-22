@@ -13,6 +13,7 @@ import { Process } from './sections/Process';
 import { Metrics } from './sections/Metrics';
 import { Verticals } from './sections/Verticals';
 import { Blog } from './sections/Blog';
+import { BlogPage } from './pages/BlogPage';
 import { FAQ } from './sections/FAQ';
 import { Scheduling } from './sections/Scheduling';
 import { Footer } from './components/Footer';
@@ -25,9 +26,13 @@ import { Language, translations } from './translations';
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
   const [route, setRoute] = useState(window.location.pathname);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
   useEffect(() => {
     setRoute(window.location.pathname);
+    if (window.location.pathname.startsWith('/blog/')) {
+        setSelectedSlug(window.location.pathname.split('/blog/')[1]);
+    }
   }, []);
 
   if (route === '/login') {
@@ -38,10 +43,26 @@ export default function App() {
     return <Dashboard />;
   }
 
-  if (route.startsWith('/blog/')) {
-    const slug = route.split('/blog/')[1];
-    return <BlogPostPage slug={slug} lang={lang} />;
+  if (route === '/blog') {
+    return <BlogPage lang={lang} setLang={setLang} onSelectPost={setSelectedSlug} />;
   }
+
+  const BlogPostView = () => (
+      <div className="fixed inset-0 z-50 overflow-y-auto bg-[#070707]">
+          <div className="min-h-screen py-12 px-6">
+              <button 
+                onClick={() => {
+                  setSelectedSlug(null);
+                  window.history.pushState({}, '', '/');
+                }}
+                className="mb-8 flex items-center text-gray-400 hover:text-white"
+              >
+                  Voltar
+              </button>
+              {selectedSlug && <BlogPostPage slug={selectedSlug} lang={lang} />}
+          </div>
+      </div>
+  );
 
   const t = translations[lang];
 
@@ -54,6 +75,7 @@ export default function App() {
 
   return (
     <div className="bg-[#070707] min-h-screen text-gray-200 antialiased selection:bg-[#33BC65]/30 selection:text-white">
+      {selectedSlug && <BlogPostView />}
       {/* Premium Navigation Header with Language modifier */}
       <Header lang={lang} setLang={setLang} />
       
@@ -88,7 +110,7 @@ export default function App() {
         <GoogleEcosystem lang={lang} />
         
         {/* Deep knowledge articles */}
-        <Blog lang={lang} />
+        <Blog lang={lang} onSelectPost={setSelectedSlug} />
         
         {/* Frequently Asked Questions */}
         <FAQ lang={lang} />

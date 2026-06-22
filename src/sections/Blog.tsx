@@ -7,9 +7,10 @@ import { FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 interface BlogProps {
   lang: Language;
+  onSelectPost: (slug: string) => void;
 }
 
-export const Blog = ({ lang }: BlogProps) => {
+export const Blog = ({ lang, onSelectPost }: BlogProps) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -111,9 +112,8 @@ export const Blog = ({ lang }: BlogProps) => {
             {posts.map(post => (
               <a 
                 key={post.id} 
-                href={`/blog/${post.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="javascript:void(0)"
+                onClick={(e) => { e.preventDefault(); onSelectPost(post.slug); }}
                 className="group bg-white/[0.02] border border-white/5 hover:border-[#33BC65]/30 p-6 rounded-2xl flex flex-col transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
               >
                 {post.imageUrl ? (
