@@ -12,12 +12,24 @@
         "slug": { "type": "string", "description": "URL-friendly version of the title" },
         "author": { "type": "string", "description": "ID of the author" }
       }
+    },
+    "AnalyticsMetrics": {
+      "title": "Analytics Metrics",
+      "description": "Historical analytics metrics for different periods",
+      "type": "object",
+      "properties": {
+        "data": { "type": "array", "description": "Array of names, Google Clicks, AI Citations and CTR numbers" }
+      }
     }
   },
   "firestore": {
     "/posts/{postId}": {
       "schema": { "$ref": "#/entities/Post" },
       "description": "Collection of blog posts"
+    },
+    "/analytics_metrics/{id}": {
+      "schema": { "$ref": "#/entities/AnalyticsMetrics" },
+      "description": "Historical performance matrices"
     }
   }
 }

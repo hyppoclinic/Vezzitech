@@ -26,5 +26,9 @@ service cloud.firestore {
                     request.resource.data.slug == resource.data.slug;
       allow delete: if isSignedIn() && (isAdmin() || resource.data.author == request.auth.uid);
     }
+
+    match /analytics_metrics/{id} {
+      allow read, write: if true;
+    }
   }
 }

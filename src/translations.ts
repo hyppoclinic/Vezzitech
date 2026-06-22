@@ -136,286 +136,286 @@ export const translations: Record<Language, TranslationSchema> = {
       cta: "Falar c/ Especialista"
     },
     hero: {
-      badge: "PARCEIRO ESTRATÉGICO GOOGLE CLOUD",
+      badge: "TECNOLOGIA & MARKETING DIGITAL DE ELITE",
       headline: "Aceleramos sua empresa com Inteligência Artificial.",
-      subheadline: "Unimos o ecossistema avançado do Google Cloud, Gemini e Vertex AI para automatizar marketing, operações e vendas com arquitetura robusta e escala corporativa.",
+      subheadline: "Unimos desenvolvimento de sites de alta conversão, otimização de busca avançada (AEO/SEO), criação de materiais de marketing e agentes de IA para impulsionar suas vendas e modernizar seu departamento de TI.",
       ctaPrimary: "Começar Agora",
       ctaSecondary: "Ver Ecossistema",
       graphTitle: "Interactive AI Graph"
     },
     nodes: {
       orquestrador: {
-        title: "Orquestrador Vezzi AI",
-        metric: "Latência: < 120ms",
-        desc: "Modelo central e inteligente que orquestra e roteia requisições dinamicamente visando o máximo custo-benefício operacional."
+        title: "Desenvolvimento de Sites",
+        metric: "Performance: 100/100",
+        desc: "Sua presença digital construída com as linguagens e frameworks mais rápidos e modernos do mercado."
       },
       gemini: {
-        title: "Gemini 1.5 Pro Engine",
-        metric: "Janela de Contexto: 2M",
-        desc: "Análise profunda de dados e documentos massivos com raciocínio lógico estruturado de última geração."
+        title: "AEO & SEO Preditivo",
+        metric: "Motores de Resposta",
+        desc: "Otimização de ponta para motores de busca e para mecanismos de resposta em Inteligência Artificial, como ChatGPT e Perplexity."
       },
       vertex: {
-        title: "Agentes Vertex AI",
-        metric: "Precisão de Raciocínio: 99.4%",
-        desc: "Agentes autônomos treinados para executar fluxos corporativos complexos e automatizados em escala."
+        title: "Agentes de IA",
+        metric: "Atendimento 24/7",
+        desc: "Engenharia de prompts e fluxos inteligentes para atrair, converter e qualificar visitantes automaticamente."
       },
       cloud: {
-        title: "Infraestrutura Cloud",
-        metric: "Disponibilidade: 99.99%",
-        desc: "Bases de dados em tempo real seguras e orquestradas em governança privada sob termos comerciais enterprise."
+        title: "Materiais de Marketing",
+        metric: "Escala Criativa",
+        desc: "Geração de criativos de anúncios, copys persuasivas e materiais visuais guiados por inteligência de dados."
       }
     },
     ticker: [
-      "ESTRATÉGIA DE IA",
-      "GROWTH MARKETING",
-      "CONVERSÃO EXTREMA",
-      "AUTORIDADE DIGITAL",
+      "DESENVOLVIMENTO DE SITES",
+      "AEO & SEO PREDITIVO",
       "AGENTES DE IA AUTÔNOMOS",
-      "MEMBRO GOOGLE CLOUD INNOVATORS",
-      "GEMINI ENTERPRISE",
-      "FLUXO INTEGRADO"
+      "MATERIAIS DE MARKETING EM ESCALA",
+      "SOLUÇÕES TI SOB MEDIDA",
+      "PERFORMANCE MÁXIMA WEB",
+      "GROWTH MARKETING",
+      "CONVERSÃO EXTREMA"
     ],
     valueProp: {
-      tag: "// DIFERENCIAÇÃO",
-      heading: "Lidere o mercado de vendas e operações com inteligência preditiva.",
+      tag: "DIFERENCIAÇÃO",
+      heading: "Sua marca dominante nos canais de busca e tecnologia.",
       items: [
         {
           num: "01",
-          title: "Expertise Google Certificada",
-          desc: "Nossos engenheiros dominam a infraestrutura nativa Google Cloud, Vertex AI e APIs comerciais Gemini. Segurança enterprise e governança de dados inclusas no core de cada entrega."
+          title: "Engenharia & TI Certificada",
+          desc: "Desenvolvemos sites, portais e sistemas de altíssima velocidade. Código limpo, SEO técnico nativo, segurança avançada e hospedagem estável inclusas no core."
         },
         {
           num: "02",
-          title: "ROI Real & Comprometido",
-          desc: "Aceleração real em automação de tarefas repetitivas e canais de atração de leads. Foco total em reduzir custos de suporte ao consumidor e escala automatizada de campanhas Ads."
+          title: "Liderança de Busca (SEO/AEO)",
+          desc: "Otimizamos seu negócio não só para o Google tradicional, mas para mecanismos de resposta com IA (ChatGPT, Perplexity), dominando o tráfego de busca moderno."
         },
         {
           num: "03",
-          title: "Entrega Ágil de Ponta a Pontas",
-          desc: "Levamos a visão de sua consultoria do quadro-negro até a implementação de código estável em menos de um mês através do nosso inovador framework de microsserviços."
+          title: "Materiais & Design de Impacto",
+          desc: "Criamos materiais promocionais, posts e criativos em escala de altíssima qualidade que trazem apelo visual impecável e conversão agressiva em campanhas."
         },
         {
           num: "04",
-          title: "IA Alinhada ao Negócio",
-          desc: "Não fazemos experimentações vagas. Cada inteligência e agente autônomo criado possui métricas de sucesso pré-definidas com integração profunda aos CRMs e ERPs do seu ecossistema."
+          title: "Agentes de IA e Automação",
+          desc: "Integramos chatbots inteligentes acoplados a seus sistemas para pré-vendas automatizada, suporte ao cliente e triagem eficiente de leads."
         }
       ]
     },
     servicesSection: {
-      tag: "// NOSSOS PILARES",
+      tag: "NOSSOS PILARES",
       heading: "Soluções construídas para liderar.",
       items: [
         {
           num: "01",
-          title: "IA para Marketing",
-          desc: "Automação preditiva e hiper-personalização de campanhas com análise integrada via Google Marketing Platform."
+          title: "Desenvolvimento de Sites",
+          desc: "Websites modernos, ultra rápidos e otimizados para máxima conversão de vendas nos formatos desktop e mobile."
         },
         {
           num: "02",
-          title: "Automação com IA",
-          desc: "Desenho de fluxos de processos corporativos otimizados por inteligência e orquestração de APIs robustas."
+          title: "Estratégia SEO & AEO",
+          desc: "Posicionamento orgânico de elite no Google e otimização para ser a resposta preferida de assistentes de IA (ChatGPT, Gemini)."
         },
         {
           num: "03",
-          title: "Consultoria Google Cloud / Gemini",
-          desc: "Mentoria e arquitetura de nuvem certificada para máxima performance, segurança e economia de custos de processamento."
+          title: "Materiais de Marketing",
+          desc: "Apoio completo na criação de materiais digitais, criativos de anúncios de alta performance e design para marcas de destaque."
         },
         {
           num: "04",
-          title: "Dev Full Stack IA",
-          desc: "Construção de aplicações corporativas modernas e escaláveis integrando IA de ponta a ponta com máxima segurança."
+          title: "Agentes de IA & Soluções TI",
+          desc: "Desenvolvimento de bots autônomos personalizados e soluções integradas de tecnologia inteligente para sua empresa."
         }
       ]
     },
     verticalsSection: {
-      tag: "// PARA O SEU NEGÓCIO",
-      heading: "Tecnologia Google para o seu setor.",
-      sub: "Usamos Nuvem e Inteligência Artificial do ecossistema Google para resolver problemas reais e fazer sua empresa crescer, não importa a sua área de atuação.",
+      tag: "PARA O SEU NEGÓCIO",
+      heading: "Tecnologia e Marketing para o seu setor.",
+      sub: "Aplicamos soluções inteligentes de marketing digital e tecnologia da informação sob medida para posicionar e expandir seu negócio no mercado.",
       items: [
         {
           id: "varejo",
           title: "Varejo & E-commerce",
-          desc: "Atendimento automático que não trava na Black Friday, recomendação de produtos que aumenta as vendas e previsão inteligente de estoque. Tudo no Google Cloud."
+          desc: "Lojas virtuais ultra rápidas, SEO avançado para produtos e campanhas de marketing guiadas por IA para explodir suas vendas e atrair clientes de forma escalável."
         },
         {
           id: "saude",
           title: "Saúde & Clínicas",
-          desc: "Transforme o agendamento em algo simples com IA. Facilite a triagem de pacientes e a gestão da clínica com a máxima segurança que a nuvem do Google oferece."
+          desc: "Sites médicos de altíssima performance, SEO local estratégico e atração contínua de pacientes particulares, impulsionados por automações de atendimento de IA."
         },
         {
           id: "industria",
-          title: "Indústrias & Manufatura",
-          desc: "Preveja quando uma máquina vai falhar antes que aconteça e conecte toda a sua produção na nuvem. Menos paradas, mais eficiência e controle na palma da mão."
+          title: "B2B & Indústrias",
+          desc: "Desenvolvimento de portais institucionais robustos, estratégias de tráfego orgânico focado em tomadores de decisão e materiais promocionais de alto impacto técnico."
         },
         {
           id: "financas",
-          title: "Finanças & Serviços",
-          desc: "Maior velocidade na aprovação de crédito e bloqueio de fraudes em tempo real. A inteligência do Google garante segurança máxima para o seu fluxo de caixa."
+          title: "Serviços & Fintechs",
+          desc: "Materiais de comunicação institucional altamente profissionais, SEO/AEO corporativo de segurança e portais web blindados com performance ideal."
         },
         {
           id: "educacao",
           title: "Educação & Cursos",
-          desc: "Assistentes de IA que tiram dúvidas dos alunos 24 horas por dia. Torne o aprendizado mais fácil e evite que os estudantes abandonem seu curso."
+          desc: "Landing pages de vendas de alta conversão, copywriting profissional, criativos dinâmicos de marketing e assistentes de IA dedicados para suporte a alunos."
         },
         {
           id: "agro",
           title: "Agronegócio",
-          desc: "Use a inteligência de dados e imagens de satélite para prever as melhores épocas de plantio e colheita. Aumente a rentabilidade da sua safra com análises precisas do Google."
+          desc: "Identidade visual forte, posicionamento global de marca para exportadoras e plataformas digitais premium para negociações corporativas de alto nível."
         }
       ]
     },
     processSection: {
-      tag: "// METODOLOGIA",
-      heading: "Como aceleramos seu negócio.",
+      tag: "METODOLOGIA",
+      heading: "Como estruturamos sua jornada.",
       items: [
         {
           num: "01",
-          title: "Mapeamento & Diagnóstico",
-          desc: "Mapeamos os pontos de fricção operacional e desenhamos o plano de ROI de IA em menos de 5 dias."
+          title: "Mapeamento & Planejamento",
+          desc: "Analisamos sua presença digital, diagnosticamos problemas no site antigo e traçamos o plano de SEO/AEO e funil de vendas."
         },
         {
           num: "02",
-          title: "Arquitetura no Google Cloud",
-          desc: "Estruturamos as chaves de acesso seguro, vetores de RAG e instâncias dedicadas do Vertex AI."
+          title: "Esboço & Copywriting",
+          desc: "Criamos a estrutura visual premium, escrevemos cópias persuasivas e planejamos a escala de materiais de marketing."
         },
         {
           num: "03",
-          title: "Implementação & Onboarding",
-          desc: "Colocamos os primeiros deploys de IA no ecossistema e integramos com toda sua stack operacional."
+          title: "Desenvolvimento & Agentes",
+          desc: "Desenvolvemos o código ultra veloz, implementamos chatbots de IA e programamos o fluxo de captação de leads de TI."
         },
         {
           num: "04",
-          title: "Ajuste Fino & Escala",
-          desc: "Análise contínua das requisições para reduzir custos operacionais e expandir o modelo."
+          title: "Tráfego & Otimização",
+          desc: "Lançamos as campanhas, indexamos nos motores de busca (e IA) e iniciamos as otimizações contínuas de conversão."
         }
       ]
     },
     metricsSection: {
-      tag: "// PROVA OPERACIONAL",
-      heading: "Métricas reais de inovação corporativa.",
-      sub: "Não vendemos expectativa ou teorias. Colocamos códigos, sistemas e agentes de IA que impactam diretamente a rentabilidade diária do seu negócio.",
-      badge: "Google Certified Builders",
+      tag: "PROVA DE PERFORMANCE",
+      heading: "Métricas reais de inovação e vendas.",
+      sub: "Sem teorias vazias. Entregamos códigos rápidos, campanhas bem estruturadas e inteligências que aumentam de forma direta o tráfego de busca e o faturamento.",
+      badge: "Verified Tech Builders",
       items: [
         {
-          value: "+45%",
-          label: "ROI em Campanhas",
-          desc: "Média de retorno operacional em publicidade programática inteligente com otimizações em tempo real."
+          value: "+120%",
+          label: "Tráfego Orgânico",
+          desc: "Aumento médio em visitas qualificadas através de técnicas modernas de SEO e AEO de marca."
         },
         {
-          value: "4.8x",
-          label: "Eficiência Operacional",
-          desc: "Aceleração na triagem de leads qualificados em pré-vendas com agentes de linguagem natural."
+          value: "3.5x",
+          label: "Taxa de Conversão",
+          desc: "Melhoria na conversão de tráfego frio para leads engajados através de páginas de alta velocidade e copy assertiva."
         },
         {
-          value: "2M+",
-          label: "Contexto Ativo",
-          desc: "Processamento analítico de dados históricos complexos de maneira simultânea com Gemini."
+          value: "< 1s",
+          label: "Tempo de Resposta",
+          desc: "Hospedagem de alto nível e SEO técnico limpo focado em retenção de audiência e preferência de busca."
         }
       ]
     },
     ecosystemSection: {
-      heading: "Ecossistema Google",
+      heading: "Tecnologia & Marketing",
       items: [
-        { title: "Google Cloud", desc: "Infraestrutura escalável, robusta e orientada a dados com segurança global certificada." },
-        { title: "Vertex AI", desc: "Desenvolva, treine e implante modelos e agentes de IA de última geração no ambiente ideal." },
-        { title: "Gemini", desc: "IA Generativa multimodal de altíssima velocidade e janela de contexto massiva de 2 milhões de tokens." },
-        { title: "Workspace AI", desc: "Aumente drasticamente a produtividade corporativa com a IA do Google integrada ao seu dia a dia." }
+        { title: "Desenvolvimento Web", desc: "Sites institucionais, e-commerces e portais que carregam de forma instantânea em qualquer dispositivo." },
+        { title: "SEO & AEO", desc: "Sua marca indexada nos resultados tradicionais de busca e nos novos canais de inteligência artificial generativa." },
+        { title: "Marketing de Atração", desc: "Criação de materiais criativos, posts de engajamento e setup profissional de tráfego pago de alto ROI." },
+        { title: "Agentes Inteligentes", desc: "Automação de suporte ao consumidor, qualificação e captação ativa de novos leads direto em sua TI." }
       ]
     },
     blogSection: {
-      tag: "// CONHECIMENTO PRÁTICO",
-      heading: "Insights & Tecnologia",
-      sub: "Acompanhe análises profundas sobre como as maiores empresas globais estão estruturando inteligência com IA.",
+      tag: "CONHECIMENTO PRÁTICO",
+      heading: "Insights sobre Marketing e TI",
+      sub: "Acompanhe estratégias práticas e análises profundas sobre como escalar tráfego, otimizar conversão e estruturar agentes de IA.",
       readMore: "Ler artigo",
-      newsTitle: "Fique à frente no mercado de IA",
-      newsSub: "Assine nossa newsletter semanal e receba blueprints operacionais diretos elaborados por nossos engenheiros de IA.",
-      newsPlaceholder: "Seu e-mail corporativo",
+      newsTitle: "Domine o tráfego moderno",
+      newsSub: "Assine nossa newsletter semanal e receba guias práticos sobre SEO/AEO, materiais de marketing e novidades de tecnologia inovadora.",
+      newsPlaceholder: "Seu e-mail profissional",
       newsBtn: "Inscrever-se",
       newsSuccess: "✓ Obrigado por se inscrever!",
-      editorial: "Time de Engenharia Vezzitech",
-      editorialSub: "Tecnologia, Dados e Estratégia de Produtos",
-      dialogCta: "Agendar com Especialista"
+      editorial: "Time Técnico Vezzitech",
+      editorialSub: "Estratégia de Marketing, Tráfego e Engenharia Web",
+      dialogCta: "Falar com Especialista"
     },
     faqSection: {
       heading: "Perguntas Frequentes",
       items: [
         {
-          q: "A Vezzitech desenvolve as soluções de forma proprietária?",
-          a: "Sim, entregamos todo repositório de código e configuração operacional diretamente na organização Google Cloud do cliente (sua conta, suas chaves, seu controle absoluto)."
+          q: "Vocês desenvolvem sites proprietários ou usam templates prontos?",
+          a: "Desenvolvemos código nativo, limpo e super otimizado focado em desempenho estrito, SEO amigável e conversão impecável. O projeto e código-fonte são inteiramente seus."
         },
         {
-          q: "O Gemini 1.5 Pro é seguro para dados confidenciais?",
-          a: "Totalmente. Através das APIs comerciais do Vertex AI, os termos de uso garantem que seus dados empresariais nunca sejam utilizados pela equipe Google para retreinar modelos públicos de IA."
+          q: "O que é AEO (Answer Engine Optimization)?",
+          a: "É a otimização focada em mecanismos de resposta por Inteligência Artificial (como Gemini, ChatGPT, Perplexity). Garantimos que sua marca seja citada quando usuários realizarem perguntas a essas IAs."
         },
         {
-          q: "Como estimar o ROI operacional das automações?",
-          a: "Durante nosso diagnóstico desenhamos cases históricos mostrando reduções de até 80% do tempo de triagem de dados e aumentos de conversão de leads de marketing em até 45% com personalização instantânea."
+          q: "Como os Agentes de IA ajudam em vendas?",
+          a: "Eles atuam na linha de frente 24h por dia, respondendo dúvidas recorrentes, captando informações dos leads, agendando reuniões virtuais e enviando-os qualificados para seu time de vendas."
         },
         {
-          q: "Quanto tempo dura o processo de onboarding?",
-          a: "Nosso método ágil possui entregas focadas em ciclos de 3 semanas. Você vê o modelo operacional rodando na nuvem logo nos primeiros checkpoints."
+          q: "Qual a importância das campanhas e materiais de marketing?",
+          a: "A beleza visual aliada a uma redação focada em conversão reduz dramaticamente o custo por clique em campanhas de tráfego pago, gerando mais contatos e visibilidade com o mesmo orçamento."
         }
       ]
     },
     schedulingSection: {
       tag: "CONSULTORIA DE ELITE",
-      heading: "Reserve uma sessão com nossos Especialistas de IA.",
-      sub: "Desenhe a visão de IA do seu negócio. Nesta reunião gratuita de 30 minutos via Google Meet, vamos mapear o cenário de automação de maior retorno financeiro para sua empresa.",
-      p1: "Estruturação de Pipeline",
-      p1Sub: "Definição dos fluxos corretos de orquestração de Large Language Models.",
-      p2: "Planejamento Financeiro & Custos",
-      p2Sub: "Análise de custos de consumo de tokens em APIs Google Cloud.",
-      successTitle: "Reunião Agendada com Sucesso!",
-      successSub: "Enviamos os detalhes do agendamento para seu e-mail.",
-      successDesc: "Seu link oficial do Google Meet já está pronto para acesso:",
-      meetBtn: "Entrar no Google Meet",
-      anotherBtn: "Agendar outro horário",
+      heading: "Agende uma sessão gratuita para impulsionar seu Marketing e TI.",
+      sub: "Crie o plano de crescimento digital da sua marca. Nesta reunião de 30 minutos via Google Meet, vamos analisar a velocidade de carregamento do seu site, mapear potenciais de SEO/AEO e estruturar automações virtuais de IA.",
+      p1: "Presença & Conversão",
+      p1Sub: "Análise técnica do seu funil comercial e usabilidade da sua página web atual.",
+      p2: "Planejamento de Tráfego & IA",
+      p2Sub: "Estudo de viabilidade de atração orgânica combinada com robôs inteligentes de atendimento.",
+      successTitle: "Sessão Agendada com Sucesso!",
+      successSub: "Acabamos de te enviar os dados oficiais do agendamento.",
+      successDesc: "Seu link oficial da reunião no Google Meet já está pronto:",
+      meetBtn: "Entrar na reunião estratégica",
+      anotherBtn: "Visualizar outros horários",
       form: {
-        name: "Nome Completo",
-        email: "E-mail Corporativo",
-        company: "Empresa & Cargo",
-        purpose: "Alvo Principal da IA",
+        name: "Nome Inteiro",
+        email: "E-mail Profissional",
+        company: "Qual a sua empresa?",
+        purpose: "Principal Necessidade",
         purposeOptions: [
-          { value: "Marketing Automation", label: "Automação de Marketing com IA" },
-          { value: "Vertex AI Integration", label: "Integração de Agentes Vertex" },
-          { value: "Operations & RAG", label: "RAG & IA para Operações Internas" },
-          { value: "Google Cloud Consult", label: "Consultoria Estratégica em Cloud" }
+          { value: "Fazer Novo Site", label: "Desenvolver Site de Alta Conversão" },
+          { value: "SEO & AEO", label: "Otimização SEO & AEO de Marca" },
+          { value: "Materiais de Marketing", label: "Geração de Conteúdos & Criativos" },
+          { value: "Agente IA / TI", label: "Implementar Agentes Inteligentes / TI" }
         ],
         date: "Escolha o Dia",
-        time: "Horário Disponível",
-        submit: "Agendar Reunião Via Google Meet"
+        time: "Horários Disponíveis",
+        submit: "Garantir Agendamento no Google Meet"
       }
     },
     footerSection: {
-      desc: "Membro Google Cloud Innovators focado em engenharia full stack para implantação de inteligência artificial de alta conversão, combinando o ecossistema avançado do Google Cloud, Gemini e Vertex AI. Lidere as transformações modernas com excelência.",
+      desc: "Agência especializada em desenvolvimento de sites premium, estratégias de SEO/AEO preditivas, design de materiais de marketing e integração ágil de agentes de inteligência artificial. Transforme sua presença online em escala de resultados.",
       navTitle: "Navegação",
       specTitle: "Especialidades",
-      locationTitle: "Sede Operacional",
+      locationTitle: "Escritório Central",
       location: "Av. Paulista, 1000\nSão Paulo - SP, Brasil\nCEP: 01310-100",
-      rights: "VEZZITECH AGÊNCIA DE IA. TODOS OS DIREITOS RESERVADOS.",
-      privacy: "Política de Privacidade",
-      terms: "Termos de Uso"
+      rights: "VEZZITECH EXPERTS - MARKETING & TI. TODOS OS DIREITOS RESERVADOS.",
+      privacy: "Políticas de Privacidade",
+      terms: "Termos Gerais de Uso"
     },
     chatbot: {
-      welcome: "Olá! Sou o assistente de IA da Vezzitech. Como podemos acelerar sua empresa hoje com as melhores soluções Google Cloud?",
-      typing: "Digitando...",
+      welcome: "Olá! Sou o assistente virtual da Vezzitech. Como podemos ajudar a elevar o nível do seu Marketing e TI hoje?",
+      typing: "Escrevendo...",
       quickReplies: [
-        "Quero integrar o Gemini Pro",
-        "IA para Marketing",
-        "Quanto custa um projeto?"
+        "Preciso de um site novo",
+        "Como funciona SEO/AEO?",
+        "Agentes de IA e Suporte"
       ],
       replies: {
-        marketing: "Excelente escolha. Criamos motores preditivos integrando Gemini 1.5 Pro e inteligência preditiva no Google Ads. Isso costuma gerar até +45% de ROI em conversões digitais! Deseja agendar um papo gratuito com nossos engenheiros?",
-        pricing: "Nossos orçamentos são sob medida e desenhados para ter conversão real e ROI rápido. Fale conosco em nossa reunião estratégica de 30 minutos via Google Meet, ela é inteiramente gratuita!",
-        tech: "Trabalhamos de forma nativa e certificada no GCP, Vertex AI e Gemini API. Todo ambiente é configurado diretamente no ambiente Google Cloud do cliente garantindo sua total propriedade. Vamos agendar para desenharmos um plano?",
-        yes: "Perfeito! Role a página até a nossa seção 'Consultoria de Elite' para selecionar o melhor dia e horário disponível de sua preferência.",
-        default: "Perfeito. Nosso foco é converter expectativas em resultados tangíveis via inovação robusta no GCP. Deseja agendar sua consultoria gratuita de 30 minutos agora mesmo?"
+        marketing: "Desenvolvemos sites ultra rápidos e estratégias de SEO/AEO que ranqueiam em primeiro lugar, além de otimizar para respostas do Perplexity/ChatGPT. Isso traz mais tráfego qualificado! Deseja agendar um papo estratégico gratuito com a gente?",
+        pricing: "Nossos pacotes são sob medida e desenhados para gerar retorno e tráfego rápido de verdade. Agende uma conversa gratuita de 30 minutos via Google Meet para criarmos uma proposta!",
+        tech: "Trabalhamos com código web de altíssima performance, robôs personalizados para conversão de leads e produção ágil de criativos. Todo controle do projeto é seu. Vamos estruturar essa visão juntos?",
+        yes: "Excelente! Role a página até a nossa seção 'Consultoria de Elite' para selecionar o dia de sua conveniência.",
+        default: "Perfeito. Nosso foco é converter visitantes em faturamento líquido real com o melhor do marketing e TI. Vamos agendar uma estratégia de 30 minutos gratuita no Meet?"
       }
     },
     conversionBanner: {
-      heading: "Pronto para colocar sua empresa em escala de IA?",
-      sub: "Consulte nossa grade de disponibilidade ao vivo via Google Meet e inicie a jornada de transformação operacional inteligente hoje mesmo.",
-      cta: "Agendar Consultoria Gratuita"
+      heading: "Pronto para modernizar seu Marketing e sua TI?",
+      sub: "Garanta uma vaga na nossa grade ao vivo no Google Meet e dê o primeiro passo para construir uma marca amplamente dominante.",
+      cta: "Quero Consultoria Gratuita"
     }
   },
   en: {
@@ -427,286 +427,286 @@ export const translations: Record<Language, TranslationSchema> = {
       cta: "Talk to Expert"
     },
     hero: {
-      badge: "STRATEGIC GOOGLE CLOUD PARTNER",
-      headline: "Accelerate your enterprise with Artificial Intelligence.",
-      subheadline: "We unite the advanced ecosystem of Google Cloud, Gemini, and Vertex AI to automate marketing, operations, and sales with robust architecture and enterprise scale.",
+      badge: "ELITE TECH & DIGITAL MARKETING US",
+      headline: "Accelerated growth powered by Artificial Intelligence.",
+      subheadline: "We combine high-conversion website development, advanced search engine optimization (SEO/AEO), high-performing marketing materials, and autonomous AI agents to drive sales and modernize your IT.",
       ctaPrimary: "Start Now",
       ctaSecondary: "View Ecosystem",
       graphTitle: "Interactive AI Graph"
     },
     nodes: {
       orquestrador: {
-        title: "Vezzi AI Orchestrator",
-        metric: "Latency: < 120ms",
-        desc: "Central smart model that orchestrates and routes requests dynamically to guarantee maximum operational cost-benefit."
+        title: "Website Development",
+        metric: "Performance: 100/100",
+        desc: "Your digital presence built with the fastest and most modern web frameworks and languages on the market."
       },
       gemini: {
-        title: "Gemini 1.5 Pro Engine",
-        metric: "Context Window: 2M",
-        desc: "In-depth analysis of massive datasets and corporate documents with cutting-edge logical reasoning."
+        title: "Predictive SEO & AEO",
+        metric: "Answer Engines",
+        desc: "Cutting-edge optimization to rank high on traditional search engines and be cited as answers by chatbots like ChatGPT."
       },
       vertex: {
-        title: "Vertex AI Agents",
-        metric: "Reasoning Accuracy: 99.4%",
-        desc: "Autonomous agents trained to execute complex and automated business workflows at scale."
+        title: "AI Agents",
+        metric: "Client Support 24/7",
+        desc: "Advanced prompt engineering and intelligent workflows designed to capture, convert, and qualify leads automatically."
       },
       cloud: {
-        title: "Cloud Infrastructure",
-        metric: "Availability: 99.99%",
-        desc: "Secure, real-time databases orchestrated in private environments under enterprise business agreements."
+        title: "Marketing Materials",
+        metric: "Creative Scale",
+        desc: "Automated high-quality visual assets, highly persuasive ad copies, and promotional graphics optimized with data."
       }
     },
     ticker: [
-      "AI STRATEGY",
-      "GROWTH MARKETING",
-      "EXTREME CONVERSION",
-      "DIGITAL AUTHORITY",
+      "WEBSITE DEVELOPMENT",
+      "PREDICTIVE SEO & AEO",
       "AUTONOMOUS AI AGENTS",
-      "GOOGLE CLOUD INNOVATORS MEMBER",
-      "GEMINI ENTERPRISE",
-      "INTEGRATED WORKFLOW"
+      "SCALE MARKETING MATERIALS",
+      "TAILORED IT SOLUTIONS",
+      "MAXIMUM WEB PERFORMANCE",
+      "GROWTH MARKETING",
+      "EXTREME CONVERSION"
     ],
     valueProp: {
-      tag: "// DIFFERENTIATION",
-      heading: "Lead the marketing and operations market with predictive intelligence.",
+      tag: "DIFFERENTIATION",
+      heading: "Elevate your brand with unmatched tech and organic visibility.",
       items: [
         {
           num: "01",
-          title: "Certified Google Expertise",
-          desc: "Our engineers master Google Cloud native stack, Vertex AI and Gemini APIs. Enterprise grade security and private data governance from day zero."
+          title: "Certified Systems & IT Engineering",
+          desc: "We build ultra-fast, robust, secure websites and portals. Clean code, native technical SEO, fast load times, and reliable cloud-hosting are standard."
         },
         {
           num: "02",
-          title: "Guaranteed & Committed ROI",
-          desc: "Real business metrics optimization in marketing automation and lead capturing. Absolute focus on decreasing customer support costs and scale Ads campaigns."
+          title: "Search Engine & AI Dominance (SEO/AEO)",
+          desc: "We optimize your business not only for traditional Google search, but for generative answer engines (ChatGPT, Gemini, Perplexity), capturing modern high-intent search traffic."
         },
         {
           num: "03",
-          title: "Agile End-to-End Delivery",
-          desc: "We bring your strategy from initial sketch to completely deployed production-ready microservices in less than a month."
+          title: "Impact Visuals & Copywriting",
+          desc: "High-end promo assets, social posts, and ad creatives compiled at scale with breathtaking visual aesthetics and high conversion copy."
         },
         {
           num: "04",
-          title: "Business-Aligned AI",
-          desc: "We don't build generic prototypes. We connect autonomous agents that integrate directly to your existing CRM and ERP applications."
+          title: "AI Chatbots & Conversions",
+          desc: "We integrate custom virtual assistants on your channels for immediate leads qualification, customer onboarding, and seamless CRM synchronization."
         }
       ]
     },
     servicesSection: {
-      tag: "// OUR PILLARS",
+      tag: "OUR PILLARS",
       heading: "Solutions designed to dominate.",
       items: [
         {
           num: "01",
-          title: "AI for Marketing",
-          desc: "Predictive campaign automation and predictive hyper-personalization powered by Google Marketing Platform."
+          title: "Website Development",
+          desc: "Modern, ultra-fast websites and landing pages optimized for maximum conversions on both desktop and mobile devices."
         },
         {
           num: "02",
-          title: "Autonomous Automations",
-          desc: "Complex system integrations and AI workflows designed to run without human overhead."
+          title: "SEO & AEO Strategy",
+          desc: "Organic authority ranking on Google and optimization to be the preferred choice in modern AI answers (ChatGPT, Gemini)."
         },
         {
           num: "03",
-          title: "Google Cloud / Gemini Advisory",
-          desc: "High-performance certified architecture mapping to reduce compute tokens spend and optimize performance."
+          title: "Marketing Materials",
+          desc: "A to Z assistance in crafting engaging visual graphics, highly persuasive copy, and conversion-optimized ad creatives."
         },
         {
           num: "04",
-          title: "Full Stack AI Dev",
-          desc: "Tailored software applications from backend models orchestration to gorgeous web experiences."
+          title: "AI Agents & Custom IT",
+          desc: "Development of custom virtual agents, automated workflows, and smart software solutions for your business."
         }
       ]
     },
     verticalsSection: {
-      tag: "// FOR YOUR BUSINESS",
-      heading: "Google Tech for your industry.",
-      sub: "We use Cloud and Artificial Intelligence from the Google ecosystem to solve real problems and grow your business, no matter your field of work.",
+      tag: "FOR YOUR BUSINESS",
+      heading: "Tailored Marketing & Tech for your sector.",
+      sub: "We implement advanced marketing and smart IT services to streamline your operations, foster engagement, and steadily scale your market presence.",
       items: [
         {
           id: "varejo",
           title: "Retail & E-commerce",
-          desc: "Automated support that doesn't crash on Black Friday, product recommendations that boost sales, and smart stock forecasting. All on Google Cloud."
+          desc: "Lightning-fast online storefronts, advanced product page SEO, and automated marketing campaigns to capture buyer interest and scale sales."
         },
         {
           id: "saude",
           title: "Healthcare & Clinics",
-          desc: "Turn scheduling into a breeze with AI. Facilitate patient triage and clinic management with the maximum security offered by Google's cloud."
+          desc: "State-of-the-art medical websites, strategic local SEO, and continuous patient booking aided by conversational AI schedulers."
         },
         {
           id: "industria",
-          title: "Industry & Manufacturing",
-          desc: "Predict machine failures before they happen and connect your entire production to the cloud. Fewer stoppages, more efficiency, and control in the palm of your hand."
+          title: "B2B & Manufacturing",
+          desc: "Robust corporate portals, targeted B2B organic traffic campaigns, and high-impact digital brochures catering to key decision-makers."
         },
         {
           id: "financas",
-          title: "Finance & Services",
-          desc: "Faster credit approvals and real-time fraud blocking. Google's intelligence ensures maximum security for your cash flow and transactions."
+          title: "Services & Fintechs",
+          desc: "Elite corporate materials, hyper-secure web platforms, and specialized enterprise SEO mapping to build authority and trust."
         },
         {
           id: "educacao",
           title: "Education & Courses",
-          desc: "AI assistants answering students' questions 24/7. Make learning easier and prevent students from dropping out of your courses."
+          desc: "High-converting sales pages, engaging marketing assets, persuasive copywriting, and AI tutors to answer pupil inquiries 24/7."
         },
         {
           id: "agro",
           title: "Agribusiness",
-          desc: "Use data intelligence and satellite imagery to predict the best planting and harvesting times. Increase crop profitability with precise Google analytics."
+          desc: "Bespoke corporate identity, global outreach platforms for exporters, and digital strategies establishing industry leadership."
         }
       ]
     },
     processSection: {
-      tag: "// METHODOLOGY",
+      tag: "METHODOLOGY",
       heading: "How we accelerate your business.",
       items: [
         {
           num: "01",
-          title: "Diagnosis & Discovery",
-          desc: "We map operational friction points and design the fast ROI strategy in less than 5 days."
+          title: "Mapping & Search Audit",
+          desc: "We analyze your digital presence, perform web performance audits, and map out your SEO/AEO search potential."
         },
         {
           num: "02",
-          title: "Google Cloud Architecture",
-          desc: "We configure enterprise security keys, databases vector search, and Vertex AI dedicated servers."
+          title: "Design & Copywriting",
+          desc: "We draft premium visual layouts, craft high-conversion copy, and organize scalable marketing material pipelines."
         },
         {
           num: "03",
-          title: "Deploy & Integration",
-          desc: "We deploy the models and integrate them with your current systems and tools seamlessly."
+          title: "Development & AI setup",
+          desc: "We code clean, super-fast pages, deploy self-contained conversational AI agents, and wire your leads captures."
         },
         {
           num: "04",
-          title: "Refinement & Scale",
-          desc: "Continuous tokens spend optimization and agent expansion as your revenue scales up."
+          title: "Traffic & Optimization",
+          desc: "We deploy optimization cycles, ensure proper search indexing, and run continuous conversions and speed testing."
         }
       ]
     },
     metricsSection: {
-      tag: "// PROVEN VALUE",
+      tag: "PROVEN VALUE",
       heading: "Real corporate innovation metrics.",
       sub: "We don't deliver generic advice. We deploy production-ready code, agents, and systems that impact your bottom line directly.",
-      badge: "Google Certified Builders",
+      badge: "Verified Tech Builders",
       items: [
         {
-          value: "+45%",
-          label: "Marketing Ads ROI",
-          desc: "Average operational return in intelligent ads automation campaigns with real-time target scoring."
+          value: "+120%",
+          label: "Organic Traffic",
+          desc: "Average improvement in high-intent visitors through modern search and answer engine optimization (SEO/AEO)."
         },
         {
-          value: "4.8x",
-          label: "Operational Speed",
-          desc: "Acceleration in converting cold leads to warm prospects with conversational autonomous agents."
+          value: "3.5x",
+          label: "Conversion Rate",
+          desc: "Acceleration in converting cold visitors into warm prospective clients through ultra-fast loaders and persuasive layouts."
         },
         {
-          value: "2M+",
-          label: "Active Context",
-          desc: "Simultaneous processing of massive documents and historical files without any hallucinations."
+          value: "< 1s",
+          label: "Loading Speed",
+          desc: "Elite hosting setups and perfect core web vitals designed to maximize customer retention and rank higher."
         }
       ]
     },
     ecosystemSection: {
-      heading: "Google Ecosystem",
+      heading: "Tech & Marketing Ecosystem",
       items: [
-        { title: "Google Cloud", desc: "Escalable and robust data-oriented architecture under global security standards." },
-        { title: "Vertex AI", desc: "Design, train and deploy state-of-the-art machine learning models securely." },
-        { title: "Gemini", desc: "Ultra-fast multimodal Generative AI featuring unprecedented 2M context window." },
-        { title: "Workspace AI", desc: "Boost your team standard tools and workflows with native intelligence integrated." }
+        { title: "Web Performance", desc: "Corporate sites, custom landing pages, and online storefronts built for instant loading speed." },
+        { title: "SEO & AEO", desc: "Placing your business as a top search result on Google and as a trusted citation in AI answers." },
+        { title: "Growth Marketing", desc: "Aesthetic graphic design, copywriting, high-converting ads, and complete social assets production." },
+        { title: "AI Automation", desc: "Virtual assistants and intelligent workflows synced to your operations and leads management." }
       ]
     },
     blogSection: {
-      tag: "// RELEVANT KNOWLEDGE",
-      heading: "Insights & Tech Engineering",
-      sub: "Technical breakdowns of how global companies are building enterprise intelligence with AI.",
+      tag: "RELEVANT KNOWLEDGE",
+      heading: "Insights on Marketing & IT",
+      sub: "Read through technical breakdowns of how to optimize conversions, rank higher, and build engaging AI workflows.",
       readMore: "Read article",
-      newsTitle: "Stay ahead of the AI transition",
-      newsSub: "Subscribe to our weekly newsletter crafted directly by our GenAI technical engineers.",
-      newsPlaceholder: "Your corporate email",
+      newsTitle: "Stay ahead of the competition",
+      newsSub: "Subscribe to our weekly newsletter for premium tips on SEO, web speed, visual copywriting, and AI automation.",
+      newsPlaceholder: "Your professional email",
       newsBtn: "Subscribe",
       newsSuccess: "✓ Thank you for subscribing!",
-      editorial: "Vezzitech Engineering Team",
-      editorialSub: "Technology, Data & Product Strategy",
-      dialogCta: "Schedule Session"
+      editorial: "Vezzitech Editorial Team",
+      editorialSub: "Estratégia de Marketing, Tráfego e Engenharia Web",
+      dialogCta: "Talk to Specialist"
     },
     faqSection: {
       heading: "Frequently Asked Questions",
       items: [
         {
-          q: "Are the deployed models fully ours?",
-          a: "Absolutely. We deliver all proprietary source code repositories and config keys directly within the client Google Cloud enterprise tenant."
+          q: "Do you develop custom websites or use ready templates?",
+          a: "We write clean, lightweight custom code optimized strictly for performance, SEO/AEO compatibility, and modern UI/UX design. You have complete code ownership."
         },
         {
-          q: "Is Gemini 1.5 Pro safe for private corporate data?",
-          a: "Yes. Using commercial Gemini Vertex AI APIs, Google terms guarantee that your business datasets are never used to train public models."
+          q: "What is AEO (Answer Engine Optimization)?",
+          a: "It is SEO tailored for AI query services (like ChatGPT, Gemini, Perplexity). We ensure search query bots find, process, and cite your brand as their answer."
         },
         {
-          q: "How do you calculate ROI for corporate automations?",
-          a: "We analyze team time spent on redundant operations and design custom blueprints showing potential cost reduction of up to 80%."
+          q: "How do conversational AI agents help in sales?",
+          a: "They respond to customer inquiries 24/7 on your web pages, answer recurring questions instantly, collect lead information, and schedule Meet calls for your sales reps."
         },
         {
-          q: "How long does onboarding take?",
-          a: "Our agile methodology delivers major milestones in rapid 3-week sprint cycles. You see the product live from checkpoint one."
+          q: "How important are visual marketing materials for campaigns?",
+          a: "High-quality visual graphics paired with professional copywriting significantly increase user engagement, driving down ad click costs and optimizing budgets."
         }
       ]
     },
     schedulingSection: {
       tag: "ELITE ADVISORY",
-      heading: "Book a direct session with our AI Architects.",
-      sub: "Map your corporate AI strategy. In this free 30-minute Google Meet consult, we pinpoint the highest-yield automation opportunities.",
-      p1: "Pipeline Structuring",
-      p1Sub: "Architecting the logic of tokens caching and LLMs cost models.",
-      p2: "Cost & Budget Management",
-      p2Sub: "Token-usage and cost calculations on your customized GCP tenant.",
-      successTitle: "Meeting Booked Successfully!",
-      successSub: "We sent confirmation email with calendar invites.",
-      successDesc: "Your official Google Meet link is ready for use:",
-      meetBtn: "Join Google Meet Session",
+      heading: "Book a free session to scale your Marketing & IT.",
+      sub: "Plan your next steps. In this 30-minute Google Meet consultation, we'll review your page speed, map out organic search potentials, and outline customer-service AI integrations.",
+      p1: "Performance & Copywriting",
+      p1Sub: "An in-depth review of your web design speed, user journey, and conversion copy.",
+      p2: "Search & Automation Roadmap",
+      p2Sub: "Strategic exploration of AEO/SEO opportunities and virtual agent integrations.",
+      successTitle: "Session Booked Successfully!",
+      successSub: "We have sent calendar invites and session details to your inbox.",
+      successDesc: "Your official Google Meet session URL is ready:",
+      meetBtn: "Join Google Meet Strategy Call",
       anotherBtn: "Schedule another slot",
       form: {
         name: "Full Name",
-        email: "Corporate Email Address",
-        company: "Company & Role",
-        purpose: "Primary AI Objective",
+        email: "Professional Email Address",
+        company: "Company Name",
+        purpose: "Primary Digital Need",
         purposeOptions: [
-          { value: "Marketing Automation", label: "AI Marketing Automation" },
-          { value: "Vertex AI Integration", label: "Vertex AI Agent Building" },
-          { value: "Operations & RAG", label: "Private RAG Databases" },
-          { value: "Google Cloud Consult", label: "Google Cloud Architecture" }
+          { value: "Fazer Novo Site", label: "Develop High-Conversion Web" },
+          { value: "SEO & AEO", label: "SEO & AEO Brand Mapping" },
+          { value: "Materiais de Marketing", label: "Create Marketing Materials" },
+          { value: "Agente IA / TI", label: "Deploy Smart AI Agents / IT" }
         ],
         date: "Select Date",
         time: "Available Time Slot",
-        submit: "Secure Google Meet Booking"
+        submit: "Secure Free Google Meet Booking"
       }
     },
     footerSection: {
-      desc: "Google Cloud Innovators member delivering full-stack engineering and advisory for high-conversion Generative AI systems. We power your business with Google Cloud, Vertex AI, and outstanding Gemini enterprise capabilities.",
+      desc: "An agency specializing in crafting high-conversion web development, advanced SEO/AEO strategies, conversion-focused marketing materials, and autonomous AI-driven customer-experience agents. Scale your leads and modernize your IT.",
       navTitle: "Navigation",
       specTitle: "Expertise",
       locationTitle: "HQ Office",
-      location: "Av. Paulista, 1000\nSao Paulo - SP, Brazil",
-      rights: "VEZZITECH AI AGENCY. ALL RIGHTS RESERVED.",
+      location: "Av. Paulista, 1000\nSao Paulo - SP, Brazil\nCEP: 01310-100",
+      rights: "VEZZITECH EXPERTS - MARKETING & IT. ALL RIGHTS RESERVED.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     },
     chatbot: {
-      welcome: "Hi there! I am Vezzi AI assistant. How can we accelerate your business workflow today with Gemini and Google Cloud?",
+      welcome: "Hi there! I am Vezzitech's virtual assistant. How can we elevate your Marketing & IT today?",
       typing: "Typing...",
       quickReplies: [
-        "Integrate Gemini Pro",
-        "AI for Marketing",
-        "How much does a project cost?"
+        "Need a new website",
+        "How does SEO/AEO work?",
+        "AI Agents & Support"
       ],
       replies: {
-        marketing: "Excellent choice! We deploy enterprise-grade predictive models and ad copy refinement systems integrated to Google Cloud. This delivers +45% conversion improvements! Would you like to schedule a free consult?",
-        pricing: "Our pricing structure matches your deliverable milestones and operates on fixed-scope transparent pipelines. Our discovery session is 100% free! Let's arrange a virtual meeting?",
-        tech: "We build natively on your corporate Google Cloud tenant (using Vertex AI, Gemini, BigQuery). You hold absolute key and code ownership. Let's design your pipeline?",
-        yes: "Perfect! Simply scroll down to our 'Elite Advisory' section or click 'Schedule Session' in the header to choose an available calendar slot.",
-        default: "Great. Our priority is translating tech expectation to hard financial performance. Would you like to organize a free strategy session via Google Meet?"
+        marketing: "Fantastic! We design custom high-performance websites and write optimized scripts to rank on search engines and win answers in ChatGPT/Gemini. Would you like to consult with our team?",
+        pricing: "Our strategy pricing is custom-tailored to deliver immediate ROI and visibility. Let's arrange a free 30-minute Meet call to discuss detailed models!",
+        tech: "We develop ultra-fast modern code, deploy context-aware chatbot models, and provide full visual materials to back up your ads. Let's schedule a call to design your roadmap?",
+        yes: "Perfect! Simply scroll down to the 'Elite Advisory' section on our page and select your preferred date.",
+        default: "Great! Our mission is to scale user visits and conversions using smart tech and marketing. Let's schedule a free 30-minute strategy call on Meet?"
       }
     },
     conversionBanner: {
-      heading: "Ready to scale your business with production AI?",
-      sub: "Check our available calendar slots and connect directly on a video call to draft your first automation blueprint.",
-      cta: "Schedule Free Advisory"
+      heading: "Ready to revolutionize your Marketing & IT?",
+      sub: "Check our available schedules on Google Meet and take the first step towards establishing absolute organic dominance.",
+      cta: "Claim Free Consultation"
     }
   }
 };

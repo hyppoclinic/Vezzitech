@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { getPosts, Post } from '../lib/blog';
+import { recordEventMetric } from '../lib/analytics';
 import { Language, translations } from '../translations';
 import { Clock, Calendar, User, Link2, Check, ArrowLeft } from 'lucide-react';
 import { FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa';
@@ -26,6 +27,11 @@ export const BlogPostPage = ({ slug, lang }: BlogPostPageProps) => {
       const found = allPosts.find(p => p.slug === slug);
       setPost(found || null);
       setLoading(false);
+      
+      if (found) {
+        // Increment actual Google search clicks metric on database tracking
+        recordEventMetric('google').catch(err => console.error(err));
+      }
     });
     return () => unsubscribe();
   }, [slug]);

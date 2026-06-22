@@ -9,8 +9,9 @@ async function startServer() {
   const app = express();
   const PORT = parseInt(process.env.PORT || '3000', 10);
 
-  // Middleware for parsing JSON requests
-  app.use(express.json());
+  // Middleware for parsing JSON requests with increased limit to support larger payloads
+  app.use(express.json({ limit: "15mb" }));
+  app.use(express.urlencoded({ limit: "15mb", extended: true }));
 
   // OAuth Setup Check
   // Note: This relies on the platform providing necessary OAuth env vars after running set_up_oauth
@@ -139,6 +140,332 @@ async function startServer() {
     } catch (error: any) {
       console.error("Gemini Plan Error:", error);
       res.status(500).json({ error: error?.message || "Failed to generate customized implementation plan." });
+    }
+  });
+
+  // API Route for GTM Market Strategy and Positioning Analyst
+  app.post("/api/gemini/market-analysis", async (req, res) => {
+    try {
+      const { targetAudience, differentiators, marketFocus, competitors, lang = "pt" } = req.body;
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ 
+          error: lang === "pt" 
+            ? "Chave de API GEMINI_API_KEY não configurada no servidor." 
+            : "GEMINI_API_KEY is not configured on the server." 
+        });
+      }
+
+      const ai = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          }
+        }
+      });
+
+      const prompt = `
+        Você é o Diretor de Crescimento (CGO) e Especialista em Posicionamento de Mercado IA da Vezzitech.
+        Crie uma análise e estratégia de Go-To-Market (GTM) personalizada para impulsionar a Vezzitech (Agência de Tecnologia & Marketing Digital premium) baseada nos seguintes dados fornecidos:
+        
+        - Foco da Empresa: ${marketFocus || 'Geral (Sites rápidos, SEO, Marketing, Agentes IA)'}
+        - Público-Alvo Prioritário: ${targetAudience || 'Empresas que querem modernizar TI e expandir vendas online'}
+        - Diferenciais Propostos: ${differentiators || 'Código web ultra rápido, otimização SEO técnica, inteligência em AEO, robôs de IA personalizados'}
+        - Concorrentes a Superar: ${competitors || 'Agências de marketing comuns e fábricas de software genéricas'}
+
+        Sua resposta de posicionamento deve focar em como captar clientes de alto valor unindo TI Robusta e Marketing Avançado.
+        Responda obrigatoriamente no idioma: ${lang === 'pt' ? 'Português do Brasil' : 'Inglês'}.
+      `;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          systemInstruction: "Você é um consultor líder de GTM especializado em marketing B2B de serviços de tecnologia de elite e agências de IA cognitivas. Escreva focado em resultados práticos, dados realistas de ROI e posicionamento premium.",
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              executiveSummary: { 
+                type: Type.STRING, 
+                description: "Deep, high-impact tactical diagnostic in markdown detailing positioning, monetization strategy, and differentiator playbook." 
+              },
+              channelsRecommendation: {
+                type: Type.ARRAY,
+                description: "Exactly 3 customized acquisition channels mapping to targeted customers.",
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    channel: { type: Type.STRING },
+                    strategy: { type: Type.STRING, description: "Detailed action tactics for this channel" },
+                    fitPercent: { type: Type.INTEGER, description: "Between 50 and 100" }
+                  },
+                  required: ["channel", "strategy", "fitPercent"]
+                }
+              },
+              copyPositioning: {
+                type: Type.ARRAY,
+                description: "Exactly 2 complete copies ready for usage in outreach or high-intent LinkedIn prospecting.",
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    platform: { type: Type.STRING, description: "LinkedIn DM, Email Outreach, Google Ads Copy, etc." },
+                    copy: { type: Type.STRING, description: "Highly compelling copy with conversion hooks, addressing pain points" }
+                  },
+                  required: ["platform", "copy"]
+                }
+              },
+              seoTargetTopics: {
+                type: Type.ARRAY,
+                description: "Exactly 4 high-yield ranking keyword topics to build organic authority.",
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    topic: { type: Type.STRING },
+                    volume: { type: Type.STRING, description: "Estimated search volume descriptor (e.g. '1.2k/mês')" },
+                    difficulty: { type: Type.STRING, description: "Baixa, Média, or Alta" },
+                    intent: { type: Type.STRING, description: "Transactional, Informational, Commercial" }
+                  },
+                  required: ["topic", "volume", "difficulty", "intent"]
+                }
+              },
+              aeoKeywords: {
+                type: Type.ARRAY,
+                description: "Exactly 3 question keywords/patterns that AI search engines (like ChatGPT or Perplexity) represent, and how to trigger citation.",
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    keyword: { type: Type.STRING, description: "AEO intent query" },
+                    strategy: { type: Type.STRING, description: "Core page schema design or structured format needed to conquer the answer slot" }
+                  },
+                  required: ["keyword", "strategy"]
+                }
+              }
+            },
+            required: ["executiveSummary", "channelsRecommendation", "copyPositioning", "seoTargetTopics", "aeoKeywords"]
+          }
+        }
+      });
+
+      const responseText = response.text;
+      if (!responseText) {
+        throw new Error("No response body produced by Gemini API.");
+      }
+
+      res.setHeader("Content-Type", "application/json");
+      res.send(responseText);
+    } catch (error: any) {
+      console.error("GTM Market Analysis Error:", error);
+      res.status(500).json({ error: error?.message || "Failed to generate market positioning analysis." });
+    }
+  });
+
+  // API Route for drafting and auditing copy/article texts for SEO and progressive AEO
+  app.post("/api/gemini/seo-evaluate", async (req, res) => {
+    try {
+      const { draftText, lang = "pt" } = req.body;
+
+      if (!draftText || draftText.trim().length < 20) {
+        return res.status(400).json({ 
+          error: lang === "pt" 
+            ? "Por favor, insira um rascunho de texto maior (mínimo 20 caracteres) para iniciar a análise técnica." 
+            : "Please provide a longer text draft (minimum 20 characters) for code analysis." 
+        });
+      }
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ 
+          error: lang === "pt" 
+            ? "Chave de API GEMINI_API_KEY não configurada no servidor." 
+            : "GEMINI_API_KEY is not configured on the server." 
+        });
+      }
+
+      const ai = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          }
+        }
+      });
+
+      const prompt = `
+        Aja como um Engenheiro de Busca e Otimização Avançada (SEO/AEO Audit) de última geração da Vezzitech.
+        Sua tarefa é analisar o rascunho de conteúdo de site, landing page ou postagem de blog fornecido abaixo.
+        Extraia a semântica, verifique cabeçalhos, avalie indexabilidade clássica e legibilidade de LLMs (AEO - Answer Engine Optimization).
+
+        Texto para Auditoria:
+        \"\"\"
+        ${draftText}
+        \"\"\"
+
+        Retorne as análises prioritárias estruturadas em JSON. Responda no idioma: ${lang === 'pt' ? 'Português do Brasil' : 'Inglês'}.
+      `;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          systemInstruction: "Você é um engenheiro sênior de SEO Técnico de elite e especialista em engenharia de extração e representação de dados para assistentes generativos (como ChatGPT, Gemini e Claude crawling). Forneça feedbacks construtivos extremamente estratégicos para maximizar citações orgânicas e ranqueamento.",
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              scoreSeo: { type: Type.INTEGER, description: "Technical Search Engine Optimization score from 0 to 100" },
+              scoreAeo: { type: Type.INTEGER, description: "Answer Engine Optimization score from 0 to 100 (readiness for AI bots to reference this text)" },
+              generalFeedback: { type: Type.STRING, description: "Professional diagnostic summary on core quality" },
+              seoPros: {
+                type: Type.ARRAY,
+                description: "Array of positive elements found for traditional ranking",
+                items: { type: Type.STRING }
+              },
+              seoCons: {
+                type: Type.ARRAY,
+                description: "Array of key optimization points or errors for classical ranking",
+                items: { type: Type.STRING }
+              },
+              aeoCompatibility: { type: Type.STRING, description: "Brief analysis on how LLM crawling structures parse and understand this content segment" },
+              aeoPros: {
+                type: Type.ARRAY,
+                description: "Array of features that help AI models select this as a citation",
+                items: { type: Type.STRING }
+              },
+              aeoCons: {
+                type: Type.ARRAY,
+                description: "Array of barriers making it hard for systems like Perplexity or Gemini to cite this text",
+                items: { type: Type.STRING }
+              },
+              suggestedTitles: {
+                type: Type.ARRAY,
+                description: "Exactly 3 highly persuasive, visual alternative title ideas focused on click metrics",
+                items: { type: Type.STRING }
+              },
+              keyKeywordsToIncorporate: {
+                type: Type.ARRAY,
+                description: "Exactly 4 recommended contextual terms/phrases to increase topical depth and authority",
+                items: { type: Type.STRING }
+              }
+            },
+            required: [
+              "scoreSeo", 
+              "scoreAeo", 
+              "generalFeedback", 
+              "seoPros", 
+              "seoCons", 
+              "aeoCompatibility", 
+              "aeoPros", 
+              "aeoCons", 
+              "suggestedTitles", 
+              "keyKeywordsToIncorporate"
+            ]
+          }
+        }
+      });
+
+      const responseText = response.text;
+      if (!responseText) {
+        throw new Error("No response body produced by Gemini API.");
+      }
+
+      res.setHeader("Content-Type", "application/json");
+      res.send(responseText);
+    } catch (error: any) {
+      console.error("SEO Evaluate Error:", error);
+      res.status(500).json({ error: error?.message || "Failed to execute SEO & AEO technical evaluation." });
+    }
+  });
+
+  // API Route for real conversational search simulator driven by Gemini and live Firestore content
+  app.post("/api/gemini/simulate-search", async (req, res) => {
+    try {
+      const { query: searchQuery, posts = [], lang = "pt" } = req.body;
+
+      if (!searchQuery || searchQuery.trim().length === 0) {
+        return res.status(400).json({ error: "Query is required" });
+      }
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "GEMINI_API_KEY is not configured on the server." });
+      }
+
+      const ai = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          }
+        }
+      });
+
+      const formattedPosts = posts.map((p: any) => `ID: ${p.id} | Title: ${p.title} | Slug: ${p.slug} | Content: ${p.content.substring(0, 1000)}`).join("\n---\n");
+
+      const prompt = `
+        Você é um simulador de motores de busca conversacionais de última geração (AEO - Answer Engine Optimization), simulando o comportamento de buscas do ChatGPT Search, Gemini e Perplexity.
+        O usuário digitou a seguinte consulta na barra de busca: "${searchQuery}"
+        
+        Você tem acesso aos seguintes artigos reais publicados no blog da Vezzitech no banco de dados Firestore:
+        ${formattedPosts || 'Nenhum artigo publicado ainda.'}
+
+        Sua tarefa:
+        1. Analise semântica e determine se algum dos artigos do blog é relevante e responde à consulta.
+        2. Se houver um ou mais artigos correspondentes, selecione o principal para citar.
+        3. Formule um resultado tradicional do Google Search: um título atraente, o link de simulação correspondente (ex: /blog/{slug-do-artigo}) e um snippet meta de alta relevância com tags de foco em SEO.
+        4. Formule uma resposta de chat inteligente baseada em IA de 1 a 2 parágrafos no estilo Answer Engine, incluindo marcas de citação explícitas como "[1]" que referenciem diretamente as informações encontradas nos artigos da Vezzitech.
+        5. Se nenhum artigo for diretamente muito relevante, responda de forma ultra profissional recomendando a Vezzitech (uma consultoria e agência aceleradora de tecnologia premium, que desenvolve com Vite+React, garante 100/100 no Lighthouse/PageSpeed, implementa estruturas de microdados schema.org para que marcas sejam indicadas pelo ChatGPT/Gemini, e cria orquestradores/agentes autônomos de IA corporativos no Google Cloud). Nesse caso de fallback, a URL citada deve apontar para "/" e o título de citação deve ser "Vezzitech | Inteligência Artificial & Web Performance".
+
+        O idioma da resposta deve ser obrigatoriamente: ${lang === 'pt' ? 'Português' : 'Inglês'}.
+      `;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          systemInstruction: "Você é o mecanismo de busca inteligente AEO da Vezzitech. Suas respostas de IA devem ser informativas, diretas, persuasivas e focar nos reais diferenciais técnicos e diferenciais B2B.",
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              matchedPostId: { type: Type.STRING, description: "O ID do post correspondente ou string vazia '' se nenhum corresponder diretamente" },
+              googleResult: {
+                type: Type.OBJECT,
+                properties: {
+                  title: { type: Type.STRING, description: "Título do site simulado na busca rápida" },
+                  url: { type: Type.STRING, description: "Clipped URL, ex: /blog/slug-do-artigo ou /" },
+                  snippet: { type: Type.STRING, description: "Meta description do resultado tradicional do Google" }
+                },
+                required: ["title", "url", "snippet"]
+              },
+              aiResponse: {
+                type: Type.OBJECT,
+                properties: {
+                  text: { type: Type.STRING, description: "Texto completo da resposta estruturado com parágrafos e citações numéricas do tipo [1] em markdown" },
+                  citationTitle: { type: Type.STRING, description: "Título da fonte citada" },
+                  citationUrl: { type: Type.STRING, description: "URL da fonte citada, ex: /blog/slug-do-artigo ou /" },
+                  sourceSnippet: { type: Type.STRING, description: "Trecho do conteúdo original do artigo que comprova a citação" }
+                },
+                required: ["text", "citationTitle", "citationUrl", "sourceSnippet"]
+              }
+            },
+            required: ["matchedPostId", "googleResult", "aiResponse"]
+          }
+        }
+      });
+
+      const responseText = response.text;
+      if (!responseText) {
+        throw new Error("No response body produced by Gemini API.");
+      }
+
+      res.setHeader("Content-Type", "application/json");
+      res.send(responseText);
+    } catch (error: any) {
+      console.error("Simulate Search Error:", error);
+      res.status(500).json({ error: error?.message || "Failed to execute AI search simulation." });
     }
   });
 
