@@ -20,7 +20,7 @@ export const ValueProposition = ({ lang }: ValuePropositionProps) => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-emerald-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-3xl mb-16">
-            <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold tracking-widest uppercase">// {t.valueProp.tag}</div>
+            <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold tracking-widest uppercase">{t.valueProp.tag}</div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.15] tracking-tight text-white font-heading">
                 {lang === 'pt' ? (
                   <>

@@ -71,7 +71,7 @@ export const Services = ({ lang }: ServicesProps) => {
       {/* Title block structured like the Hero text layout style */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
         <div className="max-w-2xl text-left">
-          <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold tracking-widest uppercase">// {t.servicesSection.tag}</div>
+          <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold tracking-widest uppercase">{t.servicesSection.tag}</div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.15] mb-4 tracking-tight text-white font-heading">
             {lang === 'pt' ? (
               <>

@@ -20,7 +20,7 @@ export const Metrics = ({ lang }: MetricsProps) => {
         
         <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-4">
-                <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold uppercase tracking-widest">// {t.metricsSection.tag}</div>
+                <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold uppercase tracking-widest">{t.metricsSection.tag}</div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.15] tracking-tight text-white mb-6 font-heading">
                     {lang === 'pt' ? (
                       <>

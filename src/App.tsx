@@ -11,6 +11,7 @@ import { GoogleEcosystem } from './sections/GoogleEcosystem';
 import { ValueProposition } from './sections/ValueProposition';
 import { Process } from './sections/Process';
 import { Metrics } from './sections/Metrics';
+import { Verticals } from './sections/Verticals';
 import { Blog } from './sections/Blog';
 import { FAQ } from './sections/FAQ';
 import { Scheduling } from './sections/Scheduling';
@@ -66,14 +67,17 @@ export default function App() {
         {/* Hero Banner Section with Interactive Graph & Deployable code */}
         <Hero lang={lang} />
         
-        {/* Pillars of differentiation */}
-        <ValueProposition lang={lang} />
+        {/* Market Verticals / Industries (Immediate relevance right under Hero) */}
+        <Verticals lang={lang} />
         
         {/* Our Services */}
         <Services lang={lang} />
         
         {/* Operational steps */}
         <Process lang={lang} />
+        
+        {/* Pillars of differentiation (Credibility & Trust reinforcement) */}
+        <ValueProposition lang={lang} />
         
         {/* Success proof metrics */}
         <section id="metricas">

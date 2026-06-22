@@ -31,6 +31,12 @@ export interface TranslationSchema {
     heading: string;
     items: Array<{ num: string; title: string; desc: string }>;
   };
+  verticalsSection: {
+    tag: string;
+    heading: string;
+    sub: string;
+    items: Array<{ id: string; title: string; desc: string }>;
+  };
   processSection: {
     tag: string;
     heading: string;
@@ -218,6 +224,43 @@ export const translations: Record<Language, TranslationSchema> = {
           num: "04",
           title: "Dev Full Stack IA",
           desc: "Construção de aplicações corporativas modernas e escaláveis integrando IA de ponta a ponta com máxima segurança."
+        }
+      ]
+    },
+    verticalsSection: {
+      tag: "// PARA O SEU NEGÓCIO",
+      heading: "Tecnologia Google para o seu setor.",
+      sub: "Usamos Nuvem e Inteligência Artificial do ecossistema Google para resolver problemas reais e fazer sua empresa crescer, não importa a sua área de atuação.",
+      items: [
+        {
+          id: "varejo",
+          title: "Varejo & E-commerce",
+          desc: "Atendimento automático que não trava na Black Friday, recomendação de produtos que aumenta as vendas e previsão inteligente de estoque. Tudo no Google Cloud."
+        },
+        {
+          id: "saude",
+          title: "Saúde & Clínicas",
+          desc: "Transforme o agendamento em algo simples com IA. Facilite a triagem de pacientes e a gestão da clínica com a máxima segurança que a nuvem do Google oferece."
+        },
+        {
+          id: "industria",
+          title: "Indústrias & Manufatura",
+          desc: "Preveja quando uma máquina vai falhar antes que aconteça e conecte toda a sua produção na nuvem. Menos paradas, mais eficiência e controle na palma da mão."
+        },
+        {
+          id: "financas",
+          title: "Finanças & Serviços",
+          desc: "Maior velocidade na aprovação de crédito e bloqueio de fraudes em tempo real. A inteligência do Google garante segurança máxima para o seu fluxo de caixa."
+        },
+        {
+          id: "educacao",
+          title: "Educação & Cursos",
+          desc: "Assistentes de IA que tiram dúvidas dos alunos 24 horas por dia. Torne o aprendizado mais fácil e evite que os estudantes abandonem seu curso."
+        },
+        {
+          id: "agro",
+          title: "Agronegócio",
+          desc: "Use a inteligência de dados e imagens de satélite para prever as melhores épocas de plantio e colheita. Aumente a rentabilidade da sua safra com análises precisas do Google."
         }
       ]
     },
@@ -472,6 +515,43 @@ export const translations: Record<Language, TranslationSchema> = {
           num: "04",
           title: "Full Stack AI Dev",
           desc: "Tailored software applications from backend models orchestration to gorgeous web experiences."
+        }
+      ]
+    },
+    verticalsSection: {
+      tag: "// FOR YOUR BUSINESS",
+      heading: "Google Tech for your industry.",
+      sub: "We use Cloud and Artificial Intelligence from the Google ecosystem to solve real problems and grow your business, no matter your field of work.",
+      items: [
+        {
+          id: "varejo",
+          title: "Retail & E-commerce",
+          desc: "Automated support that doesn't crash on Black Friday, product recommendations that boost sales, and smart stock forecasting. All on Google Cloud."
+        },
+        {
+          id: "saude",
+          title: "Healthcare & Clinics",
+          desc: "Turn scheduling into a breeze with AI. Facilitate patient triage and clinic management with the maximum security offered by Google's cloud."
+        },
+        {
+          id: "industria",
+          title: "Industry & Manufacturing",
+          desc: "Predict machine failures before they happen and connect your entire production to the cloud. Fewer stoppages, more efficiency, and control in the palm of your hand."
+        },
+        {
+          id: "financas",
+          title: "Finance & Services",
+          desc: "Faster credit approvals and real-time fraud blocking. Google's intelligence ensures maximum security for your cash flow and transactions."
+        },
+        {
+          id: "educacao",
+          title: "Education & Courses",
+          desc: "AI assistants answering students' questions 24/7. Make learning easier and prevent students from dropping out of your courses."
+        },
+        {
+          id: "agro",
+          title: "Agribusiness",
+          desc: "Use data intelligence and satellite imagery to predict the best planting and harvesting times. Increase crop profitability with precise Google analytics."
         }
       ]
     },
