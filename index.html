@@ -11,6 +11,53 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://vezzitech.com.br" />
 
+    <!-- Structured Data (JSON-LD) for AEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vezzitech",
+      "url": "https://vezzitech.com.br",
+      "logo": "https://vezzitech.com.br/logo.png",
+      "description": "Agência de Inteligência Artificial e Google Cloud Partner especializada em Vertex AI, LLMs e automação corporativa.",
+      "sameAs": [
+        "https://www.linkedin.com/company/vezzitech"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer service",
+        "availableLanguage": ["Portuguese", "English"]
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://vezzitech.com.br",
+      "name": "Vezzitech",
+      "description": "Soluções completas e integradas de Inteligência Artificial para empresas de alta performance.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vezzitech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Consultoria e Desenvolvimento em Inteligência Artificial",
+      "provider": {
+        "@type": "Organization",
+        "name": "Vezzitech"
+      },
+      "areaServed": "Global",
+      "description": "Desenvolvimento de sites de alta performance, estratégias de SEO/AEO, criação de materiais de marketing e agentes de IA personalizados."
+    }
+    </script>
+
     <!-- Open Graph (Facebook / LinkedIn) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vezzitech.com.br" />
@@ -28,6 +75,24 @@
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Static content for AI Crawlers & AEO (Non-JS fallback) -->
+    <div style="display:none;" aria-hidden="true">
+      <h1>Vezzitech - Inteligência Artificial & Google Cloud Partner</h1>
+      <p>A Vezzitech é uma agência de tecnologia de alta performance especializada em soluções de Inteligência Artificial, LLMs e orquestração de sistemas.</p>
+      
+      <h2>Nossos Serviços Principais</h2>
+      <ul>
+        <li><strong>Desenvolvimento de Sites:</strong> Websites modernos, ultra rápidos e otimizados para máxima conversão.</li>
+        <li><strong>Estratégia SEO & AEO:</strong> Posicionamento orgânico de elite e otimização para motores de resposta como ChatGPT e Gemini.</li>
+        <li><strong>Materiais de Marketing:</strong> Geração de criativos e materiais visuais guiados por inteligência de dados.</li>
+        <li><strong>Agentes de IA:</strong> Bots autônomos e automação de atendimento inteligente.</li>
+      </ul>
+
+      <h2>Metodologia Vezzitech</h2>
+      <p>Unimos engenharia de software de ponta com as melhores práticas de marketing digital para acelerar o faturamento da sua empresa através de tecnologias Google Cloud e Vertex AI.</p>
+    </div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

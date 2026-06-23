@@ -12,6 +12,22 @@ export const FAQ = ({ lang }: FAQProps) => {
 
   return (
     <section className="py-24 px-6 max-w-4xl mx-auto border-t border-white/5 relative">
+      {/* FAQ Schema for AEO */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": t.faqSection.items.map(item => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.a
+            }
+          }))
+        })}
+      </script>
+
       <div className="flex flex-col items-center justify-center text-center mb-16">
         <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold uppercase tracking-widest flex items-center gap-1.5 justify-center">
             <HelpCircle className="w-4 h-4 animate-pulse" />
