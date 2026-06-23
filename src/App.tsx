@@ -22,6 +22,9 @@ import { Login } from './components/Login';
 import { Dashboard } from './components/Dashboard';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { Language, translations } from './translations';
+import { BlurFade } from './components/ui/blur-fade';
+import { ShimmerButton } from './components/ui/shimmer-button';
+import { BorderBeam } from './components/ui/border-beam';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
@@ -120,26 +123,38 @@ export default function App() {
 
         {/* Bottom high-performing Conversion Banner */}
         <section className="py-24 px-6 text-center max-w-4xl mx-auto border-t border-white/5 relative">
-          <div className="absolute inset-0 bg-[#33BC65]/5 rounded-[2.5rem] blur-xl pointer-events-none"></div>
-          <div className="bg-glass border-glass p-12 md:p-16 rounded-[2.5rem] relative z-10 overflow-hidden group hover:border-[#33BC65]/20 duration-300">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#33BC65]/10 rounded-full blur-2xl pointer-events-none"></div>
-            
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight uppercase font-heading">
-              {t.conversionBanner.heading.split("escala de IA")[0]}
-              <span className="text-[#33BC65]">
-                {lang === 'pt' ? 'escala de IA' : 'production AI'}
-              </span>
-              {t.conversionBanner.heading.split("escala de IA")[1]}
-            </h2>
-            <p className="text-gray-400 mb-10 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
-              {t.conversionBanner.sub}
-            </p>
-            <button 
-              onClick={scrollToScheduling}
-              className="gradient-orange text-black px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:scale-105 active:scale-95 transition shadow-lg shadow-[#33BC65]/10 cursor-pointer">
-              {t.conversionBanner.cta}
-            </button>
-          </div>
+          <BlurFade delay={0.2} inView>
+            <div className="absolute inset-0 bg-[#33BC65]/5 rounded-[2.5rem] blur-xl pointer-events-none"></div>
+            <div className="bg-glass border-glass p-12 md:p-16 rounded-[2.5rem] relative z-10 overflow-hidden group hover:border-[#33BC65]/20 duration-300">
+              <BorderBeam size={250} duration={12} delay={9} colorFrom="#33BC65" colorTo="#12DCEF" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#33BC65]/10 rounded-full blur-2xl pointer-events-none"></div>
+              
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight uppercase font-heading">
+                {t.conversionBanner.heading.split("escala de IA")[0]}
+                <span className="text-[#33BC65]">
+                  {lang === 'pt' ? 'escala de IA' : 'production AI'}
+                </span>
+                {t.conversionBanner.heading.split("escala de IA")[1]}
+              </h2>
+              <p className="text-gray-400 mb-10 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
+                {t.conversionBanner.sub}
+              </p>
+              
+              <div className="flex justify-center">
+                <ShimmerButton 
+                  onClick={scrollToScheduling}
+                  className="shadow-2xl hover:scale-105 transition-transform" 
+                  shimmerColor="#12DCEF" 
+                  background="#33BC65" 
+                  borderRadius="0.75rem"
+                >
+                  <span className="text-black font-bold text-sm uppercase tracking-wider px-4">
+                    {t.conversionBanner.cta}
+                  </span>
+                </ShimmerButton>
+              </div>
+            </div>
+          </BlurFade>
         </section>
       </main>
 
