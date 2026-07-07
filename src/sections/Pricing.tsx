@@ -4,6 +4,13 @@ import { motion } from 'framer-motion';
 import { translations, Language } from '../translations';
 import { BlurFade } from '../components/ui/blur-fade';
 import { BorderBeam } from '../components/ui/border-beam';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '../components/ui/carousel';
 
 interface PricingProps {
   lang: Language;
@@ -18,24 +25,98 @@ export const Pricing = ({ lang }: PricingProps) => {
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-    // Pre-fill or focus the purpose input if possible or guide the prospect
     const purposeSelect = document.querySelector('select[name="purpose"]') as HTMLSelectElement;
     if (purposeSelect) {
-      purposeSelect.value = "SEO & AEO"; // Trigger a value for quick scheduling
+      purposeSelect.value = "SEO & AEO";
       const event = new Event('change', { bubbles: true });
       purposeSelect.dispatchEvent(event);
     }
   };
 
+  const renderCard = (plan: any, i: number) => {
+    const isPopular = plan.id === 'professional';
+    const isEnterprise = plan.id === 'enterprise';
+
+    return (
+      <div
+        className={`h-full rounded-3xl p-8 relative flex flex-col justify-between transition-all duration-300 group ${
+          isPopular
+            ? 'bg-zinc-950/90 border-[#33BC65] border-2 shadow-[0_0_30px_rgba(51,188,101,0.15)] md:-translate-y-4'
+            : 'bg-[#0c0d0e]/80 border border-white/5 hover:border-white/10 hover:bg-zinc-950/40'
+        }`}
+      >
+        {isPopular && (
+          <BorderBeam size={300} duration={10} delay={i * 2} colorFrom="#33BC65" colorTo="#12DCEF" />
+        )}
+
+        <div>
+          <div className="flex justify-between items-start mb-6">
+            <span className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-widest">
+              0{i+1} / PLANS
+            </span>
+            {plan.badge && (
+              <span className={`px-2.5 py-0.5 rounded-full text-[9px] font-bold font-mono tracking-wider uppercase ${
+                isPopular
+                  ? 'bg-[#33BC65] text-black'
+                  : 'bg-white/5 text-gray-400 border border-white/10'
+              }`}>
+                {plan.badge}
+              </span>
+            )}
+          </div>
+
+          <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-2 font-heading">
+            {plan.name}
+          </h3>
+
+          <p className="text-xs text-gray-400 min-h-[40px] leading-relaxed mb-6">
+            {plan.desc}
+          </p>
+
+          <div className="flex items-baseline gap-1 mb-8">
+            <span className="text-3xl md:text-4xl font-extrabold text-white font-heading">
+              {plan.price}
+            </span>
+            <span className="text-xs font-mono text-gray-400 uppercase">
+              {plan.period}
+            </span>
+          </div>
+
+          <div className="border-t border-white/5 my-6" />
+
+          <ul className="space-y-4 mb-8">
+            {plan.features.map((feature: string, fIdx: number) => (
+              <li key={fIdx} className="flex items-start gap-2.5 text-xs text-gray-300">
+                <Check className="w-4 h-4 text-[#33BC65] shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => scrollToScheduling(plan.name)}
+          className={`w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 ${
+            isPopular
+              ? 'bg-[#33BC65] text-black hover:bg-[#12DCEF]'
+              : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
+          }`}
+        >
+          <span>{plan.cta}</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </button>
+      </div>
+    );
+  };
+
   return (
     <section id="planos" aria-label="Planos de Assinatura" className="relative py-24 px-6 overflow-hidden bg-gradient-to-b from-[#070707] via-[#0c0d0e] to-[#070707] border-t border-white/5">
-      {/* Background Glow effects */}
       <div className="absolute top-[30%] left-[10%] w-96 h-96 bg-[#33BC65]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[20%] right-[10%] w-96 h-96 bg-[#12DCEF]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <BlurFade delay={0.1} inView>
             <span className="text-[#33BC65] font-mono text-xs font-bold uppercase tracking-[0.2em]">
@@ -54,96 +135,32 @@ export const Pricing = ({ lang }: PricingProps) => {
           </BlurFade>
         </div>
 
-
-        {/* Pricing Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
-          {p.plans.map((plan, i) => {
-            const isPopular = plan.id === 'professional';
-            const isEnterprise = plan.id === 'enterprise';
-
-            return (
-              <BlurFade key={plan.id} delay={0.4 + i * 0.1} inView>
-                <div 
-                  className={`h-full rounded-3xl p-8 relative flex flex-col justify-between transition-all duration-300 group ${
-                    isPopular 
-                      ? 'bg-zinc-950/90 border-[#33BC65] border-2 shadow-[0_0_30px_rgba(51,188,101,0.15)] md:-translate-y-4' 
-                      : 'bg-[#0c0d0e]/80 border border-white/5 hover:border-white/10 hover:bg-zinc-950/40'
-                  }`}
-                >
-                  {/* Glowing light borders for premium accentuation */}
-                  {isPopular && (
-                    <BorderBeam size={300} duration={10} delay={i * 2} colorFrom="#33BC65" colorTo="#12DCEF" />
-                  )}
-
-                  {/* Card top badges & metadata */}
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <span className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-widest">
-                        0{i+1} / PLANS
-                      </span>
-                      {plan.badge && (
-                        <span className={`px-2.5 py-0.5 rounded-full text-[9px] font-bold font-mono tracking-wider uppercase ${
-                          isPopular 
-                            ? 'bg-[#33BC65] text-black' 
-                            : 'bg-white/5 text-gray-400 border border-white/10'
-                        }`}>
-                          {plan.badge}
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-2 font-heading">
-                      {plan.name}
-                    </h3>
-                    
-                    <p className="text-xs text-gray-400 min-h-[40px] leading-relaxed mb-6">
-                      {plan.desc}
-                    </p>
-
-                    {/* Price Tag */}
-                    <div className="flex items-baseline gap-1 mb-8">
-                      <span className="text-3xl md:text-4xl font-extrabold text-white font-heading">
-                        {plan.price}
-                      </span>
-                      <span className="text-xs font-mono text-gray-400 uppercase">
-                        {plan.period}
-                      </span>
-                    </div>
-
-                    {/* Divider */}
-                    <div className="border-t border-white/5 my-6" />
-
-                    {/* Features list */}
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2.5 text-xs text-gray-300">
-                          <Check className="w-4 h-4 text-[#33BC65] shrink-0 mt-0.5" />
-                          <span className="leading-relaxed">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Call To Action Button */}
-                  <button
-                    type="button"
-                    onClick={() => scrollToScheduling(plan.name)}
-                    className={`w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 ${
-                      isPopular 
-                        ? 'bg-[#33BC65] text-black hover:bg-[#12DCEF]' 
-                        : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
-                    }`}
-                  >
-                    <span>{plan.cta}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </BlurFade>
-            );
-          })}
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+          {p.plans.map((plan: any, i: number) => (
+            <BlurFade key={plan.id} delay={0.4 + i * 0.1} inView>
+              {renderCard(plan, i)}
+            </BlurFade>
+          ))}
         </div>
 
-        {/* Bottom operational footnote */}
+        {/* Mobile Carousel */}
+        <div className="md:hidden max-w-sm mx-auto relative">
+          <Carousel opts={{ align: "center" }}>
+            <CarouselContent>
+              {p.plans.map((plan: any, i: number) => (
+                <CarouselItem key={plan.id}>
+                    <div className="h-full">
+                        {renderCard(plan, i)}
+                    </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-2 text-[#33BC65]" />
+            <CarouselNext className="right-2 text-[#33BC65]" />
+          </Carousel>
+        </div>
+
         <div className="mt-16 text-center">
           <BlurFade delay={0.7} inView>
             <p className="text-xs text-gray-400 font-mono flex items-center justify-center gap-2">

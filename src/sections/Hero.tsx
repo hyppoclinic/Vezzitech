@@ -54,7 +54,7 @@ export const Hero = ({ lang }: HeroProps) => {
   ];
 
   return (
-    <section id="inicio" aria-label="Introdução e Funil" className="relative pt-40 pb-24 px-6 overflow-hidden bg-[#070707]">
+    <section id="inicio" aria-label="Introdução e Funil" className="relative pt-32 pb-16 md:pt-40 md:pb-24 px-6 overflow-hidden bg-[#070707]">
       <Meteors number={25} />
       {/* Absolute Ambient Background Lights & Vector Grid Aesthetics */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#33BC65]/10 rounded-full blur-[150px] pointer-events-none"></div>
@@ -151,8 +151,8 @@ export const Hero = ({ lang }: HeroProps) => {
 
         {/* Funnel Section - Clean & Elegant */}
         <BlurFade delay={0.45} inView>
-          <div className="mt-32 w-full max-w-5xl mx-auto relative z-20">
-            <div className="text-center mb-12 md:mb-16">
+          <div className="mt-20 md:mt-32 w-full max-w-5xl mx-auto relative z-20">
+            <div className="text-center mb-8 md:mb-16">
               <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tight font-heading">
                 {lang === 'pt' ? 'Como orquestramos seu funil de aquisição' : 'How we orchestrate your acquisition funnel'}
               </h3>
@@ -182,14 +182,14 @@ export const Hero = ({ lang }: HeroProps) => {
             </div>
 
             {/* Clean Content Area */}
-            <div className="bg-[#0b0c0d]/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="bg-[#0b0c0d]/80 backdrop-blur-md border border-white/5 rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden">
               {/* Subtle background glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#33BC65]/5 rounded-full blur-[100px] pointer-events-none" />
               
               <div className="relative z-10">
                 {/* Node 0 */}
                 {activeNode === 0 && (
-                  <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div>
                       <h4 className="text-2xl md:text-3xl font-bold text-white leading-tight font-heading mb-6">
                         {lang === 'pt' ? 'Velocidade como vantagem competitiva.' : 'Speed as a competitive advantage.'}
@@ -224,7 +224,7 @@ export const Hero = ({ lang }: HeroProps) => {
 
                 {/* Node 1 */}
                 {activeNode === 1 && (
-                  <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div>
                       <h4 className="text-2xl md:text-3xl font-bold text-white leading-tight font-heading mb-6">
                         {lang === 'pt' ? 'Nutrição e autoridade em escala.' : 'Nurturing and authority at scale.'}
@@ -269,7 +269,7 @@ export const Hero = ({ lang }: HeroProps) => {
 
                 {/* Node 2 */}
                 {activeNode === 2 && (
-                  <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div>
                       <h4 className="text-2xl md:text-3xl font-bold text-white leading-tight font-heading mb-6">
                         {lang === 'pt' ? 'Domínio orgânico absoluto.' : 'Absolute organic dominance.'}
@@ -303,7 +303,7 @@ export const Hero = ({ lang }: HeroProps) => {
 
                 {/* Node 3 */}
                 {activeNode === 3 && (
-                  <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div>
                       <h4 className="text-2xl md:text-3xl font-bold text-white leading-tight font-heading mb-6">
                         {lang === 'pt' ? 'Tráfego pago estruturado de forma cirúrgica.' : 'Surgically structured paid traffic.'}
@@ -319,24 +319,24 @@ export const Hero = ({ lang }: HeroProps) => {
                       </a>
                     </div>
                     
-                    <div className="bg-[#0e0f10] rounded-2xl p-8 border border-white/5">
-                      <div className="flex items-center gap-2 mb-8 text-[#33BC65] font-semibold text-sm tracking-wide uppercase">
+                    <div className="bg-[#0e0f10] rounded-2xl p-6 sm:p-8 border border-white/5">
+                      <div className="flex items-center gap-2 mb-6 sm:mb-8 text-[#33BC65] font-semibold text-sm tracking-wide uppercase">
                         <Target className="w-4 h-4" />
                         {lang === 'pt' ? 'Google Ads' : 'Google Ads'}
                       </div>
                       
-                      <div className="grid grid-cols-3 gap-6 mb-10">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-6 mb-8 sm:mb-10">
                         <div>
-                          <div className="text-3xl font-bold text-white mb-1">45.2k</div>
-                          <div className="text-xs text-gray-400 uppercase tracking-wider">{lang === 'pt' ? 'Impressões' : 'Impressions'}</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-white mb-1">45.2k</div>
+                          <div className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-wider">{lang === 'pt' ? 'Impressões' : 'Impressions'}</div>
                         </div>
                         <div>
-                          <div className="text-3xl font-bold text-white mb-1">3.8k</div>
-                          <div className="text-xs text-gray-400 uppercase tracking-wider">{lang === 'pt' ? 'Cliques' : 'Clicks'}</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-white mb-1">3.8k</div>
+                          <div className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-wider">{lang === 'pt' ? 'Cliques' : 'Clicks'}</div>
                         </div>
                         <div>
-                          <div className="text-3xl font-bold text-[#33BC65] mb-1">8.4%</div>
-                          <div className="text-xs text-gray-400 uppercase tracking-wider">CTR</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-[#33BC65] mb-1">8.4%</div>
+                          <div className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-wider">CTR</div>
                         </div>
                       </div>
 
@@ -362,25 +362,25 @@ export const Hero = ({ lang }: HeroProps) => {
 
       {/* Trust Banner Marquee Slider (Elegant, fluid, modern, overflow-safe) */}
       <BlurFade delay={0.5} inView>
-        <div className="relative w-full bg-[#0d0d0e]/40 backdrop-blur-md border-y border-white/[0.06] text-[#e4e4e7] py-6 mt-24 overflow-hidden select-none group/marquee">
+        <div className="relative w-full bg-[#0d0d0e]/40 backdrop-blur-md border-y border-white/[0.06] text-[#e4e4e7] py-6 mt-16 md:mt-24 overflow-hidden select-none group/marquee">
           {/* Soft edge ambient mask gradient for a premium touch */}
           <div className="absolute inset-y-0 left-0 w-12 md:w-36 bg-gradient-to-r from-[#070708] via-[#070708]/60 to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-y-0 right-0 w-12 md:w-36 bg-gradient-to-l from-[#070708] via-[#070708]/60 to-transparent z-10 pointer-events-none"></div>
           
           <div className="flex w-max min-w-full hover:[animation-play-state:paused] transition-all cursor-grab active:cursor-grabbing">
             {/* Track 1 */}
-            <div className="flex gap-16 shrink-0 animate-marquee whitespace-nowrap min-w-full justify-around pr-16 items-center">
+            <div className="flex gap-8 md:gap-16 shrink-0 animate-marquee whitespace-nowrap min-w-full justify-around pr-8 md:pr-16 items-center">
               {t.ticker.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-8 text-[10px] md:text-[11px] font-normal tracking-[0.25em] uppercase shrink-0 transition-colors duration-300 hover:text-white">
+                <div key={idx} className="flex items-center gap-4 md:gap-8 text-[10px] md:text-[11px] font-normal tracking-[0.25em] uppercase shrink-0 transition-colors duration-300 hover:text-white">
                   <span>{item}</span>
                   <span className="text-[#33BC65]/40 font-bold font-mono text-xs select-none">//</span>
                 </div>
               ))}
             </div>
             {/* Track 2 (Clone for perfect seamless infinite animation) */}
-            <div className="flex gap-16 shrink-0 animate-marquee whitespace-nowrap min-w-full justify-around pr-16 items-center" aria-hidden="true">
+            <div className="flex gap-8 md:gap-16 shrink-0 animate-marquee whitespace-nowrap min-w-full justify-around pr-8 md:pr-16 items-center" aria-hidden="true">
               {t.ticker.map((item, idx) => (
-                <div key={`dup-${idx}`} className="flex items-center gap-8 text-[10px] md:text-[11px] font-normal tracking-[0.25em] uppercase shrink-0 transition-colors duration-300 hover:text-white">
+                <div key={`dup-${idx}`} className="flex items-center gap-4 md:gap-8 text-[10px] md:text-[11px] font-normal tracking-[0.25em] uppercase shrink-0 transition-colors duration-300 hover:text-white">
                   <span>{item}</span>
                   <span className="text-[#33BC65]/40 font-bold font-mono text-xs select-none">//</span>
                 </div>

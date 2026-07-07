@@ -10,7 +10,7 @@ export const FAQ = ({ lang }: FAQProps) => {
   const t = translations[lang];
 
   return (
-    <section id="faq" aria-label="Dúvidas Frequentes (FAQ)" className="py-24 px-6 max-w-4xl mx-auto border-t border-white/5 relative">
+    <section id="faq" aria-label="Dúvidas Frequentes (FAQ)" className="py-16 md:py-24 px-6 max-w-4xl mx-auto border-t border-white/5 relative">
       {/* FAQ Schema for AEO */}
       <script type="application/ld+json">
         {JSON.stringify({
