@@ -113,8 +113,22 @@ export const Hero = ({ lang }: HeroProps) => {
 
         {/* Arounda-Inspired Headline with Symmetric Center Alignment & Soft Capitalization Reading Flow */}
         <BlurFade delay={0.2} inView>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.12] mb-6 tracking-tight text-white font-heading max-w-4xl">
-            {t.hero.headline}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-semibold leading-[1.12] mb-6 tracking-tight text-white font-heading max-w-3xl">
+            {lang === 'pt' ? (
+              <>
+                Aceleramos sua empresa.
+                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-100 to-emerald-200 font-normal">
+                  Com inteligência artificial em escala corporativa.
+                </span>
+              </>
+            ) : (
+              <>
+                Accelerate your enterprise.
+                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-100 to-emerald-200 font-normal">
+                  With artificial intelligence at corporate scale.
+                </span>
+              </>
+            )}
           </h1>
         </BlurFade>
 
@@ -127,20 +141,25 @@ export const Hero = ({ lang }: HeroProps) => {
 
         {/* Center-aligned Interactive Core CTAs */}
         <BlurFade delay={0.4} inView>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#consultoria" className="inline-block">
-              <ShimmerButton className="shadow-2xl hover:scale-105 transition-transform" shimmerColor="#12DCEF" background="#ffffff" borderRadius="0.75rem">
-                <span className="text-black font-semibold flex items-center gap-2 text-sm px-2">
-                  {t.hero.ctaPrimary}
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </span>
-              </ShimmerButton>
-            </a>
-            <a 
-              href="#metricas" 
-              className="px-8 py-3.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold rounded-xl transition duration-300 text-sm flex items-center justify-center">
-              {t.hero.ctaSecondary}
-            </a>
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href="#consultoria" className="inline-block">
+                <ShimmerButton className="shadow-2xl hover:scale-105 transition-transform" shimmerColor="#12DCEF" background="#ffffff" borderRadius="0.75rem">
+                  <span className="text-black font-semibold flex items-center gap-2 text-sm px-2">
+                    {t.hero.ctaPrimary}
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </span>
+                </ShimmerButton>
+              </a>
+              <a 
+                href="#planos" 
+                className="px-8 py-3.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold rounded-xl transition duration-300 text-sm flex items-center justify-center">
+                {t.hero.ctaSecondary}
+              </a>
+            </div>
+            <p className="text-gray-500 text-xs tracking-wide font-mono">
+              {t.hero.microcopy}
+            </p>
           </div>
         </BlurFade>
 

@@ -28,26 +28,8 @@ export const FAQ = ({ lang }: FAQProps) => {
       </script>
 
       <div className="flex flex-col items-center justify-center text-center mb-16">
-        <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold uppercase tracking-widest flex items-center gap-1.5 justify-center">
-            <HelpCircle className="w-4 h-4 animate-pulse" />
-            <span>METODOLOGIA ATIVA & SEGURANÇA</span>
-        </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.15] tracking-tight text-white font-heading">
-                {lang === 'pt' ? (
-                  <>
-                    Esclareça suas dúvidas
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-100 to-emerald-200 mt-1 font-normal">
-                      sobre o nosso processo consultivo.
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    Answering enterprise FAQs
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-100 to-emerald-200 mt-1 font-normal">
-                      about our technical processes.
-                    </span>
-                  </>
-                )}
+                {t.faqSection.heading}
         </h2>
       </div>
 
