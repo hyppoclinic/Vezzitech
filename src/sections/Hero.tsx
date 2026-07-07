@@ -143,7 +143,7 @@ export const Hero = ({ lang }: HeroProps) => {
                 {t.hero.ctaSecondary}
               </a>
             </div>
-            <p className="text-gray-500 text-xs tracking-wide font-mono">
+            <p className="text-gray-400 text-xs tracking-wide font-mono">
               {t.hero.microcopy}
             </p>
           </div>
@@ -285,7 +285,7 @@ export const Hero = ({ lang }: HeroProps) => {
                           <span>Google Search</span>
                         </div>
                         <h5 className="text-white font-medium text-lg leading-tight mb-2">Vezzitech - Seu Site Premium</h5>
-                        <p className="text-sm text-gray-500">Acelere sua empresa com nossa assinatura unificada de elite...</p>
+                        <p className="text-sm text-gray-400">Acelere sua empresa com nossa assinatura unificada de elite...</p>
                       </div>
                       
                       <div className="bg-[#0e0f10] rounded-2xl p-6 md:p-8 border border-[#33BC65]/20 bg-gradient-to-br from-[#33BC65]/10 to-transparent">
@@ -328,15 +328,15 @@ export const Hero = ({ lang }: HeroProps) => {
                       <div className="grid grid-cols-3 gap-6 mb-10">
                         <div>
                           <div className="text-3xl font-bold text-white mb-1">45.2k</div>
-                          <div className="text-xs text-gray-500 uppercase tracking-wider">{lang === 'pt' ? 'Impressões' : 'Impressions'}</div>
+                          <div className="text-xs text-gray-400 uppercase tracking-wider">{lang === 'pt' ? 'Impressões' : 'Impressions'}</div>
                         </div>
                         <div>
                           <div className="text-3xl font-bold text-white mb-1">3.8k</div>
-                          <div className="text-xs text-gray-500 uppercase tracking-wider">{lang === 'pt' ? 'Cliques' : 'Clicks'}</div>
+                          <div className="text-xs text-gray-400 uppercase tracking-wider">{lang === 'pt' ? 'Cliques' : 'Clicks'}</div>
                         </div>
                         <div>
                           <div className="text-3xl font-bold text-[#33BC65] mb-1">8.4%</div>
-                          <div className="text-xs text-gray-500 uppercase tracking-wider">CTR</div>
+                          <div className="text-xs text-gray-400 uppercase tracking-wider">CTR</div>
                         </div>
                       </div>
 

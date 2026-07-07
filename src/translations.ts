@@ -151,12 +151,12 @@ export type Language = 'pt' | 'en';
 export const translations: Record<Language, TranslationSchema> = {
   pt: {
     nav: {
-      services: "Nossos Pilares",
-      ecosystem: "Ecossistema",
-      plans: "Planos de Assinatura",
-      method: "Simulação de ROI",
-      blog: "Artigos & Insights",
-      clients: "Casos de Sucesso",
+      services: "Setores",
+      ecosystem: "Processo",
+      plans: "Planos",
+      method: "Resultados",
+      blog: "Artigos",
+      clients: "Diferenciais",
       cta: "Falar com Especialista"
     },
     hero: {
@@ -204,22 +204,22 @@ export const translations: Record<Language, TranslationSchema> = {
       items: [
         {
           num: "01",
-          title: "Código Próprio, Seu Para Sempre",
+          title: "Código próprio, seu para sempre",
           desc: "Sem templates, sem dependência de terceiro. Site rápido, seguro e 100% seu — inclusive o código-fonte."
         },
         {
           num: "02",
-          title: "SEO Tradicional + AEO",
+          title: "SEO tradicional + AEO",
           desc: "Você aparece no Google de hoje e na resposta de IA de amanhã. A maioria das agências brasileiras ainda nem fala sobre isso."
         },
         {
           num: "03",
-          title: "Criativo Que Reduz Custo por Clique",
+          title: "Criativo que reduz custo por clique",
           desc: "Design e copy pensados para conversão, não só estética — isso baixa o CPA nas suas campanhas pagas automaticamente."
         },
         {
           num: "04",
-          title: "Automação que Não Some Depois da Venda",
+          title: "Automação que não some depois da venda",
           desc: "Agentes de IA continuam qualificando lead e dando suporte depois que o projeto entra no ar — não é entrega e adeus."
         }
       ]
@@ -477,9 +477,9 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     footerSection: {
-      desc: "Assinatura unificada especializada em desenvolvimento de sites premium, produção recorrente de conteúdos de elite, gestão de tráfego em Google Ads e otimização avançada de SEO/AEO. Acelere suas vendas sem amarras.",
+      desc: "Site premium de alta performance, SEO estratégico e tráfego pago com prazo e resultado combinados em contrato. Tudo sob um único parceiro para o seu funil de vendas inteiro.",
       navTitle: "Navegação",
-      specTitle: "Especialidades",
+      specTitle: "Nossos Serviços",
       locationTitle: "Sede Corporativa",
       location: "Av. Paulista, 1000\nSão Paulo - SP, Brasil\nCEP: 01310-100",
       rights: "VEZZITECH EXPERTS - MARKETING & TI. TODOS OS DIREITOS RESERVADOS.",
@@ -510,12 +510,12 @@ export const translations: Record<Language, TranslationSchema> = {
   },
   en: {
     nav: {
-      services: "Services",
-      ecosystem: "Ecosystem",
-      plans: "Subscription Plans",
-      method: "Methodology & ROI",
-      blog: "Blog",
-      clients: "Success Stories",
+      services: "Sectors",
+      ecosystem: "Process",
+      plans: "Plans",
+      method: "Results",
+      blog: "Articles",
+      clients: "Why Us",
       cta: "Talk to Expert"
     },
     hero: {
@@ -565,22 +565,22 @@ export const translations: Record<Language, TranslationSchema> = {
       items: [
         {
           num: "01",
-          title: "Certified Systems & IT Engineering",
+          title: "Certified systems & IT engineering",
           desc: "We build ultra-fast, robust, secure websites and portals. Clean code, native technical SEO, fast load times, and reliable cloud-hosting are standard."
         },
         {
           num: "02",
-          title: "Search Engine & AI Dominance (SEO/AEO)",
+          title: "Search engine & AI dominance (SEO/AEO)",
           desc: "We optimize your business not only for traditional Google search, but for generative answer engines (ChatGPT, Gemini, Perplexity), capturing modern high-intent search traffic."
         },
         {
           num: "03",
-          title: "Impact Visuals & Copywriting",
+          title: "Impact visuals & copywriting",
           desc: "High-end promo assets, social posts, and ad creatives compiled at scale with breathtaking visual aesthetics and high conversion copy."
         },
         {
           num: "04",
-          title: "AI Chatbots & Conversions",
+          title: "AI chatbots & conversions",
           desc: "We integrate custom virtual assistants on your channels for immediate leads qualification, customer onboarding, and seamless CRM synchronization."
         }
       ]
@@ -830,9 +830,9 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     footerSection: {
-      desc: "An agency specializing in crafting high-conversion web development, advanced SEO/AEO strategies, conversion-focused marketing materials, and autonomous AI-driven customer-experience agents. Scale your leads and modernize your IT.",
+      desc: "Premium high-performance websites, strategic SEO, and paid traffic with guaranteed results in contract. Your entire marketing and sales funnel under a single strategic partner.",
       navTitle: "Navigation",
-      specTitle: "Expertise",
+      specTitle: "Our Services",
       locationTitle: "HQ Office",
       location: "Av. Paulista, 1000\nSao Paulo - SP, Brazil\nCEP: 01310-100",
       rights: "VEZZITECH EXPERTS - MARKETING & IT. ALL RIGHTS RESERVED.",

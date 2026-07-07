@@ -46,7 +46,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
         </button>
         
         {/* Nav list - Desktop */}
-        <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-wider text-gray-400">
+        <div className="hidden md:flex gap-6 lg:gap-8 text-xs font-bold uppercase tracking-wider text-gray-400">
           <button 
             type="button"
             onClick={() => scrollToSection('verticais')} 
@@ -55,28 +55,34 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
           </button>
           <button 
             type="button"
+            onClick={() => scrollToSection('processo')} 
+            className="hover:text-[#33BC65] transition cursor-pointer">
+            {t.nav.ecosystem}
+          </button>
+          <button 
+            type="button"
             onClick={() => scrollToSection('planos')} 
-            className="hover:text-[#33BC65] text-[#33BC65]/90 font-semibold transition cursor-pointer border-b border-dashed border-[#33BC65]/40 pb-0.5">
+            className="hover:text-[#33BC65] transition cursor-pointer">
             {t.nav.plans}
           </button>
           <button 
             type="button"
-            onClick={() => scrollToSection('consultoria')} 
-            className="hover:text-[#33BC65] transition cursor-pointer flex items-center gap-1.5 text-[#33BC65]/95 font-bold hover:scale-105 duration-200">
-            <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#33BC65]" />
-            <span>{lang === 'pt' ? 'Mapeamento IA' : 'AI Map'}</span>
-          </button>
-          <button 
-            type="button"
-            onClick={() => scrollToSection('metricas')} 
+            onClick={() => scrollToSection('diferenciais')} 
             className="hover:text-[#33BC65] transition cursor-pointer">
-            {t.nav.method}
+            {t.nav.clients}
           </button>
           <button 
             type="button"
             onClick={() => scrollToSection('blog')} 
             className="hover:text-[#33BC65] transition cursor-pointer">
             {t.nav.blog}
+          </button>
+          <button 
+            type="button"
+            onClick={() => scrollToSection('consultoria')} 
+            className="hover:text-[#33BC65] transition cursor-pointer flex items-center gap-1 text-[#33BC65] font-bold">
+            <Sparkles className="w-3 h-3 animate-pulse text-[#33BC65]" />
+            <span>{lang === 'pt' ? 'Mapeamento' : 'AI Map'}</span>
           </button>
         </div>
         
@@ -156,42 +162,48 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
               <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest text-[#33BC65]/90 w-full">
                 <button 
                   type="button"
-                  onClick={() => scrollToSection('verticais')} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
+                  onClick={() => { scrollToSection('verticais'); setIsOpen(false); }} 
+                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
                   <span>{t.nav.services}</span>
                   <span className="text-[10px] font-mono opacity-40">// 01</span>
                 </button>
                 <button 
                   type="button"
-                  onClick={() => scrollToSection('planos')} 
-                  className="py-2.5 text-left border-b border-white/5 text-[#33BC65] hover:text-white transition flex justify-between items-center cursor-pointer">
-                  <span>{t.nav.plans}</span>
-                  <span className="text-[10px] font-mono opacity-40">// PLANS</span>
+                  onClick={() => { scrollToSection('processo'); setIsOpen(false); }} 
+                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
+                  <span>{t.nav.ecosystem}</span>
+                  <span className="text-[10px] font-mono opacity-40">// 02</span>
                 </button>
-
                 <button 
                   type="button"
-                  onClick={() => scrollToSection('consultoria')} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-[#33BC65]">
-                  <span className="flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#33BC65]" />
-                    {lang === 'pt' ? 'Mapeamento IA' : 'AI Strategic Map'}
-                  </span>
+                  onClick={() => { scrollToSection('planos'); setIsOpen(false); }} 
+                  className="py-2.5 text-left border-b border-white/5 text-[#33BC65] hover:text-white transition flex justify-between items-center cursor-pointer">
+                  <span>{t.nav.plans}</span>
                   <span className="text-[10px] font-mono opacity-40">// 03</span>
                 </button>
                 <button 
                   type="button"
-                  onClick={() => scrollToSection('metricas')} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
-                  <span>{t.nav.method}</span>
+                  onClick={() => { scrollToSection('diferenciais'); setIsOpen(false); }} 
+                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
+                  <span>{t.nav.clients}</span>
                   <span className="text-[10px] font-mono opacity-40">// 04</span>
                 </button>
                 <button 
                   type="button"
-                  onClick={() => scrollToSection('blog')} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
+                  onClick={() => { scrollToSection('blog'); setIsOpen(false); }} 
+                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
                   <span>{t.nav.blog}</span>
                   <span className="text-[10px] font-mono opacity-40">// 05</span>
+                </button>
+                <button 
+                  type="button"
+                  onClick={() => { scrollToSection('consultoria'); setIsOpen(false); }} 
+                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-[#33BC65]">
+                  <span className="flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#33BC65]" />
+                    {lang === 'pt' ? 'Mapeamento' : 'AI Map'}
+                  </span>
+                  <span className="text-[10px] font-mono opacity-40">// 06</span>
                 </button>
               </div>
 

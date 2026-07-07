@@ -78,7 +78,7 @@ export const Pricing = ({ lang }: PricingProps) => {
                   {/* Card top badges & metadata */}
                   <div>
                     <div className="flex justify-between items-start mb-6">
-                      <span className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-widest">
+                      <span className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-widest">
                         0{i+1} / PLANS
                       </span>
                       {plan.badge && (
@@ -96,7 +96,7 @@ export const Pricing = ({ lang }: PricingProps) => {
                       {plan.name}
                     </h3>
                     
-                    <p className="text-xs text-gray-500 min-h-[40px] leading-relaxed mb-6">
+                    <p className="text-xs text-gray-400 min-h-[40px] leading-relaxed mb-6">
                       {plan.desc}
                     </p>
 
@@ -105,7 +105,7 @@ export const Pricing = ({ lang }: PricingProps) => {
                       <span className="text-3xl md:text-4xl font-extrabold text-white font-heading">
                         {plan.price}
                       </span>
-                      <span className="text-xs font-mono text-gray-500 uppercase">
+                      <span className="text-xs font-mono text-gray-400 uppercase">
                         {plan.period}
                       </span>
                     </div>
@@ -146,7 +146,7 @@ export const Pricing = ({ lang }: PricingProps) => {
         {/* Bottom operational footnote */}
         <div className="mt-16 text-center">
           <BlurFade delay={0.7} inView>
-            <p className="text-xs text-gray-500 font-mono flex items-center justify-center gap-2">
+            <p className="text-xs text-gray-400 font-mono flex items-center justify-center gap-2">
               <ShieldCheck className="w-4 h-4 text-[#33BC65]" />
               {lang === 'pt' 
                 ? 'Sem fidelidade compulsória. Pause, cancele ou altere seu plano a qualquer momento.' 

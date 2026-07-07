@@ -3,31 +3,43 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './sections/Hero';
 import { ValueProposition } from './sections/ValueProposition';
 import { Process } from './sections/Process';
 import { Pricing } from './sections/Pricing';
-import { Metrics } from './sections/Metrics';
 import { Verticals } from './sections/Verticals';
-import { Blog } from './sections/Blog';
-import { BlogPage } from './pages/BlogPage';
 import { FAQ } from './sections/FAQ';
 import { Scheduling } from './sections/Scheduling';
 import { Footer } from './components/Footer';
-import { Login } from './components/Login';
-import { Dashboard } from './components/Dashboard';
-import { BlogPostPage } from './pages/BlogPostPage';
 import { Language, translations } from './translations';
 import { BlurFade } from './components/ui/blur-fade';
 import { ShimmerButton } from './components/ui/shimmer-button';
 import { BorderBeam } from './components/ui/border-beam';
 
+// Lazy load massive components to improve PageSpeed performance drastically (dashboards, login, blogs)
+const Login = lazy(() => import('./components/Login').then(m => ({ default: m.Login })));
+const Dashboard = lazy(() => import('./components/Dashboard').then(m => ({ default: m.Dashboard })));
+const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then(m => ({ default: m.BlogPostPage })));
+const BlogSection = lazy(() => import('./sections/Blog').then(m => ({ default: m.Blog })));
+
+const LoadingFallback = () => (
+  <div className="min-h-screen bg-[#070707] flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-[#33BC65]/20 border-t-[#33BC65] rounded-full animate-spin"></div>
+  </div>
+);
+
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
   const [route, setRoute] = useState(window.location.pathname);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Synchronize HTML lang attribute for perfect SEO/AEO and Accessibility validation
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  }, [lang]);
 
   useEffect(() => {
     setRoute(window.location.pathname);
@@ -48,15 +60,27 @@ export default function App() {
   }, []);
 
   if (route === '/login') {
-    return <Login />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <Login />
+      </Suspense>
+    );
   }
 
   if (route === '/dashboard') {
-    return <Dashboard />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <Dashboard />
+      </Suspense>
+    );
   }
 
   if (route === '/blog') {
-    return <BlogPage lang={lang} setLang={setLang} onSelectPost={setSelectedSlug} />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <BlogPage lang={lang} setLang={setLang} onSelectPost={setSelectedSlug} />
+      </Suspense>
+    );
   }
 
   const BlogPostView = () => (
@@ -67,11 +91,15 @@ export default function App() {
                   setSelectedSlug(null);
                   window.history.pushState({}, '', '/');
                 }}
-                className="mb-8 flex items-center text-gray-400 hover:text-white"
+                className="mb-8 flex items-center text-gray-400 hover:text-white cursor-pointer"
               >
                   Voltar
               </button>
-              {selectedSlug && <BlogPostPage slug={selectedSlug} lang={lang} />}
+              {selectedSlug && (
+                <Suspense fallback={<LoadingFallback />}>
+                  <BlogPostPage slug={selectedSlug} lang={lang} />
+                </Suspense>
+              )}
           </div>
       </div>
   );
@@ -113,11 +141,20 @@ export default function App() {
         {/* Pillars of differentiation (Credibility & Trust reinforcement) */}
         <ValueProposition lang={lang} />
         
-        {/* Success proof metrics */}
-        <Metrics lang={lang} />
-        
         {/* Deep knowledge articles */}
-        <Blog lang={lang} onSelectPost={setSelectedSlug} />
+        <Suspense fallback={
+          <div className="py-24 max-w-7xl mx-auto px-6 animate-pulse">
+            <div className="h-8 bg-white/5 rounded w-1/4 mb-4"></div>
+            <div className="h-4 bg-white/5 rounded w-2/4 mb-12"></div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="h-64 bg-white/5 rounded-2xl"></div>
+              <div className="h-64 bg-white/5 rounded-2xl"></div>
+              <div className="h-64 bg-white/5 rounded-2xl"></div>
+            </div>
+          </div>
+        }>
+          <BlogSection lang={lang} onSelectPost={setSelectedSlug} />
+        </Suspense>
         
         {/* Frequently Asked Questions */}
         <FAQ lang={lang} />

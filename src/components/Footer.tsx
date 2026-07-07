@@ -64,20 +64,53 @@ export const Footer = ({ lang }: FooterProps) => {
           <div>
             <h4 className="text-xs font-bold text-[#33BC65] font-mono tracking-wider uppercase mb-4">{t.footerSection.navTitle}</h4>
             <ul className="space-y-2.5 text-xs text-gray-400 font-sans font-semibold">
-              <li><button type="button" onClick={() => scrollToSection('servicos')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.services}`}>{t.nav.services}</button></li>
-              <li><button type="button" onClick={() => scrollToSection('google')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.ecosystem}`}>{t.nav.ecosystem}</button></li>
-              <li><button type="button" onClick={() => scrollToSection('metricas')} className="hover:text-[#33BC65] transition cursor-pointer text-[#33BC65] font-bold" aria-label="Ir para seção de retorno de investimento">MEU RESULTADO // ROI</button></li>
+              <li><button type="button" onClick={() => scrollToSection('verticais')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.services}`}>{t.nav.services}</button></li>
+              <li><button type="button" onClick={() => scrollToSection('processo')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.ecosystem}`}>{t.nav.ecosystem}</button></li>
+              <li><button type="button" onClick={() => scrollToSection('planos')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.plans}`}>{t.nav.plans}</button></li>
+              <li><button type="button" onClick={() => scrollToSection('diferenciais')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.clients}`}>{t.nav.clients}</button></li>
               <li><button type="button" onClick={() => scrollToSection('blog')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.blog}`}>{t.nav.blog}</button></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-xs font-bold text-[#33BC65] font-mono tracking-wider uppercase mb-4">{t.footerSection.specTitle}</h4>
-            <ul className="space-y-2.5 text-xs text-gray-400 font-sans font-semibold">
-              <li><a href="#" className="hover:text-white transition">{lang === 'pt' ? 'Automação de Marketing' : 'Marketing Automation'}</a></li>
-              <li><a href="#" className="hover:text-white transition">{lang === 'pt' ? 'Agentes Vertex AI' : 'Vertex AI Agents'}</a></li>
-              <li><a href="#" className="hover:text-white transition">{lang === 'pt' ? 'Modelos Gemini Pro' : 'Gemini Pro Models'}</a></li>
-              <li><a href="#" className="hover:text-white transition">{lang === 'pt' ? 'Arquitetura RAG Segura' : 'Private RAG Architecture'}</a></li>
+            <ul className="space-y-2.5 text-xs text-gray-400 font-sans font-semibold flex flex-col items-start">
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => scrollToSection('planos')} 
+                  className="hover:text-white transition text-left cursor-pointer"
+                >
+                  {lang === 'pt' ? 'Sites Premium de Alta Performance' : 'Premium High-Performance Websites'}
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => scrollToSection('processo')} 
+                  className="hover:text-white transition text-left cursor-pointer"
+                >
+                  {lang === 'pt' ? 'SEO Estratégico & Otimização AEO' : 'Strategic SEO & AEO Optimization'}
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => scrollToSection('planos')} 
+                  className="hover:text-white transition text-left cursor-pointer"
+                >
+                  {lang === 'pt' ? 'Tráfego Pago & Google Ads' : 'Paid Traffic & Google Ads'}
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => scrollToSection('consultoria')} 
+                  className="hover:text-white transition text-left cursor-pointer"
+                >
+                  {lang === 'pt' ? 'Agentes de IA & Automação' : 'AI Agents & Automation'}
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -93,7 +126,7 @@ export const Footer = ({ lang }: FooterProps) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-500 font-mono tracking-widest uppercase relative z-10">
+      <div className="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 font-mono tracking-widest uppercase relative z-10">
         <span>SÃO PAULO / BRASIL</span>
         <span>&copy; {new Date().getFullYear()} {t.footerSection.rights}</span>
         <div className="flex gap-6 font-bold">

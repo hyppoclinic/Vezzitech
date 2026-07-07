@@ -196,7 +196,7 @@ export const Verticals = ({ lang }: VerticalsProps) => {
                   </div>
 
                   {/* Core Offerings Badge */}
-                  <div className="border-t border-white/5 pt-6 mt-auto flex items-center justify-between text-xs font-mono text-gray-500">
+                  <div className="border-t border-white/5 pt-6 mt-auto flex items-center justify-between text-xs font-mono text-gray-400">
                     <span>{lang === 'pt' ? 'Site + Conteúdo + Google Ads' : 'Site + Content + Google Ads'}</span>
                     <ArrowUpRight className={`w-4 h-4 transition-all duration-300 ${
                       isHighlighted ? 'text-[#33BC65] translate-x-0.5 -translate-y-0.5' : 'text-gray-600'

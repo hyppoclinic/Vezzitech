@@ -112,7 +112,7 @@ export const BlogPostPage = ({ slug, lang }: BlogPostPageProps) => {
 
         {post.imageUrl && (
           <div className="w-full h-[300px] sm:h-[400px] overflow-hidden rounded-3xl border border-white/5 relative mb-10">
-            <img src={post.imageUrl} alt="" className="w-full h-full object-cover" />
+            <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-transparent"></div>
           </div>
         )}
