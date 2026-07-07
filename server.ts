@@ -481,6 +481,185 @@ async function startServer() {
     res.json({ message: "Meet API endpoint - Implement with OAuth token" });
   });
 
+  // Asaas Payment Integration
+  app.post("/api/asaas/create-payment", async (req, res) => {
+    try {
+      const { 
+        name, 
+        email, 
+        phone, 
+        cpfCnpj, 
+        domain, 
+        notes, 
+        billingType, // "PIX" or "CREDIT_CARD"
+        creditCard, // { holderName, number, expiryMonth, expiryYear, ccv }
+        addressInfo // { postalCode, addressNumber }
+      } = req.body;
+
+      const asaasApiKey = process.env.ASAAS_API_KEY;
+      const asaasApiUrl = process.env.ASAAS_API_URL || "https://sandbox.asaas.com/v3";
+
+      const isSimulated = !asaasApiKey;
+
+      if (isSimulated) {
+        console.warn("ASAAS_API_KEY is not defined. Simulating checkout response.");
+        // Return simulated success response
+        const mockPaymentId = `pay_sim_${Math.random().toString(36).substring(2, 10)}`;
+        if (billingType === "PIX") {
+          return res.json({
+            success: true,
+            simulated: true,
+            billingType,
+            paymentId: mockPaymentId,
+            value: 1500.00,
+            pix: {
+              encodedImage: "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAQMAAABmvDolAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWklEQVRIie3IsQ3AMAgAwZfMy6TJI3mZlE7gCh6mS90u+6IQAQAAsFv6G68b+o0AgO+W9QIQAMAnvXgBCADgk168AAQA8EkvXgACAPikFy8AAQB80osXgAAAPunFC/w9B1P9U7YxAAAAAElFTkSuQmCC", // standard tiny base64 placeholder
+              payload: "00020101021226870014br.gov.bcb.pix2565pix.sandbox.asaas.com/v3/cobv/pay_sim_example52040000530398654071500.005802BR5915Vezzitech Elite6009Sao Paulo62070503***6304D36C",
+              expirationDate: new Date(Date.now() + 3600000).toISOString()
+            }
+          });
+        } else {
+          return res.json({
+            success: true,
+            simulated: true,
+            billingType,
+            paymentId: mockPaymentId,
+            value: 1500.00,
+            status: "CONFIRMED"
+          });
+        }
+      }
+
+      // Real Asaas Integration
+      // 1. Create the customer
+      const cleanedCpfCnpj = cpfCnpj ? cpfCnpj.replace(/\D/g, '') : '';
+      const cleanedPhone = phone ? phone.replace(/\D/g, '') : '';
+
+      const customerRes = await fetch(`${asaasApiUrl}/customers`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "access_token": asaasApiKey
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: cleanedPhone,
+          cpfCnpj: cleanedCpfCnpj,
+          notificationDisabled: true,
+          externalReference: domain
+        })
+      });
+
+      if (!customerRes.ok) {
+        const errText = await customerRes.text();
+        console.error("Asaas Customer Creation Error:", errText);
+        throw new Error(`Erro ao cadastrar cliente no Asaas: ${errText}`);
+      }
+
+      const customerData: any = await customerRes.json();
+      const customerId = customerData.id;
+
+      // Due date is in 3 days
+      const dueDateObj = new Date();
+      dueDateObj.setDate(dueDateObj.getDate() + 3);
+      const dueDate = dueDateObj.toISOString().split('T')[0];
+
+      // Redesign setup price: R$ 1.500,00
+      const paymentValue = 1500.00;
+      const description = `Setup de Redesign de Website Premium - Vezzitech (${domain})`;
+
+      // 2. Create the payment
+      const paymentBody: any = {
+        customer: customerId,
+        billingType,
+        value: paymentValue,
+        dueDate,
+        description,
+        externalReference: JSON.stringify({ domain, notes })
+      };
+
+      if (billingType === "CREDIT_CARD" && creditCard) {
+        paymentBody.creditCard = {
+          holderName: creditCard.holderName,
+          number: creditCard.number.replace(/\s+/g, ''),
+          expiryMonth: creditCard.expiryMonth,
+          expiryYear: creditCard.expiryYear,
+          ccv: creditCard.ccv
+        };
+        paymentBody.creditCardHolderInfo = {
+          name,
+          email,
+          cpfCnpj: cleanedCpfCnpj,
+          postalCode: (addressInfo?.postalCode || "01310100").replace(/\D/g, ''),
+          addressNumber: addressInfo?.addressNumber || "1000",
+          phone: cleanedPhone
+        };
+      }
+
+      const paymentRes = await fetch(`${asaasApiUrl}/payments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "access_token": asaasApiKey
+        },
+        body: JSON.stringify(paymentBody)
+      });
+
+      if (!paymentRes.ok) {
+        const errText = await paymentRes.text();
+        console.error("Asaas Payment Creation Error:", errText);
+        throw new Error(`Erro ao gerar cobrança no Asaas: ${errText}`);
+      }
+
+      const paymentData: any = await paymentRes.json();
+      const paymentId = paymentData.id;
+
+      if (billingType === "PIX") {
+        // Fetch PIX QR Code details
+        const qrRes = await fetch(`${asaasApiUrl}/payments/${paymentId}/pixQrCode`, {
+          method: "GET",
+          headers: {
+            "access_token": asaasApiKey
+          }
+        });
+
+        if (!qrRes.ok) {
+          const errText = await qrRes.text();
+          console.error("Asaas Pix QR Code Fetch Error:", errText);
+          throw new Error(`Erro ao resgatar QR Code do PIX no Asaas: ${errText}`);
+        }
+
+        const qrData: any = await qrRes.json();
+        return res.json({
+          success: true,
+          simulated: false,
+          billingType,
+          paymentId,
+          value: paymentValue,
+          pix: {
+            encodedImage: qrData.encodedImage,
+            payload: qrData.payload,
+            expirationDate: qrData.expirationDate
+          }
+        });
+      }
+
+      return res.json({
+        success: true,
+        simulated: false,
+        billingType,
+        paymentId,
+        value: paymentValue,
+        status: paymentData.status
+      });
+
+    } catch (error: any) {
+      console.error("Payment API Error:", error);
+      res.status(500).json({ error: error.message || "Erro interno ao processar a cobrança do setup." });
+    }
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

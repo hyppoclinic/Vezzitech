@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { translations, Language } from '../translations';
 import { Menu, X, Globe, Calendar, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { VezzitechLogo } from './VezzitechLogo';
 
 interface HeaderProps {
   lang: Language;
@@ -13,6 +14,10 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
   const t = translations[lang];
 
   const scrollToSection = (id: string) => {
+    if (window.location.pathname !== '/') {
+      window.location.href = `/?scroll=${id}`;
+      return;
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -25,21 +30,30 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
       <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between w-full">
         
         {/* Brand logo */}
-        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 cursor-pointer text-left z-50">
-          <span className="text-[22px] font-semibold tracking-tight text-white font-sans italic">Vezzitech</span>
+        <button 
+          onClick={() => {
+            if (window.location.pathname !== '/') {
+              window.location.href = '/';
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }} 
+          className="flex items-center gap-2 cursor-pointer text-left z-50 group"
+        >
+          <VezzitechLogo className="text-[22px]" />
         </button>
         
         {/* Nav list - Desktop */}
         <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-wider text-gray-400">
           <button 
             onClick={() => scrollToSection('servicos')} 
-            className="hover:text-[#33BC65] transition cursor-pointer text-[#33BC65]/90">
+            className="hover:text-[#33BC65] transition cursor-pointer">
             {t.nav.services}
           </button>
           <button 
-            onClick={() => scrollToSection('google')} 
-            className="hover:text-[#33BC65] transition cursor-pointer">
-            {t.nav.ecosystem}
+            onClick={() => scrollToSection('planos')} 
+            className="hover:text-[#33BC65] text-[#33BC65]/90 font-semibold transition cursor-pointer border-b border-dashed border-[#33BC65]/40 pb-0.5">
+            {t.nav.plans}
           </button>
           <button 
             onClick={() => scrollToSection('consultoria')} 
@@ -130,11 +144,12 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
                   <span className="text-[10px] font-mono opacity-40">// 01</span>
                 </button>
                 <button 
-                  onClick={() => scrollToSection('google')} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
-                  <span>{t.nav.ecosystem}</span>
-                  <span className="text-[10px] font-mono opacity-40">// 02</span>
+                  onClick={() => scrollToSection('planos')} 
+                  className="py-2.5 text-left border-b border-white/5 text-[#33BC65] hover:text-white transition flex justify-between items-center cursor-pointer">
+                  <span>{t.nav.plans}</span>
+                  <span className="text-[10px] font-mono opacity-40">// PLANS</span>
                 </button>
+
                 <button 
                   onClick={() => scrollToSection('consultoria')} 
                   className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-[#33BC65]">

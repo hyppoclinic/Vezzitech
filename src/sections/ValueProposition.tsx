@@ -16,7 +16,7 @@ export const ValueProposition = ({ lang }: ValuePropositionProps) => {
   ];
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 relative">
+    <section id="diferenciais" aria-label="Por que a Vezzitech" className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-emerald-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-3xl mb-16">
@@ -42,7 +42,7 @@ export const ValueProposition = ({ lang }: ValuePropositionProps) => {
 
         <div className="grid md:grid-cols-2 gap-8">
             {t.valueProp.items.map((item, index) => (
-                <div key={item.title} className="bg-glass border-glass p-8 rounded-3xl hover:bg-white/[0.04] transition duration-300 relative group overflow-hidden flex flex-col justify-between h-72">
+                <div key={item.title} className="bg-glass border-glass p-6 md:p-8 rounded-3xl hover:bg-white/[0.04] transition duration-300 relative group overflow-hidden flex flex-col justify-between min-h-[200px] md:min-h-[220px]">
                     {/* Elegant Neon Blur Ambient Lights inside cards */}
                     <div className="absolute -right-16 -bottom-16 w-36 h-36 bg-[#33BC65]/5 group-hover:bg-[#33BC65]/15 rounded-full blur-[45px] pointer-events-none transition-all duration-500"></div>
                     <div className="absolute -left-16 -top-16 w-36 h-36 bg-[#12DCEF]/5 group-hover:bg-[#12DCEF]/15 rounded-full blur-[45px] pointer-events-none transition-all duration-500"></div>

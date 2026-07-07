@@ -7,9 +7,9 @@ import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './sections/Hero';
 import { Services } from './sections/Services';
-import { GoogleEcosystem } from './sections/GoogleEcosystem';
 import { ValueProposition } from './sections/ValueProposition';
 import { Process } from './sections/Process';
+import { Pricing } from './sections/Pricing';
 import { Metrics } from './sections/Metrics';
 import { Verticals } from './sections/Verticals';
 import { Blog } from './sections/Blog';
@@ -35,6 +35,17 @@ export default function App() {
     setRoute(window.location.pathname);
     if (window.location.pathname.startsWith('/blog/')) {
         setSelectedSlug(window.location.pathname.split('/blog/')[1]);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollTarget = urlParams.get('scroll');
+    if (scrollTarget) {
+      setTimeout(() => {
+        const el = document.getElementById(scrollTarget);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 350);
     }
   }, []);
 
@@ -101,16 +112,14 @@ export default function App() {
         {/* Operational steps */}
         <Process lang={lang} />
         
+        {/* Simplified Subscription Plans (Recurring site, content, SEO, Google Ads) */}
+        <Pricing lang={lang} />
+        
         {/* Pillars of differentiation (Credibility & Trust reinforcement) */}
         <ValueProposition lang={lang} />
         
         {/* Success proof metrics */}
-        <section id="metricas">
-          <Metrics lang={lang} />
-        </section>
-        
-        {/* Integrated google suite elements */}
-        <GoogleEcosystem lang={lang} />
+        <Metrics lang={lang} />
         
         {/* Deep knowledge articles */}
         <Blog lang={lang} onSelectPost={setSelectedSlug} />
@@ -122,7 +131,7 @@ export default function App() {
         <Scheduling lang={lang} />
 
         {/* Bottom high-performing Conversion Banner */}
-        <section className="py-24 px-6 text-center max-w-4xl mx-auto border-t border-white/5 relative">
+        <section id="conversao" aria-label="Chamada para Ação" className="py-24 px-6 text-center max-w-4xl mx-auto border-t border-white/5 relative">
           <BlurFade delay={0.2} inView>
             <div className="absolute inset-0 bg-[#33BC65]/5 rounded-[2.5rem] blur-xl pointer-events-none"></div>
             <div className="bg-glass border-glass p-12 md:p-16 rounded-[2.5rem] relative z-10 overflow-hidden group hover:border-[#33BC65]/20 duration-300">

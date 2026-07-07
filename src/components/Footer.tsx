@@ -1,6 +1,7 @@
 import { MapPin } from 'lucide-react';
 import { FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { translations, Language } from '../translations';
+import { VezzitechLogo } from './VezzitechLogo';
 
 interface FooterProps {
   lang: Language;
@@ -23,7 +24,7 @@ export const Footer = ({ lang }: FooterProps) => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 mb-12 relative z-10">
         <div className="md:col-span-4 space-y-6">
           <div className="flex items-center gap-2">
-            <span className="text-[22px] font-semibold tracking-tight text-white font-sans italic">Vezzitech</span>
+            <VezzitechLogo className="text-[22px]" />
           </div>
           <p className="text-gray-400 text-xs md:text-sm leading-relaxed max-w-sm">
             {t.footerSection.desc}

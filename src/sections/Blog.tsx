@@ -84,7 +84,7 @@ export const Blog = ({ lang, onSelectPost }: BlogProps) => {
   };
 
   return (
-    <section id="blog" className="py-24 bg-[#070707] text-white relative">
+    <section id="blog" aria-label="Artigos e Conteúdos do Blog" className="py-24 bg-[#070707] text-white relative">
       {/* Decorative ambient lights */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-[#33BC65]/5 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#12DCEF]/5 rounded-full blur-3xl pointer-events-none"></div>

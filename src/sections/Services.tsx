@@ -20,7 +20,7 @@ interface ServicesProps {
 }
 
 export const ServiceCard = ({ item }: { item: ServiceItem }) => (
-  <div className="bg-glass border-glass p-8 rounded-3xl hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between group h-80 relative overflow-hidden select-none">
+  <div className="bg-glass border-glass p-6 md:p-8 rounded-3xl hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between group min-h-[240px] relative overflow-hidden select-none">
     {/* Refined double blur ambient glows matching reference card design */}
     <div className="absolute -right-20 -bottom-20 w-44 h-44 bg-[#33BC65]/5 group-hover:bg-[#33BC65]/15 rounded-full blur-[50px] pointer-events-none transition-all duration-500"></div>
     <div className="absolute -left-20 -top-20 w-44 h-44 bg-[#12DCEF]/5 group-hover:bg-[#12DCEF]/15 rounded-full blur-[50px] pointer-events-none transition-all duration-500"></div>
@@ -65,7 +65,7 @@ export const Services = ({ lang }: ServicesProps) => {
   };
 
   return (
-    <section id="servicos" className="py-24 px-6 max-w-7xl mx-auto relative overflow-hidden">
+    <section id="servicos" aria-label="Nossos Serviços" className="py-24 px-6 max-w-7xl mx-auto relative overflow-hidden">
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] bg-emerald-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Title block structured like the Hero text layout style */}

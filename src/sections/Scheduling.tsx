@@ -32,7 +32,7 @@ export const Scheduling = ({ lang }: SchedulingProps) => {
   };
 
   return (
-    <section id="consultoria" className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 relative">
+    <section id="consultoria" aria-label="Agendamento de Consultoria" className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 relative">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">

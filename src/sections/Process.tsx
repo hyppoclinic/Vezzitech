@@ -16,7 +16,7 @@ export const Process = ({ lang }: ProcessProps) => {
   ];
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 relative">
+    <section id="processo" aria-label="Como Funcionamos" className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 relative">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-emerald-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-3xl mb-16">
@@ -42,7 +42,7 @@ export const Process = ({ lang }: ProcessProps) => {
 
         <div className="grid md:grid-cols-4 gap-6">
             {t.processSection.items.map((step, index) => (
-                <div key={step.title} className="bg-glass border-glass p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between h-80 group hover:border-[#33BC65]/30 transition-all duration-300">
+                <div key={step.title} className="bg-glass border-glass p-6 md:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[220px] md:min-h-[250px] group hover:border-[#33BC65]/30 transition-all duration-300">
                     {/* Elegant Ambient Glow Background Blur Inside the Card */}
                     <div className="absolute -right-20 -bottom-20 w-44 h-44 bg-[#33BC65]/5 group-hover:bg-[#33BC65]/15 rounded-full blur-[50px] pointer-events-none transition-all duration-500"></div>
                     <div className="absolute -left-20 -top-20 w-44 h-44 bg-[#12DCEF]/5 group-hover:bg-[#12DCEF]/15 rounded-full blur-[50px] pointer-events-none transition-all duration-500"></div>

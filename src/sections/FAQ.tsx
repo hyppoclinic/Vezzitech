@@ -11,7 +11,7 @@ export const FAQ = ({ lang }: FAQProps) => {
   const t = translations[lang];
 
   return (
-    <section className="py-24 px-6 max-w-4xl mx-auto border-t border-white/5 relative">
+    <section id="faq" aria-label="Dúvidas Frequentes (FAQ)" className="py-24 px-6 max-w-4xl mx-auto border-t border-white/5 relative">
       {/* FAQ Schema for AEO */}
       <script type="application/ld+json">
         {JSON.stringify({
@@ -61,12 +61,17 @@ export const FAQ = ({ lang }: FAQProps) => {
               className="bg-glass border-glass rounded-2xl overflow-hidden transition-all duration-300">
               <button 
                 onClick={() => setOpenIndex(isOpen ? null : index)}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${index}`}
                 className="w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-white/[0.02] transition">
-                <span className="text-white font-semibold text-base md:text-lg font-heading">{faq.q}</span>
+                <span id={`faq-question-${index}`} className="text-white font-semibold text-base md:text-lg font-heading">{faq.q}</span>
                 <ChevronDown className={`w-5 h-5 text-[#33BC65] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
               </button>
               
               <div 
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
                 className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-56 border-t border-white/5 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
                 <p className="p-6 text-gray-400 text-sm md:text-base leading-relaxed">
                   {faq.a}

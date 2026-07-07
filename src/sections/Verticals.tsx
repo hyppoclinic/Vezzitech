@@ -18,7 +18,7 @@ export const Verticals = ({ lang }: VerticalsProps) => {
   const t = translations[lang];
 
   return (
-    <section id="verticais" className="py-24 px-6 border-t border-white/5 relative z-10 bg-[#0A0D10]">
+    <section id="verticais" aria-label="Setores de Atuação" className="py-24 px-6 border-t border-white/5 relative z-10 bg-[#0A0D10]">
       {/* Subtle background glow */}
       <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -55,7 +55,7 @@ export const Verticals = ({ lang }: VerticalsProps) => {
           {t.verticalsSection.items.map((item, index) => (
             <div
               key={item.id}
-              className="bg-white/[0.01]/[0.02] bg-zinc-950/20 border border-white/10 rounded-3xl p-8 hover:border-emerald-500/30 hover:bg-white/[0.03] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+              className="bg-zinc-950/20 border border-white/10 rounded-3xl p-6 md:p-8 hover:border-emerald-500/30 hover:bg-white/[0.03] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
             >
               {/* Corner accent glow on hover */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
