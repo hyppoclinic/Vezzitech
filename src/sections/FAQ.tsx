@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { HelpCircle } from 'lucide-react';
 import { translations, Language } from '../translations';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 
 interface FAQProps {
   lang: Language;
 }
 
 export const FAQ = ({ lang }: FAQProps) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const t = translations[lang];
 
   return (
@@ -52,36 +51,18 @@ export const FAQ = ({ lang }: FAQProps) => {
         </h2>
       </div>
 
-      <div className="space-y-4">
-        {t.faqSection.items.map((faq, index) => {
-          const isOpen = openIndex === index;
-          return (
-            <div 
-              key={index} 
-              className="bg-glass border-glass rounded-2xl overflow-hidden transition-all duration-300">
-              <button 
-                type="button"
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-                aria-expanded={isOpen}
-                aria-controls={`faq-answer-${index}`}
-                className="w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-white/[0.02] transition">
-                <span id={`faq-question-${index}`} className="text-white font-semibold text-base md:text-lg font-heading">{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 text-[#33BC65] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              <div 
-                id={`faq-answer-${index}`}
-                role="region"
-                aria-labelledby={`faq-question-${index}`}
-                className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-56 border-t border-white/5 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                <p className="p-6 text-gray-400 text-sm md:text-base leading-relaxed">
-                  {faq.a}
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <Accordion defaultValue={["faq-0"]} className="w-full space-y-4">
+        {t.faqSection.items.map((faq, index) => (
+          <AccordionItem key={index} value={`faq-${index}`} className="bg-glass border border-white/10 rounded-2xl px-6 py-2 border-none">
+            <AccordionTrigger className="hover:no-underline text-white font-semibold text-base md:text-lg font-heading text-left hover:text-[#33BC65] transition-colors py-4">
+              {faq.q}
+            </AccordionTrigger>
+            <AccordionContent className="text-gray-400 text-sm md:text-base leading-relaxed pb-6 pt-2">
+              {faq.a}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
     </section>
   );
 };

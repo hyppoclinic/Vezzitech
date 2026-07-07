@@ -39,21 +39,7 @@ export const Scheduling = ({ lang }: SchedulingProps) => {
         <div className="lg:col-span-5">
           <div className="text-[#33BC65] font-mono text-xs mb-3 font-semibold uppercase tracking-widest">// {t.tag}</div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.15] mb-6 tracking-tight text-white font-heading">
-            {lang === 'pt' ? (
-              <>
-                Comece ontem.
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#33BC65] via-emerald-200 to-cyan-300 mt-1 font-normal">
-                  Fale com a Vezzitech e acelere de verdade.
-                </span>
-              </>
-            ) : (
-              <>
-                Start yesterday.
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#33BC65] via-emerald-200 to-cyan-300 mt-1 font-normal">
-                  Connect with Vezzitech to scale.
-                </span>
-              </>
-            )}
+            {t.heading}
           </h2>
           <p className="text-gray-400 text-base leading-relaxed mb-8">
             {t.sub}
@@ -210,7 +196,7 @@ export const Scheduling = ({ lang }: SchedulingProps) => {
               <button
                 type="submit"
                 className="w-full py-4 gradient-orange text-black font-bold text-sm tracking-widest uppercase rounded-xl hover:scale-[1.01] transition shadow-lg shadow-[#33BC65]/10 flex items-center justify-center gap-2 cursor-pointer">
-                {lang === 'pt' ? 'Confirmar Agendamento' : 'Confirm Appointment'} <ChevronRight className="w-4" />
+                {t.form.submit} <ChevronRight className="w-4" />
               </button>
             </form>
           )}

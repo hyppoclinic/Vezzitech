@@ -113,22 +113,8 @@ export const Hero = ({ lang }: HeroProps) => {
 
         {/* Arounda-Inspired Headline with Symmetric Center Alignment & Soft Capitalization Reading Flow */}
         <BlurFade delay={0.2} inView>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-semibold leading-[1.12] mb-6 tracking-tight text-white font-heading max-w-3xl">
-            {lang === 'pt' ? (
-              <>
-                Aceleramos sua empresa.
-                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-100 to-emerald-200 font-normal">
-                  Com inteligência artificial em escala corporativa.
-                </span>
-              </>
-            ) : (
-              <>
-                Accelerate your enterprise.
-                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-100 to-emerald-200 font-normal">
-                  With artificial intelligence at corporate scale.
-                </span>
-              </>
-            )}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.12] mb-6 tracking-tight text-white font-heading max-w-4xl">
+            {t.hero.headline}
           </h1>
         </BlurFade>
 

@@ -14,6 +14,7 @@ export interface TranslationSchema {
     subheadline: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    microcopy: string;
     graphTitle: string;
   };
   nodes: {
@@ -155,11 +156,12 @@ export const translations: Record<Language, TranslationSchema> = {
       cta: "Falar com Especialista"
     },
     hero: {
-      badge: "Assinatura de crescimento unificada (Site Premium + Conteúdo + Google Ads)",
-      headline: "Seu site premium, conteúdo e Google Ads em uma assinatura de elite.",
-      subheadline: "Desenvolvimento nativo de alta velocidade, produção de conteúdo estratégico e gestão inteligente de tráfego pago. Tudo unificado em uma assinatura mensal recorrente de alta performance.",
-      ctaPrimary: "Ver Planos de Assinatura",
-      ctaSecondary: "Simular ROI de Vendas",
+      badge: "Resolvemos o funil inteiro — quem te acha, quem entra no site, quem vira cliente",
+      headline: "Seu site converte, aparece no Google e nas respostas de IA — e ainda faz seu tráfego pago render mais.",
+      subheadline: "Tudo sob um único parceiro. Site de alta performance, SEO/AEO estratégico e gestão de campanhas — com prazo e resultado combinados desde o primeiro contrato.",
+      ctaPrimary: "Simular Retorno da Minha Empresa",
+      ctaSecondary: "Ver Planos e Preços",
+      microcopy: "+120% de tráfego orgânico médio · 3,5x mais conversão · Site carregando em menos de 1 segundo",
       graphTitle: "Interactive AI Graph"
     },
     nodes: {
@@ -185,134 +187,132 @@ export const translations: Record<Language, TranslationSchema> = {
       }
     },
     ticker: [
-      "ASSINATURA DE CRESCIMENTO PREVISÍVEL",
-      "SITE PREMIUM COM CÓDIGO NATIVO",
-      "PRODUÇÃO RECORRENTE DE CONTEÚDO",
-      "OTIMIZAÇÃO DE GOOGLE ADS SEMANAL",
-      "MÁXIMO POSICIONAMENTO EM SEO & AEO",
-      "SEM CONTRATOS OU MULTAS RESCISÓRIAS",
-      "TRÁFEGO QUALIFICADO DE ALTA INTENÇÃO",
-      "SUA OPERAÇÃO TOTALMENTE DESCOMPLICADA"
+      "SITES DE ALTA CONVERSÃO",
+      "SEO & AEO ESTRATÉGICO",
+      "GESTÃO DE TRÁFEGO PAGO",
+      "CONTEÚDO EM ESCALA",
+      "AGENTES DE IA",
+      "PERFORMANCE MÁXIMA WEB"
     ],
     valueProp: {
-      tag: "DIFERENCIAÇÃO ESTRATÉGICA",
-      heading: "Por que uma assinatura de crescimento é infinitamente superior?",
+      tag: "DIFERENCIAÇÃO",
+      heading: "Por que empresas trocam a agência atual pela Vezzitech.",
       items: [
         {
           num: "01",
-          title: "Fim do estresse com múltiplos fornecedores",
-          desc: "Esqueça a dor de gerenciar agências lentas ou freelancers. Com a Vezzitech, você tem desenvolvimento de alto nível, redação e tráfego pago integrados de verdade."
+          title: "Código Próprio, Seu Para Sempre",
+          desc: "Sem templates, sem dependência de terceiro. Site rápido, seguro e 100% seu — inclusive o código-fonte."
         },
         {
           num: "02",
-          title: "Site e Landing Pages inclusos",
-          desc: "Não cobramos taxas de setup para criar seu site. O desenvolvimento de código premium extremamente rápido e as atualizações de layout já estão inclusos."
+          title: "SEO Tradicional + AEO",
+          desc: "Você aparece no Google de hoje e na resposta de IA de amanhã. A maioria das agências brasileiras ainda nem fala sobre isso."
         },
         {
           num: "03",
-          title: "Tração imediata focada em caixa",
-          desc: "Entregamos velocidade. Ativamos campanhas cirúrgicas de Google Ads em até 7 dias, focadas em atrair leads qualificados prontos para comprar."
+          title: "Criativo Que Reduz Custo por Clique",
+          desc: "Design e copy pensados para conversão, não só estética — isso baixa o CPA nas suas campanhas pagas automaticamente."
         },
         {
           num: "04",
-          title: "Posicionamento orgânico de longo prazo",
-          desc: "Construímos a autoridade técnica da sua marca na internet para que ela seja encontrada no Google orgânico e citada em assistentes de Inteligência Artificial."
+          title: "Automação que Não Some Depois da Venda",
+          desc: "Agentes de IA continuam qualificando lead e dando suporte depois que o projeto entra no ar — não é entrega e adeus."
         }
       ]
     },
     servicesSection: {
       tag: "NOSSOS PILARES",
-      heading: "Três competências de elite. Uma única assinatura.",
+      heading: "Três alavancas. Um só resultado: mais cliente pagando.",
       items: [
         {
           num: "01",
-          title: "Desenvolvimento Web de Alta Conversão",
-          desc: "Landing pages e websites nativos desenvolvidos com código limpo de extrema velocidade (100/100 no Google Core Web Vitals) para máxima conversão."
+          title: "Site que Vende",
+          desc: "Não fazemos 'sites bonitos'. Fazemos páginas que carregam rápido, guiam o visitante até a decisão de compra e não perdem venda por lentidão ou confusão. Código próprio, seu para sempre — nada de template genérico."
         },
         {
           num: "02",
-          title: "Produção de Conteúdo Técnico de Elite",
-          desc: "Redação de artigos para blog focados em SEO, copywriting persuasivo para suas páginas de vendas e criativos visuais para anúncios."
+          title: "SEO & AEO: apareça no Google e na resposta da IA",
+          desc: "Enquanto seus concorrentes ainda brigam pela primeira página do Google, colocamos sua marca dentro da resposta que o ChatGPT, Gemini ou Perplexity dá antes mesmo do cliente abrir um site. Isso é AEO — e quem não estiver nisso agora, vai ficar invisível pra IA em pouco tempo."
         },
         {
           num: "03",
-          title: "SEO & AEO Preditivo de Marca",
-          desc: "Posicionamento estratégico no Google e otimização avançada de conteúdo para ser citado por inteligências artificiais como ChatGPT e Gemini."
+          title: "Campanhas que Não Queimam Verba",
+          desc: "Gestão de tráfego pago conectada ao site e ao conteúdo — não um serviço isolado. Como a landing page já converte melhor e a copy já é persuasiva, o custo por lead cai e o orçamento rende mais, com o mesmo investimento."
         },
         {
           num: "04",
-          title: "Gestão e Refino Semanal de Anúncios",
-          desc: "Criação, configuração profissional e otimização contínua de campanhas de Google Ads para extrair leads qualificados com o menor custo."
+          title: "Agentes de IA",
+          desc: "Chatbots e automações que qualificam lead 24h, atendem dúvida recorrente e passam pro seu time só quem já está pronto pra comprar. Potencializa os três pilares acima, sem substituir nenhum deles."
         }
       ]
     },
     verticalsSection: {
-      tag: "SOLUÇÕES PERSONALIZADAS",
-      heading: "Estratégia sob medida para dominar o seu setor.",
-      sub: "Adaptamos a nossa assinatura unificada de Site Premium, Produção de Conteúdo e Google Ads de acordo com as necessidades específicas de captação do seu nicho.",
+      tag: "PARA O SEU NEGÓCIO",
+      heading: "Presença digital sob medida para o seu setor.",
+      sub: "Cada nicho tem uma dor diferente. Adaptamos site, conteúdo e campanhas para o que realmente move o seu mercado.",
       items: [
         {
           id: "varejo",
           title: "Varejo & E-commerce",
-          desc: "Lojas virtuais ultra rápidas focadas em conversão, aliadas à produção recorrente de conteúdos persuasivos e campanhas semanais de Google Ads para atrair compradores qualificados."
+          desc: "Lojas virtuais rápidas o suficiente para não perder venda por lentidão, SEO de produto que aparece antes do concorrente, e campanhas que trazem cliente pronto pra comprar — não só clique."
         },
         {
           id: "saude",
-          title: "Saúde, Médicos & Clínicas",
-          desc: "Landing pages de alta credibilidade com agendamento integrado, copywriting persuasivo focado em destacar autoridade e anúncios de Google Ads cirúrgicos para atração de pacientes particulares."
+          title: "Saúde & Clínicas",
+          desc: "Site que passa confiança em segundos, SEO local para aparecer quando o paciente busca 'perto de mim', e campanhas segmentadas para agenda cheia sem depender só de indicação."
         },
         {
           id: "industria",
           title: "B2B & Indústrias",
-          desc: "Portais corporativos de alto nível, redação recorrente de artigos técnicos especializados com altíssima autoridade de SEO e campanhas assertivas de tráfego pago focadas em tomadores de decisão."
+          desc: "Portal institucional que fecha negócio com quem decide, conteúdo técnico que educa o comprador antes da reunião, e tráfego qualificado que não desperdiça verba com curioso."
         },
         {
           id: "financas",
           title: "Serviços & Fintechs",
-          desc: "Websites blindados de extrema velocidade, copywriting premium focado na geração contínua de confiança institucional e gestão contínua de Google Ads para captação de leads de alto ticket."
+          desc: "Comunicação institucional que transmite segurança, SEO/AEO corporativo para ser citado como referência, e site blindado com performance de nível bancário."
         },
         {
           id: "educacao",
-          title: "Educação & Infoprodutos",
-          desc: "Funis de vendas de carregamento instantâneo, copywriting de alta conversão para páginas de vendas, e gestão ágil de tráfego para atração contínua de novos alunos."
+          title: "Educação & Cursos",
+          desc: "Landing pages de venda com copy que converte, criativos que prendem atenção em segundos, e campanhas otimizadas para custo por matrícula — não por clique."
         },
         {
           id: "agro",
           title: "Agronegócio",
-          desc: "Identidade institucional de prestígio internacional, desenvolvimento de portais corporativos seguros, e campanhas focadas em posicionar sua marca frente a grandes investidores e parceiros globais."
+          desc: "Identidade visual forte para negociação internacional, posicionamento orgânico para exportadoras, e plataforma digital premium para fechar contrato de alto valor."
         }
       ]
     },
     processSection: {
-      tag: "CRONOGRAMA DE IMPACTO",
-      heading: "Seu funil completo ativo em até 7 dias úteis.",
+      tag: "METODOLOGIA",
+      heading: "Como estruturamos sua jornada — do diagnóstico ao resultado em caixa.",
       items: [
         {
           num: "01",
-          title: "Alinhamento Estratégico Rápido",
-          desc: "Reunião de 15 minutos via Google Meet para mapear o público-alvo, suas metas de vendas e alinhar a linha editorial."
+          title: "Diagnóstico Real",
+          desc: "Analisamos seu site atual, identificamos onde você está perdendo venda (velocidade, SEO, funil) e mostramos isso com dado, não opinião."
         },
         {
           num: "02",
-          title: "Desenvolvimento do Site Premium",
-          desc: "Codificamos sua nova landing page ou site nativo com velocidade extrema. Nada de templates pré-fabricados lentos ou bugs."
+          title: "Estrutura & Copy",
+          desc: "Construímos a arquitetura da página e escrevemos a copy focada em uma coisa: fazer o visitante decidir."
         },
         {
           num: "03",
-          title: "Produção de Criativos, Copy e Ads",
-          desc: "Escrevemos artigos ricos de SEO, criamos designs de anúncios de alta conversão e estruturamos suas campanhas no Google Ads."
+          title: "Desenvolvimento & Automação",
+          desc: "Colocamos no ar um site rápido, implementamos SEO técnico nativo e ativamos agentes de IA para captar lead sem parar."
         },
         {
           num: "04",
-          title: "Lançamento e Otimização Semanal",
-          desc: "Colocamos o funil para rodar. Fazemos melhorias semanais nos anúncios, refinamentos de SEO e atualizações de layout sob demanda."
+          title: "Tráfego & Otimização Contínua",
+          desc: "Lançamos campanhas, monitoramos indexação (Google e IA) e otimizamos toda semana com base em dado real, não achismo."
         }
       ]
     },
     metricsSection: {
-      tag: "PROVA DE RESULTADO",
-      heading: "Métricas reais que geram faturamento, não vaidade.",
-      sub: "Não acreditamos em curtidas ou teorias acadêmicas. Nosso time de especialistas trabalha com métricas que realmente impactam o caixa da sua empresa: tráfego qualificado de alta intenção, conversão eficiente de leads e velocidade extrema de site.",
+      tag: "PROVA DE PERFORMANCE",
+      heading: "Resultado real, não projeção.",
+      sub: "Médias calculadas com base nos últimos projetos entregues pela Vezzitech.",
       badge: "Verified Growth Metrics",
       items: [
         {
@@ -359,27 +359,35 @@ export const translations: Record<Language, TranslationSchema> = {
       heading: "Perguntas Frequentes",
       items: [
         {
-          q: "Como funciona o modelo de assinatura de crescimento?",
-          a: "Diferente de agências tradicionais que cobram taxas absurdas de setup e demoram meses para entregar, nós unificamos desenvolvimento de site premium, produção contínua de conteúdo e gestão de Google Ads em uma taxa mensal previsível. Sem multas ou amarras contratuais."
+          q: "Vocês desenvolvem sites proprietários ou usam templates prontos?",
+          a: "Código nativo, limpo e otimizado para desempenho, SEO e conversão. O projeto e o código-fonte são inteiramente seus — sem dependência de plataforma de terceiro."
         },
         {
-          q: "O site realmente está incluso na assinatura?",
-          a: "Sim, 100%! Nós desenvolvemos o seu site premium ou landing page proprietária do absoluto zero com código limpo e extremamente rápido (100/100 Mobile). Toda a hospedagem na nuvem, manutenção semanal e melhorias de layout necessárias já estão incluídas na sua mensalidade."
+          q: "O que é AEO (Answer Engine Optimization)?",
+          a: "É a otimização para mecanismos de resposta de Inteligência Artificial (ChatGPT, Gemini, Perplexity). Garantimos que sua marca seja citada quando o cliente perguntar para essas IAs — antes mesmo dele chegar ao Google."
         },
         {
-          q: "Como é gerenciada a verba de Google Ads?",
-          a: "A verba de anúncios é paga por você diretamente à plataforma do Google de acordo com o seu orçamento disponível. Nossa assinatura cobre todo o trabalho de pesquisa de palavras-chave, criação dos anúncios persuasivos, design de criativos e otimização semanal das campanhas para maximizar seu ROI."
+          q: "Como os Agentes de IA ajudam em vendas?",
+          a: "Atendem 24h, respondem dúvida recorrente, captam dado do lead, agendam reunião e enviam só quem está pronto para comprar direto ao seu time comercial."
         },
         {
-          q: "Como posso pausar ou cancelar a assinatura?",
-          a: "Totalmente livre. Nós confiamos na qualidade do nosso trabalho técnico. Se o seu momento de negócios mudar, você pode pausar ou cancelar sua assinatura mensal a qualquer momento, sem nenhum tipo de multa ou período de carência compulsória."
+          q: "Qual a importância das campanhas e materiais de marketing?",
+          a: "Visual de impacto + copy focada em conversão reduzem o custo por clique nas campanhas pagas — mais contato e mais visibilidade com o mesmo orçamento."
+        },
+        {
+          q: "E se eu já tenho um site — preciso refazer tudo do zero?",
+          a: "Não necessariamente. No diagnóstico gratuito, avaliamos o que pode ser otimizado e o que realmente compensa refazer, sem empurrar projeto maior do que o necessário."
+        },
+        {
+          q: "Quanto tempo leva para ver resultado?",
+          a: "SEO e AEO são estratégias de médio prazo (normalmente resultado consistente a partir do 3º mês). Site e campanhas pagas costumam gerar impacto já nas primeiras semanas após o lançamento."
         }
       ]
     },
     schedulingSection: {
-      tag: "CONSULTORIA DE ELITE",
-      heading: "Agende um diagnóstico estratégico gratuito de 30 min.",
-      sub: "Crie o plano de crescimento digital ideal para o seu negócio. Nessa reunião estratégica via Google Meet, analisaremos o desempenho técnico do seu site atual, oportunidades de palavras-chave no Google Ads e táticas de SEO/AEO de conversão.",
+      tag: "CONSULTORIA",
+      heading: "Comece com um diagnóstico real — não com uma proposta genérica.",
+      sub: "Nesta reunião de 30 minutos, sem compromisso, vamos analisar a velocidade do seu site atual, mapear oportunidades de SEO/AEO e mostrar exatamente onde você está perdendo cliente hoje. Você sai com o diagnóstico completo — mesmo que decida não seguir com a gente. (Abrimos um número limitado de diagnósticos gratuitos por mês para manter a qualidade da análise. 12 vagas em julho)",
       p1: "Velocidade & Presença SEO",
       p1Sub: "Mapeamento dos gargalos técnicos de carregamento do seu site atual e das principais buscas do seu mercado.",
       p2: "Funil de Vendas & Tráfego",
@@ -402,20 +410,20 @@ export const translations: Record<Language, TranslationSchema> = {
         ],
         date: "Selecione o Dia",
         time: "Horários Disponíveis",
-        submit: "Garantir Meu Agendamento Gratuito"
+        submit: "Quero Meu Diagnóstico Gratuito"
       }
     },
     pricingSection: {
-      tag: "PLANOS DE CRESCIMENTO PREVISÍVEIS",
-      heading: "Simplifique sua operação com um único parceiro de elite.",
-      sub: "Desenvolvimento contínuo de sites, produção mensal de conteúdo técnico e gestão especializada de anúncios integrados em uma única assinatura mensal recorrente. Sem taxas surpresas de setup.",
+      tag: "PLANOS",
+      heading: "Escolha o nível de aceleração que sua empresa precisa agora.",
+      sub: "Sem contrato engessado, sem letra miúda. Cada plano inclui site, SEO/AEO e gestão de tráfego na proporção certa para o estágio do seu negócio — do primeiro reposicionamento até a escala corporativa.",
       plans: [
         {
           id: "essential",
           name: "Essential Growth",
           price: "R$ 1.990",
           period: "/mês",
-          desc: "Ideal para empresas que precisam estabelecer presença digital imponente com site ultra veloz e otimizado para o Google.",
+          desc: "Ideal para empresas que precisam estabelecer presença digital imponente com site ultra veloz e otimizado para o Google. (Ideal para quem fatura até R$30k/mês)",
           features: [
             "Website Premium Sob Medida (Código nativo < 1s)",
             "Suporte Contínuo & Atualizações Semanais de Layout",
@@ -432,7 +440,7 @@ export const translations: Record<Language, TranslationSchema> = {
           name: "Growth Engine",
           price: "R$ 3.490",
           period: "/mês",
-          desc: "O plano mais completo para empresas que querem tracionar vendas com Google Ads e dominar o tráfego de busca.",
+          desc: "O plano mais completo para empresas que querem tracionar vendas com Google Ads e dominar o tráfego de busca. (Ideal para quem já roda tráfego pago e quer profissionalizar)",
           features: [
             "Tudo do Plano Essential",
             "Gestão Completa & Otimização Semanal de Google Ads",
@@ -450,7 +458,7 @@ export const translations: Record<Language, TranslationSchema> = {
           name: "Enterprise Scale",
           price: "R$ 5.990",
           period: "/mês",
-          desc: "Ideal para líderes de mercado que exigem escala agressiva de tráfego, múltiplos sites e funis complexos.",
+          desc: "Ideal para líderes de mercado que exigem escala agressiva de tráfego, múltiplos sites e funis complexos. (Ideal para escala corporativa)",
           features: [
             "Tudo do Plano Growth Engine",
             "Múltiplos Websites & Landing Pages ilimitados",
@@ -492,9 +500,9 @@ export const translations: Record<Language, TranslationSchema> = {
       }
     },
     conversionBanner: {
-      heading: "Pronto para tracionar suas vendas com a Assinatura de Crescimento?",
-      sub: "Lançamos seu funil integrado de site premium, conteúdo técnico e campanhas de Google Ads em até 7 dias úteis. Sem taxas extras de setup.",
-      cta: "Falar com Estrategista"
+      heading: "Pronto para parar de perder cliente para quem aparece primeiro?",
+      sub: "Garanta uma vaga na nossa agenda de diagnóstico ao vivo e veja, com dado, o que está te custando venda hoje.",
+      cta: "Quero Consultoria Gratuita"
     }
   },
   en: {
@@ -513,6 +521,7 @@ export const translations: Record<Language, TranslationSchema> = {
       subheadline: "We combine high-conversion website development, advanced search engine optimization (SEO/AEO), high-performing marketing materials, and autonomous AI agents to drive sales and modernize your IT.",
       ctaPrimary: "Start Now",
       ctaSecondary: "View Ecosystem",
+      microcopy: "+120% avg organic traffic · 3.5x higher conversion · Sub-second page loads",
       graphTitle: "Interactive AI Graph"
     },
     nodes: {
