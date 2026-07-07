@@ -31,14 +31,14 @@ export const Verticals = ({ lang }: VerticalsProps) => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.15] tracking-tight text-white font-heading">
             {lang === 'pt' ? (
               <>
-                Tecnologia Google
+                Presença e tráfego
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#33BC65] via-emerald-200 to-cyan-300 mt-1 font-normal">
                   sob medida para o seu setor.
                 </span>
               </>
             ) : (
               <>
-                Google Technology
+                Presence and traffic
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#33BC65] via-emerald-200 to-cyan-300 mt-1 font-normal">
                   tailored for your industry.
                 </span>
@@ -82,9 +82,9 @@ export const Verticals = ({ lang }: VerticalsProps) => {
                 </p>
               </div>
 
-              {/* Native Google Tech Badge */}
+              {/* Core Offerings Badge */}
               <div className="border-t border-white/5 pt-4 mt-auto flex items-center justify-between text-[11px] font-mono text-gray-500">
-                <span>Google Cloud + AI</span>
+                <span>{lang === 'pt' ? 'Site + Conteúdo + Google Ads' : 'Site + Content + Google Ads'}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-gray-600 group-hover:text-[#33BC65] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
             </div>

@@ -5,6 +5,7 @@ export interface TranslationSchema {
     plans: string;
     method: string;
     blog: string;
+    clients: string;
     cta: string;
   };
   hero: {
@@ -150,6 +151,7 @@ export const translations: Record<Language, TranslationSchema> = {
       plans: "Planos de Assinatura",
       method: "Simulação de ROI",
       blog: "Artigos & Insights",
+      clients: "Casos de Sucesso",
       cta: "Falar com Especialista"
     },
     hero: {
@@ -247,37 +249,37 @@ export const translations: Record<Language, TranslationSchema> = {
     verticalsSection: {
       tag: "SOLUÇÕES PERSONALIZADAS",
       heading: "Estratégia sob medida para dominar o seu setor.",
-      sub: "Adaptamos nossa assinatura de crescimento com foco nas necessidades específicas de atração e conversão da sua indústria.",
+      sub: "Adaptamos a nossa assinatura unificada de Site Premium, Produção de Conteúdo e Google Ads de acordo com as necessidades específicas de captação do seu nicho.",
       items: [
         {
           id: "varejo",
           title: "Varejo & E-commerce",
-          desc: "Lojas virtuais ultra rápidas que aumentam conversões de carrinho, aliadas a tráfego contínuo focado em atrair compradores reais."
+          desc: "Lojas virtuais ultra rápidas focadas em conversão, aliadas à produção recorrente de conteúdos persuasivos e campanhas semanais de Google Ads para atrair compradores qualificados."
         },
         {
           id: "saude",
           title: "Saúde, Médicos & Clínicas",
-          desc: "Landing pages de alta credibilidade, SEO local estratégico e campanhas de anúncios focadas na atração de pacientes particulares."
+          desc: "Landing pages de alta credibilidade com agendamento integrado, copywriting persuasivo focado em destacar autoridade e anúncios de Google Ads cirúrgicos para atração de pacientes particulares."
         },
         {
           id: "industria",
           title: "B2B & Indústrias",
-          desc: "Portais institucionais robustos, redação de artigos técnicos de profunda relevância e anúncios direcionados a tomadores de decisão."
+          desc: "Portais corporativos de alto nível, redação recorrente de artigos técnicos especializados com altíssima autoridade de SEO e campanhas assertivas de tráfego pago focadas em tomadores de decisão."
         },
         {
           id: "financas",
           title: "Serviços & Fintechs",
-          desc: "Sites corporativos blindados de alta performance, copywriting impecável de altíssima autoridade e funis focados em confiança."
+          desc: "Websites blindados de extrema velocidade, copywriting premium focado na geração contínua de confiança institucional e gestão contínua de Google Ads para captação de leads de alto ticket."
         },
         {
           id: "educacao",
           title: "Educação & Infoprodutos",
-          desc: "Funis de vendas agressivos com páginas de carregamento instantâneo, redação persuasiva e criativos de tráfego dinâmico para escala rápida."
+          desc: "Funis de vendas de carregamento instantâneo, copywriting de alta conversão para páginas de vendas, e gestão ágil de tráfego para atração contínua de novos alunos."
         },
         {
           id: "agro",
           title: "Agronegócio",
-          desc: "Criação de identidade visual imponente, presença digital premium e portais seguros para conectar sua marca com parceiros globais."
+          desc: "Identidade institucional de prestígio internacional, desenvolvimento de portais corporativos seguros, e campanhas focadas em posicionar sua marca frente a grandes investidores e parceiros globais."
         }
       ]
     },
@@ -502,6 +504,7 @@ export const translations: Record<Language, TranslationSchema> = {
       plans: "Subscription Plans",
       method: "Methodology & ROI",
       blog: "Blog",
+      clients: "Success Stories",
       cta: "Talk to Expert"
     },
     hero: {
@@ -599,37 +602,37 @@ export const translations: Record<Language, TranslationSchema> = {
     verticalsSection: {
       tag: "FOR YOUR BUSINESS",
       heading: "Tailored Marketing & Tech for your sector.",
-      sub: "We implement advanced marketing and smart IT services to streamline your operations, foster engagement, and steadily scale your market presence.",
+      sub: "We customize our unified subscription of Premium Website, Content Production, and Google Ads to match the exact client acquisition needs of your business niche.",
       items: [
         {
           id: "varejo",
           title: "Retail & E-commerce",
-          desc: "Lightning-fast online storefronts, advanced product page SEO, and automated marketing campaigns to capture buyer interest and scale sales."
+          desc: "Ultra-fast custom storefronts built for conversion, paired with persuasive content generation and continuous Google Ads to drive high-intent buyers."
         },
         {
           id: "saude",
           title: "Healthcare & Clinics",
-          desc: "State-of-the-art medical websites, strategic local SEO, and continuous patient booking aided by conversational AI schedulers."
+          desc: "High-credibility landing pages with appointment forms, authority-driven copywriting, and precise search campaigns to bring in private patients."
         },
         {
           id: "industria",
           title: "B2B & Manufacturing",
-          desc: "Robust corporate portals, targeted B2B organic traffic campaigns, and high-impact digital brochures catering to key decision-makers."
+          desc: "Elite corporate portals, recurring high-authority technical blog articles for SEO/AEO, and highly optimized search traffic targeting key industry decision-makers."
         },
         {
           id: "financas",
           title: "Services & Fintechs",
-          desc: "Elite corporate materials, hyper-secure web platforms, and specialized enterprise SEO mapping to build authority and trust."
+          desc: "Ultra-secure corporate websites, premium copywriting to build institutional trust, and continuous lead generation campaigns on Google Ads."
         },
         {
           id: "educacao",
           title: "Education & Courses",
-          desc: "High-converting sales pages, engaging marketing assets, persuasive copywriting, and AI tutors to answer pupil inquiries 24/7."
+          desc: "High-performance instant sales funnels, conversion copywriting for sales pages, and professional paid traffic management to scale student enrollment."
         },
         {
           id: "agro",
           title: "Agribusiness",
-          desc: "Bespoke corporate identity, global outreach platforms for exporters, and digital strategies establishing industry leadership."
+          desc: "Prestigious global brand presence, secure corporate portals, and strategic Google search marketing to connect your business with key global partners."
         }
       ]
     },

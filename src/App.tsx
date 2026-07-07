@@ -17,7 +17,6 @@ import { BlogPage } from './pages/BlogPage';
 import { FAQ } from './sections/FAQ';
 import { Scheduling } from './sections/Scheduling';
 import { Footer } from './components/Footer';
-import { Chatbot } from './components/Chatbot';
 import { Login } from './components/Login';
 import { Dashboard } from './components/Dashboard';
 import { BlogPostPage } from './pages/BlogPostPage';
@@ -167,9 +166,8 @@ export default function App() {
         </section>
       </main>
 
-      {/* Corporate Foot note and Chatbot Assistant */}
+      {/* Corporate Foot note */}
       <Footer lang={lang} />
-      <Chatbot lang={lang} />
     </div>
   );
 }

@@ -120,6 +120,7 @@ export const Metrics = ({ lang }: MetricsProps) => {
                     value={traffic}
                     onChange={(e) => setTraffic(Number(e.target.value))}
                     className="w-full accent-[#33BC65] bg-white/5 rounded-lg h-1 cursor-pointer"
+                    aria-label={lang === 'pt' ? 'Tráfego Mensal do Site' : 'Monthly Traffic'}
                   />
                   <div className="flex justify-between text-[10px] text-gray-500 font-mono">
                     <span>1k</span>
@@ -142,6 +143,7 @@ export const Metrics = ({ lang }: MetricsProps) => {
                     value={conversion}
                     onChange={(e) => setConversion(Number(e.target.value))}
                     className="w-full accent-[#33BC65] bg-white/5 rounded-lg h-1 cursor-pointer"
+                    aria-label={lang === 'pt' ? 'Taxa de Conversão Atual' : 'Current Conversion Rate'}
                   />
                   <div className="flex justify-between text-[10px] text-gray-500 font-mono">
                     <span>0.2%</span>
@@ -164,6 +166,7 @@ export const Metrics = ({ lang }: MetricsProps) => {
                     value={ticket}
                     onChange={(e) => setTicket(Number(e.target.value))}
                     className="w-full accent-[#33BC65] bg-white/5 rounded-lg h-1 cursor-pointer"
+                    aria-label={lang === 'pt' ? 'Ticket Médio de Clientes' : 'Average Client Value'}
                   />
                   <div className="flex justify-between text-[10px] text-gray-500 font-mono">
                     <span>R$ 100</span>

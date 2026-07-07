@@ -31,6 +31,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
         
         {/* Brand logo */}
         <button 
+          type="button"
           onClick={() => {
             if (window.location.pathname !== '/') {
               window.location.href = '/';
@@ -39,6 +40,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
             }
           }} 
           className="flex items-center gap-2 cursor-pointer text-left z-50 group"
+          aria-label="Vezzitech Home"
         >
           <VezzitechLogo className="text-[22px]" />
         </button>
@@ -46,27 +48,32 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
         {/* Nav list - Desktop */}
         <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-wider text-gray-400">
           <button 
+            type="button"
             onClick={() => scrollToSection('servicos')} 
             className="hover:text-[#33BC65] transition cursor-pointer">
             {t.nav.services}
           </button>
           <button 
+            type="button"
             onClick={() => scrollToSection('planos')} 
             className="hover:text-[#33BC65] text-[#33BC65]/90 font-semibold transition cursor-pointer border-b border-dashed border-[#33BC65]/40 pb-0.5">
             {t.nav.plans}
           </button>
           <button 
+            type="button"
             onClick={() => scrollToSection('consultoria')} 
             className="hover:text-[#33BC65] transition cursor-pointer flex items-center gap-1.5 text-[#33BC65]/95 font-bold hover:scale-105 duration-200">
             <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#33BC65]" />
             <span>{lang === 'pt' ? 'Mapeamento IA' : 'AI Map'}</span>
           </button>
           <button 
+            type="button"
             onClick={() => scrollToSection('metricas')} 
             className="hover:text-[#33BC65] transition cursor-pointer">
             {t.nav.method}
           </button>
           <button 
+            type="button"
             onClick={() => scrollToSection('blog')} 
             className="hover:text-[#33BC65] transition cursor-pointer">
             {t.nav.blog}
@@ -79,18 +86,23 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
           {/* Language selector - Desktop */}
           <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 h-9">
             <button 
+              type="button"
               onClick={() => setLang('pt')}
-              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'pt' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}>
+              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'pt' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}
+              aria-label="Mudar idioma para Português">
               BR
             </button>
             <button 
+              type="button"
               onClick={() => setLang('en')}
-              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'en' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}>
+              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'en' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}
+              aria-label="Change language to English">
               EN
             </button>
           </div>
  
           <button 
+            type="button"
             onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0kCxWH9YNz5VRbo1Fe-VURvK9FOgYkNpUoCNBk9a_q2ywucr3S5r0zzTewhmAmePmi0V09CZjw', '_blank')}
             className="gradient-orange px-6 py-2.5 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#33BC65]/10 hover:scale-[1.03] active:scale-95 transition cursor-pointer">
             {t.nav.cta}
@@ -102,18 +114,23 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
           {/* Mobile Language selector inside trigger bar */}
           <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 h-9">
             <button 
+              type="button"
               onClick={() => setLang('pt')}
-              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}>
+              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}
+              aria-label="Idioma Português">
               BR
             </button>
             <button 
+              type="button"
               onClick={() => setLang('en')}
-              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}>
+              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}
+              aria-label="Language English">
               EN
             </button>
           </div>
  
           <button 
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 text-white hover:text-[#33BC65] transition-colors focus:outline-none cursor-pointer z-50 mr-0.5"
             aria-label="Toggle menu"
@@ -138,12 +155,14 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
               {/* Divider lines / items */}
               <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest text-[#33BC65]/90 w-full">
                 <button 
+                  type="button"
                   onClick={() => scrollToSection('servicos')} 
                   className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
                   <span>{t.nav.services}</span>
                   <span className="text-[10px] font-mono opacity-40">// 01</span>
                 </button>
                 <button 
+                  type="button"
                   onClick={() => scrollToSection('planos')} 
                   className="py-2.5 text-left border-b border-white/5 text-[#33BC65] hover:text-white transition flex justify-between items-center cursor-pointer">
                   <span>{t.nav.plans}</span>
@@ -151,6 +170,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
                 </button>
 
                 <button 
+                  type="button"
                   onClick={() => scrollToSection('consultoria')} 
                   className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-[#33BC65]">
                   <span className="flex items-center gap-1.5">
@@ -160,12 +180,14 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
                   <span className="text-[10px] font-mono opacity-40">// 03</span>
                 </button>
                 <button 
+                  type="button"
                   onClick={() => scrollToSection('metricas')} 
                   className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
                   <span>{t.nav.method}</span>
                   <span className="text-[10px] font-mono opacity-40">// 04</span>
                 </button>
                 <button 
+                  type="button"
                   onClick={() => scrollToSection('blog')} 
                   className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
                   <span>{t.nav.blog}</span>
@@ -175,6 +197,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
 
               {/* Mobile CTA */}
               <button 
+                type="button"
                 onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0kCxWH9YNz5VRbo1Fe-VURvK9FOgYkNpUoCNBk9a_q2ywucr3S5r0zzTewhmAmePmi0V09CZjw', '_blank')}
                 className="gradient-orange py-4 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#33BC65]/10 flex items-center justify-center gap-2 cursor-pointer mt-2 w-full">
                 <Calendar className="w-4 h-4" />
@@ -184,13 +207,17 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
               {/* Duplicate Language selector inside mobile drawer without flags and perfectly styled as capsule */}
               <div className="flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-full p-1 mt-4 max-w-[200px] mx-auto w-full">
                 <button 
+                  type="button"
                   onClick={() => setLang('pt')}
-                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
+                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}
+                  aria-label="Selecionar Português">
                   BR
                 </button>
                 <button 
+                  type="button"
                   onClick={() => setLang('en')}
-                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}>
+                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}
+                  aria-label="Select English">
                   EN
                 </button>
               </div>

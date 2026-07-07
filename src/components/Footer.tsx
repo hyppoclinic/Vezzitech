@@ -30,13 +30,31 @@ export const Footer = ({ lang }: FooterProps) => {
             {t.footerSection.desc}
           </p>
           <div className="flex gap-4">
-            <a href="https://linkedin.com/company/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/30 transition">
+            <a 
+              href="https://linkedin.com/company/vezzitech" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/30 transition"
+              aria-label="LinkedIn da Vezzitech"
+            >
               <FaLinkedin className="w-4 h-4" />
             </a>
-            <a href="https://instagram.com/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 hover:border-pink-500/30 transition">
+            <a 
+              href="https://instagram.com/vezzitech" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 hover:border-pink-500/30 transition"
+              aria-label="Instagram da Vezzitech"
+            >
               <FaInstagram className="w-4 h-4" />
             </a>
-            <a href="https://twitter.com/vezzitech" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-sky-400 hover:bg-sky-400/10 hover:border-sky-400/30 transition">
+            <a 
+              href="https://twitter.com/vezzitech" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-sky-400 hover:bg-sky-400/10 hover:border-sky-400/30 transition"
+              aria-label="Twitter da Vezzitech"
+            >
               <FaTwitter className="w-4 h-4" />
             </a>
           </div>
@@ -46,10 +64,10 @@ export const Footer = ({ lang }: FooterProps) => {
           <div>
             <h4 className="text-xs font-bold text-[#33BC65] font-mono tracking-wider uppercase mb-4">{t.footerSection.navTitle}</h4>
             <ul className="space-y-2.5 text-xs text-gray-400 font-sans font-semibold">
-              <li><button onClick={() => scrollToSection('servicos')} className="hover:text-white transition cursor-pointer">{t.nav.services}</button></li>
-              <li><button onClick={() => scrollToSection('google')} className="hover:text-white transition cursor-pointer">{t.nav.ecosystem}</button></li>
-              <li><button onClick={() => scrollToSection('metricas')} className="hover:text-[#33BC65] transition cursor-pointer text-[#33BC65] font-bold">MEU RESULTADO // ROI</button></li>
-              <li><button onClick={() => scrollToSection('blog')} className="hover:text-white transition cursor-pointer">{t.nav.blog}</button></li>
+              <li><button type="button" onClick={() => scrollToSection('servicos')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.services}`}>{t.nav.services}</button></li>
+              <li><button type="button" onClick={() => scrollToSection('google')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.ecosystem}`}>{t.nav.ecosystem}</button></li>
+              <li><button type="button" onClick={() => scrollToSection('metricas')} className="hover:text-[#33BC65] transition cursor-pointer text-[#33BC65] font-bold" aria-label="Ir para seção de retorno de investimento">MEU RESULTADO // ROI</button></li>
+              <li><button type="button" onClick={() => scrollToSection('blog')} className="hover:text-white transition cursor-pointer" aria-label={`Ir para ${t.nav.blog}`}>{t.nav.blog}</button></li>
             </ul>
           </div>
 

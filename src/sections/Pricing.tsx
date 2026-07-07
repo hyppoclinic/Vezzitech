@@ -126,6 +126,7 @@ export const Pricing = ({ lang }: PricingProps) => {
 
                   {/* Call To Action Button */}
                   <button
+                    type="button"
                     onClick={() => scrollToScheduling(plan.name)}
                     className={`w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 ${
                       isPopular 

@@ -20,6 +20,22 @@
       "properties": {
         "data": { "type": "array", "description": "Array of names, Google Clicks, AI Citations and CTR numbers" }
       }
+    },
+    "Case": {
+      "title": "Client Case",
+      "description": "A success story or portfolio entry showing a real client website screenshot and results",
+      "type": "object",
+      "required": ["name", "niche", "tagline", "description", "createdAt"],
+      "properties": {
+        "name": { "type": "string", "description": "The name of the client" },
+        "niche": { "type": "string", "description": "The client niche/industry" },
+        "tagline": { "type": "string", "description": "Brief outcome tagline" },
+        "description": { "type": "string", "description": "A description of the project" },
+        "metrics": { "type": "array", "description": "Array of key-value metrics like ROI, Setup Time" },
+        "deliverables": { "type": "array", "description": "List of delivered services" },
+        "printUrl": { "type": "string", "description": "The base64 or URL of the homepage print/screenshot" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of case creation" }
+      }
     }
   },
   "firestore": {
@@ -30,6 +46,10 @@
     "/analytics_metrics/{id}": {
       "schema": { "$ref": "#/entities/AnalyticsMetrics" },
       "description": "Historical performance matrices"
+    },
+    "/cases/{caseId}": {
+      "schema": { "$ref": "#/entities/Case" },
+      "description": "Collection of client cases"
     }
   }
 }

@@ -60,6 +60,7 @@ export const FAQ = ({ lang }: FAQProps) => {
               key={index} 
               className="bg-glass border-glass rounded-2xl overflow-hidden transition-all duration-300">
               <button 
+                type="button"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${index}`}

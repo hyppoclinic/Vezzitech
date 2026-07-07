@@ -207,13 +207,11 @@ export const Scheduling = ({ lang }: SchedulingProps) => {
                 </div>
               </div>
 
-              <a
-                href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0kCxWH9YNz5VRbo1Fe-VURvK9FOgYkNpUoCNBk9a_q2ywucr3S5r0zzTewhmAmePmi0V09CZjw"
-                target="_blank"
-                rel="noreferrer"
+              <button
+                type="submit"
                 className="w-full py-4 gradient-orange text-black font-bold text-sm tracking-widest uppercase rounded-xl hover:scale-[1.01] transition shadow-lg shadow-[#33BC65]/10 flex items-center justify-center gap-2 cursor-pointer">
-                Agendar no Calendário <ChevronRight className="w-4" />
-              </a>
+                {lang === 'pt' ? 'Confirmar Agendamento' : 'Confirm Appointment'} <ChevronRight className="w-4" />
+              </button>
             </form>
           )}
         </div>

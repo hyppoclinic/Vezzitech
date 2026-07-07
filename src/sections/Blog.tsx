@@ -110,17 +110,25 @@ export const Blog = ({ lang, onSelectPost }: BlogProps) => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map(post => (
-              <a 
+              <div 
+                role="button"
+                tabIndex={0}
                 key={post.id} 
-                href="javascript:void(0)"
-                onClick={(e) => { e.preventDefault(); onSelectPost(post.slug); }}
-                className="group bg-white/[0.02] border border-white/5 hover:border-[#33BC65]/30 p-6 rounded-2xl flex flex-col transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
+                onClick={() => onSelectPost(post.slug)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onSelectPost(post.slug);
+                  }
+                }}
+                className="text-left w-full h-full group bg-white/[0.02] border border-white/5 hover:border-[#33BC65]/30 p-6 rounded-2xl flex flex-col transition-all duration-300 transform hover:-translate-y-1 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#33BC65]"
+                aria-label={lang === 'pt' ? `Ler artigo: ${post.title}` : `Read article: ${post.title}`}
               >
                 {post.imageUrl ? (
-                  <div className="overflow-hidden rounded-xl h-48 mb-6 border border-white/10 relative">
+                  <div className="overflow-hidden rounded-xl h-48 w-full mb-6 border border-white/10 relative">
                     <img 
                       src={post.imageUrl} 
-                      alt="" 
+                      alt={post.title} 
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -130,7 +138,7 @@ export const Blog = ({ lang, onSelectPost }: BlogProps) => {
                     </div>
                   </div>
                 ) : (
-                  <div className="bg-white/5 h-48 rounded-xl mb-6 border border-white/5 flex items-center justify-center text-gray-500 relative">
+                  <div className="bg-white/5 h-48 w-full rounded-xl mb-6 border border-white/5 flex items-center justify-center text-gray-500 relative">
                     <FileTextIcon size={32} className="text-white/20" />
                     <div className="absolute top-3 left-3 bg-[#070707]/80 backdrop-blur-sm text-xs px-2.5 py-1 rounded-lg text-gray-300 border border-white/5 flex items-center gap-1">
                       <Clock size={12} className="text-[#33BC65]" />
@@ -139,7 +147,7 @@ export const Blog = ({ lang, onSelectPost }: BlogProps) => {
                   </div>
                 )}
 
-                <div className="flex-grow flex flex-col justify-between">
+                <div className="flex-grow flex flex-col justify-between w-full">
                   <div>
                     <span className="text-[10px] uppercase font-mono tracking-wider text-emerald-400 font-semibold">
                       ENGINEERING INSIGHTS
@@ -152,38 +160,44 @@ export const Blog = ({ lang, onSelectPost }: BlogProps) => {
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-white/5 flex justify-between items-center mt-auto">
+                  <div className="pt-4 border-t border-white/5 flex justify-between items-center mt-auto w-full">
                     <span className="text-xs text-[#33BC65] uppercase tracking-wider font-extrabold flex items-center gap-1 group-hover:gap-2 transition-all">
                       {t.blogSection.readMore} →
                     </span>
 
                     {/* Mini Quick Share Toolbar */}
-                    <div className="flex items-center gap-2" onClick={(e) => e.preventDefault()}>
+                    <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                       <button 
+                        type="button"
                         onClick={(e) => openShareWindow('linkedin', post, e)}
                         className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-all"
                         title="Compartilhar no LinkedIn"
+                        aria-label="Compartilhar no LinkedIn"
                       >
                         <FaLinkedin size={14} />
                       </button>
                       <button 
+                        type="button"
                         onClick={(e) => openShareWindow('twitter', post, e)}
                         className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-all"
                         title="Compartilhar no X (Twitter)"
+                        aria-label="Compartilhar no X (Twitter)"
                       >
                         <FaTwitter size={14} />
                       </button>
                       <button 
+                        type="button"
                         onClick={(e) => handleCopyLink(post, e)}
                         className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-all relative"
                         title="Copiar Link"
+                        aria-label="Copiar Link"
                       >
                         {copiedId === post.id ? <Check size={14} className="text-emerald-400" /> : <Link2 size={14} />}
                       </button>
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         )}

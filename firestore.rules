@@ -16,6 +16,20 @@ service cloud.firestore {
              (!('imageUrl' in data) || data.imageUrl is string);
     }
 
+    function isValidCase(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.niche is string && data.niche.size() > 0 && data.niche.size() <= 100 &&
+             data.tagline is string && data.tagline.size() > 0 && data.tagline.size() <= 200 &&
+             data.description is string && data.description.size() > 0 &&
+             data.createdAt is timestamp &&
+             (!('printUrl' in data) || data.printUrl is string);
+    }
+
+    match /cases/{caseId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
     match /posts/{postId} {
       allow read: if true;
       allow create: if isSignedIn() && request.resource.data.author == request.auth.uid;
