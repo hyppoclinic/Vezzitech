@@ -33,6 +33,10 @@ export interface TranslationSchema {
     tag: string;
     heading: string;
     items: Array<{ num: string; title: string; desc: string }>;
+    aiLayer: {
+      title: string;
+      desc: string;
+    };
   };
   verticalsSection: {
     tag: string;
@@ -156,9 +160,9 @@ export const translations: Record<Language, TranslationSchema> = {
       cta: "Falar com Especialista"
     },
     hero: {
-      badge: "Resolvemos o funil inteiro — quem te acha, quem entra no site, quem vira cliente",
-      headline: "Seu site converte, aparece no Google e nas respostas de IA — e ainda faz seu tráfego pago render mais.",
-      subheadline: "Tudo sob um único parceiro. Site de alta performance, SEO/AEO estratégico e gestão de campanhas — com prazo e resultado combinados desde o primeiro contrato.",
+      badge: "Seu funil inteiro sob medida — Do tráfego à conversão",
+      headline: "Seu site converte, domina o Google e as respostas de IA.",
+      subheadline: "Site premium de alta performance, SEO estratégico e tráfego pago com prazo e resultado combinados em contrato.",
       ctaPrimary: "Simular Retorno da Minha Empresa",
       ctaSecondary: "Ver Planos e Preços",
       microcopy: "+120% de tráfego orgânico médio · 3,5x mais conversão · Site carregando em menos de 1 segundo",
@@ -238,13 +242,12 @@ export const translations: Record<Language, TranslationSchema> = {
           num: "03",
           title: "Campanhas que Não Queimam Verba",
           desc: "Gestão de tráfego pago conectada ao site e ao conteúdo — não um serviço isolado. Como a landing page já converte melhor e a copy já é persuasiva, o custo por lead cai e o orçamento rende mais, com o mesmo investimento."
-        },
-        {
-          num: "04",
-          title: "Agentes de IA",
-          desc: "Chatbots e automações que qualificam lead 24h, atendem dúvida recorrente e passam pro seu time só quem já está pronto pra comprar. Potencializa os três pilares acima, sem substituir nenhum deles."
         }
-      ]
+      ],
+      aiLayer: {
+        title: "Camada transversal — Agentes de IA",
+        desc: "Chatbots e automações que qualificam lead 24h, atendem dúvida recorrente e passam pro seu time só quem já está pronto pra comprar. Potencializa os três pilares acima, sem substituir nenhum deles."
+      }
     },
     verticalsSection: {
       tag: "PARA O SEU NEGÓCIO",
@@ -516,9 +519,9 @@ export const translations: Record<Language, TranslationSchema> = {
       cta: "Talk to Expert"
     },
     hero: {
-      badge: "ELITE TECH & DIGITAL MARKETING US",
-      headline: "Accelerated growth powered by Artificial Intelligence.",
-      subheadline: "We combine high-conversion website development, advanced search engine optimization (SEO/AEO), high-performing marketing materials, and autonomous AI agents to drive sales and modernize your IT.",
+      badge: "Your entire funnel covered — From traffic to conversion",
+      headline: "Websites that convert, ranking high on Google & AI engines.",
+      subheadline: "Premium high-performance websites, strategic SEO, and paid traffic with guaranteed results in contract.",
       ctaPrimary: "Start Now",
       ctaSecondary: "View Ecosystem",
       microcopy: "+120% avg organic traffic · 3.5x higher conversion · Sub-second page loads",
@@ -600,13 +603,12 @@ export const translations: Record<Language, TranslationSchema> = {
           num: "03",
           title: "SEO & AEO Strategy",
           desc: "High-authority organic positioning on Google search, combined with advanced citation optimization to be the top answer in AI models like ChatGPT."
-        },
-        {
-          num: "04",
-          title: "Google Ads Management",
-          desc: "Professional setup, structuring, and weekly optimization of paid media campaigns directly aimed at capturing highly-qualified sales leads."
         }
-      ]
+      ],
+      aiLayer: {
+        title: "Transversal Layer — AI Agents",
+        desc: "Chatbots and automations that qualify leads 24/7, answer common questions, and pass only ready-to-buy customers to your team. Enhances the three pillars above without replacing any of them."
+      }
     },
     verticalsSection: {
       tag: "FOR YOUR BUSINESS",

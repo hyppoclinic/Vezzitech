@@ -1,4 +1,4 @@
-import { Play, LineChart, Code, Target } from 'lucide-react';
+import { Play, LineChart, Code, Target, Rocket } from 'lucide-react';
 import { translations, Language } from '../translations';
 
 interface ProcessProps {
@@ -9,10 +9,10 @@ export const Process = ({ lang }: ProcessProps) => {
   const t = translations[lang];
 
   const icons = [
-    <Target key="1" className="w-6 h-6 text-[#12DCEF]" />,
-    <Code key="2" className="w-6 h-6 text-[#33BC65]" />,
-    <Play key="3" className="w-6 h-6 text-[#12DCEF]" />,
-    <LineChart key="4" className="w-6 h-6 text-[#33BC65]" />
+    <Target key="1" strokeWidth={1.5} className="w-6 h-6 text-[#33BC65]" />,
+    <Code key="2" strokeWidth={1.5} className="w-6 h-6 text-[#33BC65]" />,
+    <Rocket key="3" strokeWidth={1.5} className="w-6 h-6 text-[#33BC65]" />,
+    <LineChart key="4" strokeWidth={1.5} className="w-6 h-6 text-[#33BC65]" />
   ];
 
   return (

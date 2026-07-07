@@ -6,7 +6,6 @@
 import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './sections/Hero';
-import { Services } from './sections/Services';
 import { ValueProposition } from './sections/ValueProposition';
 import { Process } from './sections/Process';
 import { Pricing } from './sections/Pricing';
@@ -104,9 +103,6 @@ export default function App() {
         
         {/* Market Verticals / Industries (Immediate relevance right under Hero) */}
         <Verticals lang={lang} />
-        
-        {/* Our Services */}
-        <Services lang={lang} />
         
         {/* Operational steps */}
         <Process lang={lang} />

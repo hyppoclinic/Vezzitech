@@ -49,7 +49,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
         <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-wider text-gray-400">
           <button 
             type="button"
-            onClick={() => scrollToSection('servicos')} 
+            onClick={() => scrollToSection('verticais')} 
             className="hover:text-[#33BC65] transition cursor-pointer">
             {t.nav.services}
           </button>
@@ -156,7 +156,7 @@ export const Header = ({ lang, setLang }: HeaderProps) => {
               <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest text-[#33BC65]/90 w-full">
                 <button 
                   type="button"
-                  onClick={() => scrollToSection('servicos')} 
+                  onClick={() => scrollToSection('verticais')} 
                   className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer">
                   <span>{t.nav.services}</span>
                   <span className="text-[10px] font-mono opacity-40">// 01</span>
