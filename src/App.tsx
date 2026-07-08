@@ -170,12 +170,8 @@ export default function App() {
               <BorderBeam size={250} duration={12} delay={9} colorFrom="#33BC65" colorTo="#12DCEF" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#33BC65]/10 rounded-full blur-2xl pointer-events-none"></div>
               
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight uppercase font-heading">
-                {t.conversionBanner.heading.split("escala de IA")[0]}
-                <span className="text-[#33BC65]">
-                  {lang === 'pt' ? 'escala de IA' : 'production AI'}
-                </span>
-                {t.conversionBanner.heading.split("escala de IA")[1]}
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight uppercase font-heading">
+                {t.conversionBanner.heading}
               </h2>
               <p className="text-gray-400 mb-10 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
                 {t.conversionBanner.sub}

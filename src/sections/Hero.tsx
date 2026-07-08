@@ -135,14 +135,6 @@ export const Hero = ({ lang }: HeroProps) => {
         <BlurFade delay={0.4} inView>
           <div className="flex flex-col items-center gap-6">
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#consultoria" className="inline-block">
-                <ShimmerButton className="shadow-2xl hover:scale-105 transition-transform" shimmerColor="#12DCEF" background="#ffffff" borderRadius="0.75rem">
-                  <span className="text-black font-semibold flex items-center gap-2 text-sm px-2">
-                    {t.hero.ctaPrimary}
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </span>
-                </ShimmerButton>
-              </a>
               <a 
                 href="#planos" 
                 className="px-8 py-3.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold rounded-xl transition duration-300 text-sm flex items-center justify-center">
