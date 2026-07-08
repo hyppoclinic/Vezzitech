@@ -56,9 +56,15 @@ export const Hero = ({ lang }: HeroProps) => {
   return (
     <section id="inicio" aria-label="Introdução e Funil" className="relative pt-32 pb-16 md:pt-40 md:pb-24 px-6 overflow-hidden bg-[#070707]">
       <Meteors number={25} />
-      {/* Absolute Ambient Background Lights & Vector Grid Aesthetics */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#33BC65]/10 rounded-full blur-[150px] pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/[0.03] rounded-full blur-[180px] pointer-events-none"></div>
+      {/* Absolute Ambient Background Lights & Vector Grid Aesthetics matching the uploaded aurora image */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[70%] rounded-full bg-[#12DCEF] opacity-[0.25] mix-blend-screen blur-[120px] animate-blob"></div>
+        <div className="absolute top-[10%] right-[-10%] w-[60%] h-[80%] rounded-full bg-[#33BC65] opacity-[0.2] mix-blend-screen blur-[150px] animate-blob" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-[-20%] left-[20%] w-[50%] h-[60%] rounded-full bg-[#0d9488] opacity-[0.2] mix-blend-screen blur-[120px] animate-blob" style={{ animationDelay: '4s' }}></div>
+        
+        {/* Soft Noise Texture Overlay for organic feel */}
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-screen" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+      </div>
 
       {/* Decorative Blueprint Vector Line Matrix (Inspired by Arounda) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
