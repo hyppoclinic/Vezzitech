@@ -6,7 +6,8 @@ export const VezzitechLogo = ({ className = "" }: { className?: string }) => (
     <img 
       src="/logo.png" 
       alt="Vezzitech Logo" 
-      className="h-5 md:h-6 w-auto object-contain"
+      className="h-6 md:h-7 w-auto object-contain"
+      referrerPolicy="no-referrer"
     />
   </span>
 );

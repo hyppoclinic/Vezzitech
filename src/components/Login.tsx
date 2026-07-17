@@ -1,40 +1,41 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = '/dashboard'; 
-    } catch (err: any) {
-      if (err.code === 'auth/operation-not-allowed') {
-        setError('O login por E-mail/Senha não está ativado no console do Firebase. Por favor, use o botão "Entrar com Google" abaixo ou ative esse provedor no console.');
+      if (isRegister) {
+        await createUserWithEmailAndPassword(auth, email, password);
+        setSuccess('Conta criada com sucesso! Redirecionando...');
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 1500);
       } else {
-        setError(err.message || 'Erro ao realizar login.');
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = '/dashboard'; 
       }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    setError('');
-    setLoading(true);
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-      window.location.href = '/dashboard';
     } catch (err: any) {
-      setError(err.message || 'Erro ao fazer login com o Google.');
+      if (err.code === 'auth/invalid-credential') {
+        setError('E-mail ou senha incorretos. Certifique-se de que o usuário existe.');
+      } else if (err.code === 'auth/email-already-in-use') {
+        setError('Este e-mail já está em uso.');
+      } else if (err.code === 'auth/weak-password') {
+        setError('A senha deve ter pelo menos 6 caracteres.');
+      } else {
+        setError(err.message || 'Erro ao processar requisição.');
+      }
     } finally {
       setLoading(false);
     }
@@ -50,46 +51,11 @@ export const Login = () => {
         <h2 className="text-2xl font-bold mb-2 tracking-tight text-center bg-[linear-gradient(135deg,#33BC65_0%,#12DCEF_100%)] bg-clip-text text-transparent">
           Vezzitech Admin
         </h2>
-        <p className="text-sm text-gray-400 text-center mb-6">Painel de Administração do Blog</p>
+        <p className="text-sm text-gray-400 text-center mb-6">
+          {isRegister ? 'Criar nova conta de administrador' : 'Painel de Administração do Blog'}
+        </p>
 
-        <div className="space-y-4">
-          <button 
-            onClick={handleGoogleLogin}
-            disabled={loading}
-            className="w-full bg-white hover:bg-white/90 text-black font-bold py-3 px-4 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3 text-sm shadow-xl"
-          >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
-              <path
-                fill="#4285F4"
-                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-              />
-              <path
-                fill="#34A853"
-                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-              />
-              <path
-                fill="#FBBC05"
-                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
-              />
-              <path
-                fill="#EA4335"
-                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
-              />
-            </svg>
-            Entrar com Google
-          </button>
-        </div>
-
-        <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t border-white/10"></span>
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-[#070707] px-2 text-gray-400">Ou use e-mail/senha</span>
-          </div>
-        </div>
-
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-xs font-semibold text-gray-300 mb-1 uppercase tracking-wider">E-mail</label>
             <input 
@@ -119,18 +85,33 @@ export const Login = () => {
             </div>
           )}
 
+          {success && (
+            <div className="text-emerald-400 text-sm bg-emerald-500/10 border border-emerald-500/20 p-3 rounded-xl leading-relaxed">
+              {success}
+            </div>
+          )}
+
           <button 
             type="submit" 
             disabled={loading}
             className="w-full bg-[linear-gradient(135deg,#33BC65_0%,#12DCEF_100%)] hover:opacity-90 active:scale-[0.98] text-black font-bold py-3 px-4 rounded-xl transition-all shadow-lg shadow-[#33BC65]/10 flex justify-center items-center gap-2"
           >
-            {loading ? 'Carregando...' : 'Entrar com E-mail'}
+            {loading ? 'Carregando...' : (isRegister ? 'Criar Conta' : 'Entrar no Painel')}
           </button>
         </form>
 
-        <p className="text-center text-xs text-gray-500 mt-6 leading-relaxed">
-          O login com Google é ativado automaticamente pelas credenciais de desenvolvimento da plataforma.
-        </p>
+        <div className="mt-6 text-center">
+          <button 
+            onClick={() => {
+              setIsRegister(!isRegister);
+              setError('');
+              setSuccess('');
+            }}
+            className="text-xs text-[#33BC65] hover:underline"
+          >
+            {isRegister ? 'Já possui uma conta? Faça login' : 'Não tem conta? Registre-se aqui'}
+          </button>
+        </div>
       </div>
     </div>
   );

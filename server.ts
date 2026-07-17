@@ -7,7 +7,7 @@ import { google } from "googleapis";
 
 async function startServer() {
   const app = express();
-  const PORT = parseInt(process.env.PORT || '3000', 10);
+  const PORT = 3000;
 
   // Middleware for parsing JSON requests with increased limit to support larger payloads
   app.use(express.json({ limit: "15mb" }));
