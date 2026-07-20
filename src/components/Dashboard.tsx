@@ -40,6 +40,11 @@ export const Dashboard = () => {
   const [postImage, setPostImage] = useState('');
   const [postContent, setPostContent] = useState('');
 
+  // AI Blog Assistant States
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [generatingArticle, setGeneratingArticle] = useState(false);
+  const [generatingImage, setGeneratingImage] = useState(false);
+
   // Lead Form State
   const [leadName, setLeadName] = useState('');
   const [leadCompany, setLeadCompany] = useState('');
@@ -261,7 +266,69 @@ export const Dashboard = () => {
     setPostSlug('');
     setPostContent('');
     setPostImage('');
+    setAiPrompt('');
     setIsBlogEditorOpen(true);
+  };
+
+  const handleGenerateArticleWithAI = async () => {
+    if (!aiPrompt.trim()) return;
+    setGeneratingArticle(true);
+    showStatus('success', 'Iniciando redação do artigo com Inteligência Artificial...');
+    try {
+      const res = await fetch('/api/gemini/generate-article', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: aiPrompt, lang: 'pt' })
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Erro ao gerar artigo.');
+      }
+      const data = await res.json();
+      if (data.title) setPostTitle(data.title);
+      if (data.slug) setPostSlug(data.slug);
+      if (data.content) setPostContent(data.content);
+      showStatus('success', 'Artigo redigido e formatado com sucesso! Revise os campos abaixo.');
+    } catch (err: any) {
+      console.error(err);
+      showStatus('error', err.message || 'Falha ao gerar o artigo com IA.');
+    } finally {
+      setGeneratingArticle(false);
+    }
+  };
+
+  const handleGenerateImageWithAI = async () => {
+    if (!postTitle.trim()) {
+      showStatus('error', 'Por favor, gere ou digite um título primeiro.');
+      return;
+    }
+    setGeneratingImage(true);
+    showStatus('success', 'Gerando imagem de capa exclusiva com IA (Nano Banana)...');
+    try {
+      const res = await fetch('/api/gemini/generate-article-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: postTitle, lang: 'pt' })
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Erro ao gerar imagem.');
+      }
+      const data = await res.json();
+      if (data.imageUrl) {
+        setPostImage(data.imageUrl);
+        if (data.isGenerated) {
+          showStatus('success', 'Imagem de capa criada com sucesso pelo modelo Nano Banana!');
+        } else {
+          showStatus('success', 'Imagem de capa selecionada com sucesso!');
+        }
+      }
+    } catch (err: any) {
+      console.error(err);
+      showStatus('error', err.message || 'Falha ao obter imagem de capa.');
+    } finally {
+      setGeneratingImage(false);
+    }
   };
 
   if (!user) {
@@ -590,11 +657,74 @@ export const Dashboard = () => {
                       </div>
                     ))}
                     {posts.length === 0 && <div className="col-span-full p-8 text-center text-gray-500">Nenhum artigo publicado.</div>}
-                  </div>
-                </>
-              ) : (
-                <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
+                  </div>                </>              ) : (                <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
                   <h2 className="text-xl font-bold mb-6">{editingPost ? 'Editar Artigo' : 'Novo Artigo'}</h2>
+                  
+                  {/* AI Blog Assistant Panel */}
+                  <div className="bg-gradient-to-br from-emerald-500/10 via-emerald-500/[0.02] to-transparent border border-emerald-500/20 p-5 rounded-2xl mb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Sparkles className="w-5 h-5 text-emerald-400 animate-pulse shrink-0" />
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wider">Copiloto de Conteúdo IA</h3>
+                    </div>
+                    <p className="text-xs text-gray-400 mb-4 leading-relaxed">
+                      Digite o tema ou assunto desejado e clique em <b>Gerar Artigo</b> para redigir instantaneamente um título, slug amigável e conteúdo em Markdown otimizado para SEO e AEO. Em seguida, clique em <b>Gerar Capa com IA</b> para criar uma imagem exclusiva com Nano Banana.
+                    </p>
+                    
+                    <div className="flex flex-col md:flex-row gap-3">
+                      <input 
+                        type="text" 
+                        placeholder="Ex: Como integrar o WhatsApp API com o CRM para triplicar vendas"
+                        value={aiPrompt}
+                        onChange={(e) => setAiPrompt(e.target.value)}
+                        className="flex-1 bg-white/5 border border-white/10 p-3 rounded-xl focus:border-[#33BC65] outline-none text-sm placeholder:text-gray-600 text-white"
+                      />
+                      <button
+                        type="button"
+                        disabled={generatingArticle || !aiPrompt.trim()}
+                        onClick={handleGenerateArticleWithAI}
+                        className="bg-[#33BC65] hover:opacity-95 disabled:opacity-50 text-black font-extrabold px-6 py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+                      >
+                        {generatingArticle ? (
+                          <>
+                            <div className="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                            <span>Escrevendo Artigo...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Sparkles size={14} />
+                            <span>Gerar Artigo com IA</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Image Generation Section */}
+                    <div className="mt-4 pt-4 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div className="max-w-md">
+                        <h4 className="text-xs font-bold text-gray-300">Design da Capa (Nano Banana)</h4>
+                        <p className="text-[11px] text-gray-500 leading-normal">Crie uma arte digital 16:9 de alta fidelidade sincronizada com o título do artigo atual.</p>
+                      </div>
+                      <button
+                        type="button"
+                        disabled={generatingImage || !postTitle.trim()}
+                        onClick={handleGenerateImageWithAI}
+                        className="bg-white/5 hover:bg-white/10 border border-white/10 text-white disabled:opacity-40 font-semibold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0"
+                      >
+                        {generatingImage ? (
+                          <>
+                            <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            <span>Gerando Arte...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Upload size={14} className="text-emerald-400" />
+                            <span>Gerar Capa com IA</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
                   <form onSubmit={handleSavePost} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
@@ -608,7 +738,14 @@ export const Dashboard = () => {
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-gray-400 mb-1 block">URL da Imagem de Capa</label>
-                      <input type="url" value={postImage} onChange={(e) => setPostImage(e.target.value)} className="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:border-[#33BC65] outline-none text-sm" />
+                      <div className="flex gap-2">
+                        <input type="url" value={postImage} onChange={(e) => setPostImage(e.target.value)} className="flex-1 bg-white/5 border border-white/10 p-3 rounded-xl focus:border-[#33BC65] outline-none text-sm" />
+                        {postImage && (
+                          <div className="w-12 h-12 rounded-lg overflow-hidden border border-white/10 shrink-0 bg-neutral-900">
+                            <img src={postImage} alt="Capa" className="w-full h-full object-cover" />
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-gray-400 mb-1 block">Conteúdo (Markdown)</label>

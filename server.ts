@@ -5,6 +5,46 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import { google } from "googleapis";
 
+// Helper function to handle content generation with retries and fallback for stability against 503 error
+async function generateContentWithRetryAndFallback(ai: any, params: any, maxRetries = 2) {
+  let attempt = 0;
+  while (attempt <= maxRetries) {
+    try {
+      return await ai.models.generateContent(params);
+    } catch (error: any) {
+      const errorMessage = error?.message || String(error);
+      console.warn(`[AI Error] Attempt ${attempt} failed:`, errorMessage);
+      
+      const isUnavailable = errorMessage.includes("503") || 
+                            errorMessage.includes("UNAVAILABLE") || 
+                            errorMessage.includes("high demand") ||
+                            error?.status === 503;
+                            
+      if (isUnavailable && attempt < maxRetries) {
+        attempt++;
+        const delay = attempt * 1500;
+        console.log(`[AI Retry] Waiting ${delay}ms before retrying (attempt ${attempt} of ${maxRetries})...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        continue;
+      }
+      
+      // Fallback from gemini-3.5-flash to gemini-3.1-flash-lite on any persistent error
+      if (params.model === "gemini-3.5-flash") {
+        console.log("[AI Fallback] Falling back from gemini-3.5-flash to gemini-3.1-flash-lite...");
+        try {
+          const fallbackParams = { ...params, model: "gemini-3.1-flash-lite" };
+          return await ai.models.generateContent(fallbackParams);
+        } catch (fallbackError: any) {
+          console.error("[AI Fallback] Fallback failed as well:", fallbackError?.message || fallbackError);
+          throw fallbackError;
+        }
+      }
+      
+      throw error;
+    }
+  }
+}
+
 async function startServer() {
   const app = express();
   const PORT = 3000;
@@ -68,7 +108,7 @@ async function startServer() {
         - Fase 5: Integração Global de Escala & BigQuery (Enterprise Scale)
       `;
 
-      const response = await ai.models.generateContent({
+      const response = await generateContentWithRetryAndFallback(ai, {
         model: "gemini-3.5-flash",
         contents: prompt,
         config: {
@@ -421,7 +461,7 @@ async function startServer() {
         O idioma da resposta deve ser obrigatoriamente: ${lang === 'pt' ? 'Português' : 'Inglês'}.
       `;
 
-      const response = await ai.models.generateContent({
+      const response = await generateContentWithRetryAndFallback(ai, {
         model: "gemini-3.5-flash",
         contents: prompt,
         config: {
@@ -466,6 +506,209 @@ async function startServer() {
     } catch (error: any) {
       console.error("Simulate Search Error:", error);
       res.status(500).json({ error: error?.message || "Failed to execute AI search simulation." });
+    }
+  });
+
+  // API Route for generating a full blog post/article using Gemini 3.5-flash
+  app.post("/api/gemini/generate-article", async (req, res) => {
+    try {
+      const { topic, lang = "pt" } = req.body;
+
+      if (!topic || topic.trim().length === 0) {
+        return res.status(400).json({ 
+          error: lang === "pt" 
+            ? "Por favor, informe o tema para gerar o artigo." 
+            : "Please provide a topic to generate the article." 
+        });
+      }
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ 
+          error: lang === "pt" 
+            ? "Chave de API GEMINI_API_KEY não configurada no servidor." 
+            : "GEMINI_API_KEY environment variable is not configured on the server." 
+        });
+      }
+
+      const ai = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          }
+        }
+      });
+
+      const prompt = `
+        Crie um artigo de blog sênior completo, rico, atraente e profissional sobre o seguinte tema/ideia: "${topic}"
+        O artigo deve ser estruturado em HTML limpo e semântico (usando tags como <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>, etc.), garantindo excelente legibilidade no frontend. Não use Markdown de jeito nenhum.
+        
+        Requisitos obrigatórios do artigo:
+        1. Foco em SEO e AEO (Answer Engine Optimization) para que assistentes de IA (como ChatGPT, Gemini, Perplexity) e mecanismos de busca tradicionais possam encontrar, entender e citar facilmente este texto.
+        2. Linguagem persuasiva, inovadora, técnica e de altíssimo nível, focada em tomadores de decisão corporativos (CEOs, C-Levels, Gerentes de TI e Marketing).
+        3. Comprimento ideal: cerca de 350 a 600 palavras com alta densidade de informação (sem enrolação/slop).
+        4. O artigo deve terminar com uma conclusão forte conectando o tema à necessidade de aceleração tecnológica, e conter uma chamada para ação (CTA) para os serviços da Vezzitech.
+           Vezzitech é uma agência boutique de elite especializada em:
+           - Integração de Inteligência Artificial Cognitiva e Modelos Gemini no Google Cloud.
+           - Engenharia de RAG e bancos vetoriais privados seguros.
+           - Desenvolvimento de sistemas web ultra-rápidos com React + Vite, garantindo pontuações perfeitas no Lighthouse/PageSpeed.
+           - Automação inteligente de processos e conexões de APIs de CRM ou faturamento.
+        5. Retorne os dados estruturados no formato JSON especificado.
+        6. O idioma do artigo e do título deve ser exatamente: ${lang === 'pt' ? 'Português do Brasil' : 'Inglês'}.
+      `;
+
+      const response = await generateContentWithRetryAndFallback(ai, {
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          systemInstruction: "Você é um Diretor de Tecnologia (CTO) e Engenheiro de Growth especializado em SEO Técnico da Vezzitech. Seu estilo de escrita é cativante, profissional, limpo e direto ao ponto. Você sempre gera o conteúdo formatado em marcação HTML semântica impecável (tags como <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>). Não use markdown.",
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              title: { 
+                type: Type.STRING, 
+                description: "Catchy, SEO-optimized, click-worthy article title. Must be in the specified language." 
+              },
+              slug: { 
+                type: Type.STRING, 
+                description: "Clean, lowercase, URL-friendly slug based on the title, using hyphens only (e.g. 'ia-vendas-whatsapp')." 
+              },
+              content: { 
+                type: Type.STRING, 
+                description: "The complete article content structured in professional HTML markup (using <h2>, <h3>, <p>, <ul>, <li>, <strong>, and <a> tags). Do not use markdown." 
+              }
+            },
+            required: ["title", "slug", "content"]
+          }
+        }
+      });
+
+      const responseText = response.text;
+      if (!responseText) {
+        throw new Error("No response content produced by Gemini.");
+      }
+
+      res.setHeader("Content-Type", "application/json");
+      res.send(responseText);
+    } catch (error: any) {
+      console.error("Generate Article Error:", error);
+      res.status(500).json({ error: error?.message || "Failed to generate article using AI." });
+    }
+  });
+
+  // API Route for generating a cover image with Nano Banana (gemini-3.1-flash-lite-image)
+  app.post("/api/gemini/generate-article-image", async (req, res) => {
+    try {
+      const { title, lang = "pt" } = req.body;
+
+      if (!title || title.trim().length === 0) {
+        return res.status(400).json({ error: "Title is required to generate a cover image." });
+      }
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "GEMINI_API_KEY is not configured on the server." });
+      }
+
+      // Predefined premium cover fallbacks matching Vezzitech's dark tech theme in case image generation fails or is restricted
+      const fallbacks = [
+        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80", // AI network
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80", // Fluid emerald/purple abstract
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80", // Electronic microchip
+        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80", // Robotic abstract tech
+        "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80", // Cyber coding
+        "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80"  // Neo geometric shape
+      ];
+      const randomFallback = fallbacks[Math.floor(Math.random() * fallbacks.length)];
+
+      const ai = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          }
+        }
+      });
+
+      // Step 1: Use gemini-3.5-flash to write a custom, highly relevant and context-aware image prompt in English
+      let imagePrompt = `A high-end, premium technology banner. Theme: "${title}". Modern minimalistic digital illustration, clean design, neon glowing emerald and cyan lines, dark sleek futuristic background, vector style art, highly professional, no letters or text, 8k resolution, cinematic lighting.`;
+      
+      try {
+        console.log(`[AI Image] Custom prompt design phase for title: "${title}"`);
+        const promptDesigner = await generateContentWithRetryAndFallback(ai, {
+          model: "gemini-3.5-flash",
+          contents: `You are an expert AI art director for a high-end tech boutique agency. 
+          Write a highly creative, specific, and visually detailed prompt in English (about 40-50 words) for an image generator (like Imagen) to create a premium cover/header banner (aspect ratio 16:9).
+          
+          Guidelines:
+          1. The image MUST represent the following article title directly, with clear visual metaphors: if about sales/CRM, show glowing data streams and growth arrows; if about WhatsApp, show message bubbles seamlessly connecting to data flows; if about Google Cloud or AI, show neural networks or cloud servers.
+          2. The style must be high-end, futuristic, minimalist 3D isometric or clean vector digital illustration.
+          3. Colors MUST align with Vezzitech's identity: deep dark slate/black backgrounds with sharp neon glowing emerald-green and cyan highlights.
+          4. There must be NO text, letters, words, alphabets, or fake interfaces with text.
+          5. Return ONLY the plain text prompt. Do not add intro, markdown or quotes.
+
+          Article Title: "${title}"`
+        });
+
+        if (promptDesigner.text && promptDesigner.text.trim()) {
+          imagePrompt = promptDesigner.text.trim();
+          console.log(`[AI Image] Custom designed prompt created successfully: "${imagePrompt}"`);
+        }
+      } catch (designerError: any) {
+        console.warn("[AI Image] Failed to design custom prompt, falling back to default.", designerError?.message);
+      }
+
+      console.log(`[AI Image] Attempting to generate cover image using Nano Banana (gemini-3.1-flash-lite-image) with prompt: "${imagePrompt}"`);
+
+      try {
+        const response = await generateContentWithRetryAndFallback(ai, {
+          model: 'gemini-3.1-flash-lite-image',
+          contents: {
+            parts: [
+              {
+                text: imagePrompt,
+              },
+            ],
+          },
+          config: {
+            imageConfig: {
+              aspectRatio: "16:9"
+            }
+          }
+        });
+
+        let imageUrl = "";
+        if (response?.candidates?.[0]?.content?.parts) {
+          for (const part of response.candidates[0].content.parts) {
+            if (part.inlineData) {
+              const base64EncodeString = part.inlineData.data;
+              imageUrl = `data:image/png;base64,${base64EncodeString}`;
+              break;
+            }
+          }
+        }
+
+        if (imageUrl) {
+          console.log("[AI Image] Successfully generated image via Nano Banana.");
+          return res.json({ imageUrl, isGenerated: true });
+        } else {
+          console.warn("[AI Image] Nano Banana did not return inlineData. Using premium tech fallback.");
+          return res.json({ imageUrl: randomFallback, isGenerated: false, reason: "No image payload" });
+        }
+      } catch (genError: any) {
+        console.error("[AI Image] Nano Banana generation failed, using premium tech fallback.", genError?.message);
+        // Fall back gracefully with random beautiful tech image
+        return res.json({ 
+          imageUrl: randomFallback, 
+          isGenerated: false, 
+          reason: genError?.message || "Generation error" 
+        });
+      }
+    } catch (error: any) {
+      console.error("Generate Article Image Error:", error);
+      res.status(500).json({ error: error?.message || "Failed to execute cover image generator." });
     }
   });
 
