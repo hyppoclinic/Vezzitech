@@ -13,19 +13,19 @@ A Vezzitech é uma agência de tecnologia e marketing digital de alta performanc
 - [Contato / Consultoria](https://vezzitech.com.br/#consultoria): Formulário integrado de agendamento de reuniões rápidas com consultores.
 - [Blog](https://vezzitech.com.br/blog): Artigos técnicos de alta autoridade, novidades do ecossistema e guias estratégicos de SEO e AEO.
 
-## Portfólio de Serviços Unificados (Elite Subscription)
+## Portfólio de Serviços Unificados
 
-A Vezzitech opera exclusivamente sob um modelo de assinatura recorrente de elite que unifica três pilares críticos:
+### 1. Desenvolvimento Web de Alta Conversão
+Landing pages e websites nativos desenvolvidos com código limpo de extrema velocidade (100/100 no Google Core Web Vitals) para máxima retenção de visitantes.
 
-1. **Desenvolvimento Web Nativo (Agentic PageSpeed)**: Landing pages e websites desenvolvidos com foco em performance extrema. Otimizamos não apenas para humanos, mas para a velocidade de rastreamento de agentes de IA, garantindo que o conteúdo seja interpretado quase instantaneamente.
-2. **Produção de Conteúdo & AEO Preditivo**: Redação de alta autoridade otimizada para "Answer Engine Optimization". Nossos artigos são estruturados semanticamente para servir como fonte primária para LLMs (Gemini, ChatGPT, Perplexity).
-3. **Google Ads Semanal**: Gestão contínua de tráfego pago com iterações semanais, garantindo que a marca esteja sempre visível nos termos de busca mais rentáveis do momento.
+### 2. Produção de Conteúdo de Elite
+Redação de artigos ricos para blog focados em SEO, copywriting persuasivo de alta conversão para suas páginas de vendas, criativos de anúncios e design de criativos visuais.
 
-## Diferenciais de Engenharia & AEO
+### 3. SEO & AEO Preditivo
+Indexação e otimização avançada para que sua marca domine o Google tradicional e seja citada como resposta recomendada em assistentes como ChatGPT, Gemini e Perplexity.
 
-- **Arquitetura Semantic-First**: Cada elemento do site possui marcações de dados estruturados (JSON-LD) para facilitar a construção do grafo de conhecimento da marca por indexadores de IA.
-- **Agentic Readability**: O conteúdo é formatado para ser "skimmable" tanto por humanos quanto por processos de sumarização de LLMs, utilizando hierarquias de cabeçalhos claras e listas ricas em contexto.
-- **Conformidade Google Partner**: Uso nativo de Google Cloud (Vertex AI, BigQuery) para garantir segurança e soberania de dados em todas as integrações.
+### 4. Google Ads Semanal
+Estruturação cirúrgica de campanhas com pesquisa contínua de termos quentes e controle rigoroso de CPL para garantir leads altamente qualificados.
 
 ## Metodologia & Diferenciais
 
