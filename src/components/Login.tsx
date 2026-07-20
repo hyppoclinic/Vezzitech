@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
+import { VezzitechLogo } from './VezzitechLogo';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -48,12 +49,15 @@ export const Login = () => {
         <div className="absolute -top-12 -left-12 w-24 h-24 bg-[#33BC65]/20 rounded-full blur-2xl"></div>
         <div className="absolute -bottom-12 -right-12 w-24 h-24 bg-[#12DCEF]/20 rounded-full blur-2xl"></div>
 
-        <h2 className="text-2xl font-bold mb-2 tracking-tight text-center bg-[linear-gradient(135deg,#33BC65_0%,#12DCEF_100%)] bg-clip-text text-transparent">
-          Vezzitech Admin
-        </h2>
-        <p className="text-sm text-gray-400 text-center mb-6">
-          {isRegister ? 'Criar nova conta de administrador' : 'Painel de Administração do Blog'}
-        </p>
+        <div className="flex flex-col items-center mb-6">
+          <VezzitechLogo className="mb-4" />
+          <h2 className="text-2xl font-bold tracking-tight text-center bg-[linear-gradient(135deg,#33BC65_0%,#12DCEF_100%)] bg-clip-text text-transparent">
+            Vezzitech Admin
+          </h2>
+          <p className="text-sm text-gray-400 text-center mt-1">
+            {isRegister ? 'Criar nova conta de administrador' : 'Painel de Administração do Blog'}
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

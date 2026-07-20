@@ -8,6 +8,20 @@ export interface TranslationSchema {
     cta: string;
     login: string;
   };
+  pricing: {
+    heading: string;
+    sub: string;
+    plans: Array<{
+      id: string;
+      name: string;
+      price: string;
+      period: string;
+      desc: string;
+      features: string[];
+      cta: string;
+      badge?: string;
+    }>;
+  };
   hero: {
     badge: string;
     headline: string;
@@ -227,7 +241,23 @@ export const translations: Record<Language, TranslationSchema> = {
     ctaSection: {
       heading: "Vamos desenhar a tecnologia ideal para o seu crescimento.",
       sub: "Não importa se você precisa atrair mais clientes, criar um sistema sob medida ou aplicar inteligência artificial na operação. Fale com nossos especialistas.",
-      cta: "Solicitar um Diagnóstico Estratégico"
+      cta: "Solicitar Diagnóstico Estratégico"
+    },
+    pricing: {
+      heading: "Investimento Estratégico",
+      sub: "Escolha o modelo ideal para a fase atual do seu negócio.",
+      plans: [
+        {
+          id: "modernization",
+          name: "Modernização",
+          price: "599",
+          period: "Setup Único",
+          desc: "Ideal para migrar sites WordPress para Node.js com alta performance.",
+          features: ["Infraestrutura Google", "SEO/AEO Otimizado", "Design Responsivo", "Até 10x mais rápido"],
+          cta: "Começar Agora",
+          badge: "OFERTA"
+        }
+      ]
     },
     footerSection: {
       desc: "Vezzitech — Desenvolvimento, Inteligência Artificial e Growth em um só parceiro.",
@@ -401,6 +431,22 @@ export const translations: Record<Language, TranslationSchema> = {
       heading: "Let's design the ideal technology for your growth.",
       sub: "Whether you need to attract more clients, build a custom system, or apply AI to operations. Talk to our specialists.",
       cta: "Request a Strategic Diagnosis"
+    },
+    pricing: {
+      heading: "Strategic Investment",
+      sub: "Choose the ideal model for your current business phase.",
+      plans: [
+        {
+          id: "modernization",
+          name: "Modernization",
+          price: "599",
+          period: "One-time Setup",
+          desc: "Ideal for migrating WordPress sites to high-performance Node.js.",
+          features: ["Google Infrastructure", "Optimized SEO/AEO", "Responsive Design", "Up to 10x faster"],
+          cta: "Start Now",
+          badge: "OFFER"
+        }
+      ]
     },
     footerSection: {
       desc: "Vezzitech — Development, Artificial Intelligence, and Growth in one single partner.",

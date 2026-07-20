@@ -21,6 +21,7 @@ import { CTANew } from './sections/CTANew';
 
 const Dashboard = lazy(() => import('./components/Dashboard').then(m => ({ default: m.Dashboard })));
 const Login = lazy(() => import('./components/Login').then(m => ({ default: m.Login })));
+const ModernizeWordPress = lazy(() => import('./pages/ModernizeWordPress').then(m => ({ default: m.ModernizeWordPress })));
 
 const LoadingFallback = () => (
   <div className="min-h-screen bg-[#030303] flex items-center justify-center">
@@ -63,6 +64,14 @@ export default function App() {
     return (
       <Suspense fallback={<LoadingFallback />}>
         <Dashboard />
+      </Suspense>
+    );
+  }
+
+  if (route === '/modernizar-wordpress') {
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <ModernizeWordPress lang={lang} setLang={setLang} />
       </Suspense>
     );
   }

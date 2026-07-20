@@ -43,6 +43,7 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
             <button onClick={() => scrollTo('solucoes')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{t.solutions}</button>
             <button onClick={() => scrollTo('processo')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{t.process}</button>
             <button onClick={() => scrollTo('tecnologia')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{t.tech}</button>
+            <a href="/modernizar-wordpress" className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">Migrar WordPress</a>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
@@ -101,6 +102,9 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
               <button onClick={() => scrollTo('tecnologia')} className="text-left flex items-center justify-between border-b border-white/10 pb-4">
                 {t.tech} <ChevronRight className="w-5 h-5 text-gray-600" />
               </button>
+              <a href="/modernizar-wordpress" className="text-left flex items-center justify-between border-b border-white/10 pb-4 text-emerald-400 font-semibold">
+                Migrar WordPress <ChevronRight className="w-5 h-5 text-gray-600" />
+              </a>
             </div>
 
             <div className="mt-8 flex flex-col gap-4">
