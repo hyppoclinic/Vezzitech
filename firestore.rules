@@ -2,7 +2,6 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-
     function isSignedIn() { return request.auth != null; }
     function isVerified() { return request.auth.token.email_verified == true; }
     function isAdmin() { return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); }
@@ -14,15 +13,6 @@ service cloud.firestore {
              data.slug is string && data.slug.size() <= 256 &&
              data.author is string && data.author.size() <= 128 &&
              (!('imageUrl' in data) || data.imageUrl is string);
-    }
-
-    function isValidCase(data) {
-      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
-             data.niche is string && data.niche.size() > 0 && data.niche.size() <= 100 &&
-             data.tagline is string && data.tagline.size() > 0 && data.tagline.size() <= 200 &&
-             data.description is string && data.description.size() > 0 &&
-             data.createdAt is timestamp &&
-             (!('printUrl' in data) || data.printUrl is string);
     }
 
     match /cases/{caseId} {
@@ -43,6 +33,14 @@ service cloud.firestore {
 
     match /analytics_metrics/{id} {
       allow read, write: if true;
+    }
+
+    match /leads/{leadId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /projects/{projectId} {
+      allow read, write: if isSignedIn();
     }
   }
 }
