@@ -10,10 +10,7 @@ export const Footer = ({ lang }: { lang: Language }) => {
         
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
-              <span className="text-white font-bold text-xl leading-none tracking-tighter">V</span>
-            </div>
-            <span className="text-xl font-heading font-semibold text-white tracking-tight">vezzitech</span>
+            <img src="/logo.26.png" alt="Vezzitech" className="h-8" />
           </div>
           <p className="text-gray-400 text-sm max-w-sm leading-relaxed mb-8">
             {lang === 'pt' 
