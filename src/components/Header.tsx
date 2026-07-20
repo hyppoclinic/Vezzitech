@@ -1,242 +1,133 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { translations, Language } from '../translations';
-import { Menu, X, Globe, Calendar, Sparkles } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { VezzitechLogo } from './VezzitechLogo';
+import { Menu, X, Globe, ChevronRight } from 'lucide-react';
 
-interface HeaderProps {
-  lang: Language;
-  setLang: (lang: Language) => void;
-}
+export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Language) => void }) => {
+  const t = translations[lang].nav;
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-export const Header = ({ lang, setLang }: HeaderProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const t = translations[lang];
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const scrollToSection = (id: string) => {
-    if (window.location.pathname !== '/') {
-      window.location.href = `/?scroll=${id}`;
-      return;
-    }
+  const scrollTo = (id: string) => {
+    setIsMobileMenuOpen(false);
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
-      <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between w-full">
-        
-        {/* Brand logo */}
-        <button 
-          type="button"
-          onClick={() => {
-            if (window.location.pathname !== '/') {
-              window.location.href = '/';
-            } else {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }} 
-          className="flex items-center gap-2 cursor-pointer text-left z-50 group"
-          aria-label="Vezzitech Home"
-        >
-          <VezzitechLogo className="text-[22px]" />
-        </button>
-        
-        {/* Nav list - Desktop */}
-        <div className="hidden md:flex gap-6 lg:gap-8 text-xs font-bold uppercase tracking-wider text-gray-400">
-          <button 
-            type="button"
-            onClick={() => scrollToSection('verticais')} 
-            className="hover:text-[#33BC65] transition cursor-pointer">
-            {t.nav.services}
-          </button>
-          <button 
-            type="button"
-            onClick={() => scrollToSection('processo')} 
-            className="hover:text-[#33BC65] transition cursor-pointer">
-            {t.nav.ecosystem}
-          </button>
-          <button 
-            type="button"
-            onClick={() => scrollToSection('planos')} 
-            className="hover:text-[#33BC65] transition cursor-pointer">
-            {t.nav.plans}
-          </button>
-          <button 
-            type="button"
-            onClick={() => scrollToSection('diferenciais')} 
-            className="hover:text-[#33BC65] transition cursor-pointer">
-            {t.nav.clients}
-          </button>
-          <button 
-            type="button"
-            onClick={() => scrollToSection('blog')} 
-            className="hover:text-[#33BC65] transition cursor-pointer">
-            {t.nav.blog}
-          </button>
-          <button 
-            type="button"
-            onClick={() => scrollToSection('consultoria')} 
-            className="hover:text-[#33BC65] transition cursor-pointer flex items-center gap-1 text-[#33BC65] font-bold">
-            <Sparkles className="w-3 h-3 animate-pulse text-[#33BC65]" />
-            <span>{lang === 'pt' ? 'Mapeamento' : 'AI Map'}</span>
-          </button>
-        </div>
-        
-        {/* Actions - Desktop */}
-        <div className="hidden md:flex items-center gap-4">
-          
-          {/* Language selector - Desktop */}
-          <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 h-9">
-            <button 
-              type="button"
-              onClick={() => setLang('pt')}
-              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'pt' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}
-              aria-label="Mudar idioma para Português">
-              BR
-            </button>
-            <button 
-              type="button"
-              onClick={() => setLang('en')}
-              className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-full transition-all cursor-pointer ${lang === 'en' ? 'bg-[#33BC65] text-black font-semibold' : 'text-gray-400 hover:text-white'}`}
-              aria-label="Change language to English">
-              EN
+    <>
+      <header 
+        className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
+          isScrolled 
+            ? 'bg-[#030303]/80 backdrop-blur-md border-white/10 py-4' 
+            : 'bg-transparent border-transparent py-6'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
+              <span className="text-white font-bold text-xl leading-none tracking-tighter">V</span>
+            </div>
+            <span className="text-xl font-heading font-semibold text-white tracking-tight">vezzitech</span>
+          </div>
+
+          <nav className="hidden md:flex items-center gap-8">
+            <button onClick={() => scrollTo('plataforma')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{t.platform}</button>
+            <button onClick={() => scrollTo('solucoes')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{t.solutions}</button>
+            <button onClick={() => scrollTo('processo')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{t.process}</button>
+            <button onClick={() => scrollTo('tecnologia')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{t.tech}</button>
+          </nav>
+
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+              <Globe className="w-4 h-4 text-gray-400" />
+              <select 
+                value={lang} 
+                onChange={(e) => setLang(e.target.value as Language)}
+                className="bg-transparent text-xs font-medium text-gray-300 outline-none cursor-pointer"
+              >
+                <option value="pt" className="bg-[#0A0A0A]">PT</option>
+                <option value="en" className="bg-[#0A0A0A]">EN</option>
+              </select>
+            </div>
+            
+            <a href="/login" className="text-sm font-medium text-gray-300 hover:text-white transition-colors px-4 py-2">
+              {t.login}
+            </a>
+            
+            <button onClick={() => scrollTo('cta')} className="group relative inline-flex h-9 items-center justify-center overflow-hidden rounded-md bg-emerald-500 px-4 py-2 font-medium text-neutral-50 hover:bg-emerald-600 transition-all">
+              <span className="text-sm">Começar</span>
+              <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
+                <div className="relative h-full w-8 bg-white/20" />
+              </div>
             </button>
           </div>
- 
+
           <button 
-            type="button"
-            onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0kCxWH9YNz5VRbo1Fe-VURvK9FOgYkNpUoCNBk9a_q2ywucr3S5r0zzTewhmAmePmi0V09CZjw', '_blank')}
-            className="gradient-orange px-6 py-2.5 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#33BC65]/10 hover:scale-[1.03] active:scale-95 transition cursor-pointer">
-            {t.nav.cta}
-          </button>
-        </div>
- 
-        {/* Mobile Hamburger Trigger */}
-        <div className="flex md:hidden items-center gap-3.5 z-[60] relative">
-          {/* Mobile Language selector inside trigger bar */}
-          <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 h-9">
-            <button 
-              type="button"
-              onClick={() => setLang('pt')}
-              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}
-              aria-label="Idioma Português">
-              BR
-            </button>
-            <button 
-              type="button"
-              onClick={() => setLang('en')}
-              className={`px-3 py-1.5 text-[10px] font-bold rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400'}`}
-              aria-label="Language English">
-              EN
-            </button>
-          </div>
- 
-          <button 
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-white hover:text-[#33BC65] transition-colors focus:outline-none cursor-pointer z-50 mr-0.5"
-            aria-label="Toggle menu"
+            className="md:hidden text-gray-400 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
-      </nav>
- 
-      {/* Mobile Drawer Slide-out Nav */}
+      </header>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden absolute top-20 left-0 w-full border-b border-white/10 bg-[#070707]/95 backdrop-blur-xl z-[90] max-h-[calc(100vh-80px)] overflow-y-auto"
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-[#030303] pt-24 px-6 flex flex-col md:hidden"
           >
-            <div className="max-w-7xl mx-auto px-6 pt-4 pb-8 flex flex-col gap-6 w-full">
-              
-              {/* Divider lines / items */}
-              <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest text-[#33BC65]/90 w-full">
-                <button 
-                  type="button"
-                  onClick={() => { scrollToSection('verticais'); setIsOpen(false); }} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
-                  <span>{t.nav.services}</span>
-                  <span className="text-[10px] font-mono opacity-40">// 01</span>
-                </button>
-                <button 
-                  type="button"
-                  onClick={() => { scrollToSection('processo'); setIsOpen(false); }} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
-                  <span>{t.nav.ecosystem}</span>
-                  <span className="text-[10px] font-mono opacity-40">// 02</span>
-                </button>
-                <button 
-                  type="button"
-                  onClick={() => { scrollToSection('planos'); setIsOpen(false); }} 
-                  className="py-2.5 text-left border-b border-white/5 text-[#33BC65] hover:text-white transition flex justify-between items-center cursor-pointer">
-                  <span>{t.nav.plans}</span>
-                  <span className="text-[10px] font-mono opacity-40">// 03</span>
-                </button>
-                <button 
-                  type="button"
-                  onClick={() => { scrollToSection('diferenciais'); setIsOpen(false); }} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
-                  <span>{t.nav.clients}</span>
-                  <span className="text-[10px] font-mono opacity-40">// 04</span>
-                </button>
-                <button 
-                  type="button"
-                  onClick={() => { scrollToSection('blog'); setIsOpen(false); }} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-gray-300">
-                  <span>{t.nav.blog}</span>
-                  <span className="text-[10px] font-mono opacity-40">// 05</span>
-                </button>
-                <button 
-                  type="button"
-                  onClick={() => { scrollToSection('consultoria'); setIsOpen(false); }} 
-                  className="py-2.5 text-left border-b border-white/5 hover:text-white transition flex justify-between items-center cursor-pointer text-[#33BC65]">
-                  <span className="flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#33BC65]" />
-                    {lang === 'pt' ? 'Mapeamento' : 'AI Map'}
-                  </span>
-                  <span className="text-[10px] font-mono opacity-40">// 06</span>
-                </button>
-              </div>
-
-              {/* Mobile CTA */}
-              <button 
-                type="button"
-                onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0kCxWH9YNz5VRbo1Fe-VURvK9FOgYkNpUoCNBk9a_q2ywucr3S5r0zzTewhmAmePmi0V09CZjw', '_blank')}
-                className="gradient-orange py-4 rounded-xl text-black text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#33BC65]/10 flex items-center justify-center gap-2 cursor-pointer mt-2 w-full">
-                <Calendar className="w-4 h-4" />
-                {t.nav.cta}
+            <div className="flex flex-col gap-6 text-lg font-medium text-gray-300">
+              <button onClick={() => scrollTo('plataforma')} className="text-left flex items-center justify-between border-b border-white/10 pb-4">
+                {t.platform} <ChevronRight className="w-5 h-5 text-gray-600" />
               </button>
+              <button onClick={() => scrollTo('solucoes')} className="text-left flex items-center justify-between border-b border-white/10 pb-4">
+                {t.solutions} <ChevronRight className="w-5 h-5 text-gray-600" />
+              </button>
+              <button onClick={() => scrollTo('processo')} className="text-left flex items-center justify-between border-b border-white/10 pb-4">
+                {t.process} <ChevronRight className="w-5 h-5 text-gray-600" />
+              </button>
+              <button onClick={() => scrollTo('tecnologia')} className="text-left flex items-center justify-between border-b border-white/10 pb-4">
+                {t.tech} <ChevronRight className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
 
-              {/* Duplicate Language selector inside mobile drawer without flags and perfectly styled as capsule */}
-              <div className="flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-full p-1 mt-4 max-w-[200px] mx-auto w-full">
-                <button 
-                  type="button"
-                  onClick={() => setLang('pt')}
-                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'pt' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}
-                  aria-label="Selecionar Português">
-                  BR
-                </button>
-                <button 
-                  type="button"
-                  onClick={() => setLang('en')}
-                  className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all ${lang === 'en' ? 'bg-[#33BC65] text-black' : 'text-gray-400 hover:text-white'}`}
-                  aria-label="Select English">
-                  EN
-                </button>
+            <div className="mt-8 flex flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <Globe className="w-5 h-5 text-gray-400" />
+                <select 
+                  value={lang} 
+                  onChange={(e) => setLang(e.target.value as Language)}
+                  className="bg-transparent text-base font-medium text-gray-300 outline-none w-full border-b border-white/10 pb-4"
+                >
+                  <option value="pt" className="bg-[#0A0A0A]">Português</option>
+                  <option value="en" className="bg-[#0A0A0A]">English</option>
+                </select>
               </div>
+              <a href="/login" className="w-full py-4 text-center text-gray-300 font-medium border border-white/10 rounded-xl">
+                {t.login}
+              </a>
+              <button onClick={() => scrollTo('cta')} className="w-full py-4 bg-emerald-500 text-white font-medium rounded-xl">
+                Começar
+              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };

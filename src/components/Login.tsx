@@ -42,7 +42,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#070707] text-white px-4">
+    <div className="flex justify-center items-center min-h-screen bg-[#030303] text-white px-4">
       <div className="bg-white/[0.03] backdrop-blur-md border border-white/10 p-8 rounded-2xl w-full max-w-md shadow-2xl relative">
         {/* Decorative ambient light */}
         <div className="absolute -top-12 -left-12 w-24 h-24 bg-[#33BC65]/20 rounded-full blur-2xl"></div>

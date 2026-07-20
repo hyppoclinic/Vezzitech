@@ -537,16 +537,16 @@ Na Vezzitech, nós não apenas criamos páginas web rápidas; nós projetamos ca
 
   if (!user) {
     return (
-      <div className="flex justify-center items-center h-screen bg-[#070707] text-white">
+      <div className="flex justify-center items-center h-screen bg-[#030303] text-white">
         <p className="animate-pulse">Autenticando administrador...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#070707] text-white font-sans pt-24">
+    <div className="min-h-screen bg-[#030303] text-white font-sans pt-24">
       {/* Admin Top Menu */}
-      <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
+      <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-[#030303]/90 backdrop-blur-md">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between w-full">
           <div className="flex items-center gap-6">
             <VezzitechLogo className="text-[24px]" />
