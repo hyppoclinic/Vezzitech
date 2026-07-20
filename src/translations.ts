@@ -85,55 +85,55 @@ export const translations: Record<Language, TranslationSchema> = {
       login: "Login"
     },
     hero: {
-      badge: "Parceiro Estratégico de Tecnologia",
-      headline: "Desenvolvimento, Inteligência Artificial e Growth em um só lugar.",
-      subheadline: "Desenvolvemos soluções digitais sob medida para ajudar sua empresa a vender mais, ganhar produtividade e crescer com segurança. Criamos aplicativos, sistemas, CRMs, automações e estratégias personalizadas.",
-      ctaPrimary: "Solicitar Diagnóstico Estratégico",
-      ctaSecondary: "Conhecer Soluções",
+      badge: "Google Cloud Partner - Agência de IA de Elite",
+      headline: "Desenvolvimento Premium, IA e Tráfego Pago em uma Assinatura Unificada.",
+      subheadline: "Aceleramos seu faturamento unindo o ecossistema Google com soluções de IA personalizadas. Seu site premium, conteúdo de autoridade e Google Ads sob gestão contínua de especialistas.",
+      ctaPrimary: "Solicitar Diagnóstico de Elite",
+      ctaSecondary: "Conhecer Metodologia AEO",
       indicators: [
-        "Websites e Apps",
-        "Sistemas Sob Medida",
-        "Automação de Processos",
-        "Inteligência Artificial",
-        "Growth Marketing"
+        "Agentic PageSpeed",
+        "AEO Preditivo",
+        "Vertex AI & Gemini",
+        "SEO de Alta Autoridade",
+        "Google Ads Semanal"
       ]
     },
     valueProp: {
-      heading1: "Uma solução completa.",
-      heading2: "Um único parceiro.",
+      heading1: "A Única Assinatura de Tecnologia.",
+      heading2: "Que Você Vai Precisar.",
       paragraphs: [
-        "A maioria das empresas precisa contratar várias ferramentas e profissionais isolados: uma agência, desenvolvedores, empresas de software e consultores.",
-        "Na Vezzitech, unimos essas especialidades. Nós entendemos o seu negócio, desenvolvemos a tecnologia necessária e ajudamos sua empresa a crescer com estratégia."
+        "Esqueça o estresse de gerenciar múltiplos fornecedores lentos. A Vezzitech unifica o desenvolvimento de sites premium, a produção de conteúdo com IA e a gestão de tráfego pago.",
+        "Como Google Cloud Partner, entregamos velocidade extrema (Agentic PageSpeed) e posicionamento estratégico nos motores de resposta (AEO) para que sua marca domine o mercado."
       ],
       cards: [
         {
-          title: "Desenvolvimento Sob Medida",
-          desc: "Criamos aplicativos, sistemas internos e plataformas completas, sempre desenhadas para a realidade e necessidade do seu negócio.",
+          title: "Desenvolvimento Nativo",
+          desc: "Landing pages e plataformas ultra rápidas com 100/100 de performance, otimizadas para conversão e rastreamento instantâneo por IAs.",
           icon: "cpu"
         },
         {
-          title: "Inteligência Artificial (IA)",
-          desc: "Agentes autônomos utilizando Google AI Studio para automatizar atendimentos, organizar processos e gerar insights práticos.",
+          title: "AEO & IA Preditiva",
+          desc: "Otimização para mecanismos de resposta (Gemini, Perplexity). Garantimos que sua marca seja a resposta recomendada pelos assistentes.",
           icon: "bot"
         },
         {
-          title: "Growth e SEO",
-          desc: "Estratégias personalizadas para atrair leads qualificados, garantindo que sua marca seja encontrada por quem realmente quer comprar.",
+          title: "Google Ads Semanal",
+          desc: "Gestão estratégica de tráfego pago com iterações semanais de termos e copies, focada em lead qualificado e escala de ROI.",
           icon: "lineChart"
         },
         {
-          title: "Automação e Integração",
-          desc: "Conectamos suas ferramentas atuais e eliminamos tarefas repetitivas, aumentando a velocidade e produtividade da sua equipe.",
+          title: "Conteúdo de Autoridade",
+          desc: "Artigos ricos e copywriting de elite produzidos por especialistas, focados em educar o mercado e dominar o SEO orgânico.",
           icon: "workflow"
         },
         {
-          title: "CRMs Personalizados",
-          desc: "Não se adapte a sistemas engessados. Criamos painéis e fluxos comerciais que funcionam exatamente como a sua empresa exige.",
+          title: "Integração Google Cloud",
+          desc: "Utilizamos o poder da Vertex AI e BigQuery para criar automações seguras e inteligentes conectadas aos seus dados de negócio.",
           icon: "search"
         },
         {
-          title: "Ecossistema Inteligente",
-          desc: "Acompanhamos a evolução da sua empresa com dashboards e dados precisos, oferecendo previsibilidade e clareza nas decisões.",
+          title: "Assinatura Unificada",
+          desc: "Um único parceiro, um único fee mensal, sem taxas de setup. Desenvolvimento, tráfego e conteúdo em harmonia total.",
           icon: "globe"
         }
       ]
@@ -258,55 +258,55 @@ export const translations: Record<Language, TranslationSchema> = {
       login: "Login"
     },
     hero: {
-      badge: "Strategic Technology Partner",
-      headline: "Development, Artificial Intelligence, and Growth in one place.",
-      subheadline: "We build bespoke digital solutions to help your company sell more, gain productivity, and grow safely. We create applications, systems, CRMs, automations, and personalized strategies.",
-      ctaPrimary: "Request a Strategic Diagnosis",
-      ctaSecondary: "Discover Solutions",
+      badge: "Google Cloud Partner - Elite AI Agency",
+      headline: "Premium Development, AI, and Paid Traffic in one Unified Subscription.",
+      subheadline: "We accelerate your revenue by uniting the Google ecosystem with custom AI solutions. Your premium website, authority content, and Google Ads under continuous expert management.",
+      ctaPrimary: "Request Elite Diagnosis",
+      ctaSecondary: "Explore AEO Methodology",
       indicators: [
-        "Websites and Apps",
-        "Custom Systems",
-        "Process Automation",
-        "Artificial Intelligence",
-        "Growth Marketing"
+        "Agentic PageSpeed",
+        "Predictive AEO",
+        "Vertex AI & Gemini",
+        "High Authority SEO",
+        "Weekly Google Ads"
       ]
     },
     valueProp: {
-      heading1: "A complete solution.",
-      heading2: "A single partner.",
+      heading1: "The Only Tech Subscription.",
+      heading2: "You'll Ever Need.",
       paragraphs: [
-        "Most companies need to hire multiple isolated tools and professionals: an agency, developers, software houses, and consultants.",
-        "At Vezzitech, we unite these specialties. We understand your business, develop the necessary technology, and help your company grow strategically."
+        "Forget the stress of managing multiple slow vendors. Vezzitech unifies premium web development, AI-driven content production, and paid traffic management.",
+        "As a Google Cloud Partner, we deliver extreme performance (Agentic PageSpeed) and strategic positioning in answer engines (AEO) so your brand dominates the market."
       ],
       cards: [
         {
-          title: "Custom Development",
-          desc: "We build applications, internal systems, and complete platforms, always tailored to the reality and needs of your business.",
+          title: "Native Development",
+          desc: "Ultra-fast landing pages and platforms with 100/100 performance, optimized for conversion and instant AI crawling.",
           icon: "cpu"
         },
         {
-          title: "Artificial Intelligence (AI)",
-          desc: "Autonomous agents built with Google AI Studio to automate customer service, organize workflows, and generate practical insights.",
+          title: "AEO & Predictive AI",
+          desc: "Optimization for answer engines (Gemini, Perplexity). We ensure your brand is the recommended response by AI assistants.",
           icon: "bot"
         },
         {
-          title: "Growth and SEO",
-          desc: "Personalized strategies to attract qualified leads, ensuring your brand is found by those who genuinely want to buy.",
+          title: "Weekly Google Ads",
+          desc: "Strategic paid traffic management with weekly iterations of terms and copy, focused on qualified leads and ROI scaling.",
           icon: "lineChart"
         },
         {
-          title: "Automation and Integration",
-          desc: "We connect your current tools and eliminate repetitive tasks, increasing your team's speed and productivity.",
+          title: "Authority Content",
+          desc: "Rich articles and elite copywriting produced by experts, focused on market education and organic SEO dominance.",
           icon: "workflow"
         },
         {
-          title: "Custom CRMs",
-          desc: "Don't adapt to rigid systems. We create dashboards and commercial flows that work exactly as your company requires.",
+          title: "Google Cloud Integration",
+          desc: "We harness the power of Vertex AI and BigQuery to create secure, intelligent automations connected to your business data.",
           icon: "search"
         },
         {
-          title: "Intelligent Ecosystem",
-          desc: "We track your company's evolution with dashboards and precise data, providing predictability and clarity in decision-making.",
+          title: "Unified Subscription",
+          desc: "One partner, one monthly fee, no setup costs. Development, traffic, and content in total harmony.",
           icon: "globe"
         }
       ]
