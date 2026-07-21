@@ -24,7 +24,7 @@ export const MetricsNew = ({ lang }: { lang: Language }) => {
               className="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col items-center text-center relative overflow-hidden group hover:bg-white/[0.04] transition-colors"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/0 to-emerald-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="text-5xl font-heading font-semibold text-white tracking-tighter mb-2 text-gradient">
+              <div className="text-5xl font-heading font-semibold text-white tracking-tighter mb-2 text-gradient pr-1">
                 {item.value}
               </div>
               <div className="text-gray-400 font-medium text-sm">{item.label}</div>
