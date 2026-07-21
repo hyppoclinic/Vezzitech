@@ -51,9 +51,6 @@ export const Login = () => {
 
         <div className="flex flex-col items-center mb-6">
           <VezzitechLogo className="mb-4" />
-          <h2 className="text-2xl font-bold tracking-tight text-center bg-[linear-gradient(135deg,#33BC65_0%,#12DCEF_100%)] bg-clip-text text-transparent">
-            Vezzitech Admin
-          </h2>
           <p className="text-sm text-gray-400 text-center mt-1">
             {isRegister ? 'Criar nova conta de administrador' : 'Painel de Administração do Blog'}
           </p>

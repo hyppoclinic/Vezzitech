@@ -21,9 +21,9 @@ export const Hero = ({ lang }: { lang: Language }) => {
       <div className="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center">
         
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-medium text-gray-300 mb-8 backdrop-blur-md shadow-sm"
         >
           <span className="relative flex h-2 w-2">
@@ -34,32 +34,60 @@ export const Hero = ({ lang }: { lang: Language }) => {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.05,
+                delayChildren: 0.1,
+              },
+            },
+          }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-semibold tracking-tighter text-white mb-8 leading-[1.05] max-w-4xl"
         >
-          {t.headline.split('.').map((part, i, arr) => (
-            <span key={i}>
-              {part}
-              {i < arr.length - 1 && <span className="text-emerald-500">.</span>}
-            </span>
-          ))}
+          {t.headline.split(" ").map((word, i, arr) => {
+            const hasDot = word.endsWith('.');
+            const displayWord = hasDot ? word.slice(0, -1) : word;
+
+            return (
+              <span key={i} className="inline-block">
+                <motion.span
+                  variants={{
+                    hidden: { opacity: 0, y: 30, rotate: 2, filter: "blur(12px)", scale: 0.95 },
+                    visible: { 
+                      opacity: 1, 
+                      y: 0, 
+                      rotate: 0, 
+                      filter: "blur(0px)",
+                      scale: 1,
+                      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
+                    }
+                  }}
+                  className="inline-block origin-bottom-left"
+                >
+                  {displayWord}
+                  {hasDot && <span className="text-emerald-500">.</span>}
+                </motion.span>
+                {i < arr.length - 1 && <span>&nbsp;</span>}
+              </span>
+            );
+          })}
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed font-sans"
         >
           {t.subheadline}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
           <button className="group relative w-full sm:w-auto inline-flex h-12 items-center justify-center overflow-hidden rounded-lg bg-emerald-500 px-8 font-medium text-white shadow-[0_0_40px_-10px_rgba(16,185,129,0.4)] hover:shadow-[0_0_60px_-15px_rgba(16,185,129,0.5)] transition-all duration-300">
@@ -78,9 +106,9 @@ export const Hero = ({ lang }: { lang: Language }) => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1, delay: 0.8 }}
           className="mt-16 pt-8 border-t border-white/[0.08] w-full max-w-3xl flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm font-medium text-gray-500"
         >
           {t.indicators.map((item, i) => (
