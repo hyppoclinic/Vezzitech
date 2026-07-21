@@ -184,7 +184,7 @@ export const InsightsNew = ({ lang }: { lang: Language }) => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
           <div>
             <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest block mb-3">INSIGHTS & ARTIGOS</span>
-            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-white tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-heading font-medium text-white tracking-tight">
               {t.heading}
             </h2>
           </div>
@@ -245,7 +245,7 @@ export const InsightsNew = ({ lang }: { lang: Language }) => {
                     <Clock className="w-3.5 h-3.5" /> {getReadingTime(post.content)}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold text-white group-hover:text-emerald-400 transition-colors line-clamp-2 leading-snug">
+                <h3 className="text-xl font-medium text-white group-hover:text-emerald-400 transition-colors line-clamp-2 leading-snug">
                   {post.title}
                 </h3>
                 <p className="text-xs text-gray-500 mt-4 font-mono">
@@ -337,7 +337,7 @@ export const InsightsNew = ({ lang }: { lang: Language }) => {
               )}
 
               {/* Styled Prose Content */}
-              <div className="prose prose-invert prose-emerald max-w-none text-gray-300 leading-relaxed font-sans prose-headings:font-heading prose-headings:font-semibold prose-a:text-emerald-400 prose-a:underline hover:prose-a:text-emerald-300 prose-strong:text-white prose-code:text-emerald-300 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-ul:list-disc prose-ol:list-decimal">
+              <div className="prose prose-invert prose-emerald max-w-none text-gray-300 leading-relaxed font-sans prose-headings:font-heading prose-headings:font-medium prose-a:text-emerald-400 prose-a:underline hover:prose-a:text-emerald-300 prose-strong:text-white prose-code:text-emerald-300 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-ul:list-disc prose-ol:list-decimal">
                 {selectedPost.content.trim().startsWith('<') || selectedPost.content.includes('</') ? (
                   <div dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
                 ) : (
@@ -347,7 +347,7 @@ export const InsightsNew = ({ lang }: { lang: Language }) => {
 
               {/* Inline Lead Gen Bento Widget */}
               <div className="mt-20 p-8 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/20" id="article-lead-card">
-                <h4 className="font-heading font-semibold text-2xl text-white mb-2">
+                <h4 className="font-heading font-medium text-2xl text-white mb-2">
                   {lang === 'pt' ? 'Pronto para transformar sua empresa?' : 'Ready to transform your company?'}
                 </h4>
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">

@@ -11,7 +11,7 @@ export const PricingNew = ({ lang }: { lang: Language }) => {
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-heading font-semibold text-center text-white mb-20 tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-heading font-medium text-center text-white mb-20 tracking-tight">
           {t.heading}
         </h2>
 
@@ -39,7 +39,7 @@ export const PricingNew = ({ lang }: { lang: Language }) => {
               )}
               
               <div className="mb-8 text-center pt-4">
-                <h3 className="text-2xl font-semibold text-white mb-3">{plan.name}</h3>
+                <h3 className="text-2xl font-medium text-white mb-3">{plan.name}</h3>
                 <p className="text-gray-400 text-sm h-10">{plan.desc}</p>
               </div>
               
@@ -52,7 +52,7 @@ export const PricingNew = ({ lang }: { lang: Language }) => {
                 ))}
               </ul>
               
-              <button className={`w-full py-4 rounded-xl text-sm font-semibold transition-all mt-auto ${
+              <button className={`w-full py-4 rounded-xl text-sm font-medium transition-all mt-auto ${
                 plan.badge 
                   ? 'bg-emerald-500 hover:bg-emerald-600 text-black' 
                   : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'

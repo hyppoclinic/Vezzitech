@@ -33,7 +33,7 @@ export const ValueProp = ({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-white mb-8 tracking-tight leading-[1.1]"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-white mb-8 tracking-tight leading-[1.1]"
           >
             {t.heading2}
           </motion.h3>
@@ -74,7 +74,7 @@ export const ValueProp = ({ lang }: { lang: Language }) => {
                     <Icon className="w-6 h-6" strokeWidth={1.5} />
                   </div>
                   
-                  <h4 className="text-xl font-semibold text-white mb-3 tracking-tight">{card.title}</h4>
+                  <h4 className="text-xl font-medium text-white mb-3 tracking-tight">{card.title}</h4>
                   <p className="text-gray-400 leading-relaxed text-sm">{card.desc}</p>
                 </div>
               </motion.div>

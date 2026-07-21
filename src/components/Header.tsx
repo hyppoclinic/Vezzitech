@@ -21,6 +21,8 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = `/?scroll=${id}`;
     }
   };
 

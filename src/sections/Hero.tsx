@@ -61,7 +61,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
               },
             },
           }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-semibold tracking-tighter text-white mb-8 leading-[1.05] max-w-4xl"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-medium tracking-tighter text-white mb-8 leading-[1.05] max-w-4xl"
         >
           {t.headline.split(" ").map((word, i, arr) => {
             const hasDot = word.endsWith('.');

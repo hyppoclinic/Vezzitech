@@ -80,7 +80,7 @@ export const MetricsNew = ({ lang }: { lang: Language }) => {
               
               {getAnimatedIcon(index)}
 
-              <div className="text-5xl font-heading font-semibold text-white tracking-tighter mb-2 text-gradient pr-1">
+              <div className="text-5xl font-heading font-medium text-white tracking-tighter mb-2 text-gradient pr-1">
                 {item.value}
               </div>
               <div className="text-gray-400 font-medium text-sm">{item.label}</div>

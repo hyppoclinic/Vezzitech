@@ -11,7 +11,7 @@ export const SegmentsNew = ({ lang }: { lang: Language }) => {
     <section className="py-32 bg-[#030303] border-t border-white/[0.05]" id="solucoes">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-white tracking-tight leading-[1.1]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-white tracking-tight leading-[1.1]">
             {t.heading}
           </h2>
         </div>
@@ -54,7 +54,7 @@ export const SegmentsNew = ({ lang }: { lang: Language }) => {
                   transition={{ duration: 0.3 }}
                   className="relative z-10"
                 >
-                  <h3 className="text-3xl font-heading font-semibold text-white mb-8 tracking-tight">
+                  <h3 className="text-3xl font-heading font-medium text-white mb-8 tracking-tight">
                     {t.items[activeSegment].title}
                   </h3>
                   

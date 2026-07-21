@@ -22,7 +22,7 @@ export const CTANew = ({ lang }: { lang: Language }) => {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-emerald-500/10 rounded-[100%] blur-[100px] pointer-events-none"></div>
 
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold text-white mb-6 tracking-tighter leading-[1.05]">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-medium text-white mb-6 tracking-tighter leading-[1.05]">
               {t.heading}
             </h2>
             <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">

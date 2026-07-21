@@ -11,7 +11,7 @@ export const TechStackNew = ({ lang }: { lang: Language }) => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-heading font-semibold text-white mb-16 tracking-tight"
+          className="text-4xl md:text-5xl font-heading font-medium text-white mb-16 tracking-tight"
         >
           {t.heading}
         </motion.h2>

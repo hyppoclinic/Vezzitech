@@ -15,7 +15,7 @@ export const ArchitectureNew = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-white mb-6 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-white mb-6 tracking-tight"
           >
             {t.heading}
           </motion.h2>
@@ -45,7 +45,7 @@ export const ArchitectureNew = ({ lang }: { lang: Language }) => {
                 className={`relative flex flex-col md:flex-row items-start md:items-center gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
               >
                 <div className={`pl-16 md:pl-0 flex-1 md:w-1/2 ${i % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-                  <h4 className="text-2xl font-semibold text-white mb-3 tracking-tight">{step.title}</h4>
+                  <h4 className="text-2xl font-medium text-white mb-3 tracking-tight">{step.title}</h4>
                   <p className="text-gray-400 text-base leading-relaxed">{step.desc}</p>
                 </div>
                 

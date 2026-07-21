@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Check, Zap, Globe, Shield, MessageCircle, ArrowRight, BarChart3, Search } from 'lucide-react';
+import { Check, Zap, Globe, Shield, Sparkles, ArrowRight, BarChart3, Search } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Language } from '../translations';
@@ -246,10 +246,10 @@ export function ModernizeWordPress({ lang, setLang }: ModernizeWordPressProps) {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 p-4 bg-emerald-500 text-black rounded-full shadow-2xl shadow-emerald-500/20 hover:scale-110 transition-transform flex items-center gap-2 font-bold"
+        className="fixed bottom-8 right-8 z-50 p-4 bg-emerald-500 text-black rounded-full shadow-2xl shadow-emerald-500/20 hover:scale-110 transition-transform flex items-center gap-2 font-bold group"
       >
-        <MessageCircle className="w-6 h-6" />
-        <span className="hidden md:inline">Falar no WhatsApp</span>
+        <Sparkles className="w-6 h-6 group-hover:animate-pulse" />
+        <span className="hidden md:inline">Falar com Especialista</span>
       </a>
     </div>
   );

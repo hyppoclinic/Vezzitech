@@ -13,7 +13,7 @@ export const FAQNew = ({ lang }: { lang: Language }) => {
   return (
     <section className="py-32 bg-[#030303] border-t border-white/[0.05] relative">
       <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-heading font-semibold text-white mb-16 text-center tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-heading font-medium text-white mb-16 text-center tracking-tight">
           {t.heading}
         </h2>
 

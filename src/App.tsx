@@ -18,6 +18,7 @@ import { TechStackNew } from './sections/TechStackNew';
 import { InsightsNew } from './sections/InsightsNew';
 import { FAQNew } from './sections/FAQNew';
 import { CTANew } from './sections/CTANew';
+import { Sparkles } from 'lucide-react';
 
 const Dashboard = lazy(() => import('./components/Dashboard').then(m => ({ default: m.Dashboard })));
 const Login = lazy(() => import('./components/Login').then(m => ({ default: m.Login })));
@@ -32,6 +33,9 @@ const LoadingFallback = () => (
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
   const [route, setRoute] = useState(window.location.pathname);
+
+  const whatsappNumber = "+5544998266950";
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de falar com um especialista sobre as soluções da Vezzitech.`;
 
   useEffect(() => {
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
@@ -94,6 +98,17 @@ export default function App() {
       </main>
 
       <Footer lang={lang} />
+
+      {/* Floating AI Agent WhatsApp */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 z-50 p-4 bg-emerald-500 text-black rounded-full shadow-2xl shadow-emerald-500/20 hover:scale-110 transition-transform flex items-center gap-2 font-bold group"
+      >
+        <Sparkles className="w-5 h-5 group-hover:animate-pulse" />
+        <span className="hidden md:inline">Falar com IA</span>
+      </a>
     </div>
   );
 }
