@@ -19,7 +19,8 @@ const getAnimatedIcon = (index: number) => {
         <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 3, delay: 0.5, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 bg-emerald-500 rounded-full blur-xl" />
         <motion.svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="relative z-10 text-emerald-400" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10" className="opacity-50" />
-          <motion.g animate={{ rotate: [0, 360] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} style={{ transformOrigin: '12px 12px' }}>
+          <motion.g animate={{ rotate: [0, 360] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} style={{ transformOrigin: 'center' }}>
+            <rect width="24" height="24" fill="transparent" stroke="none" />
             <path d="M12 6V12L16 14" />
           </motion.g>
         </motion.svg>
