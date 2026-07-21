@@ -1,22 +1,39 @@
+import { Fragment } from 'react';
 import { motion } from 'motion/react';
 import { translations, Language } from '../translations';
 import { ShimmerButton } from '../components/ui/shimmer-button';
 import { ChevronRight } from 'lucide-react';
+import heroBg from '../assets/images/hero_bg_green_wave_1784641477860.jpg';
 
 export const Hero = ({ lang }: { lang: Language }) => {
   const t = translations[lang].hero;
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 px-6 bg-[#030303]">
+      {/* Background Image with Gradient Mask */}
+      <div 
+        className="absolute inset-0 z-0 opacity-40 mix-blend-screen"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Gradient overlays for smooth transition to black */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#030303] via-transparent to-[#030303]"></div>
+      </div>
+
       {/* Premium Background Gradients & Grid */}
-      <div className="absolute inset-0 bg-noise opacity-[0.015] pointer-events-none mix-blend-overlay"></div>
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px]"></div>
+      <div className="absolute inset-0 bg-noise opacity-[0.015] pointer-events-none mix-blend-overlay z-0"></div>
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px] z-0"></div>
       
       {/* Radial fade for the grid */}
-      <div className="absolute inset-0 bg-[#030303] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)]"></div>
+      <div className="absolute inset-0 bg-[#030303] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)] z-0"></div>
 
       {/* Main Emerald Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[80vw] max-w-[800px] h-[300px] bg-emerald-500/15 rounded-[100%] blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[80vw] max-w-[800px] h-[300px] bg-emerald-500/15 rounded-[100%] blur-[120px] pointer-events-none z-0"></div>
 
       <div className="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center">
         
@@ -51,26 +68,28 @@ export const Hero = ({ lang }: { lang: Language }) => {
             const displayWord = hasDot ? word.slice(0, -1) : word;
 
             return (
-              <span key={i} className="inline-block">
-                <motion.span
-                  variants={{
-                    hidden: { opacity: 0, y: 30, rotate: 2, filter: "blur(12px)", scale: 0.95 },
-                    visible: { 
-                      opacity: 1, 
-                      y: 0, 
-                      rotate: 0, 
-                      filter: "blur(0px)",
-                      scale: 1,
-                      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
-                    }
-                  }}
-                  className="inline-block origin-bottom-left"
-                >
-                  {displayWord}
-                  {hasDot && <span className="text-emerald-500">.</span>}
-                </motion.span>
-                {i < arr.length - 1 && <span>&nbsp;</span>}
-              </span>
+              <Fragment key={i}>
+                <span className="inline-block">
+                  <motion.span
+                    variants={{
+                      hidden: { opacity: 0, y: 30, rotate: 2, filter: "blur(12px)", scale: 0.95 },
+                      visible: { 
+                        opacity: 1, 
+                        y: 0, 
+                        rotate: 0, 
+                        filter: "blur(0px)",
+                        scale: 1,
+                        transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
+                      }
+                    }}
+                    className="inline-block origin-bottom-left"
+                  >
+                    {displayWord}
+                    {hasDot && <span className="text-emerald-500">.</span>}
+                  </motion.span>
+                </span>
+                {i < arr.length - 1 && " "}
+              </Fragment>
             );
           })}
         </motion.h1>
