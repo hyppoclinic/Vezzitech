@@ -44,6 +44,7 @@ export const Dashboard = () => {
   const [aiPrompt, setAiPrompt] = useState('');
   const [generatingArticle, setGeneratingArticle] = useState(false);
   const [generatingImage, setGeneratingImage] = useState(false);
+  const [userGeminiKey, setUserGeminiKey] = useState(localStorage.getItem('gemini_api_key') || '');
 
   // Lead Form State
   const [leadName, setLeadName] = useState('');
@@ -277,7 +278,7 @@ export const Dashboard = () => {
     try {
       const res = await fetch('/api/gemini/generate-article', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(userGeminiKey ? { 'x-gemini-api-key': userGeminiKey } : {}) },
         body: JSON.stringify({ topic: aiPrompt, lang: 'pt' })
       });
       if (!res.ok) {
@@ -307,7 +308,7 @@ export const Dashboard = () => {
     try {
       const res = await fetch('/api/gemini/generate-article-image', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(userGeminiKey ? { 'x-gemini-api-key': userGeminiKey } : {}) },
         body: JSON.stringify({ title: postTitle, lang: 'pt' })
       });
       if (!res.ok) {
@@ -670,6 +671,20 @@ export const Dashboard = () => {
                       Digite o tema ou assunto desejado e clique em <b>Gerar Artigo</b> para redigir instantaneamente um título, slug amigável e conteúdo em Markdown otimizado para SEO e AEO. Em seguida, clique em <b>Gerar Capa com IA</b> para criar uma imagem exclusiva com Nano Banana.
                     </p>
                     
+                    
+                    <div className="mb-4">
+                      <label className="text-xs font-semibold text-gray-400 mb-1 block">Sua Chave Gemini API (Opcional - sobrepõe a do servidor)</label>
+                      <input 
+                        type="password" 
+                        placeholder="AIzaSy..."
+                        value={userGeminiKey}
+                        onChange={(e) => {
+                          setUserGeminiKey(e.target.value);
+                          localStorage.setItem('gemini_api_key', e.target.value);
+                        }}
+                        className="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:border-[#33BC65] outline-none text-sm placeholder:text-gray-600 text-white"
+                      />
+                    </div>
                     <div className="flex flex-col md:flex-row gap-3">
                       <input 
                         type="text" 

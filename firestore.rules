@@ -1,44 +1,22 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
     function isSignedIn() { return request.auth != null; }
-    function isVerified() { return request.auth.token.email_verified == true; }
-    function isAdmin() { return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); }
-    
-    function isValidPost(data) {
-      return data.title is string && data.title.size() > 0 && data.title.size() <= 200 &&
-             data.content is string && data.content.size() > 0 &&
-             data.createdAt is timestamp &&
-             data.slug is string && data.slug.size() <= 256 &&
-             data.author is string && data.author.size() <= 128 &&
-             (!('imageUrl' in data) || data.imageUrl is string);
-    }
 
     match /cases/{caseId} {
       allow read: if true;
       allow write: if isSignedIn();
     }
-
     match /posts/{postId} {
       allow read: if true;
-      allow create: if request.resource.data.author == 'system_seed' || (isSignedIn() && request.resource.data.author == request.auth.uid);
-      allow update: if isSignedIn() && 
-                    request.resource.data.author == resource.data.author &&
-                    (isAdmin() || request.resource.data.author == request.auth.uid) &&
-                    request.resource.data.createdAt == resource.data.createdAt &&
-                    request.resource.data.slug == resource.data.slug;
-      allow delete: if isSignedIn() && (isAdmin() || resource.data.author == request.auth.uid);
+      allow write: if isSignedIn();
     }
-
     match /analytics_metrics/{id} {
       allow read, write: if true;
     }
-
     match /leads/{leadId} {
       allow read, write: if isSignedIn();
     }
-
     match /projects/{projectId} {
       allow read, write: if isSignedIn();
     }

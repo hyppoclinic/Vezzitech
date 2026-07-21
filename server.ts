@@ -66,7 +66,7 @@ async function startServer() {
     try {
       const { question, industry, companySize, lang = "pt" } = req.body;
       
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = req.headers["x-gemini-api-key"] as string || process.env.GEMINI_API_KEY;
       if (!apiKey) {
         return res.status(500).json({ 
           error: lang === "pt" 
@@ -188,7 +188,7 @@ async function startServer() {
     try {
       const { targetAudience, differentiators, marketFocus, competitors, lang = "pt" } = req.body;
 
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = req.headers["x-gemini-api-key"] as string || process.env.GEMINI_API_KEY;
       if (!apiKey) {
         return res.status(500).json({ 
           error: lang === "pt" 
@@ -315,7 +315,7 @@ async function startServer() {
         });
       }
 
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = req.headers["x-gemini-api-key"] as string || process.env.GEMINI_API_KEY;
       if (!apiKey) {
         return res.status(500).json({ 
           error: lang === "pt" 
@@ -428,7 +428,7 @@ async function startServer() {
         return res.status(400).json({ error: "Query is required" });
       }
 
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = req.headers["x-gemini-api-key"] as string || process.env.GEMINI_API_KEY;
       if (!apiKey) {
         return res.status(500).json({ error: "GEMINI_API_KEY is not configured on the server." });
       }
@@ -522,7 +522,7 @@ async function startServer() {
         });
       }
 
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = req.headers["x-gemini-api-key"] as string || process.env.GEMINI_API_KEY;
       if (!apiKey) {
         return res.status(500).json({ 
           error: lang === "pt" 
@@ -607,7 +607,7 @@ async function startServer() {
         return res.status(400).json({ error: "Title is required to generate a cover image." });
       }
 
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = req.headers["x-gemini-api-key"] as string || process.env.GEMINI_API_KEY;
       if (!apiKey) {
         return res.status(500).json({ error: "GEMINI_API_KEY is not configured on the server." });
       }
