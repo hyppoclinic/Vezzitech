@@ -32,7 +32,7 @@ export const Footer = ({ lang }: { lang: Language }) => {
             </p>
 
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#111111] border border-white/[0.08] text-xs text-zinc-300 font-mono">
-              <ShieldCheck className="w-4 h-4 text-[#FFD000]" />
+              <ShieldCheck className="w-4 h-4 text-[#0066FF]" />
               <span>{t.securityBadge}</span>
             </div>
           </div>
@@ -111,7 +111,7 @@ export const Footer = ({ lang }: { lang: Language }) => {
                   href={`mailto:${t.email}`}
                   className="flex items-center gap-2.5 hover:text-white transition-colors text-zinc-300"
                 >
-                  <Mail className="w-4 h-4 text-[#FFD000]" />
+                  <Mail className="w-4 h-4 text-[#0066FF]" />
                   <span>{t.email}</span>
                 </a>
               </li>
@@ -122,12 +122,12 @@ export const Footer = ({ lang }: { lang: Language }) => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 hover:text-white transition-colors text-zinc-300"
                 >
-                  <Phone className="w-4 h-4 text-[#FFD000]" />
+                  <Phone className="w-4 h-4 text-[#0066FF]" />
                   <span>{t.phone}</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-zinc-400 text-xs leading-relaxed">
-                <MapPin className="w-4 h-4 text-[#FFD000] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#0066FF] shrink-0 mt-0.5" />
                 <span>{t.location}</span>
               </li>
             </ul>

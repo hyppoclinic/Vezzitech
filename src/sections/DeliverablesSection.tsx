@@ -15,7 +15,7 @@ export const DeliverablesSection = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#FFD000] uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#38BDF8] uppercase tracking-widest mb-4"
           >
             {t.kicker}
           </motion.div>
@@ -50,16 +50,16 @@ export const DeliverablesSection = ({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className={`p-8 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] hover:border-[#FFD000]/30 transition-all duration-300 flex flex-col justify-between ${
+              className={`p-8 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] hover:border-[#0066FF]/30 transition-all duration-300 flex flex-col justify-between ${
                 index >= 3 ? 'lg:col-span-1 md:col-span-1' : ''
               }`}
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl sm:text-4xl font-mono font-black text-[#FFD000]/90">
+                  <span className="text-3xl sm:text-4xl font-mono font-black text-[#0066FF]">
                     {item.number}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000]">
+                  <div className="w-8 h-8 rounded-full bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#38BDF8]">
                     <Check className="w-4 h-4" strokeWidth={2.5} />
                   </div>
                 </div>
@@ -74,7 +74,7 @@ export const DeliverablesSection = ({ lang }: { lang: Language }) => {
               </div>
 
               <div className="pt-4 border-t border-white/[0.06] text-xs font-mono font-medium text-zinc-300 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FFD000]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF]" />
                 <span>{item.details}</span>
               </div>
             </motion.div>

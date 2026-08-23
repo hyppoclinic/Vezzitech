@@ -35,7 +35,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen text-[#9A9A9A] antialiased selection:bg-[#FFD000]/30 selection:text-white font-sans overflow-x-hidden">
+    <div className="bg-[#0A0A0A] min-h-screen text-[#9A9A9A] antialiased selection:bg-[#0066FF]/30 selection:text-white font-sans overflow-x-hidden">
       {/* 1. Header Fixo */}
       <Header lang={lang} setLang={setLang} />
       
@@ -67,10 +67,10 @@ export default function App() {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 px-5 py-3.5 bg-[#FFD000] hover:bg-[#F5C200] text-black rounded-full shadow-yellow-btn hover:scale-105 transition-all flex items-center gap-2.5 font-heading font-black text-xs uppercase tracking-wider group cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 px-5 py-3.5 bg-[#0066FF] hover:bg-[#0052CC] text-white rounded-full shadow-blue-btn hover:scale-105 transition-all flex items-center gap-2.5 font-heading font-black text-xs uppercase tracking-wider group cursor-pointer"
         aria-label="Falar no WhatsApp"
       >
-        <MessageSquare className="w-4 h-4 fill-black" />
+        <MessageSquare className="w-4 h-4 fill-white text-white" />
         <span>Falar no WhatsApp</span>
       </a>
     </div>

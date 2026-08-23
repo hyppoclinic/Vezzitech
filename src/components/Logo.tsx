@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/logo_1.png';
 
 interface LogoProps {
   className?: string;
@@ -17,7 +17,7 @@ export const Logo = ({ className = "h-10 md:h-12 w-auto", onClick }: LogoProps) 
         aria-label="Vezzitech"
       >
         <img 
-          src="/logo.png" 
+          src="/logo_1.png" 
           alt="Vezzitech" 
           className={`${className} object-contain`}
           onError={() => {}}

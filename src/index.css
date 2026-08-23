@@ -13,20 +13,20 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   /* Custom Design System Colors for Vezzitech On-Demand Software House */
-  --color-primary: #FFD000;
-  --color-primary-foreground: #000000;
+  --color-primary: #0066FF;
+  --color-primary-foreground: #FFFFFF;
   --color-secondary: #111111;
   --color-secondary-foreground: #FFFFFF;
-  --color-accent: #FFD000;
-  --color-accent-foreground: #000000;
+  --color-accent: #0066FF;
+  --color-accent-foreground: #FFFFFF;
   --color-background: #0A0A0A;
   --color-foreground: #FFFFFF;
   --color-muted: #141414;
   --color-muted-foreground: #9A9A9A;
   --color-border: #222222;
   
-  --color-yellow: #FFD000;
-  --color-yellow-glow: rgba(255, 208, 0, 0.25);
+  --color-blue: #0066FF;
+  --color-blue-glow: rgba(0, 102, 255, 0.35);
   --color-dark-surface: #111111;
   --color-dark-card: #0F0F0F;
   --color-dark-border: rgba(255, 255, 255, 0.08);
@@ -41,7 +41,7 @@
   }
   
   * {
-    @apply border-[#222222] outline-[#FFD000]/50;
+    @apply border-[#222222] outline-[#0066FF]/50;
   }
   
   html {
@@ -51,24 +51,24 @@
 }
 
 @layer utilities {
-  .text-yellow-accent {
-    color: #FFD000;
+  .text-blue-accent {
+    color: #0066FF;
   }
   
-  .bg-yellow-accent {
-    background-color: #FFD000;
+  .bg-blue-accent {
+    background-color: #0066FF;
   }
 
   .border-glass-card {
     border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .shadow-yellow-glow {
-    box-shadow: 0 0 30px rgba(255, 208, 0, 0.2);
+  .shadow-blue-glow {
+    box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
   }
 
-  .shadow-yellow-btn {
-    box-shadow: 0 0 20px rgba(255, 208, 0, 0.35);
+  .shadow-blue-btn {
+    box-shadow: 0 0 25px rgba(0, 102, 255, 0.45);
   }
 
   .bg-grid-pattern {
@@ -84,18 +84,18 @@
   --card-foreground: #FFFFFF;
   --popover: #111111;
   --popover-foreground: #FFFFFF;
-  --primary: #FFD000;
-  --primary-foreground: #000000;
+  --primary: #0066FF;
+  --primary-foreground: #FFFFFF;
   --secondary: #161616;
   --secondary-foreground: #FFFFFF;
   --muted: #141414;
   --muted-foreground: #9A9A9A;
-  --accent: #FFD000;
-  --accent-foreground: #000000;
+  --accent: #0066FF;
+  --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #222222;
   --input: #222222;
-  --ring: #FFD000;
+  --ring: #0066FF;
   --radius: 0.75rem;
 }

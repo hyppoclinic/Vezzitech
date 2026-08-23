@@ -21,7 +21,7 @@ export const FAQSection = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#FFD000] uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#38BDF8] uppercase tracking-widest mb-4"
           >
             {t.kicker}
           </motion.div>
@@ -61,7 +61,7 @@ export const FAQSection = ({ lang }: { lang: Language }) => {
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                   isOpen 
-                    ? 'bg-[#0F0F0F] border-[#FFD000]/30 shadow-lg' 
+                    ? 'bg-[#0F0F0F] border-[#0066FF]/40 shadow-lg' 
                     : 'bg-[#0F0F0F]/60 border-white/[0.07] hover:border-white/[0.15]'
                 }`}
               >
@@ -74,7 +74,7 @@ export const FAQSection = ({ lang }: { lang: Language }) => {
                     {item.q}
                   </span>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                    isOpen ? 'bg-[#FFD000] text-black' : 'bg-[#141414] border border-white/[0.08] text-[#9A9A9A]'
+                    isOpen ? 'bg-[#0066FF] text-white' : 'bg-[#141414] border border-white/[0.08] text-[#9A9A9A]'
                   }`}>
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>

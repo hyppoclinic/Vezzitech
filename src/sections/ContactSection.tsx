@@ -61,7 +61,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#FFD000] uppercase tracking-widest mb-4"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#38BDF8] uppercase tracking-widest mb-4"
               >
                 {t.kicker}
               </motion.div>
@@ -89,19 +89,19 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
               {/* Guarantees Box */}
               <div className="space-y-4 p-6 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] mb-8">
                 <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-[#FFD000] shrink-0 mt-0.5" />
+                  <Clock className="w-5 h-5 text-[#0066FF] shrink-0 mt-0.5" />
                   <div className="text-sm font-medium text-white">
                     Resposta em menos de 15 minutos em horário comercial
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="w-5 h-5 text-[#FFD000] shrink-0 mt-0.5" />
+                  <ShieldCheck className="w-5 h-5 text-[#0066FF] shrink-0 mt-0.5" />
                   <div className="text-sm font-medium text-white">
                     Acordo de confidencialidade (NDA) disponível para proteger sua ideia
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#FFD000] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#0066FF] shrink-0 mt-0.5" />
                   <div className="text-sm font-medium text-white">
                     Proposta técnica detalhada com escopo, prazos e custos fixos
                   </div>
@@ -118,7 +118,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                 href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de falar diretamente com um engenheiro de software da Vezzitech.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#FFD000] hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#38BDF8] hover:underline"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>+55 (44) 99826-6950 · WhatsApp Direto</span>
@@ -136,7 +136,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
             >
               {submitted ? (
                 <div className="py-12 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#FFD000]/10 border border-[#FFD000]/30 flex items-center justify-center text-[#FFD000] mx-auto mb-6">
+                  <div className="w-16 h-16 rounded-full bg-[#0066FF]/10 border border-[#0066FF]/30 flex items-center justify-center text-[#38BDF8] mx-auto mb-6">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-heading font-bold text-white mb-3">
@@ -147,7 +147,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="px-6 py-2.5 rounded-full bg-[#141414] border border-white/[0.1] text-xs font-bold text-white hover:border-[#FFD000]"
+                    className="px-6 py-2.5 rounded-full bg-[#141414] border border-white/[0.1] text-xs font-bold text-white hover:border-[#0066FF]"
                   >
                     Enviar nova mensagem
                   </button>
@@ -167,7 +167,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder={f.namePlaceholder}
-                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -180,7 +180,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder={f.companyPlaceholder}
-                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -197,7 +197,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder={f.emailPlaceholder}
-                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -211,7 +211,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder={f.phonePlaceholder}
-                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -225,7 +225,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                       required
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors cursor-pointer"
                     >
                       <option value="" disabled className="bg-[#111111] text-[#9A9A9A]">
                         {f.projectTypePlaceholder}
@@ -247,7 +247,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                       <select
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors cursor-pointer"
                       >
                         <option value="" disabled className="bg-[#111111] text-[#9A9A9A]">
                           {f.budgetPlaceholder}
@@ -267,7 +267,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                       <select
                         value={formData.timeline}
                         onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors cursor-pointer"
                       >
                         <option value="" disabled className="bg-[#111111] text-[#9A9A9A]">
                           {f.timelinePlaceholder}
@@ -292,7 +292,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       placeholder={f.descriptionPlaceholder}
-                      className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#FFD000] focus:outline-none transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-[#141414] border border-white/[0.08] text-white text-sm focus:border-[#0066FF] focus:outline-none transition-colors resize-none"
                     />
                   </div>
 
@@ -300,7 +300,7 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-full bg-[#FFD000] hover:bg-[#F5C200] text-black font-heading font-black text-sm uppercase tracking-wider transition-all duration-200 shadow-yellow-btn hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full py-4 rounded-full bg-[#0066FF] hover:bg-[#0052CC] text-white font-heading font-black text-sm uppercase tracking-wider transition-all duration-200 shadow-blue-btn hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     <span>{isSubmitting ? 'Enviando proposta...' : f.submitButton}</span>
                     <ArrowUpRight className="w-4 h-4" />

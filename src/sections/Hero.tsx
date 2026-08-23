@@ -16,7 +16,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
   return (
     <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-[#0A0A0A]">
       {/* Subtle Background Radial / Glow Effect */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#FFD000]/[0.04] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#0066FF]/[0.08] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -27,9 +27,9 @@ export const Hero = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#FFD000] uppercase tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#38BDF8] uppercase tracking-widest mb-6"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD000] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF] animate-pulse" />
             {t.kicker}
           </motion.div>
 
@@ -41,7 +41,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
             className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black text-white tracking-tight leading-[1.03] mb-6"
           >
             <span className="block">{t.titleLine1}</span>
-            <span className="block text-[#FFD000] drop-shadow-[0_0_35px_rgba(255,208,0,0.25)]">
+            <span className="block text-[#0066FF] drop-shadow-[0_0_35px_rgba(0,102,255,0.4)]">
               {t.titleHighlight}
             </span>
             <span className="block text-white">{t.titleLine3}</span>
@@ -66,7 +66,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
           >
             <button
               onClick={scrollToContact}
-              className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-[#FFD000] hover:bg-[#F5C200] px-8 text-sm font-extrabold text-black uppercase tracking-wider transition-all duration-200 shadow-yellow-btn hover:scale-[1.02] cursor-pointer"
+              className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-[#0066FF] hover:bg-[#0052CC] px-8 text-sm font-extrabold text-white uppercase tracking-wider transition-all duration-200 shadow-blue-btn hover:scale-[1.02] cursor-pointer"
             >
               <span>{t.ctaPrimary}</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -78,7 +78,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
               rel="noopener noreferrer"
               className="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-[#111111] hover:bg-[#181818] border border-white/[0.1] hover:border-white/[0.2] px-7 text-sm font-semibold text-white transition-all duration-200 cursor-pointer"
             >
-              <MessageSquare className="w-4 h-4 text-[#FFD000]" />
+              <MessageSquare className="w-4 h-4 text-[#0066FF]" />
               <span>{t.ctaSecondary}</span>
             </a>
           </motion.div>
@@ -92,8 +92,8 @@ export const Hero = ({ lang }: { lang: Language }) => {
           >
             {/* Google Rating */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000] shrink-0">
-                <Star className="w-5 h-5 fill-[#FFD000]" />
+              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#38BDF8] shrink-0">
+                <Star className="w-5 h-5 fill-[#0066FF] text-[#0066FF]" />
               </div>
               <div>
                 <div className="text-sm font-bold text-white font-heading">
@@ -107,8 +107,8 @@ export const Hero = ({ lang }: { lang: Language }) => {
 
             {/* Delivered Projects */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000] shrink-0">
-                <CheckCircle2 className="w-5 h-5 text-[#FFD000]" />
+              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#0066FF] shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-[#0066FF]" />
               </div>
               <div>
                 <div className="text-sm font-bold text-white font-heading">
@@ -122,8 +122,8 @@ export const Hero = ({ lang }: { lang: Language }) => {
 
             {/* Response Time */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000] shrink-0">
-                <Clock className="w-5 h-5 text-[#FFD000]" />
+              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#0066FF] shrink-0">
+                <Clock className="w-5 h-5 text-[#0066FF]" />
               </div>
               <div>
                 <div className="text-sm font-bold text-white font-heading">

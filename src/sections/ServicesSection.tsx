@@ -37,7 +37,7 @@ export const ServicesSection = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#FFD000] uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#38BDF8] uppercase tracking-widest mb-4"
           >
             {t.kicker}
           </motion.div>
@@ -75,11 +75,11 @@ export const ServicesSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group relative flex flex-col justify-between p-8 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] hover:border-[#FFD000]/40 transition-all duration-300 shadow-lg hover:shadow-yellow-glow/10"
+                className="group relative flex flex-col justify-between p-8 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] hover:border-[#0066FF]/40 transition-all duration-300 shadow-lg hover:shadow-blue-glow/10"
               >
                 <div>
                   {/* Top Bar: Outline Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-white group-hover:text-[#FFD000] group-hover:border-[#FFD000]/30 group-hover:bg-[#FFD000]/[0.06] transition-all duration-200 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-white group-hover:text-[#38BDF8] group-hover:border-[#0066FF]/30 group-hover:bg-[#0066FF]/[0.08] transition-all duration-200 mb-6">
                     <Icon className="w-6 h-6" strokeWidth={1.75} />
                   </div>
 
@@ -88,8 +88,8 @@ export const ServicesSection = ({ lang }: { lang: Language }) => {
                     {item.title}
                   </h3>
 
-                  {/* Highlight sentence in italic/yellow */}
-                  <p className="text-xs sm:text-sm font-medium italic text-[#FFD000]/90 mb-3 leading-snug">
+                  {/* Highlight sentence in italic/blue */}
+                  <p className="text-xs sm:text-sm font-medium italic text-[#38BDF8] mb-3 leading-snug">
                     "{item.highlight}"
                   </p>
 
@@ -114,7 +114,7 @@ export const ServicesSection = ({ lang }: { lang: Language }) => {
 
                   <button
                     onClick={scrollToContact}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-white group-hover:text-[#FFD000] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-white group-hover:text-[#38BDF8] transition-colors cursor-pointer"
                   >
                     <span>{lang === 'pt' ? 'Construir este projeto' : 'Build this software'}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

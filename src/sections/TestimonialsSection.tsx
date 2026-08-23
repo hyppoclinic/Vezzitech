@@ -16,7 +16,7 @@ export const TestimonialsSection = ({ lang }: { lang: Language }) => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#FFD000] uppercase tracking-widest mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#38BDF8] uppercase tracking-widest mb-4"
             >
               {t.kicker}
             </motion.div>
@@ -49,13 +49,13 @@ export const TestimonialsSection = ({ lang }: { lang: Language }) => {
             viewport={{ once: true }}
             className="p-5 rounded-2xl bg-[#0F0F0F] border border-white/[0.08] flex items-center gap-4 shrink-0 shadow-lg"
           >
-            <div className="w-12 h-12 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000] shrink-0 font-heading font-black text-lg">
+            <div className="w-12 h-12 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#38BDF8] shrink-0 font-heading font-black text-lg">
               {t.googleBadge.score}
             </div>
             <div>
-              <div className="flex items-center gap-1 text-[#FFD000] mb-1">
+              <div className="flex items-center gap-1 text-[#0066FF] mb-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#FFD000]" />
+                  <Star key={i} className="w-4 h-4 fill-[#0066FF]" />
                 ))}
               </div>
               <div className="text-xs font-bold text-white">
@@ -77,10 +77,10 @@ export const TestimonialsSection = ({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="p-8 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] hover:border-[#FFD000]/30 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] hover:border-[#0066FF]/30 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <Quote className="w-8 h-8 text-[#FFD000]/40 mb-6" />
+                <Quote className="w-8 h-8 text-[#0066FF]/40 mb-6" />
                 <p className="text-sm sm:text-base text-zinc-200 leading-relaxed italic mb-8 font-sans">
                   "{item.quote}"
                 </p>
@@ -93,7 +93,7 @@ export const TestimonialsSection = ({ lang }: { lang: Language }) => {
                 <div className="text-xs text-[#9A9A9A] mb-2">
                   {item.role} · <span className="text-zinc-300 font-medium">{item.company}</span>
                 </div>
-                <div className="inline-block px-2 py-0.5 rounded bg-[#161616] text-[10px] font-mono text-[#FFD000]">
+                <div className="inline-block px-2 py-0.5 rounded bg-[#161616] text-[10px] font-mono text-[#38BDF8]">
                   {item.projectType}
                 </div>
               </div>

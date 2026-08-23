@@ -83,7 +83,7 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
             </button>
           </nav>
 
-          {/* Desktop Right Side: Lang switcher + Yellow Pill CTA */}
+          {/* Desktop Right Side: Lang switcher + Blue Pill CTA */}
           <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#141414] border border-white/[0.08]">
               <Globe className="w-3.5 h-3.5 text-[#9A9A9A]" />
@@ -104,13 +104,13 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
               rel="noopener noreferrer"
               className="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-[#9A9A9A] hover:text-white px-3 py-2 transition-colors"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-[#FFD000]" />
+              <MessageSquare className="w-3.5 h-3.5 text-[#0066FF]" />
               <span>WhatsApp</span>
             </a>
 
             <button 
               onClick={() => scrollTo('contato')} 
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#FFD000] hover:bg-[#F5C200] px-5 text-xs font-extrabold text-black uppercase tracking-wider transition-all duration-200 shadow-yellow-btn hover:scale-[1.02] cursor-pointer"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#0066FF] hover:bg-[#0052CC] px-5 text-xs font-extrabold text-white uppercase tracking-wider transition-all duration-200 shadow-blue-btn hover:scale-[1.02] cursor-pointer"
             >
               <span>{t.cta}</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -139,19 +139,19 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
           >
             <div className="flex flex-col gap-4 text-sm font-semibold text-white">
               <button onClick={() => scrollTo('servicos')} className="text-left py-3 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
-                {t.services} <ArrowUpRight className="w-4 h-4 text-[#FFD000]" />
+                {t.services} <ArrowUpRight className="w-4 h-4 text-[#0066FF]" />
               </button>
               <button onClick={() => scrollTo('entregas')} className="text-left py-3 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
-                {t.deliverables} <ArrowUpRight className="w-4 h-4 text-[#FFD000]" />
+                {t.deliverables} <ArrowUpRight className="w-4 h-4 text-[#0066FF]" />
               </button>
               <button onClick={() => scrollTo('depoimentos')} className="text-left py-3 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
-                {t.testimonials} <ArrowUpRight className="w-4 h-4 text-[#FFD000]" />
+                {t.testimonials} <ArrowUpRight className="w-4 h-4 text-[#0066FF]" />
               </button>
               <button onClick={() => scrollTo('faq')} className="text-left py-3 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
-                {t.faq} <ArrowUpRight className="w-4 h-4 text-[#FFD000]" />
+                {t.faq} <ArrowUpRight className="w-4 h-4 text-[#0066FF]" />
               </button>
               <button onClick={() => scrollTo('contato')} className="text-left py-3 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
-                {t.contact} <ArrowUpRight className="w-4 h-4 text-[#FFD000]" />
+                {t.contact} <ArrowUpRight className="w-4 h-4 text-[#0066FF]" />
               </button>
             </div>
 
@@ -170,7 +170,7 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
 
               <button 
                 onClick={() => scrollTo('contato')} 
-                className="w-full py-3.5 bg-[#FFD000] text-black font-extrabold text-sm uppercase tracking-wider rounded-full shadow-yellow-btn flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-[#0066FF] text-white font-extrabold text-sm uppercase tracking-wider rounded-full shadow-blue-btn flex items-center justify-center gap-2"
               >
                 <span>{t.cta}</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -182,7 +182,7 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
                 rel="noopener noreferrer"
                 className="w-full py-3.5 bg-[#141414] border border-white/[0.1] text-white font-bold text-xs uppercase tracking-wider rounded-full flex items-center justify-center gap-2"
               >
-                <MessageSquare className="w-4 h-4 text-[#FFD000]" />
+                <MessageSquare className="w-4 h-4 text-[#0066FF]" />
                 <span>{t.whatsapp}</span>
               </a>
             </div>
