@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { translations, Language } from '../translations';
 import { Menu, X, Globe, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Language) => void }) => {
   const t = translations[lang].nav;
@@ -45,7 +46,7 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
             className="flex items-center gap-3 cursor-pointer group" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/logo_26.png" alt="Vezzitech" className="h-10 md:h-12 w-auto object-contain" />
+            <Logo className="h-10 md:h-12 w-auto" />
           </div>
 
           {/* Desktop Navigation */}

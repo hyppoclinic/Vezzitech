@@ -1,5 +1,6 @@
 import { translations, Language } from '../translations';
 import { Mail, Phone, MapPin, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Footer = ({ lang }: { lang: Language }) => {
   const t = translations[lang].footer;
@@ -23,7 +24,7 @@ export const Footer = ({ lang }: { lang: Language }) => {
           {/* Col 1: Brand & Positioning (5 cols) */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-6 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <img src="/logo_26.png" alt="Vezzitech" className="h-10 md:h-12 w-auto object-contain" />
+              <Logo className="h-10 md:h-12 w-auto" />
             </div>
 
             <p className="text-sm text-[#9A9A9A] max-w-sm leading-relaxed mb-8">
