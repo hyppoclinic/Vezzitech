@@ -1,4 +1,4 @@
-import logoImg from '../assets/logo_1.png';
+import logoImg from '../assets/logo1.png';
 
 interface LogoProps {
   className?: string;
