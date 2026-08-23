@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../assets/logo1.png';
+import logoImg from '../assets/logo1-1.png';
 
 export const VezzitechLogo = ({ className = "" }: { className?: string }) => (
   <span className={`inline-flex items-center select-none ${className}`}>
