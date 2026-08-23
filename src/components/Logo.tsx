@@ -14,6 +14,7 @@ export const Logo = ({ className = "h-10 md:h-12 w-auto", onClick }: LogoProps) 
       onClick={onClick}
       loading="eager"
       decoding="async"
+      referrerPolicy="no-referrer"
     />
   );
 };

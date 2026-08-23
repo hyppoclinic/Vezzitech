@@ -35,7 +35,7 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
       <header 
         className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
           isScrolled 
-            ? 'bg-[#0A0A0A]/90 backdrop-blur-md border-white/[0.08] py-3.5 shadow-2xl' 
+            ? 'bg-[#0A0A0A]/90 backdrop-blur-md border-white/[0.08] py-3.5 shadow-[0_4px_30px_rgba(0,102,255,0.06)]' 
             : 'bg-transparent border-transparent py-5'
         }`}
       >
@@ -53,31 +53,31 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
           <nav className="hidden md:flex items-center gap-7">
             <button 
               onClick={() => scrollTo('servicos')} 
-              className="text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer"
+              className="relative py-1 text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#0066FF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
             >
               {t.services}
             </button>
             <button 
               onClick={() => scrollTo('entregas')} 
-              className="text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer"
+              className="relative py-1 text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#0066FF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
             >
               {t.deliverables}
             </button>
             <button 
               onClick={() => scrollTo('depoimentos')} 
-              className="text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer"
+              className="relative py-1 text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#0066FF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
             >
               {t.testimonials}
             </button>
             <button 
               onClick={() => scrollTo('faq')} 
-              className="text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer"
+              className="relative py-1 text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#0066FF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
             >
               {t.faq}
             </button>
             <button 
               onClick={() => scrollTo('contato')} 
-              className="text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer"
+              className="relative py-1 text-xs font-semibold uppercase tracking-wider text-[#9A9A9A] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#0066FF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
             >
               {t.contact}
             </button>
