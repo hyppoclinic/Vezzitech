@@ -1,49 +1,27 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Language } from './translations';
 
 import { Hero } from './sections/Hero';
-import { LogosTicker } from './components/LogosTicker';
-import { ValueProp } from './sections/ValueProp';
-import { ArchitectureNew } from './sections/ArchitectureNew';
-import { SegmentsNew } from './sections/SegmentsNew';
-import { MetricsNew } from './sections/MetricsNew';
-import { TechStackNew } from './sections/TechStackNew';
-import { InsightsNew } from './sections/InsightsNew';
-import { FAQNew } from './sections/FAQNew';
-import { CTANew } from './sections/CTANew';
-import { Sparkles } from 'lucide-react';
-
-const Dashboard = lazy(() => import('./components/Dashboard').then(m => ({ default: m.Dashboard })));
-const Login = lazy(() => import('./components/Login').then(m => ({ default: m.Login })));
-const ModernizeWordPress = lazy(() => import('./pages/ModernizeWordPress').then(m => ({ default: m.ModernizeWordPress })));
-
-const LoadingFallback = () => (
-  <div className="min-h-screen bg-[#030303] flex items-center justify-center">
-    <div className="w-8 h-8 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin"></div>
-  </div>
-);
+import { ServicesSection } from './sections/ServicesSection';
+import { DeliverablesSection } from './sections/DeliverablesSection';
+import { TestimonialsSection } from './sections/TestimonialsSection';
+import { FAQSection } from './sections/FAQSection';
+import { ContactSection } from './sections/ContactSection';
+import { MessageSquare } from 'lucide-react';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
-  const [route, setRoute] = useState(window.location.pathname);
 
   const whatsappNumber = "+5544998266950";
-  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de falar com um especialista sobre as soluções da Vezzitech.`;
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de falar com a equipe da Vezzitech sobre o desenvolvimento de um software sob demanda.`;
 
   useEffect(() => {
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
   }, [lang]);
 
   useEffect(() => {
-    setRoute(window.location.pathname);
-
     const urlParams = new URLSearchParams(window.location.search);
     const scrollTarget = urlParams.get('scroll');
     if (scrollTarget) {
@@ -56,58 +34,44 @@ export default function App() {
     }
   }, []);
 
-  if (route === '/login') {
-    return (
-      <Suspense fallback={<LoadingFallback />}>
-        <Login />
-      </Suspense>
-    );
-  }
-
-  if (route === '/dashboard') {
-    return (
-      <Suspense fallback={<LoadingFallback />}>
-        <Dashboard />
-      </Suspense>
-    );
-  }
-
-  if (route === '/modernizar-wordpress') {
-    return (
-      <Suspense fallback={<LoadingFallback />}>
-        <ModernizeWordPress lang={lang} setLang={setLang} />
-      </Suspense>
-    );
-  }
-
   return (
-    <div className="bg-[#030303] min-h-screen text-gray-200 antialiased selection:bg-emerald-500/30 selection:text-white font-sans overflow-x-hidden">
+    <div className="bg-[#0A0A0A] min-h-screen text-[#9A9A9A] antialiased selection:bg-[#FFD000]/30 selection:text-white font-sans overflow-x-hidden">
+      {/* 1. Header Fixo */}
       <Header lang={lang} setLang={setLang} />
       
       <main className="w-full">
+        {/* 2. Hero */}
         <Hero lang={lang} />
-        <LogosTicker />
-        <ValueProp lang={lang} />
-        <SegmentsNew lang={lang} />
-        <ArchitectureNew lang={lang} />
-        <MetricsNew lang={lang} />
-        <TechStackNew lang={lang} />
-        <InsightsNew lang={lang} />
-        <FAQNew lang={lang} />
-        <CTANew lang={lang} />
+
+        {/* 3. Serviços */}
+        <ServicesSection lang={lang} />
+
+        {/* 4. Entregas */}
+        <DeliverablesSection lang={lang} />
+
+        {/* 5. Depoimentos / Prova */}
+        <TestimonialsSection lang={lang} />
+
+        {/* 6. FAQ */}
+        <FAQSection lang={lang} />
+
+        {/* 7. Formulário de Contato */}
+        <ContactSection lang={lang} />
       </main>
 
+      {/* 8. Footer */}
       <Footer lang={lang} />
 
-      {/* Floating AI Agent WhatsApp */}
+      {/* 9. Floating WhatsApp Button */}
       <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 p-4 bg-emerald-500 text-black rounded-full shadow-2xl shadow-emerald-500/20 hover:scale-110 transition-transform flex items-center gap-2 font-bold group"
+        className="fixed bottom-6 right-6 z-50 px-5 py-3.5 bg-[#FFD000] hover:bg-[#F5C200] text-black rounded-full shadow-yellow-btn hover:scale-105 transition-all flex items-center gap-2.5 font-heading font-black text-xs uppercase tracking-wider group cursor-pointer"
+        aria-label="Falar no WhatsApp"
       >
-        <Sparkles className="w-5 h-5 group-hover:animate-pulse" />
-        <span className="hidden md:inline">Falar com IA</span>
+        <MessageSquare className="w-4 h-4 fill-black" />
+        <span>Falar no WhatsApp</span>
       </a>
     </div>
   );

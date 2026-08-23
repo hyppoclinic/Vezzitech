@@ -1,142 +1,143 @@
-import { Fragment } from 'react';
 import { motion } from 'motion/react';
 import { translations, Language } from '../translations';
-import { ShimmerButton } from '../components/ui/shimmer-button';
-import { ChevronRight } from 'lucide-react';
-import heroBg from '../assets/images/hero_bg_green_wave_1784641477860.jpg';
+import { ArrowUpRight, MessageSquare, Star, CheckCircle2, Clock } from 'lucide-react';
 
 export const Hero = ({ lang }: { lang: Language }) => {
   const t = translations[lang].hero;
 
+  const whatsappNumber = "+5544998266950";
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de conversar sobre um projeto de software com a equipe da Vezzitech.`;
+
+  const scrollToContact = () => {
+    const el = document.getElementById('contato');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 px-6 bg-[#030303]">
-      {/* Background Image with Gradient Mask */}
-      <div 
-        className="absolute inset-0 z-0 opacity-40 mix-blend-screen"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
-        {/* Gradient overlays for smooth transition to black */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303]"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#030303] via-transparent to-[#030303]"></div>
-      </div>
+    <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-[#0A0A0A]">
+      {/* Subtle Background Radial / Glow Effect */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#FFD000]/[0.04] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
 
-      {/* Premium Background Gradients & Grid */}
-      <div className="absolute inset-0 bg-noise opacity-[0.015] pointer-events-none mix-blend-overlay z-0"></div>
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px] z-0"></div>
-      
-      {/* Radial fade for the grid */}
-      <div className="absolute inset-0 bg-[#030303] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)] z-0"></div>
-
-      {/* Main Emerald Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[80vw] max-w-[800px] h-[300px] bg-emerald-500/15 rounded-[100%] blur-[120px] pointer-events-none z-0"></div>
-
-      <div className="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-medium text-gray-300 mb-8 backdrop-blur-md shadow-sm"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          {t.badge}
-        </motion.div>
-
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.05,
-                delayChildren: 0.1,
-              },
-            },
-          }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-medium tracking-tighter text-white mb-8 leading-[1.05] max-w-4xl"
-        >
-          {t.headline.split(" ").map((word, i, arr) => {
-            const hasDot = word.endsWith('.');
-            const displayWord = hasDot ? word.slice(0, -1) : word;
-
-            return (
-              <Fragment key={i}>
-                <span className="inline-block">
-                  <motion.span
-                    variants={{
-                      hidden: { opacity: 0, y: 30, rotate: 2, filter: "blur(12px)", scale: 0.95 },
-                      visible: { 
-                        opacity: 1, 
-                        y: 0, 
-                        rotate: 0, 
-                        filter: "blur(0px)",
-                        scale: 1,
-                        transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
-                      }
-                    }}
-                    className="inline-block origin-bottom-left"
-                  >
-                    {displayWord}
-                    {hasDot && <span className="text-emerald-500">.</span>}
-                  </motion.span>
-                </span>
-                {i < arr.length - 1 && " "}
-              </Fragment>
-            );
-          })}
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed font-sans"
-        >
-          {t.subheadline}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
-        >
-          <button className="group relative w-full sm:w-auto inline-flex h-12 items-center justify-center overflow-hidden rounded-lg bg-emerald-500 px-8 font-medium text-white shadow-[0_0_40px_-10px_rgba(16,185,129,0.4)] hover:shadow-[0_0_60px_-15px_rgba(16,185,129,0.5)] transition-all duration-300">
-            <span className="relative z-10 flex items-center gap-2">
-              {t.ctaPrimary}
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </span>
-            <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
-              <div className="relative h-full w-8 bg-white/20" />
-            </div>
-          </button>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-4xl">
           
-          <button className="w-full sm:w-auto px-8 h-12 rounded-lg bg-white/[0.03] border border-white/[0.08] text-white font-medium hover:bg-white/[0.08] transition-colors backdrop-blur-md">
-            {t.ctaSecondary}
-          </button>
-        </motion.div>
+          {/* Micro-badge / Kicker */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#141414] border border-white/[0.08] text-[11px] font-mono font-bold text-[#FFD000] uppercase tracking-widest mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD000] animate-pulse" />
+            {t.kicker}
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(4px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-16 pt-8 border-t border-white/[0.08] w-full max-w-3xl flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm font-medium text-gray-500"
-        >
-          {t.indicators.map((item, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              {item}
+          {/* 3-Line Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black text-white tracking-tight leading-[1.03] mb-6"
+          >
+            <span className="block">{t.titleLine1}</span>
+            <span className="block text-[#FFD000] drop-shadow-[0_0_35px_rgba(255,208,0,0.25)]">
+              {t.titleHighlight}
+            </span>
+            <span className="block text-white">{t.titleLine3}</span>
+          </motion.h1>
+
+          {/* Short Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base sm:text-lg md:text-xl text-[#9A9A9A] max-w-2xl font-sans leading-relaxed mb-10"
+          >
+            {t.subtitle}
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-16"
+          >
+            <button
+              onClick={scrollToContact}
+              className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-[#FFD000] hover:bg-[#F5C200] px-8 text-sm font-extrabold text-black uppercase tracking-wider transition-all duration-200 shadow-yellow-btn hover:scale-[1.02] cursor-pointer"
+            >
+              <span>{t.ctaPrimary}</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-[#111111] hover:bg-[#181818] border border-white/[0.1] hover:border-white/[0.2] px-7 text-sm font-semibold text-white transition-all duration-200 cursor-pointer"
+            >
+              <MessageSquare className="w-4 h-4 text-[#FFD000]" />
+              <span>{t.ctaSecondary}</span>
+            </a>
+          </motion.div>
+
+          {/* Social Proof Line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="pt-8 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
+          >
+            {/* Google Rating */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000] shrink-0">
+                <Star className="w-5 h-5 fill-[#FFD000]" />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-white font-heading">
+                  {t.socialProof.rating}
+                </div>
+                <div className="text-xs text-[#9A9A9A]">
+                  {t.socialProof.ratingSub}
+                </div>
+              </div>
             </div>
-          ))}
-        </motion.div>
+
+            {/* Delivered Projects */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000] shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-[#FFD000]" />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-white font-heading">
+                  {t.socialProof.projects}
+                </div>
+                <div className="text-xs text-[#9A9A9A]">
+                  {t.socialProof.projectsSub}
+                </div>
+              </div>
+            </div>
+
+            {/* Response Time */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-[#FFD000] shrink-0">
+                <Clock className="w-5 h-5 text-[#FFD000]" />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-white font-heading">
+                  {t.socialProof.responseTime}
+                </div>
+                <div className="text-xs text-[#9A9A9A]">
+                  {t.socialProof.responseTimeSub}
+                </div>
+              </div>
+            </div>
+
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -8,103 +8,94 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: "Geist Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Outfit", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Custom Design System Colors */
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
+  /* Custom Design System Colors for Vezzitech On-Demand Software House */
+  --color-primary: #FFD000;
+  --color-primary-foreground: #000000;
+  --color-secondary: #111111;
+  --color-secondary-foreground: #FFFFFF;
+  --color-accent: #FFD000;
+  --color-accent-foreground: #000000;
+  --color-background: #0A0A0A;
+  --color-foreground: #FFFFFF;
+  --color-muted: #141414;
+  --color-muted-foreground: #9A9A9A;
+  --color-border: #222222;
   
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-error: #EF4444;
+  --color-yellow: #FFD000;
+  --color-yellow-glow: rgba(255, 208, 0, 0.25);
+  --color-dark-surface: #111111;
+  --color-dark-card: #0F0F0F;
+  --color-dark-border: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
   body {
-    @apply font-sans overflow-x-hidden antialiased bg-background text-foreground;
+    @apply font-sans overflow-x-hidden antialiased bg-[#0A0A0A] text-[#9A9A9A];
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
   
   * {
-    @apply border-border outline-emerald-500/50;
+    @apply border-[#222222] outline-[#FFD000]/50;
   }
   
   html {
-    @apply font-sans bg-[#030303] text-zinc-300;
+    @apply font-sans bg-[#0A0A0A] text-[#9A9A9A];
     color-scheme: dark;
   }
 }
 
 @layer utilities {
-  .gradient-brand { @apply bg-[linear-gradient(135deg,#10B981_0%,#34D399_100%)]; }
-  .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60; }
-  .border-glass { @apply border border-white/10; }
-  .bg-glass { @apply bg-white/[0.02] backdrop-blur-xl; }
-  .bg-glass-hover { @apply hover:bg-white/[0.04] transition-colors; }
-  
-  /* Modern Grid Background */
-  .bg-grid-white {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  .text-yellow-accent {
+    color: #FFD000;
   }
   
-  /* Abstract noise/grain */
-  .bg-noise {
-    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  .bg-yellow-accent {
+    background-color: #FFD000;
   }
-}
 
-@theme inline {
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
+  .border-glass-card {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .shadow-yellow-glow {
+    box-shadow: 0 0 30px rgba(255, 208, 0, 0.2);
+  }
+
+  .shadow-yellow-btn {
+    box-shadow: 0 0 20px rgba(255, 208, 0, 0.35);
+  }
+
+  .bg-grid-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
 }
 
 :root {
-  /* Enforce Dark Theme Always for this premium SaaS look */
-  --background: #030303;
-  --foreground: #FAFAFA;
-  
-  --card: #0A0A0A;
-  --card-foreground: #FAFAFA;
-  
-  --popover: #0A0A0A;
-  --popover-foreground: #FAFAFA;
-  
-  --primary: #10B981;
-  --primary-foreground: #FFFFFF;
-  
-  --secondary: #27272A;
-  --secondary-foreground: #FAFAFA;
-  
-  --muted: #18181B;
-  --muted-foreground: #A1A1AA;
-  
-  --accent: #10B981;
-  --accent-foreground: #FAFAFA;
-  
-  --destructive: #7F1D1D;
-  --destructive-foreground: #FEF2F2;
-  
-  --border: #27272A;
-  --input: #27272A;
-  --ring: #10B981;
-  
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --card: #111111;
+  --card-foreground: #FFFFFF;
+  --popover: #111111;
+  --popover-foreground: #FFFFFF;
+  --primary: #FFD000;
+  --primary-foreground: #000000;
+  --secondary: #161616;
+  --secondary-foreground: #FFFFFF;
+  --muted: #141414;
+  --muted-foreground: #9A9A9A;
+  --accent: #FFD000;
+  --accent-foreground: #000000;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #222222;
+  --input: #222222;
+  --ring: #FFD000;
   --radius: 0.75rem;
 }
