@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { translations, Language } from '../translations';
-import { Menu, X, Globe, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { Menu, X, Globe, ArrowUpRight } from 'lucide-react';
 import { Logo } from './Logo';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Language) => void }) => {
   const t = translations[lang].nav;
@@ -102,9 +103,9 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-[#9A9A9A] hover:text-white px-3 py-2 transition-colors"
+              className="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-[#9A9A9A] hover:text-white px-3 py-2 transition-colors group"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-[#0066FF]" />
+              <WhatsAppIcon className="w-3.5 h-3.5 text-[#0066FF] group-hover:scale-110 transition-transform" />
               <span>WhatsApp</span>
             </a>
 
@@ -182,7 +183,7 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
                 rel="noopener noreferrer"
                 className="w-full py-3.5 bg-[#141414] border border-white/[0.1] text-white font-bold text-xs uppercase tracking-wider rounded-full flex items-center justify-center gap-2"
               >
-                <MessageSquare className="w-4 h-4 text-[#0066FF]" />
+                <WhatsAppIcon className="w-4 h-4 text-[#0066FF]" />
                 <span>{t.whatsapp}</span>
               </a>
             </div>

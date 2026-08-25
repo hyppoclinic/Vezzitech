@@ -1,6 +1,7 @@
 import { translations, Language } from '../translations';
-import { Mail, Phone, MapPin, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Mail, MapPin, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { Logo } from './Logo';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const Footer = ({ lang }: { lang: Language }) => {
   const t = translations[lang].footer;
@@ -120,9 +121,9 @@ export const Footer = ({ lang }: { lang: Language }) => {
                   href="https://wa.me/5544998266950"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 hover:text-white transition-colors text-zinc-300"
+                  className="flex items-center gap-2.5 hover:text-white transition-colors text-zinc-300 group"
                 >
-                  <Phone className="w-4 h-4 text-[#0066FF]" />
+                  <WhatsAppIcon className="w-4 h-4 text-[#0066FF] group-hover:scale-110 transition-transform" />
                   <span>{t.phone}</span>
                 </a>
               </li>

@@ -161,7 +161,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleHighlight: "sob demanda",
       titleLine3: "pra sua empresa",
       subtitle: "Construímos sistemas web, plataformas, MVPs e aplicativos sob medida para negócios que precisam de tecnologia sem enrolação com escopo ou contratos engessados.",
-      ctaPrimary: "Solicite um orçamento gratuito",
+      ctaPrimary: "Solicite um orçamento",
       ctaSecondary: "Falar no WhatsApp",
       socialProof: {
         rating: "5.0 ★★★★★",
@@ -224,6 +224,22 @@ export const translations: Record<Language, TranslationSchema> = {
           highlight: "Consultoria sênior de arquitetura, documentação e refatoração de código.",
           desc: "Apoio técnico para estruturar requisitos, escolher a stack ideal, auditar códigos legados e acelerar squads internos com boas práticas de engenharia.",
           tags: ["Arquitetura de Software", "Auditoria de Código", "Documentação Técnica", "Code Review"]
+        },
+        {
+          id: "websites-landing-pages",
+          icon: "monitor",
+          title: "Websites & Landing Pages",
+          highlight: "Páginas ultra velozes focadas em conversão de leads e vendas.",
+          desc: "Sites institucionais elegantes, landing pages de alta conversão, páginas de vendas de alta performance e blogs otimizados para SEO e velocidade máxima de carregamento.",
+          tags: ["Landing Pages", "Websites Institucionais", "Performance & SEO", "Design Exclusivo"]
+        },
+        {
+          id: "paid-traffic-ads",
+          icon: "megaphone",
+          title: "Tráfego Pago & Gestão de Ads",
+          highlight: "Campanhas estratégicas para colocar o seu negócio no topo das buscas.",
+          desc: "Planejamento, criação e gestão de campanhas profissionais de anúncios patrocinados no Google Ads, Meta Ads (Instagram/Facebook) e LinkedIn Ads para maximizar seu retorno sobre investimento (ROI).",
+          tags: ["Google Ads", "Meta Ads", "Gestão de Anúncios", "Análise de ROI"]
         }
       ]
     },
@@ -397,6 +413,8 @@ export const translations: Record<Language, TranslationSchema> = {
           "SaaS / MVP de Produto Digital",
           "Plataforma Web / Portal do Cliente",
           "Aplicativo Mobile (iOS / Android)",
+          "Websites / Landing Pages",
+          "Tráfego Pago / Ads",
           "Integrações de API / Automações",
           "Outro / Consultoria Técnica"
         ],
@@ -455,7 +473,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleHighlight: "on demand",
       titleLine3: "for your company",
       subtitle: "We build custom web systems, platforms, MVPs, and mobile apps for businesses that need solid engineering without scope bloat or rigid contracts.",
-      ctaPrimary: "Request a free quote",
+      ctaPrimary: "Request a quote",
       ctaSecondary: "Chat on WhatsApp",
       socialProof: {
         rating: "5.0 ★★★★★",
@@ -518,6 +536,22 @@ export const translations: Record<Language, TranslationSchema> = {
           highlight: "Senior architectural consulting, documentation, and legacy code refactoring.",
           desc: "Hands-on tech support to structure software requirements, select optimal stacks, audit codebases, and accelerate internal development teams.",
           tags: ["Software Architecture", "Codebase Audit", "Technical Specs", "Code Review"]
+        },
+        {
+          id: "websites-landing-pages",
+          icon: "monitor",
+          title: "Websites & Landing Pages",
+          highlight: "Ultra-fast pages designed to convert cold traffic into active clients.",
+          desc: "Elegant corporate websites, high-converting landing pages, high-performance sales funnels, and blog structures optimized for speed and SEO rankings.",
+          tags: ["Landing Pages", "Company Websites", "Performance & SEO", "Bespoke Design"]
+        },
+        {
+          id: "paid-traffic-ads",
+          icon: "megaphone",
+          title: "Paid Traffic & Ads Management",
+          highlight: "ROI-driven campaigns to rank your business at the top of search results.",
+          desc: "Professional strategic campaign planning, copy drafting, and hands-on optimization across Google Ads, Meta Ads (Instagram/Facebook), and LinkedIn Ads.",
+          tags: ["Google Ads", "Meta Ads", "Ads Management", "ROI Analytics"]
         }
       ]
     },
@@ -691,6 +725,8 @@ export const translations: Record<Language, TranslationSchema> = {
           "SaaS / MVP Digital Product",
           "Web Platform / Client Portal",
           "Mobile App (iOS / Android)",
+          "Websites / Landing Pages",
+          "Paid Traffic / Ads Management",
           "API Integrations / Automations",
           "Other / Tech Consulting"
         ],

@@ -9,7 +9,7 @@ import { DeliverablesSection } from './sections/DeliverablesSection';
 import { TestimonialsSection } from './sections/TestimonialsSection';
 import { FAQSection } from './sections/FAQSection';
 import { ContactSection } from './sections/ContactSection';
-import { MessageSquare } from 'lucide-react';
+import { WhatsAppIcon } from './components/WhatsAppIcon';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
@@ -67,11 +67,11 @@ export default function App() {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 px-5 py-3.5 bg-[#0066FF] hover:bg-[#0052CC] text-white rounded-full shadow-blue-btn hover:scale-105 transition-all flex items-center gap-2.5 font-heading font-black text-xs uppercase tracking-wider group cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 md:w-auto md:h-13 md:px-6 md:py-3.5 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-[0_4px_24px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 font-heading font-black text-xs uppercase tracking-wider group cursor-pointer"
         aria-label="Falar no WhatsApp"
       >
-        <MessageSquare className="w-4 h-4 fill-white text-white" />
-        <span>Falar no WhatsApp</span>
+        <WhatsAppIcon className="w-5 h-5 text-white shrink-0" />
+        <span className="hidden md:inline">Falar no WhatsApp</span>
       </a>
     </div>
   );

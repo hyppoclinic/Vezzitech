@@ -7,7 +7,9 @@ import {
   Smartphone, 
   Cpu, 
   Code, 
-  ArrowUpRight 
+  ArrowUpRight,
+  Megaphone,
+  Monitor
 } from 'lucide-react';
 
 const iconMap: Record<string, typeof Globe> = {
@@ -17,6 +19,8 @@ const iconMap: Record<string, typeof Globe> = {
   smartphone: Smartphone,
   cpu: Cpu,
   code: Code,
+  megaphone: Megaphone,
+  monitor: Monitor,
 };
 
 export const ServicesSection = ({ lang }: { lang: Language }) => {
@@ -78,9 +82,9 @@ export const ServicesSection = ({ lang }: { lang: Language }) => {
                 className="group relative flex flex-col justify-between p-8 rounded-2xl bg-[#0F0F0F] border border-white/[0.07] hover:border-[#0066FF]/40 transition-all duration-300 shadow-lg hover:shadow-blue-glow/10"
               >
                 <div>
-                  {/* Top Bar: Outline Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-[#141414] border border-white/[0.08] flex items-center justify-center text-white group-hover:text-[#38BDF8] group-hover:border-[#0066FF]/30 group-hover:bg-[#0066FF]/[0.08] transition-all duration-200 mb-6">
-                    <Icon className="w-6 h-6" strokeWidth={1.75} />
+                  {/* Top Bar: Outline Icon with Premium Gradient and Glow */}
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#141414] to-[#1A1A1A] border border-white/[0.08] flex items-center justify-center text-[#0066FF] group-hover:text-[#38BDF8] group-hover:border-[#0066FF]/40 group-hover:bg-gradient-to-br group-hover:from-[#0066FF]/[0.12] group-hover:to-[#38BDF8]/[0.04] group-hover:shadow-[0_0_25px_rgba(0,102,255,0.25)] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 mb-6">
+                    <Icon className="w-6 h-6" strokeWidth={1.5} />
                   </div>
 
                   {/* Title */}

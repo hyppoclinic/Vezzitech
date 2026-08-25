@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { translations, Language } from '../translations';
-import { ArrowUpRight, MessageSquare, CheckCircle2, ShieldCheck, Clock, Send } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, ShieldCheck, Clock, Send } from 'lucide-react';
+import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 export const ContactSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].contact;
@@ -118,9 +119,9 @@ export const ContactSection = ({ lang }: { lang: Language }) => {
                 href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de falar diretamente com um engenheiro de software da Vezzitech.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#38BDF8] hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#0066FF] hover:text-[#38BDF8] hover:underline"
               >
-                <MessageSquare className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4 text-[#0066FF]" />
                 <span>+55 (44) 99826-6950 · WhatsApp Direto</span>
               </a>
             </div>

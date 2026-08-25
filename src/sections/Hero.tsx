@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { translations, Language } from '../translations';
-import { ArrowUpRight, MessageSquare, Star, CheckCircle2, Clock } from 'lucide-react';
+import { ArrowUpRight, Star, CheckCircle2, Clock } from 'lucide-react';
+import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 export const Hero = ({ lang }: { lang: Language }) => {
   const t = translations[lang].hero;
@@ -33,18 +34,18 @@ export const Hero = ({ lang }: { lang: Language }) => {
             {t.kicker}
           </motion.div>
 
-          {/* 3-Line Title */}
+          {/* 3-Line Title - Responsive Inline Flow on Mobile, Block on Desktop */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black text-white tracking-tight leading-[1.03] mb-6"
+            className="text-[32px] leading-[1.1] xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black text-white tracking-tight md:leading-[1.03] mb-6"
           >
-            <span className="block">{t.titleLine1}</span>
-            <span className="block text-[#0066FF] drop-shadow-[0_0_35px_rgba(0,102,255,0.4)]">
-              {t.titleHighlight}
+            <span className="inline md:block">{t.titleLine1} </span>
+            <span className="inline md:block text-[#0066FF] drop-shadow-[0_0_35px_rgba(0,102,255,0.4)]">
+              {t.titleHighlight}{' '}
             </span>
-            <span className="block text-white">{t.titleLine3}</span>
+            <span className="inline md:block text-white">{t.titleLine3}</span>
           </motion.h1>
 
           {/* Short Subtitle */}
@@ -66,7 +67,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
           >
             <button
               onClick={scrollToContact}
-              className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-[#0066FF] hover:bg-[#0052CC] px-8 text-sm font-extrabold text-white uppercase tracking-wider transition-all duration-200 shadow-blue-btn hover:scale-[1.02] cursor-pointer"
+              className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-[#0066FF] hover:bg-[#0052CC] active:scale-95 px-8 text-sm font-extrabold text-white uppercase tracking-wider transition-all duration-200 shadow-blue-btn hover:scale-[1.02] cursor-pointer"
             >
               <span>{t.ctaPrimary}</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -76,9 +77,9 @@ export const Hero = ({ lang }: { lang: Language }) => {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-[#111111] hover:bg-[#181818] border border-white/[0.1] hover:border-white/[0.2] px-7 text-sm font-semibold text-white transition-all duration-200 cursor-pointer"
+              className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-[#111111] hover:bg-[#181818] border border-white/[0.1] hover:border-white/[0.2] active:scale-95 px-7 text-sm font-semibold text-white transition-all duration-200 hover:scale-[1.02] cursor-pointer group"
             >
-              <MessageSquare className="w-4 h-4 text-[#0066FF]" />
+              <WhatsAppIcon className="w-5 h-5 text-[#0066FF] group-hover:scale-110 transition-transform" />
               <span>{t.ctaSecondary}</span>
             </a>
           </motion.div>
