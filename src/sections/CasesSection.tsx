@@ -47,7 +47,7 @@ export const CasesSection = ({ lang }: { lang: Language }) => {
         </div>
 
         {/* Cases Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar lg:grid lg:grid-cols-3 gap-4 lg:gap-8 pb-6 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0">
           {t.items.map((item, index) => (
             <motion.div
               key={item.id}
@@ -55,7 +55,7 @@ export const CasesSection = ({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-[2rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative shadow-lg"
+              className="w-[85vw] sm:w-[350px] shrink-0 lg:w-auto lg:shrink snap-center p-8 rounded-[2rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative shadow-lg"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">

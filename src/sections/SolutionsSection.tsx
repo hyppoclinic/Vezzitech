@@ -59,7 +59,7 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
         </div>
 
         {/* 4 Unit Cards Bento Grid Composition */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 gap-4 md:gap-8 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
           {t.units.map((unit, index) => {
             const isFeatured = index === 0 || index === 2;
             return (
@@ -69,7 +69,7 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`p-8 rounded-[2rem] bg-[#0A0D14]/80 backdrop-blur-sm border transition-all duration-500 flex flex-col justify-between group hover:-translate-y-1 relative shadow-2xl ${
+                className={`w-[85vw] sm:w-[380px] shrink-0 md:w-auto md:shrink snap-center p-8 rounded-[2rem] bg-[#0A0D14]/80 backdrop-blur-sm border transition-all duration-500 flex flex-col justify-between group hover:-translate-y-1 relative shadow-2xl ${
                   isFeatured
                     ? 'border-white/[0.08] hover:border-[#16C7FF]/30 bg-gradient-to-br from-[#0B0E1B] via-[#0A0D14] to-[#0B0E1B]'
                     : 'border-white/[0.05] hover:border-[#168BFF]/30'

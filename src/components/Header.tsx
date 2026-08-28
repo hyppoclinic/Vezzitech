@@ -35,64 +35,61 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
   return (
     <>
       <header 
-        className={`fixed top-4 w-full z-50 transition-all duration-300`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-[#0B0B0D]/85 backdrop-blur-md border-b border-white/[0.05] shadow-lg' : 'py-5 bg-transparent'}`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
           {/* Logo */}
           <div 
-            className={`flex items-center gap-3 cursor-pointer group transition-opacity duration-300 ${isScrolled ? 'opacity-0 xl:opacity-100' : 'opacity-100'}`} 
+            className="flex-shrink-0 flex items-center cursor-pointer group" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <Logo className="h-9 md:h-11 w-auto" />
-            <span className="hidden xl:inline-block text-[11px] font-semibold text-[#8992A5] border-l border-white/10 pl-3">
-              {brand.descriptor}
-            </span>
+            <Logo className="h-8 md:h-10 w-auto" />
           </div>
 
-          {/* Floating Pill Navigation */}
-          <nav className={`hidden lg:flex items-center gap-1.5 p-1.5 rounded-full border transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
+          {/* Pill Navigation (Desktop LG+) */}
+          <nav className={`hidden lg:flex items-center gap-1 p-1.5 rounded-full border transition-all duration-300 ${
             isScrolled 
-              ? 'bg-[#0B0B0D]/85 backdrop-blur-md border-white/[0.1] shadow-[0_8px_32px_rgba(0,0,0,0.5)]' 
-              : 'bg-transparent border-transparent'
+              ? 'bg-[#10162A]/90 backdrop-blur-md border-white/[0.08] shadow-lg' 
+              : 'bg-white/[0.03] backdrop-blur-sm border-white/[0.06]'
           }`}>
             <button 
               onClick={() => scrollTo('oferta')} 
-              className={`relative px-4 py-2 text-[13px] font-semibold tracking-wide rounded-full transition-all cursor-pointer flex items-center gap-2 ${isScrolled ? 'bg-[#1765FF]/15 text-[#69B4FF] hover:bg-[#1765FF]/25' : 'text-[#69B4FF] bg-[#1765FF]/10 hover:bg-[#1765FF]/20'}`}
+              className={`relative px-3.5 py-1.5 text-[13px] font-semibold tracking-wide rounded-full transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 ${isScrolled ? 'bg-[#1765FF]/20 text-[#69B4FF] hover:bg-[#1765FF]/30' : 'text-[#69B4FF] bg-[#1765FF]/10 hover:bg-[#1765FF]/20'}`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1765FF] animate-pulse" />
-              <span>{t.offer}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1765FF] animate-pulse shrink-0" />
+              <span className="whitespace-nowrap">{t.offer}</span>
             </button>
             <button 
               onClick={() => scrollTo('solucoes')} 
-              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
+              className="relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-full transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
             >
               {t.solutions}
             </button>
             <button 
               onClick={() => scrollTo('engenharia')} 
-              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
+              className="relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-full transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
             >
               {t.engineering}
             </button>
             <button 
               onClick={() => scrollTo('cases')} 
-              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
+              className="relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-full transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
             >
               {t.cases}
             </button>
             <button 
               onClick={() => scrollTo('sobre')} 
-              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
+              className="relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-full transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
             >
               {t.about}
             </button>
           </nav>
 
-          {/* Desktop Right Side: Lang switcher + Performance CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#10162A] border border-white/[0.08]">
-              <Globe className="w-3.5 h-3.5 text-[#8992A5]" />
+          {/* Right Side: Lang switcher + WhatsApp + CTA + Mobile trigger */}
+          <div className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
+            <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#10162A] border border-white/[0.08] flex-shrink-0">
+              <Globe className="w-3.5 h-3.5 text-[#8992A5] shrink-0" />
               <select 
                 value={lang} 
                 onChange={(e) => setLang(e.target.value as Language)}
@@ -108,29 +105,29 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-[#8992A5] hover:text-white px-2.5 py-2 transition-colors group"
+              className="hidden xl:flex items-center gap-1.5 text-xs font-semibold text-[#8992A5] hover:text-white px-2.5 py-2 transition-colors group whitespace-nowrap flex-shrink-0"
             >
-              <WhatsAppIcon className="w-3.5 h-3.5 text-[#168BFF] group-hover:scale-110 transition-transform" />
+              <WhatsAppIcon className="w-3.5 h-3.5 text-[#168BFF] group-hover:scale-110 transition-transform shrink-0" />
               <span>WhatsApp</span>
             </a>
 
             <button 
               onClick={() => scrollTo('diagnostico')} 
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-performance-gradient hover:opacity-95 px-5 text-xs font-extrabold text-white tracking-wider transition-all duration-200 shadow-performance-glow hover:scale-[1.02] active:scale-95 cursor-pointer"
+              className="hidden sm:inline-flex h-9 md:h-10 items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-performance-gradient hover:opacity-95 px-4 sm:px-5 text-xs font-extrabold text-white tracking-wider transition-all duration-200 shadow-performance-glow hover:scale-[1.02] active:scale-95 cursor-pointer whitespace-nowrap flex-shrink-0"
             >
-              <span>{t.ctaPrimary}</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <span className="whitespace-nowrap">{t.ctaPrimary}</span>
+              <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+            </button>
+
+            {/* Mobile / Tablet Menu Button */}
+            <button 
+              className="lg:hidden text-white p-2 rounded-lg bg-[#10162A] border border-white/[0.08] hover:bg-[#151D38] transition-colors flex-shrink-0"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Open menu"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden text-white p-2 rounded-lg bg-[#10162A] border border-white/[0.08]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Open menu"
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
         </div>
       </header>
 

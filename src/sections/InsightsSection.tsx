@@ -42,7 +42,7 @@ export const InsightsSection = ({ lang }: { lang: Language }) => {
         </div>
 
         {/* Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-3 gap-4 md:gap-8 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
           {t.articles.map((article, index) => (
             <motion.div
               key={article.title}
@@ -50,7 +50,7 @@ export const InsightsSection = ({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-7 rounded-[1.5rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative shadow-lg"
+              className="w-[85vw] sm:w-[350px] shrink-0 md:w-auto md:shrink snap-center p-7 rounded-[1.5rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative shadow-lg"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">

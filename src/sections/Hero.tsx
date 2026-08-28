@@ -26,10 +26,10 @@ export const Hero = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] font-mono font-bold text-[#69B4FF] uppercase tracking-widest mb-6 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 rounded-full bg-white/[0.03] border border-white/[0.08] text-[10px] md:text-[11px] font-mono font-bold text-[#69B4FF] uppercase tracking-widest mb-6 backdrop-blur-md text-center max-w-full"
           >
-            <Sparkles className="w-3 h-3 text-[#168BFF]" />
-            <span>{t.kicker}</span>
+            <Sparkles className="w-3 h-3 text-[#168BFF] shrink-0" />
+            <span className="truncate whitespace-normal">{t.kicker}</span>
           </motion.div>
 
           {/* Main Headline */}
@@ -37,7 +37,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-[3.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-[6rem] font-heading font-semibold text-white tracking-tighter mb-6"
+            className="text-4xl leading-[1.1] sm:text-5xl md:text-6xl lg:text-[6rem] lg:leading-[1.05] font-heading font-semibold text-white tracking-tighter mb-5 md:mb-6"
           >
             <span className="block">{t.titleLine1} </span>
             <span className="block text-[#168BFF]">
@@ -50,7 +50,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-[#8992A5] max-w-2xl font-sans leading-relaxed mb-10"
+            className="text-[15px] sm:text-lg md:text-xl text-[#8992A5] max-w-2xl font-sans leading-relaxed mb-8 md:mb-10 px-2"
           >
             {t.subtitle}
           </motion.p>
@@ -60,7 +60,7 @@ export const Hero = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 mb-10"
+            className="flex flex-col sm:flex-row items-stretch w-full sm:w-auto sm:items-center justify-center gap-4 mb-10"
           >
             <button
               onClick={() => scrollToSection('oferta')}

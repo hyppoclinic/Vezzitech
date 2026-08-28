@@ -51,35 +51,64 @@ export const EngineeringSection = ({ lang }: { lang: Language }) => {
           </motion.p>
         </div>
 
-        {/* 7 Step Grid Timeline */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {t.steps.map((step, index) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              className="p-8 rounded-[1.5rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 group hover:-translate-y-1 shadow-lg relative"
-            >
-              <div className="flex flex-col mb-4">
-                <span className="text-4xl font-heading font-black text-white/5 group-hover:text-white/10 transition-colors absolute top-6 right-6">
-                  {step.number}
-                </span>
-                <div className="w-12 h-12 rounded-xl bg-[#10162A] border border-white/[0.1] flex items-center justify-center mb-6 shadow-inner">
-                  {stepIcons[index]}
-                </div>
-              </div>
+        {/* 7 Step Timeline */}
+        <div className="relative max-w-5xl mx-auto mt-16 md:mt-24">
+          {/* Main vertical line */}
+          <div className="absolute top-0 bottom-0 left-[28px] md:left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#168BFF]/0 via-[#168BFF]/20 to-[#168BFF]/0" />
+          
+          <div className="space-y-12 md:space-y-24">
+            {t.steps.map((step, index) => {
+              const isEven = index % 2 !== 0; // Alternating sides
+              return (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className={`relative flex flex-col md:flex-row items-start md:items-center ${
+                    isEven ? 'md:flex-row-reverse' : ''
+                  }`}
+                >
+                  {/* Timeline Node */}
+                  <div className="absolute left-[28px] md:left-1/2 -translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-[#070A12] border border-[#168BFF]/30 shadow-[0_0_30px_rgba(22,139,255,0.2)] z-10 mt-6 md:mt-0">
+                    <div className="w-11 h-11 rounded-full bg-[#10162A] flex items-center justify-center border border-white/[0.08] shadow-inner group-hover:scale-110 transition-transform">
+                      {stepIcons[index]}
+                    </div>
+                  </div>
 
-              <h3 className="text-xl font-heading font-bold text-white mb-3">
-                {step.title}
-              </h3>
+                  {/* Content Container */}
+                  <div className={`w-full pl-[80px] md:pl-0 md:w-1/2 ${
+                    isEven ? 'md:pr-16 text-left md:text-right flex md:justify-end' : 'md:pl-16 text-left'
+                  }`}>
+                    <div className="max-w-md p-8 rounded-[1.5rem] bg-[#0B0E1B]/80 backdrop-blur-md border border-white/[0.05] hover:border-[#168BFF]/40 transition-all duration-300 shadow-2xl relative group hover:-translate-y-1">
+                      
+                      {/* Connecting Line (Desktop only) */}
+                      <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-16 h-[2px] bg-gradient-to-r ${
+                        isEven ? 'from-transparent to-[#168BFF]/20 -right-16' : 'from-[#168BFF]/20 to-transparent -left-16'
+                      }`} />
 
-              <p className="text-sm text-[#8992A5] leading-relaxed font-sans">
-                {step.desc}
-              </p>
-            </motion.div>
-          ))}
+                      <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
+                        <span className="text-[11px] font-bold text-[#168BFF] bg-[#168BFF]/10 px-3.5 py-1.5 rounded-full border border-[#168BFF]/20 uppercase tracking-[0.2em] mb-5">
+                          PASSO {step.number}
+                        </span>
+                        
+                        <h3 className="text-2xl font-heading font-bold text-white mb-3 tracking-tight group-hover:text-[#168BFF] transition-colors">
+                          {step.title}
+                        </h3>
+                        
+                        <p className={`text-base text-[#8992A5] leading-relaxed font-sans ${isEven ? 'md:text-right' : 'text-left'}`}>
+                          {step.desc}
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Closing Phrase Banner */}

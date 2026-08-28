@@ -98,8 +98,30 @@ export interface TranslationSchema {
     quote: string;
   };
   manifesto: {
-    lines: Array<{ text: string; highlight?: boolean }>;
+    badge: string;
+    title: string;
     sub: string;
+    lines: Array<{
+      id: string;
+      pillar: string;
+      statement: string;
+      pitfall: string;
+      resolution: string;
+      tag: string;
+    }>;
+    nexus: {
+      badge: string;
+      title: string;
+      description: string;
+      equation: Array<{
+        label: string;
+        desc?: string;
+        isOperator?: boolean;
+        isHighlight?: boolean;
+      }>;
+      ctaText: string;
+      ctaSub: string;
+    };
     brandText: string;
   };
   cases: {
@@ -237,23 +259,23 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     nav: {
       solutions: "Soluções",
-      engineering: "Engenharia de Crescimento",
-      offer: "Oferta R$ 799",
-      cases: "Cases & Impacto",
+      engineering: "Método",
+      offer: "Plano R$ 799",
+      cases: "Resultados",
       insights: "Insights",
       about: "Sobre",
       contact: "Contato",
-      ctaPrimary: "Falar com um especialista",
-      whatsapp: "WhatsApp Direto"
+      ctaPrimary: "Falar com especialista",
+      whatsapp: "WhatsApp"
     },
     offer: {
-      kicker: "OFERTA PRINCIPAL DE CRESCIMENTO",
+      kicker: "PLANO DE ACELERAÇÃO DIGITAL",
       heading: "Tráfego Pago + Criação de Site + Google Meu Negócio",
-      badge: "TUDO ISSO POR APENAS",
-      priceTag: "TUDO ISSO POR APENAS",
+      badge: "CONDIÇÃO EXCLUSIVA",
+      priceTag: "INVESTIMENTO MENSAL",
       priceValue: "R$ 799,00",
       pricePeriod: "/mês",
-      sub: "Um pacote de entrada de alto impacto, com forte percepção de valor, foco total em aquisição de clientes, presença digital de autoridade e conversão direta para o seu negócio.",
+      sub: "Um pacote completo de alto impacto, com forte percepção de valor, foco total em aquisição de clientes, presença digital de autoridade e conversão direta para o seu negócio.",
       featuresTitle: "O pacote completo inclui:",
       features: [
         {
@@ -300,9 +322,9 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     problem: {
-      kicker: "ESTRUTURA INTEGRADA",
-      heading: "Sua empresa não precisa de mais ferramentas.",
-      subheading: "Precisa de uma estrutura de crescimento.",
+      kicker: "DIAGNÓSTICO DE MERCADO",
+      heading: "Sua empresa não precisa de mais ferramentas isoladas.",
+      subheading: "Precisa de uma estrutura integrada de crescimento.",
       copy: [
         "Muitas empresas possuem site, redes sociais, anúncios e ferramentas isoladas, mas não possuem uma operação integrada e comercialmente forte.",
         "Anúncios sem uma página rápida e sem gestão do perfil local geram desperdício de orçamento e leads perdidos para concorrentes.",
@@ -317,8 +339,8 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     methodology: {
-      kicker: "ENGENHARIA DE CRESCIMENTO",
-      heading: "Processo em 7 etapas para escalar seu negócio.",
+      kicker: "NOSSO MÉTODO",
+      heading: "Engenharia de Crescimento em 7 etapas.",
       sub: "Trabalhamos com uma estrutura contínua e estratégica para conectar aquisição, experiência digital, tecnologia e dados.",
       steps: [
         { number: "01", code: "DIAGNOSE", title: "Diagnóstico", desc: "Mapeamos os gargalos de vendas, presença e conversão que travam o crescimento." },
@@ -332,8 +354,8 @@ export const translations: Record<Language, TranslationSchema> = {
       closingPhrase: "Estratégia integrando tecnologia. Tráfego gerando oportunidades. Estrutura impulsionando crescimento."
     },
     solutions: {
-      kicker: "ECOSSISTEMA VEZZITECH",
-      heading: "Um ecossistema para crescimento.",
+      kicker: "CAPACIDADES E SERVIÇOS",
+      heading: "4 frentes estratégicas para acelerar sua empresa.",
       sub: "Agrupamos nossa expertise em 4 unidades estratégicas completas para cobrir toda a jornada da sua empresa.",
       units: [
         {
@@ -379,8 +401,8 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     differentiation: {
-      kicker: "COMPARATIVO DE MERCADO",
-      heading: "Agência Tradicional vs. Vezzitech",
+      kicker: "DIFERENCIAÇÃO ESTRATÉGICA",
+      heading: "Agência Tradicional vs. Modelo Vezzitech",
       sub: "A maioria das agências vende serviços isolados. A Vezzitech entrega uma estrutura integrada de crescimento.",
       table: {
         headers: ["Critério", "Agência Tradicional", "Software House", "Vezzitech"],
@@ -426,18 +448,56 @@ export const translations: Record<Language, TranslationSchema> = {
       quote: "Não entregamos apenas anúncios ou um site isolado. Construímos a infraestrutura técnica e comercial completa para acelerar sua empresa."
     },
     manifesto: {
+      badge: "MANIFESTO DE CRESCIMENTO",
+      title: "O Princípio da Integração",
+      sub: "Engenharia de Crescimento para empresas que querem ir além de ações isoladas.",
       lines: [
-        { text: "Estratégia sem execução é apresentação." },
-        { text: "Tecnologia sem estratégia é complexidade." },
-        { text: "Marketing sem dados é aposta." },
-        { text: "Nós conectamos os três.", highlight: true }
+        {
+          id: "strategy",
+          pillar: "Estratégia",
+          statement: "Estratégia sem execução",
+          pitfall: "é apenas apresentação.",
+          resolution: "Transformamos diagnósticos e planos em código, automações e campanhas ativas em poucos dias.",
+          tag: "Execução Ágil"
+        },
+        {
+          id: "tech",
+          pillar: "Tecnologia",
+          statement: "Tecnologia sem estratégia",
+          pitfall: "é apenas complexidade.",
+          resolution: "Desenvolvemos aplicações ultrarrápidas projetadas exclusivamente para gerar receita e converter clientes.",
+          tag: "Foco em Negócio"
+        },
+        {
+          id: "marketing",
+          pillar: "Marketing",
+          statement: "Marketing sem dados",
+          pitfall: "é apenas aposta.",
+          resolution: "Conectamos canais de aquisição a métricas comerciais reais com CAC, LTV e ROAS auditáveis.",
+          tag: "Dados Reais"
+        }
       ],
-      sub: "Engenharia de Crescimento para empresas que querem ir além do básico.",
+      nexus: {
+        badge: "A RESPOSTA VEZZITECH",
+        title: "Nós conectamos os três pilares.",
+        description: "Em vez de contratar uma agência que não entende de código ou programadores que não entendem de vendas, a Vezzitech entrega o ecossistema completo para acelerar sua empresa.",
+        equation: [
+          { label: "Estratégia", desc: "Visão Comercial" },
+          { label: "+", isOperator: true },
+          { label: "Tecnologia", desc: "Alta Performance" },
+          { label: "+", isOperator: true },
+          { label: "Dados & Mídia", desc: "Aquisição Real" },
+          { label: "=", isOperator: true },
+          { label: "Crescimento", desc: "Previsível & Escalável", isHighlight: true }
+        ],
+        ctaText: "Estruturar Minha Empresa com a Vezzitech",
+        ctaSub: "Diagnóstico gratuito e plano de ação personalizado"
+      },
       brandText: "VEZZITECH — Engenharia de Crescimento"
     },
     cases: {
-      kicker: "IMPACTO",
-      heading: "Tecnologia só importa quando gera resultado.",
+      kicker: "CASES E RESULTADOS",
+      heading: "Tecnologia só tem valor quando gera crescimento real.",
       sub: "Resultados reais em produção gerando receita, redução de custos e ganho de eficiência operacional.",
       ctaText: "Solicitar diagnóstico similar →",
       items: [
@@ -474,9 +534,9 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     mindset: {
-      kicker: "NOSSA FORMA DE PENSAR",
-      heading: "Tecnologia que entende negócio.",
-      sub: "Não desenvolvemos software por estética ou rodamos mídia por vaidade. Todo projeto segue pilares claros de engenharia de negócios.",
+      kicker: "NOSSOS PILARES",
+      heading: "Princípios que orientam nossa engenharia.",
+      sub: "Não desenvolvemos software por estética ou rodamos mídia por vaidade. Todo projeto segue pilares claros de retorno sobre investimento e excelência técnica.",
       cards: [
         {
           title: "Business First",
@@ -501,9 +561,9 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     insights: {
-      kicker: "INSIGHTS & INTELIGÊNCIA",
-      heading: "Inteligência para empresas que querem crescer.",
-      sub: "Artigos estratégicos sobre tecnologia, aquisição de tráfego, automação com IA e dados.",
+      kicker: "INTELIGÊNCIA & ARTIGOS",
+      heading: "Conteúdo prático para empresas que querem escalar.",
+      sub: "Artigos estratégicos sobre tecnologia, aquisição de tráfego, automação com IA e arquitetura de dados.",
       articles: [
         {
           category: "Growth Engineering",
@@ -529,18 +589,18 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     ctaFinal: {
-      kicker: "TRANSFORMAÇÃO DIGITAL",
-      heading: "Pronto para transformar tecnologia em crescimento?",
-      sub: "Fale com a Vezzitech e descubra como estruturar aquisição, presença digital e tecnologia para gerar mais oportunidades e vendas para sua empresa.",
+      kicker: "DIAGNÓSTICO ESTRATÉGICO",
+      heading: "Pronto para transformar tecnologia em vendas previsíveis?",
+      sub: "Fale com a equipe da Vezzitech e descubra a estratégia sob medida para acelerar a presença digital e a escala do seu negócio.",
       bottlenecks: [
-        { id: "pacote-799", title: "Oferta R$ 799/mês", desc: "Quero o combo Tráfego Pago + Criação de Site + Google Meu Negócio." },
+        { id: "pacote-799", title: "Plano R$ 799/mês", desc: "Quero o combo Tráfego Pago + Criação de Site + Google Meu Negócio." },
         { id: "aquisicao", title: "Tráfego Pago & Mídia", desc: "Preciso gerar mais oportunidades e vendas diárias com Google e Meta Ads." },
         { id: "website", title: "Criação de Website", desc: "Preciso de um site moderno, ultra veloz e focado em alta conversão." },
         { id: "google-local", title: "Google Meu Negócio", desc: "Quero otimizar minha ficha e dominar a presença local da minha região." },
         { id: "diagnostico", title: "Diagnóstico Completo", desc: "Quero uma análise estratégica completa da estrutura da minha empresa." }
       ],
       form: {
-        title: "Solicitar Diagnóstico ou Iniciar Oferta",
+        title: "Solicitar Diagnóstico Estratégico",
         name: "Seu nome",
         namePlaceholder: "ex: Rodrigo Canavese",
         company: "Nome da sua empresa",
@@ -654,23 +714,23 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     nav: {
       solutions: "Solutions",
-      engineering: "Growth Engineering",
-      offer: "Offer $799/mo",
-      cases: "Cases & Impact",
+      engineering: "Method",
+      offer: "Plan $799",
+      cases: "Results",
       insights: "Insights",
       about: "About",
       contact: "Contact",
       ctaPrimary: "Talk to a specialist",
-      whatsapp: "Direct WhatsApp"
+      whatsapp: "WhatsApp"
     },
     offer: {
-      kicker: "MAIN GROWTH OFFER",
+      kicker: "COMPLETE GROWTH PACKAGE",
       heading: "Paid Traffic + Website Creation + Google Business Profile",
-      badge: "ALL THIS FOR ONLY",
-      priceTag: "ALL THIS FOR ONLY",
+      badge: "EXCLUSIVE PLAN",
+      priceTag: "MONTHLY INVESTMENT",
       priceValue: "R$ 799.00",
       pricePeriod: "/month",
-      sub: "A high-impact, accessible entry package with strong perceived value, focused on client acquisition, digital authority, and direct conversion.",
+      sub: "A high-impact, accessible package with strong perceived value, focused on client acquisition, digital authority, and direct conversion.",
       featuresTitle: "The complete package includes:",
       features: [
         {
@@ -717,9 +777,9 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     problem: {
-      kicker: "THE PROBLEM",
+      kicker: "MARKET DIAGNOSIS",
       heading: "Your company doesn't need more isolated tools.",
-      subheading: "It needs a Growth System.",
+      subheading: "It needs a unified growth engine.",
       copy: [
         "Marketing separated from technology wastes budget and burns leads.",
         "Technology without strategy creates technical debt with zero commercial return.",
@@ -734,8 +794,8 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     methodology: {
-      kicker: "VEZZITECH GROWTH ENGINEERING",
-      heading: "Growth is engineered.",
+      kicker: "OUR METHODOLOGY",
+      heading: "Growth Engineering in 7 strategic stages.",
       sub: "Our methodology connects strategy, acquisition, technology, automation, and data to identify bottlenecks and build high-performance growth engines.",
       steps: [
         { number: "01", code: "DIAGNOSE", title: "Diagnose", desc: "Uncover commercial & operational bottlenecks." },
@@ -748,8 +808,8 @@ export const translations: Record<Language, TranslationSchema> = {
       closingPhrase: "Strategy before execution. Technology before scale. Data before decisions."
     },
     solutions: {
-      kicker: "VEZZITECH ECOSYSTEM",
-      heading: "A unified growth ecosystem.",
+      kicker: "CAPABILITIES & SERVICES",
+      heading: "4 integrated pillars to scale your business.",
       sub: "We organize our expertise into 4 strategic units to power your business journey.",
       units: [
         {
@@ -795,8 +855,8 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     differentiation: {
-      kicker: "WHY VEZZITECH",
-      heading: "Far beyond an agency.",
+      kicker: "STRATEGIC DIFFERENTIATION",
+      heading: "Traditional Agency vs. The Vezzitech Model",
       sub: "While traditional agencies handle marketing and software houses write code, Vezzitech connects both sides of growth.",
       table: {
         headers: ["Dimension", "Traditional Agency", "Software House", "Vezzitech"],
@@ -836,18 +896,56 @@ export const translations: Record<Language, TranslationSchema> = {
       quote: "Growth Engineering is not a single ad campaign or code file. It is a unified system engineered to scale your company."
     },
     manifesto: {
+      badge: "GROWTH MANIFESTO",
+      title: "The Principle of Integration",
+      sub: "Growth Engineering for companies ready to move beyond disconnected tools.",
       lines: [
-        { text: "Strategy without execution is a slide deck." },
-        { text: "Technology without strategy is complexity." },
-        { text: "Marketing without data is gambling." },
-        { text: "We connect all three.", highlight: true }
+        {
+          id: "strategy",
+          pillar: "Strategy",
+          statement: "Strategy without execution",
+          pitfall: "is just a slide deck.",
+          resolution: "We transform strategy and diagnostics into real code, automations, and active pipelines in days.",
+          tag: "Agile Execution"
+        },
+        {
+          id: "tech",
+          pillar: "Technology",
+          statement: "Technology without strategy",
+          pitfall: "is just complexity.",
+          resolution: "We develop ultra-fast applications engineered strictly to capture demand and convert customers.",
+          tag: "Business Driven"
+        },
+        {
+          id: "marketing",
+          pillar: "Marketing",
+          statement: "Marketing without data",
+          pitfall: "is just gambling.",
+          resolution: "We link acquisition channels to verified business metrics with clear CAC, LTV, and ROAS tracking.",
+          tag: "Real Data"
+        }
       ],
-      sub: "Growth Engineering for companies building the future.",
+      nexus: {
+        badge: "THE VEZZITECH ADVANTAGE",
+        title: "We connect all three pillars.",
+        description: "Instead of hiring an agency that doesn't understand code or programmers who don't understand sales, Vezzitech provides the full ecosystem to scale your company.",
+        equation: [
+          { label: "Strategy", desc: "Commercial Vision" },
+          { label: "+", isOperator: true },
+          { label: "Technology", desc: "High Performance" },
+          { label: "+", isOperator: true },
+          { label: "Data & Media", desc: "True Acquisition" },
+          { label: "=", isOperator: true },
+          { label: "Growth", desc: "Predictable & Scalable", isHighlight: true }
+        ],
+        ctaText: "Engineer My Growth System with Vezzitech",
+        ctaSub: "Free strategic diagnostic & customized roadmap"
+      },
       brandText: "VEZZITECH — Growth Engineering"
     },
     cases: {
-      kicker: "IMPACT",
-      heading: "Technology only matters when it delivers results.",
+      kicker: "PROVEN RESULTS",
+      heading: "Technology only matters when it delivers business growth.",
       sub: "Proven production outcomes driving revenue growth and operational speed.",
       ctaText: "Request similar diagnostic →",
       items: [
@@ -884,8 +982,8 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     mindset: {
-      kicker: "OUR MINDSET",
-      heading: "Technology that understands business.",
+      kicker: "CORE PRINCIPLES",
+      heading: "Principles that drive our engineering.",
       sub: "We don't write code for aesthetics or run ads for vanity. Every project follows clear business engineering principles.",
       cards: [
         {
@@ -911,8 +1009,8 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     insights: {
-      kicker: "INSIGHTS & INTEL",
-      heading: "Intelligence for companies that want to scale.",
+      kicker: "INTELLIGENCE & ARTICLES",
+      heading: "Actionable intelligence for growing companies.",
       sub: "Strategic articles on growth engineering, paid media, AI automation, and data systems.",
       articles: [
         {

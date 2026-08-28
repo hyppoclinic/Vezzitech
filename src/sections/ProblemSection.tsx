@@ -62,7 +62,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
 
         {/* 4 Diagnostic Bottleneck Nodes */}
         <div className="relative max-w-5xl mx-auto mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+          <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 gap-4 md:gap-6 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 relative z-10">
             {t.nodes.map((node, index) => (
               <motion.div
                 key={node.id}
@@ -70,7 +70,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-7 rounded-[1.5rem] bg-[#0B0E1B]/50 border border-white/[0.05] hover:border-[#16C7FF]/30 transition-all duration-300 group hover:-translate-y-1 shadow-lg relative overflow-hidden backdrop-blur-sm"
+                className="w-[85vw] sm:w-[350px] shrink-0 md:w-auto md:shrink snap-center p-7 rounded-[1.5rem] bg-[#0B0E1B]/50 border border-white/[0.05] hover:border-[#16C7FF]/30 transition-all duration-300 group hover:-translate-y-1 shadow-lg relative overflow-hidden backdrop-blur-sm"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-[#10162A] border border-white/[0.12] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform group-hover:border-[#16C7FF]/50 shadow-inner">
