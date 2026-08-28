@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -9,7 +9,7 @@
 
 @theme {
   --font-sans: "Inter", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   /* Vezzitech Master Brand Palette */
@@ -46,6 +46,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
   }
   
   * {
@@ -103,9 +107,7 @@
   }
 
   .bg-laser-lines {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-image: none;
   }
 
   .corner-crosshairs {
@@ -113,20 +115,7 @@
   }
   .corner-crosshairs::before,
   .corner-crosshairs::after {
-    content: '+';
-    position: absolute;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: rgba(22, 199, 255, 0.4);
-    pointer-events: none;
-  }
-  .corner-crosshairs::before {
-    top: -6px;
-    left: -6px;
-  }
-  .corner-crosshairs::after {
-    top: -6px;
-    right: -6px;
+    display: none;
   }
   
   .bg-[#070A12] {

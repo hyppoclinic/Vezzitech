@@ -18,7 +18,7 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
   };
 
   return (
-    <section id="solucoes" className="py-28 md:py-36 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08] bg-laser-lines">
+    <section id="solucoes" className="py-28 md:py-36 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08]">
       {/* Background Radial Lights */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[300px] bg-[#7047FF]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[300px] bg-[#16C7FF]/10 rounded-full blur-[140px] pointer-events-none" />
@@ -69,7 +69,7 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`p-8 rounded-2xl bg-[#0B0E1B] border transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative corner-crosshairs shadow-2xl ${
+                className={`p-8 rounded-[2rem] bg-[#0B0E1B]/80 backdrop-blur-sm border transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative shadow-xl ${
                   isFeatured
                     ? 'border-white/[0.14] hover:border-[#16C7FF]/50 bg-gradient-to-br from-[#0B0E1B] via-[#0F1528] to-[#0B0E1B]'
                     : 'border-white/[0.08] hover:border-[#168BFF]/40'

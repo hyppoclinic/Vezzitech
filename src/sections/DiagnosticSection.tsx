@@ -38,7 +38,7 @@ export const DiagnosticSection = ({ lang }: { lang: Language }) => {
   )}`;
 
   return (
-    <section id="diagnostico" className="py-28 md:py-36 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08] bg-laser-lines">
+    <section id="diagnostico" className="py-28 md:py-36 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08]">
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[400px] bg-gradient-to-r from-[#16C7FF]/12 via-[#168BFF]/15 to-[#7047FF]/12 rounded-full blur-[160px] pointer-events-none" />
 
@@ -125,17 +125,16 @@ export const DiagnosticSection = ({ lang }: { lang: Language }) => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto rounded-2xl bg-[#0B0E1B] border border-white/[0.12] shadow-[0_25px_60px_rgba(0,0,0,0.7)] corner-crosshairs relative overflow-hidden"
+          className="max-w-3xl mx-auto rounded-[2rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.08] shadow-2xl relative overflow-hidden"
         >
           {/* Terminal Bar */}
-          <div className="px-6 py-3 bg-[#070A12] border-b border-white/[0.08] flex items-center justify-between">
+          <div className="px-6 py-3 bg-[#070A12]/50 border-b border-white/[0.08] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-              <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-              <span className="text-[11px] font-mono text-zinc-400 pl-2 font-bold flex items-center gap-1.5">
-                <Terminal className="w-3.5 h-3.5 text-[#16C7FF]" />
-                DIAGNOSTIC_FORM // PASSO 2 DE 2
+              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+              <span className="text-[11px] font-mono text-zinc-500 pl-2 tracking-wider">
+                DIAGNOSTIC_FORM.OS // PASSO 2
               </span>
             </div>
             <span className="text-[10px] font-mono text-[#16C7FF] font-bold bg-[#16C7FF]/10 px-2.5 py-0.5 rounded border border-[#16C7FF]/20 uppercase">
@@ -262,16 +261,12 @@ export const DiagnosticSection = ({ lang }: { lang: Language }) => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 rounded-full bg-performance-gradient hover:opacity-95 text-white font-extrabold text-xs uppercase tracking-wider shadow-performance-glow transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01] active:scale-95"
+                    className="w-full h-14 rounded-full bg-white hover:bg-gray-100 text-[#070A12] text-[15px] font-bold tracking-wide transition-all flex items-center justify-between cursor-pointer shadow-lg disabled:opacity-50 disabled:cursor-not-allowed group pl-6 pr-2 mt-4"
                   >
-                    {loading ? (
-                      <span>Processando solicitação...</span>
-                    ) : (
-                      <>
-                        <span>{t.form.submitButton}</span>
-                        <Send className="w-4 h-4" />
-                      </>
-                    )}
+                    <span>{loading ? 'Processando solicitação...' : t.form.submitButton}</span>
+                    <div className="w-10 h-10 rounded-full bg-[#168BFF] flex items-center justify-center shadow-md">
+                      <Send className="w-4 h-4 text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </div>
                   </button>
                 </div>
 

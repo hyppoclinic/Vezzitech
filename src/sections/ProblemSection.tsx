@@ -23,7 +23,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
   ];
 
   return (
-    <section id="problema" className="py-24 md:py-32 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08] bg-laser-lines">
+    <section id="problema" className="py-24 md:py-32 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08]">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#168BFF]/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -77,7 +77,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-7 rounded-2xl bg-[#0B0E1B] border border-white/[0.1] hover:border-[#16C7FF]/40 transition-all duration-300 group hover:-translate-y-1 shadow-xl corner-crosshairs relative overflow-hidden"
+                className="p-7 rounded-[1.5rem] bg-[#0B0E1B]/50 border border-white/[0.05] hover:border-[#16C7FF]/30 transition-all duration-300 group hover:-translate-y-1 shadow-lg relative overflow-hidden backdrop-blur-sm"
               >
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/[0.06]">
                   <span className="text-[10px] font-mono font-bold text-red-400/90 tracking-wider">
@@ -111,7 +111,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="mt-10 p-7 sm:p-8 rounded-2xl bg-gradient-to-r from-[#10162A] via-[#141C36] to-[#10162A] border border-[#16C7FF]/40 shadow-2xl relative overflow-hidden"
+            className="mt-10 p-7 sm:p-8 rounded-[2rem] bg-gradient-to-r from-[#10162A] via-[#141C36] to-[#10162A] border border-[#16C7FF]/20 shadow-xl relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-2 h-full bg-performance-gradient" />
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">

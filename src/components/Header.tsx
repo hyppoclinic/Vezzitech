@@ -35,17 +35,13 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
   return (
     <>
       <header 
-        className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
-          isScrolled 
-            ? 'bg-[#070A12]/92 backdrop-blur-md border-white/[0.08] py-3.5 shadow-[0_4px_30px_rgba(22,139,255,0.08)]' 
-            : 'bg-transparent border-transparent py-5'
-        }`}
+        className={`fixed top-4 w-full z-50 transition-all duration-300`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
           {/* Logo */}
           <div 
-            className="flex items-center gap-3 cursor-pointer group" 
+            className={`flex items-center gap-3 cursor-pointer group transition-opacity duration-300 ${isScrolled ? 'opacity-0 xl:opacity-100' : 'opacity-100'}`} 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <Logo className="h-9 md:h-11 w-auto" />
@@ -54,42 +50,40 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
             </span>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Floating Pill Navigation */}
+          <nav className={`hidden lg:flex items-center gap-1.5 p-1.5 rounded-full border transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
+            isScrolled 
+              ? 'bg-[#0B0B0D]/85 backdrop-blur-md border-white/[0.1] shadow-[0_8px_32px_rgba(0,0,0,0.5)]' 
+              : 'bg-transparent border-transparent'
+          }`}>
             <button 
               onClick={() => scrollTo('oferta')} 
-              className="relative px-3 py-1 text-xs font-bold font-mono tracking-wider text-[#69B4FF] bg-[#1765FF]/10 border border-[#1765FF]/30 hover:bg-[#1765FF]/20 rounded-full transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+              className={`relative px-4 py-2 text-[13px] font-semibold tracking-wide rounded-full transition-all cursor-pointer flex items-center gap-2 ${isScrolled ? 'bg-[#1765FF]/15 text-[#69B4FF] hover:bg-[#1765FF]/25' : 'text-[#69B4FF] bg-[#1765FF]/10 hover:bg-[#1765FF]/20'}`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#168BFF] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1765FF] animate-pulse" />
               <span>{t.offer}</span>
             </button>
             <button 
               onClick={() => scrollTo('solucoes')} 
-              className="relative py-1 text-xs font-semibold tracking-wider text-[#8992A5] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#168BFF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
+              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
             >
               {t.solutions}
             </button>
             <button 
               onClick={() => scrollTo('engenharia')} 
-              className="relative py-1 text-xs font-semibold tracking-wider text-[#8992A5] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#168BFF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
+              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
             >
               {t.engineering}
             </button>
             <button 
               onClick={() => scrollTo('cases')} 
-              className="relative py-1 text-xs font-semibold tracking-wider text-[#8992A5] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#168BFF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
+              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
             >
               {t.cases}
             </button>
             <button 
-              onClick={() => scrollTo('insights')} 
-              className="relative py-1 text-xs font-semibold tracking-wider text-[#8992A5] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#168BFF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
-            >
-              {t.insights}
-            </button>
-            <button 
               onClick={() => scrollTo('sobre')} 
-              className="relative py-1 text-xs font-semibold tracking-wider text-[#8992A5] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#168BFF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
+              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide rounded-full transition-all cursor-pointer ${isScrolled ? 'text-zinc-300 hover:text-white hover:bg-white/[0.06]' : 'text-zinc-400 hover:text-white'}`}
             >
               {t.about}
             </button>

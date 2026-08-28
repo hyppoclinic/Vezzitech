@@ -30,7 +30,7 @@ export const OfferSection = ({ lang }: { lang: Language }) => {
   };
 
   return (
-    <section id="oferta" className="py-24 md:py-36 bg-[#0B0B0D] relative overflow-hidden border-t border-white/[0.08] bg-laser-lines">
+    <section id="oferta" className="py-24 md:py-36 bg-[#0B0B0D] relative overflow-hidden border-t border-white/[0.08]">
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-gradient-to-r from-[#1765FF]/20 via-[#69B4FF]/15 to-[#1765FF]/10 rounded-full blur-[160px] pointer-events-none" />
 
@@ -74,7 +74,7 @@ export const OfferSection = ({ lang }: { lang: Language }) => {
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-3xl bg-[#111318] border border-[#1765FF]/30 shadow-[0_25px_80px_rgba(23,101,255,0.25)] relative overflow-hidden p-8 sm:p-12 corner-crosshairs mb-12"
+          className="rounded-[2rem] bg-[#111318] border border-[#1765FF]/20 shadow-[0_25px_80px_rgba(23,101,255,0.15)] relative overflow-hidden p-8 sm:p-12 mb-12"
         >
           {/* Subtle Top Glowing Line */}
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#1765FF] to-transparent" />
@@ -82,7 +82,7 @@ export const OfferSection = ({ lang }: { lang: Language }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Column: Price Highlight Card */}
-            <div className="lg:col-span-5 bg-[#161A22] border border-white/[0.1] rounded-2xl p-8 text-center relative overflow-hidden shadow-2xl">
+            <div className="lg:col-span-5 bg-[#161A22] border border-white/[0.05] rounded-[1.5rem] p-8 text-center relative overflow-hidden shadow-xl">
               
               <div className="inline-block px-3 py-1 rounded-full bg-[#1765FF]/20 text-[#69B4FF] text-[11px] font-mono font-bold uppercase tracking-widest mb-4 border border-[#1765FF]/30">
                 {t.badge}
