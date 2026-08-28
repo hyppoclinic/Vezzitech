@@ -4,6 +4,7 @@ import { Footer } from './components/Footer';
 import { Language } from './translations';
 
 import { Hero } from './sections/Hero';
+import { OfferSection } from './sections/OfferSection';
 import { ProblemSection } from './sections/ProblemSection';
 import { EngineeringSection } from './sections/EngineeringSection';
 import { SolutionsSection } from './sections/SolutionsSection';
@@ -46,6 +47,9 @@ export default function App() {
       <main className="w-full">
         {/* 2. Hero */}
         <Hero lang={lang} />
+
+        {/* 2.5. Oferta Principal (Tráfego Pago + Site + Google Meu Negócio - R$ 799/mês) */}
+        <OfferSection lang={lang} />
 
         {/* 3. O Problema (Gargalos) */}
         <ProblemSection lang={lang} />

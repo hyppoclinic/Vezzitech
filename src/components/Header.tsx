@@ -57,6 +57,13 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             <button 
+              onClick={() => scrollTo('oferta')} 
+              className="relative px-3 py-1 text-xs font-bold font-mono tracking-wider text-[#69B4FF] bg-[#1765FF]/10 border border-[#1765FF]/30 hover:bg-[#1765FF]/20 rounded-full transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#168BFF] animate-pulse" />
+              <span>{t.offer}</span>
+            </button>
+            <button 
               onClick={() => scrollTo('solucoes')} 
               className="relative py-1 text-xs font-semibold tracking-wider text-[#8992A5] hover:text-white transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#168BFF] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
             >
@@ -143,6 +150,9 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
             className="fixed inset-0 z-40 bg-[#070A12] pt-24 px-6 flex flex-col lg:hidden overflow-y-auto"
           >
             <div className="flex flex-col gap-2 text-sm font-semibold text-white">
+              <button onClick={() => scrollTo('oferta')} className="text-left py-3.5 border-b border-white/[0.06] flex items-center justify-between text-[#69B4FF] font-bold">
+                {t.offer} <ArrowUpRight className="w-4 h-4 text-[#168BFF]" />
+              </button>
               <button onClick={() => scrollTo('solucoes')} className="text-left py-3.5 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
                 {t.solutions} <ArrowUpRight className="w-4 h-4 text-[#168BFF]" />
               </button>

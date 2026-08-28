@@ -1,17 +1,18 @@
 import { motion } from 'motion/react';
 import { translations, Language } from '../translations';
-import { Search, Compass, Wrench, Target, Zap, Activity, ArrowRight } from 'lucide-react';
+import { Search, Compass, Wrench, Target, Zap, Activity, TrendingUp, ArrowRight } from 'lucide-react';
 
 export const EngineeringSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].methodology;
 
   const stepIcons = [
-    <Search className="w-5 h-5 text-[#16C7FF]" key="1" />,
+    <Search className="w-5 h-5 text-[#69B4FF]" key="1" />,
     <Compass className="w-5 h-5 text-[#168BFF]" key="2" />,
     <Wrench className="w-5 h-5 text-[#7047FF]" key="3" />,
-    <Target className="w-5 h-5 text-[#16C7FF]" key="4" />,
+    <Target className="w-5 h-5 text-[#69B4FF]" key="4" />,
     <Zap className="w-5 h-5 text-[#168BFF]" key="5" />,
-    <Activity className="w-5 h-5 text-[#7047FF]" key="6" />
+    <Activity className="w-5 h-5 text-[#7047FF]" key="6" />,
+    <TrendingUp className="w-5 h-5 text-[#69B4FF]" key="7" />
   ];
 
   return (

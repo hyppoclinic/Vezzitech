@@ -101,6 +101,33 @@
     background-image: radial-gradient(rgba(22, 199, 255, 0.12) 1px, transparent 1px);
     background-size: 36px 36px;
   }
+
+  .bg-laser-lines {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .corner-crosshairs {
+    position: relative;
+  }
+  .corner-crosshairs::before,
+  .corner-crosshairs::after {
+    content: '+';
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(22, 199, 255, 0.4);
+    pointer-events: none;
+  }
+  .corner-crosshairs::before {
+    top: -6px;
+    left: -6px;
+  }
+  .corner-crosshairs::after {
+    top: -6px;
+    right: -6px;
+  }
   
   .bg-[#070A12] {
     background-color: #070A12;

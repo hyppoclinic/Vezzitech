@@ -10,12 +10,31 @@ export interface TranslationSchema {
   nav: {
     solutions: string;
     engineering: string;
+    offer: string;
     cases: string;
     insights: string;
     about: string;
     contact: string;
     ctaPrimary: string;
     whatsapp: string;
+  };
+  offer: {
+    kicker: string;
+    heading: string;
+    badge: string;
+    priceTag: string;
+    priceValue: string;
+    pricePeriod: string;
+    sub: string;
+    featuresTitle: string;
+    features: Array<{
+      title: string;
+      desc: string;
+      icon: string;
+    }>;
+    ctaPrimary: string;
+    ctaWhatsapp: string;
+    trustBadges: string[];
   };
   hero: {
     kicker: string;
@@ -219,61 +238,98 @@ export const translations: Record<Language, TranslationSchema> = {
     nav: {
       solutions: "Soluções",
       engineering: "Engenharia de Crescimento",
+      offer: "Oferta R$ 799",
       cases: "Cases & Impacto",
       insights: "Insights",
       about: "Sobre",
       contact: "Contato",
-      ctaPrimary: "Solicitar diagnóstico estratégico",
-      whatsapp: "Falar no WhatsApp"
+      ctaPrimary: "Falar com um especialista",
+      whatsapp: "WhatsApp Direto"
+    },
+    offer: {
+      kicker: "OFERTA PRINCIPAL DE CRESCIMENTO",
+      heading: "Tráfego Pago + Criação de Site + Google Meu Negócio",
+      badge: "TUDO ISSO POR APENAS",
+      priceTag: "TUDO ISSO POR APENAS",
+      priceValue: "R$ 799,00",
+      pricePeriod: "/mês",
+      sub: "Um pacote de entrada de alto impacto, com forte percepção de valor, foco total em aquisição de clientes, presença digital de autoridade e conversão direta para o seu negócio.",
+      featuresTitle: "O pacote completo inclui:",
+      features: [
+        {
+          title: "Gestão de Tráfego Pago",
+          desc: "Campanhas otimizadas no Google Ads e Meta Ads focadas na atração de clientes qualificados e geração de oportunidades diárias.",
+          icon: "target"
+        },
+        {
+          title: "Criação de Site Profissional",
+          desc: "Website moderno, ultra veloz, responsivo e preparado para transformar visitantes em contatos e vendas reais.",
+          icon: "layout"
+        },
+        {
+          title: "Google Meu Negócio Otimizado",
+          desc: "Estruturação, otimização e gestão estratégica do seu perfil no Google para dominar as buscas locais da sua região.",
+          icon: "map-pin"
+        }
+      ],
+      ctaPrimary: "Quero crescer por R$ 799/mês",
+      ctaWhatsapp: "Falar no WhatsApp",
+      trustBadges: [
+        "Sem Contrato Abusivo",
+        "Configuração Rápida",
+        "Acompanhamento de Resultados",
+        "Atendimento Especializado"
+      ]
     },
     hero: {
       kicker: "TECNOLOGIA & MARKETING DE ALTA PERFORMANCE",
       titleLine1: "Transformamos tecnologia",
       titleHighlight: "em crescimento.",
-      titleLine3: "com Engenharia de Alta Performance.",
-      subtitle: "Estratégia, marketing, software, inteligência artificial e dados trabalhando juntos para fazer empresas crescerem, automatizarem operações e escalarem com mais eficiência.",
-      ctaPrimary: "Solicitar diagnóstico estratégico",
-      ctaSecondary: "Conhecer nossas soluções →",
-      microtext: "Growth • Software • IA • Automação • Dados",
+      titleLine3: "Engenharia de Crescimento.",
+      subtitle: "Unimos estratégia, tráfego pago, websites e presença local para gerar mais oportunidades, autoridade e vendas para empresas que querem crescer.",
+      ctaPrimary: "Falar com um especialista",
+      ctaSecondary: "Conhecer a oferta",
+      microtext: "Tráfego Pago • Criação de Site • Google Meu Negócio",
       systemNodes: [
-        { label: "STRATEGY", sub: "Definição de visão & metas" },
-        { label: "MARKETING", sub: "Aquisição de demanda qualificada" },
-        { label: "TECHNOLOGY", sub: "Sistemas & Experiências web" },
-        { label: "AUTOMATION", sub: "Workflows & Agentes de IA" },
-        { label: "DATA", sub: "Analytics & Decisão em tempo real" },
-        { label: "GROWTH", sub: "Crescimento previsível e sustentável" }
+        { label: "ESTRATÉGIA", sub: "Plano de aquisição & posicionamento" },
+        { label: "TRÁFEGO PAGO", sub: "Mídia de alta performance Google/Meta" },
+        { label: "WEBSITES", sub: "Experiências digitais de alta conversão" },
+        { label: "PRESENÇA LOCAL", sub: "Google Meu Negócio otimizado" },
+        { label: "AUTOMAÇÃO", sub: "Workflows & atração de leads" },
+        { label: "CRESCIMENTO", sub: "Vendas previsíveis e autoridade" }
       ]
     },
     problem: {
-      kicker: "O PROBLEMA",
+      kicker: "ESTRUTURA INTEGRADA",
       heading: "Sua empresa não precisa de mais ferramentas.",
       subheading: "Precisa de uma estrutura de crescimento.",
       copy: [
-        "Marketing separado da tecnologia gera desperdício de orçamento e leads perdidos.",
-        "Tecnologia sem estratégia gera complexidade técnica sem retorno comercial.",
-        "Dados sem decisão não geram crescimento."
+        "Muitas empresas possuem site, redes sociais, anúncios e ferramentas isoladas, mas não possuem uma operação integrada e comercialmente forte.",
+        "Anúncios sem uma página rápida e sem gestão do perfil local geram desperdício de orçamento e leads perdidos para concorrentes.",
+        "A Vezzitech entra para conectar aquisição, presença digital, tecnologia, conversão, automação, dados e crescimento em um fluxo único."
       ],
-      highlight: "A Vezzitech conecta tudo em um ecossistema integrado.",
+      highlight: "Conectamos todas as frentes para transformar visitantes em oportunidades e vendas.",
       nodes: [
-        { id: "marketing", title: "Marketing", desc: "Campanhas sem integração geram tráfego sem conversão.", icon: "megaphone" },
-        { id: "tecnologia", title: "Tecnologia", desc: "Sistemas isolados criam gargalos manuais e lentidão.", icon: "code" },
-        { id: "inteligencia", title: "Inteligência", desc: "Processos manuais limitam a velocidade da equipe.", icon: "bot" },
-        { id: "dados", title: "Dados", desc: "Métricas desconectadas impedem decisões precisas.", icon: "bar-chart" }
+        { id: "aquisicao", title: "Aquisição & Mídia", desc: "Tráfego pago no Google e Meta Ads para atrair clientes prontos para comprar.", icon: "target" },
+        { id: "presenca", title: "Presença Digital", desc: "Websites ultra velozes e Google Meu Negócio transmitindo autoridade.", icon: "globe" },
+        { id: "conversao", title: "Conversão Direta", desc: "Estruturas e landing pages otimizadas para maximizar o número de contatos.", icon: "trending-up" },
+        { id: "dados", title: "Dados & Otimização", desc: "Acompanhamento contínuo para escalar os canais de maior retorno.", icon: "bar-chart" }
       ]
     },
     methodology: {
-      kicker: "VEZZITECH GROWTH ENGINEERING",
-      heading: "Crescimento é construído.",
-      sub: "Nossa metodologia conecta estratégia, aquisição, tecnologia, automação e dados para identificar gargalos e construir estruturas capazes de acelerar empresas.",
+      kicker: "ENGENHARIA DE CRESCIMENTO",
+      heading: "Processo em 7 etapas para escalar seu negócio.",
+      sub: "Trabalhamos com uma estrutura contínua e estratégica para conectar aquisição, experiência digital, tecnologia e dados.",
       steps: [
-        { number: "01", code: "DIAGNOSE", title: "Diagnose", desc: "Encontramos os gargalos operacionais e comerciais que travam a escala." },
-        { number: "02", code: "ARCHITECT", title: "Architect", desc: "Desenhamos a arquitetura ideal unindo tecnologia, mídia e dados." },
-        { number: "03", code: "BUILD", title: "Build", desc: "Construímos a infraestrutura técnica, sistemas e páginas de alta conversão." },
-        { number: "04", code: "ACQUIRE", title: "Acquire", desc: "Ativamos canais de aquisição de alta performance e mídias patrocinadas." },
-        { number: "05", code: "AUTOMATE", title: "Automate", desc: "Automatizamos processos manuais repetitivos com IA e integrações de API." },
-        { number: "06", code: "OPTIMIZE", title: "Optimize", desc: "Mensuramos indicadores em tempo real para otimização contínua do ROI." }
+        { number: "01", code: "DIAGNOSE", title: "Diagnóstico", desc: "Mapeamos os gargalos de vendas, presença e conversão que travam o crescimento." },
+        { number: "02", code: "STRATEGY", title: "Estratégia", desc: "Desenhamos o plano de mídia, oferta irresistível e posicionamento de mercado." },
+        { number: "03", code: "ACQUIRE", title: "Aquisição", desc: "Ativamos campanhas de tráfego pago de alta performance no Google Ads e Meta Ads." },
+        { number: "04", code: "DIGITAL_EXP", title: "Experiência Digital", desc: "Desenvolvemos o website profissional e otimizamos a ficha do Google Meu Negócio." },
+        { number: "05", code: "CONVERT", title: "Conversão", desc: "Estruturamos pontos de contato direto e atendimento via WhatsApp com agilidade." },
+        { number: "06", code: "DATA_OPT", title: "Dados & Otimização", desc: "Mensuramos os indicadores em tempo real para otimização constante de investimento." },
+        { number: "07", code: "SCALE", title: "Escala", desc: "Aumentamos a previsibilidade de receita, autoridade e geração constante de clientes." }
       ],
-      closingPhrase: "Estratégia antes da execução. Tecnologia antes da escala. Dados antes da decisão."
+      closingPhrase: "Estratégia integrando tecnologia. Tráfego gerando oportunidades. Estrutura impulsionando crescimento."
     },
     solutions: {
       kicker: "ECOSSISTEMA VEZZITECH",
@@ -323,45 +379,51 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     differentiation: {
-      kicker: "POR QUE VEZZITECH",
-      heading: "Muito além de uma agência.",
-      sub: "Enquanto uma agência tradicional cuida do marketing e uma software house cuida da tecnologia, a Vezzitech conecta os dois lados do crescimento.",
+      kicker: "COMPARATIVO DE MERCADO",
+      heading: "Agência Tradicional vs. Vezzitech",
+      sub: "A maioria das agências vende serviços isolados. A Vezzitech entrega uma estrutura integrada de crescimento.",
       table: {
-        headers: ["Dimensão", "Agência Tradicional", "Software House", "Vezzitech"],
+        headers: ["Critério", "Agência Tradicional", "Software House", "Vezzitech"],
         rows: [
           {
-            dimension: "Foco Principal",
-            agency: "Marketing & Anúncios soltos",
-            softwareHouse: "Escrita pura de código",
-            vezzitech: "Estratégia + Marketing + Tecnologia"
+            dimension: "Estrutura",
+            agency: "Serviços isolados e sem conexão",
+            softwareHouse: "Escrita pura de código técnico",
+            vezzitech: "Estrutura integrada de crescimento"
           },
           {
-            dimension: "Entrega Entregue",
-            agency: "Campanhas e peças de design",
-            softwareHouse: "Arquivos de código técnico",
-            vezzitech: "Infraestrutura de Aquisição + Sistemas"
+            dimension: "Foco Principal",
+            agency: "Foco em entregas de peças e posts",
+            softwareHouse: "Foco em especificações do sistema",
+            vezzitech: "Foco em performance e oportunidades"
+          },
+          {
+            dimension: "Conexão de Mídia & Site",
+            agency: "Site desconectado do marketing",
+            softwareHouse: "Código sem visão de vendas",
+            vezzitech: "Tecnologia conectada à aquisição"
           },
           {
             dimension: "Análise de Resultados",
-            agency: "Relatórios de métricas de vaidade",
-            softwareHouse: "Entrega do escopo funcional",
-            vezzitech: "Dados de Negócio, CAC & Performance"
+            agency: "Relatórios genéricos de vaidade",
+            softwareHouse: "Entrega do escopo de software",
+            vezzitech: "Dados orientados a decisões reais"
           },
           {
-            dimension: "Automação & IA",
-            agency: "Limitada a ferramentas prontas",
-            softwareHouse: "Foco baixo em growth e vendas",
-            vezzitech: "IA + Automação Operacional + Growth"
-          },
-          {
-            dimension: "Modelo de Parceria",
-            agency: "Exige contratação de terceiros",
+            dimension: "Gestão da Operação",
+            agency: "Exige múltiplos fornecedores",
             softwareHouse: "Depende de agência externa",
-            vezzitech: "Ecossistema Único e Integrado"
+            vezzitech: "Operação centralizada e eficiente"
+          },
+          {
+            dimension: "Execução",
+            agency: "Execução pontual e engessada",
+            softwareHouse: "Suporte técnico passivo",
+            vezzitech: "Engenharia de crescimento contínua"
           }
         ]
       },
-      quote: "Engenharia de Crescimento não é uma campanha de marketing ou uma linha de código. É um sistema integrado que faz sua empresa escalar com consistência."
+      quote: "Não entregamos apenas anúncios ou um site isolado. Construímos a infraestrutura técnica e comercial completa para acelerar sua empresa."
     },
     manifesto: {
       lines: [
@@ -467,33 +529,32 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     ctaFinal: {
-      kicker: "DIAGNÓSTICO ESTRATÉGICO",
-      heading: "Qual é o maior gargalo de crescimento da sua empresa?",
-      sub: "Selecione o principal desafio operacional ou comercial da sua empresa hoje. Nós analisamos sua estrutura e desenhamos a solução ideal.",
+      kicker: "TRANSFORMAÇÃO DIGITAL",
+      heading: "Pronto para transformar tecnologia em crescimento?",
+      sub: "Fale com a Vezzitech e descubra como estruturar aquisição, presença digital e tecnologia para gerar mais oportunidades e vendas para sua empresa.",
       bottlenecks: [
-        { id: "aquisicao", title: "Aquisição", desc: "Preciso gerar mais oportunidades qualificadas e leads de topo e meio de funil." },
-        { id: "conversao", title: "Conversão", desc: "Já tenho tráfego, mas meu site/landing page não converte visitantes em clientes." },
-        { id: "tecnologia", title: "Tecnologia", desc: "Preciso de um software, aplicativo ou sistema interno sob medida para meu negócio." },
-        { id: "processos", title: "Processos", desc: "Minha equipe perde tempo em planilhas e processos manuais lentos." },
-        { id: "automacao", title: "Automação / IA", desc: "Quero implementar agentes de Inteligência Artificial e automações comerciais." },
-        { id: "dados", title: "Dados & Analytics", desc: "Não tenho visibilidade clara de métricas, CAC, LTV e retorno de investimento." }
+        { id: "pacote-799", title: "Oferta R$ 799/mês", desc: "Quero o combo Tráfego Pago + Criação de Site + Google Meu Negócio." },
+        { id: "aquisicao", title: "Tráfego Pago & Mídia", desc: "Preciso gerar mais oportunidades e vendas diárias com Google e Meta Ads." },
+        { id: "website", title: "Criação de Website", desc: "Preciso de um site moderno, ultra veloz e focado em alta conversão." },
+        { id: "google-local", title: "Google Meu Negócio", desc: "Quero otimizar minha ficha e dominar a presença local da minha região." },
+        { id: "diagnostico", title: "Diagnóstico Completo", desc: "Quero uma análise estratégica completa da estrutura da minha empresa." }
       ],
       form: {
-        title: "Solicitar Diagnóstico Estratégico de Crescimento",
+        title: "Solicitar Diagnóstico ou Iniciar Oferta",
         name: "Seu nome",
         namePlaceholder: "ex: Rodrigo Canavese",
         company: "Nome da sua empresa",
-        companyPlaceholder: "ex: Vezzitech Corp",
-        email: "E-mail corporativo",
-        emailPlaceholder: "rodrigo@suaempresa.com",
-        phone: "WhatsApp / Telefone",
+        companyPlaceholder: "ex: Minha Empresa",
+        email: "E-mail de contato",
+        emailPlaceholder: "contato@suaempresa.com.br",
+        phone: "Telefone / WhatsApp",
         phonePlaceholder: "(44) 99826-6950",
-        website: "Website da empresa (se houver)",
-        websitePlaceholder: "https://suaempresa.com.br",
-        bottleneckLabel: "Gargalo Selecionado",
-        submitButton: "Solicitar Diagnóstico Estratégico",
-        whatsappAlt: "Ou se preferir, fale direto com um especialista no WhatsApp",
-        successMessage: "Diagnóstico solicitado com sucesso! Nossa equipe entrará em contato em menos de 2 horas."
+        website: "Website atual (opcional)",
+        websitePlaceholder: "www.suaempresa.com.br",
+        bottleneckLabel: "Interesse Selecionado",
+        submitButton: "Solicitar Atendimento de Crescimento",
+        whatsappAlt: "Ou converse diretamente pelo WhatsApp",
+        successMessage: "Solicitação recebida com sucesso! Nossa equipe entrará em contato em breve para apresentar a melhor estratégia para sua empresa."
       }
     },
     pages: {
@@ -594,29 +655,65 @@ export const translations: Record<Language, TranslationSchema> = {
     nav: {
       solutions: "Solutions",
       engineering: "Growth Engineering",
+      offer: "Offer $799/mo",
       cases: "Cases & Impact",
       insights: "Insights",
       about: "About",
       contact: "Contact",
-      ctaPrimary: "Request strategic diagnostic",
-      whatsapp: "Chat on WhatsApp"
+      ctaPrimary: "Talk to a specialist",
+      whatsapp: "Direct WhatsApp"
+    },
+    offer: {
+      kicker: "MAIN GROWTH OFFER",
+      heading: "Paid Traffic + Website Creation + Google Business Profile",
+      badge: "ALL THIS FOR ONLY",
+      priceTag: "ALL THIS FOR ONLY",
+      priceValue: "R$ 799.00",
+      pricePeriod: "/month",
+      sub: "A high-impact, accessible entry package with strong perceived value, focused on client acquisition, digital authority, and direct conversion.",
+      featuresTitle: "The complete package includes:",
+      features: [
+        {
+          title: "Paid Traffic Management",
+          desc: "Optimized Google Ads and Meta Ads campaigns focused on bringing qualified leads ready to buy.",
+          icon: "target"
+        },
+        {
+          title: "Professional Website Creation",
+          desc: "Modern, ultra-fast, responsive website engineered to convert visitors into real leads and sales.",
+          icon: "layout"
+        },
+        {
+          title: "Google Business Profile",
+          desc: "Setup, optimization, and management of your local Google profile to dominate local search.",
+          icon: "map-pin"
+        }
+      ],
+      ctaPrimary: "I want to grow for R$ 799/mo",
+      ctaWhatsapp: "Talk on WhatsApp",
+      trustBadges: [
+        "No Abusive Lock-in",
+        "Fast Setup",
+        "Results Tracking",
+        "Expert Support"
+      ]
     },
     hero: {
       kicker: "HIGH-PERFORMANCE TECHNOLOGY & MARKETING",
       titleLine1: "We turn technology",
       titleHighlight: "into growth.",
-      titleLine3: "with High-Performance Engineering.",
-      subtitle: "Strategy, marketing, software, artificial intelligence, and data working together to help companies scale, automate operations, and grow efficiently.",
-      ctaPrimary: "Request strategic diagnostic",
-      ctaSecondary: "Explore our solutions →",
-      microtext: "Growth • Software • AI • Automation • Data",
+      titleLine3: "Growth Engineering.",
+      subtitle: "We combine strategy, paid traffic, websites, and local presence to generate more leads, authority, and sales for companies ready to grow.",
+      ctaPrimary: "Talk to a specialist",
+      ctaSecondary: "Explore the offer",
+      microtext: "Paid Traffic • Website Creation • Google Business Profile",
       systemNodes: [
-        { label: "STRATEGY", sub: "Vision & Goals Definition" },
-        { label: "MARKETING", sub: "Qualified Demand Acquisition" },
-        { label: "TECHNOLOGY", sub: "Systems & Web Experiences" },
-        { label: "AUTOMATION", sub: "Workflows & AI Agents" },
-        { label: "DATA", sub: "Real-time Analytics & Decisions" },
-        { label: "GROWTH", sub: "Predictable & Sustainable Scale" }
+        { label: "STRATEGY", sub: "Acquisition & positioning plan" },
+        { label: "PAID TRAFFIC", sub: "High-performance Google & Meta Ads" },
+        { label: "WEBSITES", sub: "High-conversion digital experiences" },
+        { label: "LOCAL PRESENCE", sub: "Optimized Google Business Profile" },
+        { label: "AUTOMATION", sub: "Lead capture workflows" },
+        { label: "GROWTH", sub: "Predictable sales & market authority" }
       ]
     },
     problem: {

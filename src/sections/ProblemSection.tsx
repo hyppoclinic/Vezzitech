@@ -1,19 +1,32 @@
 import { motion } from 'motion/react';
 import { translations, Language } from '../translations';
-import { Megaphone, Code2, Bot, BarChart3, ArrowRight } from 'lucide-react';
+import { Target, Globe, TrendingUp, BarChart3, Megaphone, Code2, Bot, ArrowRight, AlertTriangle, CheckCircle2 } from 'lucide-react';
 
 export const ProblemSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].problem;
 
   const iconMap: Record<string, React.ReactNode> = {
-    megaphone: <Megaphone className="w-6 h-6 text-[#16C7FF]" />,
-    code: <Code2 className="w-6 h-6 text-[#168BFF]" />,
-    bot: <Bot className="w-6 h-6 text-[#7047FF]" />,
-    'bar-chart': <BarChart3 className="w-6 h-6 text-[#16C7FF]" />
+    target: <Target className="w-5 h-5 text-[#69B4FF]" />,
+    globe: <Globe className="w-5 h-5 text-[#168BFF]" />,
+    'trending-up': <TrendingUp className="w-5 h-5 text-[#7047FF]" />,
+    'bar-chart': <BarChart3 className="w-5 h-5 text-[#69B4FF]" />,
+    megaphone: <Megaphone className="w-5 h-5 text-[#69B4FF]" />,
+    code: <Code2 className="w-5 h-5 text-[#168BFF]" />,
+    bot: <Bot className="w-5 h-5 text-[#7047FF]" />
   };
 
+  const codeTags = [
+    "SYS_FAIL // TRAFFIC_NO_CONVERSION",
+    "DEV_BOTTLENECK // NO_STRATEGY_ALIGNMENT",
+    "PROCESS_SLOP // MANUAL_WORKFLOWS",
+    "SILOED_DATA // UNUSED_BUSINESS_INTEL"
+  ];
+
   return (
-    <section id="problema" className="py-24 bg-[#070A12] relative overflow-hidden border-t border-white/[0.06]">
+    <section id="problema" className="py-24 md:py-32 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08] bg-laser-lines">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#168BFF]/10 rounded-full blur-[140px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
@@ -22,9 +35,10 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-3.5 py-1.5 rounded-full bg-[#10162A] border border-white/[0.08] text-[11px] font-mono font-bold text-[#16C7FF] uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#10162A] border border-white/[0.1] text-[11px] font-mono font-bold text-[#16C7FF] uppercase tracking-widest mb-4 shadow-sm"
           >
-            {t.kicker}
+            <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+            <span>{t.kicker}</span>
           </motion.div>
 
           <motion.h2
@@ -35,7 +49,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
             className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight mb-4"
           >
             {t.heading}
-            <span className="block text-[#8992A5] font-normal text-2xl sm:text-3xl mt-2">
+            <span className="block text-[#8992A5] font-normal text-xl sm:text-2xl md:text-3xl mt-2 font-sans">
               {t.subheading}
             </span>
           </motion.h2>
@@ -45,7 +59,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="space-y-2 text-base text-[#8992A5] mt-6"
+            className="space-y-3 text-base sm:text-lg text-[#8992A5] mt-6 leading-relaxed"
           >
             {t.copy.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
@@ -53,7 +67,7 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
           </motion.div>
         </div>
 
-        {/* 4 Connected Nodes surrounding GROWTH */}
+        {/* 4 Diagnostic Bottleneck Nodes */}
         <div className="relative max-w-5xl mx-auto mt-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
             {t.nodes.map((node, index) => (
@@ -63,18 +77,26 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-7 rounded-2xl bg-[#10162A] border border-white/[0.08] hover:border-[#168BFF]/40 transition-all duration-300 group hover:-translate-y-1"
+                className="p-7 rounded-2xl bg-[#0B0E1B] border border-white/[0.1] hover:border-[#16C7FF]/40 transition-all duration-300 group hover:-translate-y-1 shadow-xl corner-crosshairs relative overflow-hidden"
               >
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/[0.06]">
+                  <span className="text-[10px] font-mono font-bold text-red-400/90 tracking-wider">
+                    {codeTags[index]}
+                  </span>
+                  <span className="text-[10px] font-mono text-[#8992A5] bg-[#070A12] px-2 py-0.5 rounded border border-white/5">
+                    BOTTLENECK #0{index + 1}
+                  </span>
+                </div>
+
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#070A12] border border-white/[0.1] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-11 h-11 rounded-xl bg-[#10162A] border border-white/[0.12] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform group-hover:border-[#16C7FF]/50 shadow-inner">
                     {iconMap[node.icon]}
                   </div>
                   <div>
-                    <h3 className="text-lg font-heading font-bold text-white mb-1 flex items-center gap-2">
+                    <h3 className="text-lg font-heading font-bold text-white mb-1.5 flex items-center gap-2">
                       {node.title}
-                      <span className="text-xs font-mono text-[#8992A5]">#0{index + 1}</span>
                     </h3>
-                    <p className="text-sm text-[#8992A5] leading-relaxed">
+                    <p className="text-sm text-[#8992A5] leading-relaxed font-sans">
                       {node.desc}
                     </p>
                   </div>
@@ -83,20 +105,22 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
             ))}
           </div>
 
-          {/* Central Growth Resolution Card */}
+          {/* Central Growth Resolution Banner */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#16C7FF]/15 via-[#168BFF]/20 to-[#7047FF]/15 border border-[#168BFF]/40 text-center relative overflow-hidden"
+            className="mt-10 p-7 sm:p-8 rounded-2xl bg-gradient-to-r from-[#10162A] via-[#141C36] to-[#10162A] border border-[#16C7FF]/40 shadow-2xl relative overflow-hidden"
           >
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-left">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#16C7FF]">
+            <div className="absolute top-0 left-0 w-2 h-full bg-performance-gradient" />
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="text-left space-y-1">
+                <span className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#16C7FF]">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#16C7FF]" />
                   A Solução Vezzitech
                 </span>
-                <h4 className="text-xl font-heading font-bold text-white mt-1">
+                <h4 className="text-xl sm:text-2xl font-heading font-bold text-white">
                   {t.highlight}
                 </h4>
               </div>
@@ -105,9 +129,9 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
                   const el = document.getElementById('engenharia');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-performance-gradient text-white text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-all cursor-pointer shrink-0"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-performance-gradient text-white text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-all cursor-pointer shrink-0 shadow-performance-glow hover:scale-105 active:scale-95"
               >
-                <span>Ver nossa engenharia</span>
+                <span>Nossa Metodologia</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -118,3 +142,4 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
     </section>
   );
 };
+
