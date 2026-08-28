@@ -51,7 +51,7 @@ export const EngineeringSection = ({ lang }: { lang: Language }) => {
           </motion.p>
         </div>
 
-        {/* 6 Step Grid Timeline */}
+        {/* 7 Step Grid Timeline */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.steps.map((step, index) => (
             <motion.div
@@ -60,26 +60,22 @@ export const EngineeringSection = ({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="p-7 rounded-2xl bg-[#10162A] border border-white/[0.08] hover:border-[#168BFF]/40 transition-all duration-300 group hover:-translate-y-1 relative"
+              className="p-8 rounded-[1.5rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 group hover:-translate-y-1 shadow-lg relative"
             >
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-10 h-10 rounded-xl bg-[#070A12] border border-white/[0.1] flex items-center justify-center">
+              <div className="flex flex-col mb-4">
+                <span className="text-4xl font-heading font-black text-white/5 group-hover:text-white/10 transition-colors absolute top-6 right-6">
+                  {step.number}
+                </span>
+                <div className="w-12 h-12 rounded-xl bg-[#10162A] border border-white/[0.1] flex items-center justify-center mb-6 shadow-inner">
                   {stepIcons[index]}
                 </div>
-                <span className="text-xs font-mono font-bold text-[#16C7FF] bg-[#16C7FF]/10 px-2.5 py-1 rounded-md border border-[#16C7FF]/20">
-                  {step.code}
-                </span>
               </div>
 
-              <span className="text-3xl font-heading font-black text-white/10 group-hover:text-white/20 transition-colors block mb-2">
-                {step.number}
-              </span>
-
-              <h3 className="text-xl font-heading font-bold text-white mb-2">
+              <h3 className="text-xl font-heading font-bold text-white mb-3">
                 {step.title}
               </h3>
 
-              <p className="text-sm text-[#8992A5] leading-relaxed">
+              <p className="text-sm text-[#8992A5] leading-relaxed font-sans">
                 {step.desc}
               </p>
             </motion.div>

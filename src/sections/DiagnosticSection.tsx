@@ -127,21 +127,6 @@ export const DiagnosticSection = ({ lang }: { lang: Language }) => {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto rounded-[2rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.08] shadow-2xl relative overflow-hidden"
         >
-          {/* Terminal Bar */}
-          <div className="px-6 py-3 bg-[#070A12]/50 border-b border-white/[0.08] flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <span className="text-[11px] font-mono text-zinc-500 pl-2 tracking-wider">
-                DIAGNOSTIC_FORM.OS // PASSO 2
-              </span>
-            </div>
-            <span className="text-[10px] font-mono text-[#16C7FF] font-bold bg-[#16C7FF]/10 px-2.5 py-0.5 rounded border border-[#16C7FF]/20 uppercase">
-              RESPOSTA EM ATÉ 24H
-            </span>
-          </div>
-
           <div className="p-8 sm:p-10">
             {submitted ? (
               <div className="text-center py-10 space-y-4">

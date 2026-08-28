@@ -8,7 +8,6 @@ import { OfferSection } from './sections/OfferSection';
 import { ProblemSection } from './sections/ProblemSection';
 import { EngineeringSection } from './sections/EngineeringSection';
 import { SolutionsSection } from './sections/SolutionsSection';
-import { DifferentiationSection } from './sections/DifferentiationSection';
 import { ManifestoSection } from './sections/ManifestoSection';
 import { CasesSection } from './sections/CasesSection';
 import { MindsetSection } from './sections/MindsetSection';
@@ -59,9 +58,6 @@ export default function App() {
 
         {/* 5. Ecossistema Vezzitech (4 Unidades) */}
         <SolutionsSection lang={lang} />
-
-        {/* 6. Muito Além de Uma Agência (Diferenciação) */}
-        <DifferentiationSection lang={lang} />
 
         {/* 7. Manifesto Vezzitech */}
         <ManifestoSection lang={lang} />

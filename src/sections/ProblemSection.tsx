@@ -15,13 +15,6 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
     bot: <Bot className="w-5 h-5 text-[#7047FF]" />
   };
 
-  const codeTags = [
-    "SYS_FAIL // TRAFFIC_NO_CONVERSION",
-    "DEV_BOTTLENECK // NO_STRATEGY_ALIGNMENT",
-    "PROCESS_SLOP // MANUAL_WORKFLOWS",
-    "SILOED_DATA // UNUSED_BUSINESS_INTEL"
-  ];
-
   return (
     <section id="problema" className="py-24 md:py-32 bg-[#070A12] relative overflow-hidden border-t border-white/[0.08]">
       {/* Background Glow */}
@@ -79,15 +72,6 @@ export const ProblemSection = ({ lang }: { lang: Language }) => {
                 transition={{ delay: index * 0.1 }}
                 className="p-7 rounded-[1.5rem] bg-[#0B0E1B]/50 border border-white/[0.05] hover:border-[#16C7FF]/30 transition-all duration-300 group hover:-translate-y-1 shadow-lg relative overflow-hidden backdrop-blur-sm"
               >
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/[0.06]">
-                  <span className="text-[10px] font-mono font-bold text-red-400/90 tracking-wider">
-                    {codeTags[index]}
-                  </span>
-                  <span className="text-[10px] font-mono text-[#8992A5] bg-[#070A12] px-2 py-0.5 rounded border border-white/5">
-                    BOTTLENECK #0{index + 1}
-                  </span>
-                </div>
-
                 <div className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-[#10162A] border border-white/[0.12] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform group-hover:border-[#16C7FF]/50 shadow-inner">
                     {iconMap[node.icon]}

@@ -55,50 +55,50 @@ export const CasesSection = ({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-2xl bg-[#10162A] border border-white/[0.08] hover:border-[#168BFF]/40 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative"
+              className="p-8 rounded-[2rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative shadow-lg"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono font-bold text-[#16C7FF] bg-[#16C7FF]/10 px-2.5 py-1 rounded-md border border-[#16C7FF]/20">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-[11px] font-bold text-[#168BFF] bg-[#168BFF]/10 px-3 py-1 rounded-full border border-[#168BFF]/20 uppercase tracking-widest">
                     {item.badge}
                   </span>
-                  <span className="text-xs font-mono text-[#8992A5]">
+                  <span className="text-xs text-[#8992A5] font-medium tracking-wide">
                     {item.segment}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-heading font-bold text-white mb-4">
+                <h3 className="text-2xl font-heading font-bold text-white mb-6">
                   {item.client}
                 </h3>
 
                 {/* Problema */}
-                <div className="mb-4">
-                  <span className="text-xs font-mono uppercase text-red-400/90 font-bold block mb-1">
-                    [ Gargalo ]
+                <div className="mb-5">
+                  <span className="text-[11px] uppercase text-red-400 font-bold block mb-1.5 tracking-wider">
+                    Desafio
                   </span>
-                  <p className="text-xs text-[#8992A5] leading-relaxed">
+                  <p className="text-sm text-[#8992A5] leading-relaxed font-sans">
                     {item.problem}
                   </p>
                 </div>
 
                 {/* Solução */}
-                <div className="mb-6">
-                  <span className="text-xs font-mono uppercase text-[#16C7FF] font-bold block mb-1">
-                    [ Engenharia Vezzitech ]
+                <div className="mb-8">
+                  <span className="text-[11px] uppercase text-[#16C7FF] font-bold block mb-1.5 tracking-wider">
+                    Solução Implementada
                   </span>
-                  <p className="text-xs text-zinc-300 leading-relaxed">
+                  <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                     {item.solution}
                   </p>
                 </div>
 
                 {/* Metric Badges */}
-                <div className="p-4 rounded-xl bg-[#070A12] border border-white/[0.06] mb-6 space-y-2">
-                  <span className="text-[10px] font-mono text-[#168BFF] uppercase tracking-wider block font-bold">
-                    Resultados Comprovados:
+                <div className="p-5 rounded-[1.5rem] bg-[#070A12]/50 border border-white/[0.06] mb-6 space-y-3">
+                  <span className="text-[10px] text-[#168BFF] uppercase tracking-wider block font-bold">
+                    Resultados Alcançados
                   </span>
                   {item.metrics.map((metric, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs font-bold text-white font-mono">
-                      <TrendingUp className="w-3.5 h-3.5 text-[#16C7FF] shrink-0" />
+                    <div key={idx} className="flex items-center gap-2.5 text-sm font-bold text-white">
+                      <TrendingUp className="w-4 h-4 text-[#7047FF] shrink-0" />
                       <span>{metric}</span>
                     </div>
                   ))}
@@ -107,9 +107,9 @@ export const CasesSection = ({ lang }: { lang: Language }) => {
                 {/* Tech Stack */}
                 <div className="mb-6">
                   <div className="flex flex-wrap gap-1.5">
-                    {item.tech.map((t) => (
-                      <span key={t} className="text-[10px] font-mono bg-[#10162A] text-[#8992A5] px-2 py-0.5 rounded border border-white/[0.06]">
-                        {t}
+                    {item.tech.map((techItem) => (
+                      <span key={techItem} className="text-[11px] font-medium bg-[#10162A] text-[#8992A5] px-2.5 py-1 rounded-full border border-white/[0.06]">
+                        {techItem}
                       </span>
                     ))}
                   </div>

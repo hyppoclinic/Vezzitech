@@ -50,29 +50,29 @@ export const InsightsSection = ({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-7 rounded-2xl bg-[#10162A] border border-white/[0.08] hover:border-[#168BFF]/40 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative"
+              className="p-7 rounded-[1.5rem] bg-[#0B0E1B]/50 backdrop-blur-sm border border-white/[0.05] hover:border-[#168BFF]/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative shadow-lg"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-mono font-bold text-[#16C7FF] bg-[#16C7FF]/10 px-2.5 py-0.5 rounded border border-[#16C7FF]/20 uppercase">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-[11px] font-bold text-[#168BFF] bg-[#168BFF]/10 px-3 py-1 rounded-full border border-[#168BFF]/20 uppercase tracking-widest">
                     {article.category}
                   </span>
-                  <span className="text-xs font-mono text-[#8992A5] flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-[#8992A5]" />
+                  <span className="text-xs text-[#8992A5] flex items-center gap-1.5 font-medium tracking-wide">
+                    <Clock className="w-3.5 h-3.5" />
                     {article.readTime}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-heading font-bold text-white mb-3 group-hover:text-[#16C7FF] transition-colors line-clamp-2">
+                <h3 className="text-xl font-heading font-bold text-white mb-3 group-hover:text-[#168BFF] transition-colors line-clamp-2">
                   {article.title}
                 </h3>
 
-                <p className="text-sm text-[#8992A5] leading-relaxed mb-6">
+                <p className="text-sm text-[#8992A5] leading-relaxed mb-6 font-sans">
                   {article.excerpt}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-zinc-300">
+              <div className="pt-5 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-400 font-medium">
                 <span>{article.date}</span>
                 <span className="inline-flex items-center gap-1 text-[#168BFF] font-bold group-hover:translate-x-1 transition-transform">
                   Ler artigo <ArrowUpRight className="w-4 h-4" />
