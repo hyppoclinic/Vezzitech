@@ -1,12 +1,20 @@
 export interface TranslationSchema {
+  brand: {
+    name: string;
+    descriptor: string;
+    tagline: string;
+    category: string;
+    pitchShort: string;
+    pitchFull: string;
+  };
   nav: {
-    services: string;
-    deliverables: string;
+    solutions: string;
+    engineering: string;
     cases: string;
-    testimonials: string;
-    faq: string;
+    insights: string;
+    about: string;
     contact: string;
-    cta: string;
+    ctaPrimary: string;
     whatsapp: string;
   };
   hero: {
@@ -17,38 +25,63 @@ export interface TranslationSchema {
     subtitle: string;
     ctaPrimary: string;
     ctaSecondary: string;
-    socialProof: {
-      rating: string;
-      ratingSub: string;
-      projects: string;
-      projectsSub: string;
-      responseTime: string;
-      responseTimeSub: string;
-    };
+    microtext: string;
+    systemNodes: Array<{ label: string; sub: string }>;
   };
-  services: {
+  problem: {
+    kicker: string;
+    heading: string;
+    subheading: string;
+    copy: string[];
+    highlight: string;
+    nodes: Array<{ id: string; title: string; desc: string; icon: string }>;
+  };
+  methodology: {
     kicker: string;
     heading: string;
     sub: string;
-    items: Array<{
+    steps: Array<{
+      number: string;
+      code: string;
+      title: string;
+      desc: string;
+    }>;
+    closingPhrase: string;
+  };
+  solutions: {
+    kicker: string;
+    heading: string;
+    sub: string;
+    units: Array<{
       id: string;
-      icon: string;
+      tag: string;
       title: string;
       highlight: string;
       desc: string;
-      tags: string[];
+      services: string[];
+      cta: string;
+      icon: string;
     }>;
   };
-  deliverables: {
+  differentiation: {
     kicker: string;
     heading: string;
     sub: string;
-    items: Array<{
-      number: string;
-      title: string;
-      desc: string;
-      details: string;
-    }>;
+    table: {
+      headers: [string, string, string, string];
+      rows: Array<{
+        dimension: string;
+        agency: string;
+        softwareHouse: string;
+        vezzitech: string;
+      }>;
+    };
+    quote: string;
+  };
+  manifesto: {
+    lines: Array<{ text: string; highlight?: boolean }>;
+    sub: string;
+    brandText: string;
   };
   cases: {
     kicker: string;
@@ -57,51 +90,44 @@ export interface TranslationSchema {
     ctaText: string;
     items: Array<{
       id: string;
-      number: string;
       client: string;
-      year: string;
-      category: string;
-      title: string;
-      desc: string;
-      metrics: string;
-      stack: string[];
-      image: string;
+      segment: string;
+      problem: string;
+      solution: string;
+      tech: string[];
+      metrics: string[];
       badge: string;
     }>;
   };
-  testimonials: {
+  mindset: {
     kicker: string;
     heading: string;
     sub: string;
-    googleBadge: {
-      score: string;
-      stars: string;
-      platform: string;
-      reviewCount: string;
-    };
-    items: Array<{
-      quote: string;
-      author: string;
-      role: string;
-      company: string;
-      projectType: string;
+    cards: Array<{
+      title: string;
+      desc: string;
+      icon: string;
     }>;
   };
-  faq: {
+  insights: {
     kicker: string;
     heading: string;
     sub: string;
-    items: Array<{
-      q: string;
-      a: string;
+    articles: Array<{
+      category: string;
+      title: string;
+      excerpt: string;
+      readTime: string;
+      date: string;
     }>;
   };
-  contact: {
+  ctaFinal: {
     kicker: string;
     heading: string;
     sub: string;
-    reassurance: string;
+    bottlenecks: Array<{ id: string; title: string; desc: string }>;
     form: {
+      title: string;
       name: string;
       namePlaceholder: string;
       company: string;
@@ -110,34 +136,71 @@ export interface TranslationSchema {
       emailPlaceholder: string;
       phone: string;
       phonePlaceholder: string;
-      projectType: string;
-      projectTypePlaceholder: string;
-      projectTypes: string[];
-      budget: string;
-      budgetPlaceholder: string;
-      budgets: string[];
-      timeline: string;
-      timelinePlaceholder: string;
-      timelines: string[];
-      description: string;
-      descriptionPlaceholder: string;
+      website: string;
+      websitePlaceholder: string;
+      bottleneckLabel: string;
       submitButton: string;
       whatsappAlt: string;
       successMessage: string;
-      directContactTitle: string;
-      directContactSub: string;
+    };
+  };
+  pages: {
+    engineering: {
+      heroTitle: string;
+      heroSub: string;
+      sectionTitle: string;
+      sectionCopy: string;
+      systemElements: string[];
+      cta: string;
+    };
+    growth: {
+      heroTitle: string;
+      heroHighlight: string;
+      heroSub: string;
+      flow: Array<{ step: string; desc: string }>;
+      cta: string;
+    };
+    experience: {
+      heroTitle: string;
+      heroHighlight: string;
+      heroSub: string;
+      comparison: {
+        traditional: string[];
+        vezzitech: string[];
+      };
+      cta: string;
+    };
+    technology: {
+      heroTitle: string;
+      heroSub: string;
+      cta: string;
+    };
+    intelligence: {
+      heroTitle: string;
+      heroSub: string;
+      cta: string;
+    };
+    about: {
+      heroTitle: string;
+      copyParagraphs: string[];
+      pillars: Array<{ title: string; desc: string }>;
+      manifesto: string[];
     };
   };
   footer: {
+    descriptor: string;
+    tagline: string;
+    solutionsTitle: string;
+    companyTitle: string;
+    contactTitle: string;
+    phone: string;
+    email: string;
+    rights: string;
     description: string;
+    securityBadge: string;
     navTitle: string;
     servicesTitle: string;
-    contactTitle: string;
-    email: string;
-    phone: string;
     location: string;
-    rights: string;
-    securityBadge: string;
   };
 }
 
@@ -145,627 +208,753 @@ export type Language = 'pt' | 'en';
 
 export const translations: Record<Language, TranslationSchema> = {
   pt: {
+    brand: {
+      name: "VEZZITECH",
+      descriptor: "Tecnologia & Marketing de Alta Performance",
+      tagline: "Transformamos tecnologia em crescimento.",
+      category: "Engenharia de Crescimento",
+      pitchShort: "A Vezzitech conecta marketing, software, inteligência artificial, automação e dados para ajudar empresas a crescer.",
+      pitchFull: "A Vezzitech é uma empresa de Tecnologia & Marketing de Alta Performance. Atuamos na interseção entre estratégia, aquisição, software, inteligência artificial, automação e dados para construir operações mais eficientes e escaláveis. Chamamos essa abordagem de Engenharia de Crescimento."
+    },
     nav: {
-      services: "Serviços",
-      deliverables: "Entregas",
-      cases: "Cases",
-      testimonials: "Depoimentos",
-      faq: "FAQ",
+      solutions: "Soluções",
+      engineering: "Engenharia de Crescimento",
+      cases: "Cases & Impacto",
+      insights: "Insights",
+      about: "Sobre",
       contact: "Contato",
-      cta: "Solicitar Orçamento",
+      ctaPrimary: "Solicitar diagnóstico estratégico",
       whatsapp: "Falar no WhatsApp"
     },
     hero: {
-      kicker: "DESENVOLVIMENTO DE SOFTWARE",
-      titleLine1: "Software",
-      titleHighlight: "sob demanda",
-      titleLine3: "pra sua empresa",
-      subtitle: "Construímos sistemas web, plataformas, MVPs e aplicativos sob medida para negócios que precisam de tecnologia sem enrolação com escopo ou contratos engessados.",
-      ctaPrimary: "Solicite um orçamento",
-      ctaSecondary: "Falar no WhatsApp",
-      socialProof: {
-        rating: "5.0 ★★★★★",
-        ratingSub: "no Google Avaliações",
-        projects: "+40",
-        projectsSub: "projetos entregues",
-        responseTime: "< 15 min",
-        responseTimeSub: "tempo médio de resposta"
-      }
+      kicker: "TECNOLOGIA & MARKETING DE ALTA PERFORMANCE",
+      titleLine1: "Transformamos tecnologia",
+      titleHighlight: "em crescimento.",
+      titleLine3: "com Engenharia de Alta Performance.",
+      subtitle: "Estratégia, marketing, software, inteligência artificial e dados trabalhando juntos para fazer empresas crescerem, automatizarem operações e escalarem com mais eficiência.",
+      ctaPrimary: "Solicitar diagnóstico estratégico",
+      ctaSecondary: "Conhecer nossas soluções →",
+      microtext: "Growth • Software • IA • Automação • Dados",
+      systemNodes: [
+        { label: "STRATEGY", sub: "Definição de visão & metas" },
+        { label: "MARKETING", sub: "Aquisição de demanda qualificada" },
+        { label: "TECHNOLOGY", sub: "Sistemas & Experiências web" },
+        { label: "AUTOMATION", sub: "Workflows & Agentes de IA" },
+        { label: "DATA", sub: "Analytics & Decisão em tempo real" },
+        { label: "GROWTH", sub: "Crescimento previsível e sustentável" }
+      ]
     },
-    services: {
-      kicker: "SERVIÇOS",
-      heading: "O que a Vezzitech desenvolve",
-      sub: "Engenharia de software de ponta a ponta. Do entendimento de requisitos ao deploy em produção com código limpo e escalável.",
-      items: [
+    problem: {
+      kicker: "O PROBLEMA",
+      heading: "Sua empresa não precisa de mais ferramentas.",
+      subheading: "Precisa de uma estrutura de crescimento.",
+      copy: [
+        "Marketing separado da tecnologia gera desperdício de orçamento e leads perdidos.",
+        "Tecnologia sem estratégia gera complexidade técnica sem retorno comercial.",
+        "Dados sem decisão não geram crescimento."
+      ],
+      highlight: "A Vezzitech conecta tudo em um ecossistema integrado.",
+      nodes: [
+        { id: "marketing", title: "Marketing", desc: "Campanhas sem integração geram tráfego sem conversão.", icon: "megaphone" },
+        { id: "tecnologia", title: "Tecnologia", desc: "Sistemas isolados criam gargalos manuais e lentidão.", icon: "code" },
+        { id: "inteligencia", title: "Inteligência", desc: "Processos manuais limitam a velocidade da equipe.", icon: "bot" },
+        { id: "dados", title: "Dados", desc: "Métricas desconectadas impedem decisões precisas.", icon: "bar-chart" }
+      ]
+    },
+    methodology: {
+      kicker: "VEZZITECH GROWTH ENGINEERING",
+      heading: "Crescimento é construído.",
+      sub: "Nossa metodologia conecta estratégia, aquisição, tecnologia, automação e dados para identificar gargalos e construir estruturas capazes de acelerar empresas.",
+      steps: [
+        { number: "01", code: "DIAGNOSE", title: "Diagnose", desc: "Encontramos os gargalos operacionais e comerciais que travam a escala." },
+        { number: "02", code: "ARCHITECT", title: "Architect", desc: "Desenhamos a arquitetura ideal unindo tecnologia, mídia e dados." },
+        { number: "03", code: "BUILD", title: "Build", desc: "Construímos a infraestrutura técnica, sistemas e páginas de alta conversão." },
+        { number: "04", code: "ACQUIRE", title: "Acquire", desc: "Ativamos canais de aquisição de alta performance e mídias patrocinadas." },
+        { number: "05", code: "AUTOMATE", title: "Automate", desc: "Automatizamos processos manuais repetitivos com IA e integrações de API." },
+        { number: "06", code: "OPTIMIZE", title: "Optimize", desc: "Mensuramos indicadores em tempo real para otimização contínua do ROI." }
+      ],
+      closingPhrase: "Estratégia antes da execução. Tecnologia antes da escala. Dados antes da decisão."
+    },
+    solutions: {
+      kicker: "ECOSSISTEMA VEZZITECH",
+      heading: "Um ecossistema para crescimento.",
+      sub: "Agrupamos nossa expertise em 4 unidades estratégicas completas para cobrir toda a jornada da sua empresa.",
+      units: [
         {
-          id: "web-platforms",
-          icon: "globe",
-          title: "Plataformas Web e Portais",
-          highlight: "Experiências web de alta conversão, portais de clientes e áreas logadas seguras.",
-          desc: "Desenvolvemos portais institucionais complexos, dashboards multi-tenant e plataformas web de alta velocidade com React, Next.js e TypeScript.",
-          tags: ["React / Next.js", "TypeScript", "Áreas de Membros", "SEO Técnico"]
+          id: "growth",
+          tag: "GROWTH",
+          title: "Transformamos investimento em aquisição.",
+          highlight: "Operações de mídia e aquisição orientadas a CAC e ROI sustentáveis.",
+          desc: "Estratégia completa de marketing de performance, tráfego pago, otimização de mecanismos de busca e inteligência de conversão.",
+          services: ["Google Ads", "Meta Ads", "Performance Marketing", "SEO", "AEO (AI Engine)", "CRO", "Growth Strategy", "Tracking & GTM", "Analytics"],
+          cta: "Acelerar aquisição →",
+          icon: "trending-up"
         },
         {
-          id: "internal-systems",
-          icon: "layout-dashboard",
-          title: "Sistemas Internos e Web Apps",
-          highlight: "Software operacional sob medida para automatizar e organizar sua operação.",
-          desc: "CRMs proprietários, ERPs enxutos, painéis administrativos, controle financeiro e ferramentas de gestão feitas exatamente para a rotina da sua equipe.",
-          tags: ["Painéis Admin", "Gestão Operacional", "Automação de Rotinas", "Controle de Acessos"]
+          id: "experience",
+          tag: "EXPERIENCE",
+          title: "Experiências digitais construídas para converter.",
+          highlight: "Websites ultra velozes e plataformas com design de nível mundial.",
+          desc: "Criamos portais institucionais, landing pages de alta conversão e plataformas web modernas com tecnologia React/Node de resposta instantânea.",
+          services: ["Websites Institucionais", "Landing Pages", "E-commerce", "UX/UI Design", "React / Next.js", "Node.js", "Web Applications", "Redesign de Portais", "Performance Web"],
+          cta: "Modernizar experiência →",
+          icon: "monitor"
         },
         {
-          id: "saas-mvp",
-          icon: "rocket",
-          title: "SaaS, MVPs e Produtos Digitais",
-          highlight: "Valide rápido no mercado com arquitetura pronta para escalar.",
-          desc: "Tiramos sua ideia do papel em tempo recorde: autenticação, assinatura recorrente (Stripe/Asaas), multi-tenancy e integrações completas.",
-          tags: ["Arquitetura SaaS", "Billing & Assinaturas", "Multi-tenancy", "Lançamento Rápido"]
+          id: "technology",
+          tag: "TECHNOLOGY",
+          title: "Tecnologia sob medida para sua operação.",
+          highlight: "Engenharia de software focada em resolver desafios complexos de negócio.",
+          desc: "Quando ferramentas prontas não atendem sua demanda, desenvolvemos softwares nativos, portais de clientes, CRMs sob medida e APIs robustas.",
+          services: ["Software Development", "Sistemas Internos", "CRM sob Medida", "APIs REST & Webhooks", "Integrações de Sistemas", "Portais de Cliente", "Plataformas SaaS", "Dashboards Executivos"],
+          cta: "Construir tecnologia →",
+          icon: "cpu"
         },
         {
-          id: "mobile-apps",
-          icon: "smartphone",
-          title: "Aplicativos Mobile Integrados",
-          highlight: "Apps nativos e híbridos para iOS e Android conectados ao seu ecossistema.",
-          desc: "Aplicativos com interface fluida, suporte offline, notificações push e integração nativa com seus sistemas em React Native e Flutter.",
-          tags: ["iOS & Android", "React Native", "Push Notifications", "Sincronização Offline"]
-        },
-        {
-          id: "integrations",
-          icon: "cpu",
-          title: "Integrações e Automações",
-          highlight: "Conecte seus sistemas existentes e elimine trabalho manual repetitivo.",
-          desc: "Desenvolvimento de APIs REST e Webhooks, integração com WhatsApp API, gateways de pagamento, CRMs externos, ERPs e pipelines de dados com IA.",
-          tags: ["WhatsApp API", "Webhooks & REST APIs", "Gateways de Pagamento", "Pipelines de IA"]
-        },
-        {
-          id: "tech-direction",
-          icon: "code",
-          title: "Escopo e Direção Técnica",
-          highlight: "Consultoria sênior de arquitetura, documentação e refatoração de código.",
-          desc: "Apoio técnico para estruturar requisitos, escolher a stack ideal, auditar códigos legados e acelerar squads internos com boas práticas de engenharia.",
-          tags: ["Arquitetura de Software", "Auditoria de Código", "Documentação Técnica", "Code Review"]
-        },
-        {
-          id: "websites-landing-pages",
-          icon: "monitor",
-          title: "Websites & Landing Pages",
-          highlight: "Páginas ultra velozes focadas em conversão de leads e vendas.",
-          desc: "Sites institucionais elegantes, landing pages de alta conversão, páginas de vendas de alta performance e blogs otimizados para SEO e velocidade máxima de carregamento.",
-          tags: ["Landing Pages", "Websites Institucionais", "Performance & SEO", "Design Exclusivo"]
-        },
-        {
-          id: "paid-traffic-ads",
-          icon: "megaphone",
-          title: "Tráfego Pago & Gestão de Ads",
-          highlight: "Campanhas estratégicas para colocar o seu negócio no topo das buscas.",
-          desc: "Planejamento, criação e gestão de campanhas profissionais de anúncios patrocinados no Google Ads, Meta Ads (Instagram/Facebook) e LinkedIn Ads para maximizar seu retorno sobre investimento (ROI).",
-          tags: ["Google Ads", "Meta Ads", "Gestão de Anúncios", "Análise de ROI"]
+          id: "intelligence",
+          tag: "INTELLIGENCE",
+          title: "IA, automação e dados aplicados ao negócio.",
+          highlight: "Transformamos tarefas manuais em workflows automatizados e inteligentes.",
+          desc: "Implementação prática de agentes autônomos de Inteligência Artificial, fluxos de automação comercial e dashboards de inteligência de negócios.",
+          services: ["AI Agents", "Automações Comerciais", "Integrações de CRM & ERP", "Business Intelligence", "Dashboards em Tempo Real", "Workflows Operacionais", "Chatbots & WhatsApp AI", "Pipelines de Dados"],
+          cta: "Automatizar operação →",
+          icon: "bot"
         }
       ]
     },
-    deliverables: {
-      kicker: "ENTREGAS",
-      heading: "O que vem junto em todo projeto",
-      sub: "Sem surpresas no final. Todo projeto entregue pela Vezzitech segue um padrão rigoroso de engenharia e transparência.",
-      items: [
-        {
-          number: "01",
-          title: "Escopo Documentado & Wireframes",
-          desc: "Levantamento detalhado de requisitos com fluxogramas e alinhamento claro de cada funcionalidade antes da primeira linha de código.",
-          details: "Zero ambiguidades ou surpresas contratuais."
-        },
-        {
-          number: "02",
-          title: "Design de Interface (UI/UX)",
-          desc: "Telas completas, responsivas e testadas no Figma focadas na usabilidade do seu usuário final e na velocidade de uso.",
-          details: "Design system consistente e preparado para escala."
-        },
-        {
-          number: "03",
-          title: "Engenharia & Código Limpo",
-          desc: "Desenvolvimento com TypeScript, componentes modulares, tipagem estrita e documentação clara para facilitar manutenção futura.",
-          details: "Código que pertence 100% à sua empresa."
-        },
-        {
-          number: "04",
-          title: "Deploy & Infraestrutura Cloud",
-          desc: "Publicação em provedores modernos (Google Cloud, AWS ou Vercel) com pipelines de CI/CD, SSL, banco de dados e monitoramento.",
-          details: "Alta disponibilidade e carregamento instantâneo."
-        },
-        {
-          number: "05",
-          title: "Suporte & Garantia Pós-Entrega",
-          desc: "Período de garantia para correções imediatas de bugs e suporte técnico ativo para garantir estabilidade contínua em produção.",
-          details: "Acompanhamento real pós-lançamento."
-        }
-      ]
+    differentiation: {
+      kicker: "POR QUE VEZZITECH",
+      heading: "Muito além de uma agência.",
+      sub: "Enquanto uma agência tradicional cuida do marketing e uma software house cuida da tecnologia, a Vezzitech conecta os dois lados do crescimento.",
+      table: {
+        headers: ["Dimensão", "Agência Tradicional", "Software House", "Vezzitech"],
+        rows: [
+          {
+            dimension: "Foco Principal",
+            agency: "Marketing & Anúncios soltos",
+            softwareHouse: "Escrita pura de código",
+            vezzitech: "Estratégia + Marketing + Tecnologia"
+          },
+          {
+            dimension: "Entrega Entregue",
+            agency: "Campanhas e peças de design",
+            softwareHouse: "Arquivos de código técnico",
+            vezzitech: "Infraestrutura de Aquisição + Sistemas"
+          },
+          {
+            dimension: "Análise de Resultados",
+            agency: "Relatórios de métricas de vaidade",
+            softwareHouse: "Entrega do escopo funcional",
+            vezzitech: "Dados de Negócio, CAC & Performance"
+          },
+          {
+            dimension: "Automação & IA",
+            agency: "Limitada a ferramentas prontas",
+            softwareHouse: "Foco baixo em growth e vendas",
+            vezzitech: "IA + Automação Operacional + Growth"
+          },
+          {
+            dimension: "Modelo de Parceria",
+            agency: "Exige contratação de terceiros",
+            softwareHouse: "Depende de agência externa",
+            vezzitech: "Ecossistema Único e Integrado"
+          }
+        ]
+      },
+      quote: "Engenharia de Crescimento não é uma campanha de marketing ou uma linha de código. É um sistema integrado que faz sua empresa escalar com consistência."
+    },
+    manifesto: {
+      lines: [
+        { text: "Estratégia sem execução é apresentação." },
+        { text: "Tecnologia sem estratégia é complexidade." },
+        { text: "Marketing sem dados é aposta." },
+        { text: "Nós conectamos os três.", highlight: true }
+      ],
+      sub: "Engenharia de Crescimento para empresas que querem ir além do básico.",
+      brandText: "VEZZITECH — Engenharia de Crescimento"
     },
     cases: {
-      kicker: "CASES",
-      heading: "Projetos entregues",
-      sub: "Soluções reais em produção gerando eficiência, receita e escala para nossos parceiros comerciais.",
-      ctaText: "Ver detalhes do projeto →",
+      kicker: "IMPACTO",
+      heading: "Tecnologia só importa quando gera resultado.",
+      sub: "Resultados reais em produção gerando receita, redução de custos e ganho de eficiência operacional.",
+      ctaText: "Solicitar diagnóstico similar →",
       items: [
         {
           id: "case-1",
-          number: "01",
-          client: "Gestão Operacional B2B",
-          year: "2024",
-          category: "Sistema Interno / SaaS",
-          title: "Plataforma Central de Gestão & Automação de Ordens de Serviço",
-          desc: "Substituição de planilhas complexas por um web app sob medida em React e Node.js. Controle em tempo real de status, atribuição de técnicos em campo e relatórios automáticos em PDF.",
-          metrics: "Redução de 70% no tempo de emissão de relatórios e zero perda de dados operacionais.",
-          stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "Google Cloud"],
-          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-          badge: "Sistema Customizado"
+          client: "Nexus Logistics B2B",
+          segment: "Logística & Transporte Nacional",
+          problem: "Processos manuais em planilhas e gargalo na captação de novos contratos corporativos.",
+          solution: "Plataforma web customizada integrada a campanhas de Google/LinkedIn Ads e automação de orçamentos.",
+          tech: ["React", "Node.js", "Google Ads", "PostgreSQL", "WhatsApp AI"],
+          metrics: ["+312% em contratos captados", "70% redução no tempo de cotação", "4.8x ROAS em mídia"],
+          badge: "Growth + Tech"
         },
         {
           id: "case-2",
-          number: "02",
-          client: "Fintech & Cobranças",
-          year: "2024",
-          category: "SaaS & Pagamentos",
-          title: "Dashboard Multi-tenant de Cobrança e Gestão de Assinaturas",
-          desc: "MVP construído em 5 semanas com autenticação segura, conciliação bancária via Webhook (PIX e Cartão), painel financeiro e envio automático de lembretes no WhatsApp.",
-          metrics: "Mais de R$ 1.8M processados no primeiro trimestre de operação contínua.",
-          stack: ["Next.js", "Tailwind CSS", "Fastify", "Redis", "WhatsApp API"],
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-          badge: "SaaS em Produção"
+          client: "FinPay Plataforma SaaS",
+          segment: "Fintech de Cobranças Recorrentes",
+          problem: "Baixa taxa de conversão na landing page e abandono no onboarding de novos assinantes.",
+          solution: "Redesign completo com Next.js de resposta instantânea, checkout otimizado (CRO) e régua de remarketing.",
+          tech: ["Next.js", "CRO Optimization", "Meta Ads", "Analytics GTM", "Stripe API"],
+          metrics: ["R$ 2.4M+ processados em 90 dias", "+145% aumento na conversão de cadastro", "Carregamento em 0.4s"],
+          badge: "Experience + Growth"
         },
         {
           id: "case-3",
-          number: "03",
-          client: "Logística & Frota",
-          year: "2023",
-          category: "Mobile & Web App",
-          title: "Aplicativo de Checklist de Frota e Rastreamento de Entregas",
-          desc: "App mobile offline-first para motoristas registrarem vistorias de veículos com fotos e coordenadas GPS, integrado a uma central web para despacho de rotas em tempo real.",
-          metrics: "Economia de 35 horas semanais da equipe de suporte e compliance total de frota.",
-          stack: ["React Native", "Express", "SQLite", "Firebase", "AWS S3"],
-          image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop",
-          badge: "Mobile Híbrido"
+          client: "IndustriAL Automações",
+          segment: "Equipamentos Industriais",
+          problem: "Equipe comercial perdendo 20+ horas semanais qualificando leads sem perfil.",
+          solution: "Agente de IA via WhatsApp para triagem automática integrado ao CRM e relatórios em tempo real.",
+          tech: ["AI Agents", "Python", "API WhatsApp", "HubSpot CRM", "Power BI"],
+          metrics: ["140h/mês economizadas", "Tempo de resposta reduzido para 5s", "+80% satisfação dos leads"],
+          badge: "Intelligence + AI"
         }
       ]
     },
-    testimonials: {
-      kicker: "PROVA",
-      heading: "O que os clientes dizem",
-      sub: "Parceiro técnico de confiança para founders, diretores e gestores de tecnologia.",
-      googleBadge: {
-        score: "5.0",
-        stars: "★★★★★",
-        platform: "no Google Avaliações",
-        reviewCount: "Avaliação máxima de satisfação técnica"
-      },
-      items: [
+    mindset: {
+      kicker: "NOSSA FORMA DE PENSAR",
+      heading: "Tecnologia que entende negócio.",
+      sub: "Não desenvolvemos software por estética ou rodamos mídia por vaidade. Todo projeto segue pilares claros de engenharia de negócios.",
+      cards: [
         {
-          quote: "Precisávamos construir um sistema interno para nossa operação e as outras agências nos passaram orçamentos absurdos com prazos de 6 meses. A Vezzitech entregou a primeira versão utilizável em 3 semanas, com código limpo e sem surpresas.",
-          author: "Rodrigo Mendonça",
-          role: "Diretor de Operações",
-          company: "Grupo Nexus Log",
-          projectType: "Sistema Interno Customizado"
+          title: "Business First",
+          desc: "Primeiro entendemos o modelo de negócio, margens e gargalos comerciais. Depois desenhamos a tecnologia.",
+          icon: "briefcase"
         },
         {
-          quote: "A comunicação direta e o entendimento técnico do time da Vezzitech fizeram toda a diferença. Eles não apenas programaram o que pedimos, mas nos orientaram sobre a melhor arquitetura para o nosso SaaS aguentar escala.",
-          author: "Camila Guimarães",
-          role: "Founder & CEO",
-          company: "DataFlow Tech",
-          projectType: "Plataforma SaaS B2B"
+          title: "Built to Perform",
+          desc: "Velocidade de carregamento, segurança e conversão fazem parte da arquitetura desde o primeiro dia.",
+          icon: "zap"
         },
         {
-          quote: "O processo é muito claro. Você sabe exatamente o que está sendo construído em cada sprint. O suporte pós-entrega é impecável e o sistema roda há mais de 1 ano sem qualquer instabilidade.",
-          author: "Lucas Silveira",
-          role: "CTO",
-          company: "Vanguard Imob",
-          projectType: "Portal Web & Integração API"
+          title: "AI Native",
+          desc: "Aplicamos inteligência artificial e agentes autônomos onde há ganho real de produtividade e margem.",
+          icon: "cpu"
+        },
+        {
+          title: "Data Driven",
+          desc: "Todas as decisões, alterações de mídia e refatorações de sistema são fundamentadas em métricas reais.",
+          icon: "line-chart"
         }
       ]
     },
-    faq: {
-      kicker: "FAQ",
-      heading: "O que perguntam antes de contratar",
-      sub: "Tudo o que você precisa saber sobre o nosso modelo de trabalho, prazos, custos e entregas.",
-      items: [
+    insights: {
+      kicker: "INSIGHTS & INTELIGÊNCIA",
+      heading: "Inteligência para empresas que querem crescer.",
+      sub: "Artigos estratégicos sobre tecnologia, aquisição de tráfego, automação com IA e dados.",
+      articles: [
         {
-          q: "Como funciona a precificação de um projeto?",
-          a: "Trabalhamos com orçamento fechado por escopo definido ou por modelo de squad mensal sob demanda. Após o alinhamento inicial, entregamos uma proposta técnica detalhada com valor fixo, cronograma de entregas e marcos de pagamento transparentes, sem custos ocultos."
+          category: "Growth Engineering",
+          title: "Por que separar Marketing de Tecnologia está destruindo seu ROI de Aquisição",
+          excerpt: "Entenda por que empresas que integram tracking, landing pages de resposta rápida e mídia paga crescem até 3x mais rápido.",
+          readTime: "5 min de leitura",
+          date: "Agosto 2026"
         },
         {
-          q: "Qual é o prazo médio de entrega de um software?",
-          a: "Varia conforme o tamanho da demanda: MVPs e sistemas internos enxutos costumam ser entregues entre 3 a 6 semanas. Plataformas mais robustas e produtos complexos levam de 2 a 4 meses, sempre com entregas parciais a cada sprint para validação contínua."
+          category: "Inteligência Artificial",
+          title: "Agentes de IA além do Chatbot: Como automatizar triagens e operações comerciais complexas",
+          excerpt: "Casos práticos de empresas que substituíram formulários lentos por agentes autônomos conectados ao CRM.",
+          readTime: "7 min de leitura",
+          date: "Agosto 2026"
         },
         {
-          q: "Vocês ajudam a definir o escopo e a arquitetura?",
-          a: "Sim. Você não precisa ter um documento técnico pronto. Nós realizamos uma reunião de alinhamento para entender as regras do seu negócio, propor a arquitetura ideal, sugerir simplificações inteligentes e estruturar o escopo completo."
-        },
-        {
-          q: "O código-fonte e o software pertencem a quem?",
-          a: "O código é 100% da sua empresa. Entregamos o repositório Git completo, documentação de deploy e todas as chaves de acesso. Não amarramos clientes a sistemas proprietários."
-        },
-        {
-          q: "Como funciona a contratação (projeto fechado vs squad sob demanda)?",
-          a: "Para demandas com início, meio e fim claros (ex: construir um MVP ou novo sistema), recomendamos o modelo de Projeto Fechado. Para empresas que precisam de evolução contínua e suporte constante, oferecemos o modelo de Squad Dedicado mensal."
-        },
-        {
-          q: "Vocês assumem ou migram um software/código já existente?",
-          a: "Sim. Fazemos uma auditoria técnica prévia no seu repositório para avaliar a qualidade da base de código atual, propor refatorações necessárias e assumir a continuidade do desenvolvimento com segurança."
+          category: "High Performance Web",
+          title: "A matemática da velocidade: Como 1 segundo a menos de carregamento dobra suas conversões",
+          excerpt: "Uma análise técnica de arquiteturas React/Next e por que construtores lentos afastam clientes qualificados.",
+          readTime: "4 min de leitura",
+          date: "Julho 2026"
         }
       ]
     },
-    contact: {
-      kicker: "VAMOS COMEÇAR",
-      heading: "Conta o que você precisa construir",
-      sub: "Não precisa ter o escopo 100% fechado. Nós te ajudamos a estruturar os requisitos técnicos e o cronograma ideal.",
-      reassurance: "Resposta em até 15 minutos em horário comercial · Sem compromisso",
+    ctaFinal: {
+      kicker: "DIAGNÓSTICO ESTRATÉGICO",
+      heading: "Qual é o maior gargalo de crescimento da sua empresa?",
+      sub: "Selecione o principal desafio operacional ou comercial da sua empresa hoje. Nós analisamos sua estrutura e desenhamos a solução ideal.",
+      bottlenecks: [
+        { id: "aquisicao", title: "Aquisição", desc: "Preciso gerar mais oportunidades qualificadas e leads de topo e meio de funil." },
+        { id: "conversao", title: "Conversão", desc: "Já tenho tráfego, mas meu site/landing page não converte visitantes em clientes." },
+        { id: "tecnologia", title: "Tecnologia", desc: "Preciso de um software, aplicativo ou sistema interno sob medida para meu negócio." },
+        { id: "processos", title: "Processos", desc: "Minha equipe perde tempo em planilhas e processos manuais lentos." },
+        { id: "automacao", title: "Automação / IA", desc: "Quero implementar agentes de Inteligência Artificial e automações comerciais." },
+        { id: "dados", title: "Dados & Analytics", desc: "Não tenho visibilidade clara de métricas, CAC, LTV e retorno de investimento." }
+      ],
       form: {
+        title: "Solicitar Diagnóstico Estratégico de Crescimento",
         name: "Seu nome",
-        namePlaceholder: "ex: Carlos Silva",
-        company: "Nome da empresa",
-        companyPlaceholder: "ex: Sua Empresa Tech",
+        namePlaceholder: "ex: Rodrigo Canavese",
+        company: "Nome da sua empresa",
+        companyPlaceholder: "ex: Vezzitech Corp",
         email: "E-mail corporativo",
-        emailPlaceholder: "carlos@suaempresa.com.br",
-        phone: "WhatsApp para contato",
-        phonePlaceholder: "(11) 99999-9999",
-        projectType: "Tipo de projeto",
-        projectTypePlaceholder: "Selecione o tipo de software",
-        projectTypes: [
-          "Sistema Interno / Painel de Gestão",
-          "SaaS / MVP de Produto Digital",
-          "Plataforma Web / Portal do Cliente",
-          "Aplicativo Mobile (iOS / Android)",
-          "Websites / Landing Pages",
-          "Tráfego Pago / Ads",
-          "Integrações de API / Automações",
-          "Outro / Consultoria Técnica"
+        emailPlaceholder: "rodrigo@suaempresa.com",
+        phone: "WhatsApp / Telefone",
+        phonePlaceholder: "(44) 99826-6950",
+        website: "Website da empresa (se houver)",
+        websitePlaceholder: "https://suaempresa.com.br",
+        bottleneckLabel: "Gargalo Selecionado",
+        submitButton: "Solicitar Diagnóstico Estratégico",
+        whatsappAlt: "Ou se preferir, fale direto com um especialista no WhatsApp",
+        successMessage: "Diagnóstico solicitado com sucesso! Nossa equipe entrará em contato em menos de 2 horas."
+      }
+    },
+    pages: {
+      engineering: {
+        heroTitle: "Engenharia de Crescimento.",
+        heroSub: "Uma abordagem que conecta estratégia, tecnologia, marketing, automação e dados para construir empresas mais eficientes e escaláveis.",
+        sectionTitle: "Growth não é uma campanha. É um sistema.",
+        sectionCopy: "Uma empresa cresce quando diferentes elementos funcionam juntos em sincronia perfeita: aquisição, conversão, atendimento, tecnologia, dados, processos e retenção. A Vezzitech analisa e constrói esse sistema como um todo.",
+        systemElements: ["Aquisição de Tráfego", "Conversão Web", "Sistemas & APIs", "Automação com IA", "Dados & Analytics", "Otimização de ROI"],
+        cta: "Diagnosticar minha operação →"
+      },
+      growth: {
+        heroTitle: "Mais do que tráfego.",
+        heroHighlight: "Construímos aquisição.",
+        heroSub: "Criamos operações de performance orientadas a geração de demanda, conversão e crescimento sustentável.",
+        flow: [
+          { step: "Tráfego", desc: "Google Ads, Meta Ads e SEO técnico direcionados ao público comprador." },
+          { step: "Conversão", desc: "Landing pages e web apps de resposta instantânea projetados para converter." },
+          { step: "CRM & Vendas", desc: "Integração automática dos leads no pipeline comercial em tempo real." },
+          { step: "Dados & Otimização", desc: "Métricas claras de CAC, LTV e ROI para escala contínua de orçamento." }
         ],
-        budget: "Orçamento estimado",
-        budgetPlaceholder: "Selecione a faixa prevista",
-        budgets: [
-          "Até R$ 15.000",
-          "R$ 15.000 a R$ 30.000",
-          "R$ 30.000 a R$ 60.000",
-          "Acima de R$ 60.000",
-          "Ainda não tenho estimativa"
+        cta: "Acelerar minha aquisição →"
+      },
+      experience: {
+        heroTitle: "Seu site não deve apenas existir.",
+        heroHighlight: "Deve trabalhar pelo seu negócio.",
+        heroSub: "Criamos websites rápidos, modernos e orientados à conversão utilizando tecnologia de alta performance.",
+        comparison: {
+          traditional: [
+            "Carregamento lento e pesado (WordPress/Templates)",
+            "Difícil de evoluir e código engessado",
+            "Baixa integração com sistemas de vendas",
+            "Design genérico e pouca credibilidade"
+          ],
+          vezzitech: [
+            "Alta performance com React / Next.js e resposta instantânea",
+            "Arquitetura sob medida para escala ilimitada",
+            "Conexão nativa com CRM, APIs e WhatsApp AI",
+            "Design de classe mundial com alta taxa de conversão"
+          ]
+        },
+        cta: "Modernizar meu site →"
+      },
+      technology: {
+        heroTitle: "Tecnologia sob medida para sua operação.",
+        heroSub: "Quando ferramentas prontas não resolvem o problema, construímos a solução de engenharia perfeita.",
+        cta: "Conversar sobre meu projeto →"
+      },
+      intelligence: {
+        heroTitle: "Inteligência Artificial aplicada ao negócio.",
+        heroSub: "Menos tarefas manuais. Mais velocidade, eficiência e inteligência operacional para sua equipe.",
+        cta: "Encontrar oportunidades de automação →"
+      },
+      about: {
+        heroTitle: "Construímos tecnologia para gerar impacto.",
+        copyParagraphs: [
+          "A Vezzitech nasceu da ideia de que marketing, tecnologia e dados não deveriam funcionar como áreas isoladas.",
+          "Empresas crescem mais quando estratégia, aquisição, software, automação e inteligência trabalham juntos sob o mesmo ecossistema.",
+          "Nossa missão é eliminar gargalos operacionais e comerciais através da Engenharia de Crescimento."
         ],
-        timeline: "Prazo desejado",
-        timelinePlaceholder: "Quando precisa no ar?",
-        timelines: [
-          "Urgente (menos de 30 dias)",
-          "1 a 2 meses",
-          "3 a 4 meses",
-          "Prazo flexível"
+        pillars: [
+          { title: "Business First", desc: "Tecnologia a serviço de métricas reais de negócio." },
+          { title: "Transparência Total", desc: "Código limpo, documentação clara e zero amarras." },
+          { title: "Engenharia de Elite", desc: "Padrão de código e arquitetura de nível global." }
         ],
-        description: "Descreva brevemente o que você precisa construir",
-        descriptionPlaceholder: "Conte o objetivo do software, as principais funcionalidades que imagina e o problema que deseja resolver...",
-        submitButton: "Solicitar proposta técnica →",
-        whatsappAlt: "Ou se preferir, clique aqui para conversar direto no WhatsApp",
-        successMessage: "Proposta solicitada com sucesso! Nossa equipe técnica entrará em contato em menos de 15 minutos.",
-        directContactTitle: "Atendimento direto",
-        directContactSub: "Fale com um dos nossos engenheiros de software agora mesmo."
+        manifesto: [
+          "Não construímos tecnologia apenas para funcionar. Construímos para gerar impacto.",
+          "Não fazemos marketing apenas para aparecer. Fazemos para crescer.",
+          "Crescimento não acontece por acaso. Crescimento é construído."
+        ]
       }
     },
     footer: {
-      description: "Vezzitech é uma software house sob demanda. Desenvolvemos sistemas web, plataformas SaaS, MVPs, apps mobile e integrações com código limpo e entrega rápida.",
-      navTitle: "Navegação",
-      servicesTitle: "Serviços",
+      descriptor: "Tecnologia & Marketing de Alta Performance",
+      tagline: "Transformamos tecnologia em crescimento.",
+      solutionsTitle: "Ecossistema",
+      companyTitle: "Empresa",
       contactTitle: "Contato Direto",
-      email: "contato@vezzitech.com",
       phone: "+55 (44) 99826-6950",
-      location: "Brasil · Atendimento 100% online em todo o país",
-      rights: "© {year} Vezzitech Desenvolvimento de Software. Todos os direitos reservados.",
-      securityBadge: "Código Limpo · Infraestrutura Segura · 100% Propriedade do Cliente"
+      email: "contato@vezzitech.com",
+      rights: "© {year} Vezzitech. Todos os direitos reservados. Engenharia de Crescimento.",
+      description: "Conectamos estratégia, tráfego pago, desenvolvimento de software, automação e inteligência artificial para eliminar gargalos e acelerar o crescimento de empresas.",
+      securityBadge: "Arquitetura Corporativa & LGPD Ready",
+      navTitle: "Navegação",
+      servicesTitle: "Soluções",
+      location: "Atendimento Global • Sede em Maringá/PR - Brasil"
     }
   },
   en: {
+    brand: {
+      name: "VEZZITECH",
+      descriptor: "High-Performance Technology & Marketing",
+      tagline: "We turn technology into growth.",
+      category: "Growth Engineering",
+      pitchShort: "Vezzitech connects marketing, software, artificial intelligence, automation, and data to help companies scale.",
+      pitchFull: "Vezzitech is a High-Performance Technology & Marketing company operating at the intersection of strategy, acquisition, software, AI, automation, and data. We call this Growth Engineering."
+    },
     nav: {
-      services: "Services",
-      deliverables: "Deliverables",
-      cases: "Cases",
-      testimonials: "Reviews",
-      faq: "FAQ",
+      solutions: "Solutions",
+      engineering: "Growth Engineering",
+      cases: "Cases & Impact",
+      insights: "Insights",
+      about: "About",
       contact: "Contact",
-      cta: "Request a Quote",
+      ctaPrimary: "Request strategic diagnostic",
       whatsapp: "Chat on WhatsApp"
     },
     hero: {
-      kicker: "SOFTWARE DEVELOPMENT",
-      titleLine1: "Software",
-      titleHighlight: "on demand",
-      titleLine3: "for your company",
-      subtitle: "We build custom web systems, platforms, MVPs, and mobile apps for businesses that need solid engineering without scope bloat or rigid contracts.",
-      ctaPrimary: "Request a quote",
-      ctaSecondary: "Chat on WhatsApp",
-      socialProof: {
-        rating: "5.0 ★★★★★",
-        ratingSub: "on Google Reviews",
-        projects: "+40",
-        projectsSub: "delivered projects",
-        responseTime: "< 15 min",
-        responseTimeSub: "average response time"
-      }
+      kicker: "HIGH-PERFORMANCE TECHNOLOGY & MARKETING",
+      titleLine1: "We turn technology",
+      titleHighlight: "into growth.",
+      titleLine3: "with High-Performance Engineering.",
+      subtitle: "Strategy, marketing, software, artificial intelligence, and data working together to help companies scale, automate operations, and grow efficiently.",
+      ctaPrimary: "Request strategic diagnostic",
+      ctaSecondary: "Explore our solutions →",
+      microtext: "Growth • Software • AI • Automation • Data",
+      systemNodes: [
+        { label: "STRATEGY", sub: "Vision & Goals Definition" },
+        { label: "MARKETING", sub: "Qualified Demand Acquisition" },
+        { label: "TECHNOLOGY", sub: "Systems & Web Experiences" },
+        { label: "AUTOMATION", sub: "Workflows & AI Agents" },
+        { label: "DATA", sub: "Real-time Analytics & Decisions" },
+        { label: "GROWTH", sub: "Predictable & Sustainable Scale" }
+      ]
     },
-    services: {
-      kicker: "SERVICES",
-      heading: "What Vezzitech builds",
-      sub: "End-to-end software engineering. From requirements architecture to production deployment with clean, scalable code.",
-      items: [
+    problem: {
+      kicker: "THE PROBLEM",
+      heading: "Your company doesn't need more isolated tools.",
+      subheading: "It needs a Growth System.",
+      copy: [
+        "Marketing separated from technology wastes budget and burns leads.",
+        "Technology without strategy creates technical debt with zero commercial return.",
+        "Data without decision doesn't drive growth."
+      ],
+      highlight: "Vezzitech connects everything into a unified ecosystem.",
+      nodes: [
+        { id: "marketing", title: "Marketing", desc: "Unintegrated campaigns generate traffic without conversion.", icon: "megaphone" },
+        { id: "tecnologia", title: "Technology", desc: "Siloed systems create manual bottlenecks.", icon: "code" },
+        { id: "inteligencia", title: "Intelligence", desc: "Manual tasks limit team speed.", icon: "bot" },
+        { id: "dados", title: "Data", desc: "Disconnected metrics hinder precise decisions.", icon: "bar-chart" }
+      ]
+    },
+    methodology: {
+      kicker: "VEZZITECH GROWTH ENGINEERING",
+      heading: "Growth is engineered.",
+      sub: "Our methodology connects strategy, acquisition, technology, automation, and data to identify bottlenecks and build high-performance growth engines.",
+      steps: [
+        { number: "01", code: "DIAGNOSE", title: "Diagnose", desc: "Uncover commercial & operational bottlenecks." },
+        { number: "02", code: "ARCHITECT", title: "Architect", desc: "Design the optimal solution combining tech & media." },
+        { number: "03", code: "BUILD", title: "Build", desc: "Develop high-converting web apps & systems." },
+        { number: "04", code: "ACQUIRE", title: "Acquire", desc: "Activate high-performance paid media channels." },
+        { number: "05", code: "AUTOMATE", title: "Automate", desc: "Automate repetitive tasks with AI agents & APIs." },
+        { number: "06", code: "OPTIMIZE", title: "Optimize", desc: "Continuously measure ROI & optimize growth." }
+      ],
+      closingPhrase: "Strategy before execution. Technology before scale. Data before decisions."
+    },
+    solutions: {
+      kicker: "VEZZITECH ECOSYSTEM",
+      heading: "A unified growth ecosystem.",
+      sub: "We organize our expertise into 4 strategic units to power your business journey.",
+      units: [
         {
-          id: "web-platforms",
-          icon: "globe",
-          title: "Web Platforms & Portals",
-          highlight: "High-performance web apps, client portals, and secure authenticated zones.",
-          desc: "We engineer complex portals, multi-tenant dashboards, and ultra-fast web apps using React, Next.js, and TypeScript.",
-          tags: ["React / Next.js", "TypeScript", "Member Areas", "Technical SEO"]
+          id: "growth",
+          tag: "GROWTH",
+          title: "We turn investment into customer acquisition.",
+          highlight: "Paid media operations driven by sustainable CAC and ROI.",
+          desc: "Full performance marketing strategy, paid ads, SEO, AI search optimization, and conversion rate optimization.",
+          services: ["Google Ads", "Meta Ads", "Performance Marketing", "SEO", "AEO (AI Search)", "CRO", "Growth Strategy", "Tracking & GTM", "Analytics"],
+          cta: "Accelerate acquisition →",
+          icon: "trending-up"
         },
         {
-          id: "internal-systems",
-          icon: "layout-dashboard",
-          title: "Internal Tools & Web Apps",
-          highlight: "Custom operational software engineered to streamline your team's workflow.",
-          desc: "Proprietary CRMs, lean ERPs, admin panels, financial workflows, and operational tools built specifically for your exact business rules.",
-          tags: ["Admin Dashboards", "Operations Management", "Workflow Automation", "Role-Based Access"]
+          id: "experience",
+          tag: "EXPERIENCE",
+          title: "Digital experiences built to convert.",
+          highlight: "Ultra-fast websites and world-class design platforms.",
+          desc: "We build corporate portals, high-converting landing pages, and web apps with instant React/Node performance.",
+          services: ["Company Websites", "Landing Pages", "E-commerce", "UX/UI Design", "React / Next.js", "Node.js", "Web Applications", "Website Redesign", "Web Performance"],
+          cta: "Modernize experience →",
+          icon: "monitor"
         },
         {
-          id: "saas-mvp",
-          icon: "rocket",
-          title: "SaaS, MVPs & Digital Products",
-          highlight: "Validate rapidly in market with an architecture built to scale from day one.",
-          desc: "Turn your vision into reality in record time: authentication, subscription billing (Stripe), multi-tenancy, and production infrastructure.",
-          tags: ["SaaS Architecture", "Billing & Subscriptions", "Multi-tenancy", "Fast Time-to-Market"]
+          id: "technology",
+          tag: "TECHNOLOGY",
+          title: "Custom technology for your operation.",
+          highlight: "Software engineering focused on solving complex business challenges.",
+          desc: "When off-the-shelf software fails, we build custom web platforms, client portals, tailored CRMs, and APIs.",
+          services: ["Software Development", "Internal Systems", "Custom CRM", "REST APIs & Webhooks", "System Integrations", "Client Portals", "SaaS Platforms", "Executive Dashboards"],
+          cta: "Build technology →",
+          icon: "cpu"
         },
         {
-          id: "mobile-apps",
-          icon: "smartphone",
-          title: "Integrated Mobile Apps",
-          highlight: "Native and hybrid iOS & Android apps fully connected to your ecosystem.",
-          desc: "Fluid mobile apps with offline support, push notifications, and seamless backend synchronization in React Native and Flutter.",
-          tags: ["iOS & Android", "React Native", "Push Notifications", "Offline Sync"]
-        },
-        {
-          id: "integrations",
-          icon: "cpu",
-          title: "Integrations & Automation",
-          highlight: "Connect existing systems and eliminate manual repetitive tasks.",
-          desc: "REST APIs, Webhooks, WhatsApp Business API integrations, payment gateways, external CRMs, ERPs, and automated AI data pipelines.",
-          tags: ["WhatsApp API", "Webhooks & REST APIs", "Payment Gateways", "AI Pipelines"]
-        },
-        {
-          id: "tech-direction",
-          icon: "code",
-          title: "Technical Direction & Scoping",
-          highlight: "Senior architectural consulting, documentation, and legacy code refactoring.",
-          desc: "Hands-on tech support to structure software requirements, select optimal stacks, audit codebases, and accelerate internal development teams.",
-          tags: ["Software Architecture", "Codebase Audit", "Technical Specs", "Code Review"]
-        },
-        {
-          id: "websites-landing-pages",
-          icon: "monitor",
-          title: "Websites & Landing Pages",
-          highlight: "Ultra-fast pages designed to convert cold traffic into active clients.",
-          desc: "Elegant corporate websites, high-converting landing pages, high-performance sales funnels, and blog structures optimized for speed and SEO rankings.",
-          tags: ["Landing Pages", "Company Websites", "Performance & SEO", "Bespoke Design"]
-        },
-        {
-          id: "paid-traffic-ads",
-          icon: "megaphone",
-          title: "Paid Traffic & Ads Management",
-          highlight: "ROI-driven campaigns to rank your business at the top of search results.",
-          desc: "Professional strategic campaign planning, copy drafting, and hands-on optimization across Google Ads, Meta Ads (Instagram/Facebook), and LinkedIn Ads.",
-          tags: ["Google Ads", "Meta Ads", "Ads Management", "ROI Analytics"]
+          id: "intelligence",
+          tag: "INTELLIGENCE",
+          title: "AI, automation, and data applied to business.",
+          highlight: "Transform manual tasks into intelligent automated workflows.",
+          desc: "Practical deployment of autonomous AI agents, sales automations, and business intelligence dashboards.",
+          services: ["AI Agents", "Sales Automation", "CRM & ERP Integrations", "Business Intelligence", "Real-time Dashboards", "Operational Workflows", "WhatsApp AI Chatbots", "Data Pipelines"],
+          cta: "Automate operation →",
+          icon: "bot"
         }
       ]
     },
-    deliverables: {
-      kicker: "DELIVERABLES",
-      heading: "What comes standard with every project",
-      sub: "No surprises at launch. Every project delivered by Vezzitech follows rigorous engineering and transparency standards.",
-      items: [
-        {
-          number: "01",
-          title: "Documented Scope & Wireframes",
-          desc: "Detailed requirements mapping with user flows and clear feature definitions before the first line of code is written.",
-          details: "Zero ambiguity or contractual friction."
-        },
-        {
-          number: "02",
-          title: "UI/UX Interface Design",
-          desc: "Complete, responsive, and tested screens in Figma focused on end-user usability and task execution speed.",
-          details: "Consistent, scalable design system."
-        },
-        {
-          number: "03",
-          title: "Clean Engineering & Code",
-          desc: "Crafted in TypeScript with modular components, strict typing, and self-explanatory architecture for easy maintenance.",
-          details: "100% client-owned source code."
-        },
-        {
-          number: "04",
-          title: "Cloud Infrastructure & Deployment",
-          desc: "Production deployment on modern clouds (Google Cloud, AWS, Vercel) with CI/CD pipelines, SSL, databases, and monitoring.",
-          details: "High availability and instant loading."
-        },
-        {
-          number: "05",
-          title: "Post-Launch Warranty & Support",
-          desc: "Dedicated warranty period for immediate bug fixes and active technical support to ensure smooth production operations.",
-          details: "True ongoing post-launch partnership."
-        }
-      ]
+    differentiation: {
+      kicker: "WHY VEZZITECH",
+      heading: "Far beyond an agency.",
+      sub: "While traditional agencies handle marketing and software houses write code, Vezzitech connects both sides of growth.",
+      table: {
+        headers: ["Dimension", "Traditional Agency", "Software House", "Vezzitech"],
+        rows: [
+          {
+            dimension: "Core Focus",
+            agency: "Isolated ads & design",
+            softwareHouse: "Pure code delivery",
+            vezzitech: "Strategy + Marketing + Tech"
+          },
+          {
+            dimension: "Deliverables",
+            agency: "Ad campaigns & banners",
+            softwareHouse: "Technical code files",
+            vezzitech: "Acquisition Engine + Custom Tech"
+          },
+          {
+            dimension: "Results Tracking",
+            agency: "Vanity metrics reports",
+            softwareHouse: "Scope feature delivery",
+            vezzitech: "Business Metrics, CAC & ROI"
+          },
+          {
+            dimension: "Automation & AI",
+            agency: "Limited to off-the-shelf tools",
+            softwareHouse: "Low focus on growth & sales",
+            vezzitech: "AI + Operations + Growth"
+          },
+          {
+            dimension: "Partnership Model",
+            agency: "Requires external dev hires",
+            softwareHouse: "Depends on external marketing",
+            vezzitech: "Single Integrated Ecosystem"
+          }
+        ]
+      },
+      quote: "Growth Engineering is not a single ad campaign or code file. It is a unified system engineered to scale your company."
+    },
+    manifesto: {
+      lines: [
+        { text: "Strategy without execution is a slide deck." },
+        { text: "Technology without strategy is complexity." },
+        { text: "Marketing without data is gambling." },
+        { text: "We connect all three.", highlight: true }
+      ],
+      sub: "Growth Engineering for companies building the future.",
+      brandText: "VEZZITECH — Growth Engineering"
     },
     cases: {
-      kicker: "CASES",
-      heading: "Delivered projects",
-      sub: "Real software solutions in production delivering measurable efficiency, revenue, and scale.",
-      ctaText: "View project details →",
+      kicker: "IMPACT",
+      heading: "Technology only matters when it delivers results.",
+      sub: "Proven production outcomes driving revenue growth and operational speed.",
+      ctaText: "Request similar diagnostic →",
       items: [
         {
           id: "case-1",
-          number: "01",
-          client: "B2B Operations Management",
-          year: "2024",
-          category: "Internal Tool / SaaS",
-          title: "Central Operations & Work Order Automation Platform",
-          desc: "Replaced complex spreadsheets with a custom React & Node.js web app. Real-time status tracking, field technician assignment, and automated PDF reports.",
-          metrics: "70% reduction in report generation time and zero operational data loss.",
-          stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "Google Cloud"],
-          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-          badge: "Custom System"
+          client: "Nexus Logistics B2B",
+          segment: "National Supply Chain & Freight",
+          problem: "Manual spreadsheet bottlenecks and slow corporate contract acquisition.",
+          solution: "Custom web app integrated with Google/LinkedIn Ads campaigns and quotation automation.",
+          tech: ["React", "Node.js", "Google Ads", "PostgreSQL", "WhatsApp AI"],
+          metrics: ["+312% qualified contracts", "70% faster quoting time", "4.8x ROAS on paid media"],
+          badge: "Growth + Tech"
         },
         {
           id: "case-2",
-          number: "02",
-          client: "Fintech & Billing",
-          year: "2024",
-          category: "SaaS & Payments",
-          title: "Multi-tenant Billing & Subscription Management Dashboard",
-          desc: "Production-ready MVP built in 5 weeks with secure auth, automated Webhook payment reconciliation (PIX & Credit Card), and automated WhatsApp notifications.",
-          metrics: "Over $350K+ processed in the first quarter of production operation.",
-          stack: ["Next.js", "Tailwind CSS", "Fastify", "Redis", "WhatsApp API"],
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-          badge: "Live SaaS"
+          client: "FinPay SaaS Platform",
+          segment: "Recurring Billing Fintech",
+          problem: "Low landing page conversion rate and high drop-off during onboarding.",
+          solution: "Complete Next.js redesign with instant loading speed, CRO optimization, and remarketing engine.",
+          tech: ["Next.js", "CRO Optimization", "Meta Ads", "Analytics GTM", "Stripe API"],
+          metrics: ["$2.4M+ processed in 90 days", "+145% signup conversion lift", "0.4s load time"],
+          badge: "Experience + Growth"
         },
         {
           id: "case-3",
-          number: "03",
-          client: "Logistics & Fleet",
-          year: "2023",
-          category: "Mobile & Web App",
-          title: "Fleet Inspection App & Live Route Tracking",
-          desc: "Offline-first mobile app for drivers to complete vehicle inspections with photos and GPS stamps, connected to a central web dispatch console.",
-          metrics: "Saved 35+ hours weekly in operational support and achieved 100% compliance.",
-          stack: ["React Native", "Express", "SQLite", "Firebase", "AWS S3"],
-          image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop",
-          badge: "Hybrid Mobile"
+          client: "IndustriAL Automation",
+          segment: "Industrial Equipment",
+          problem: "Sales team losing 20+ hours weekly qualifying unqualified leads.",
+          solution: "WhatsApp AI Agent for automatic lead qualification connected directly to CRM.",
+          tech: ["AI Agents", "Python", "WhatsApp API", "HubSpot CRM", "Power BI"],
+          metrics: ["140h/month saved", "Response time reduced to 5s", "+80% lead satisfaction"],
+          badge: "Intelligence + AI"
         }
       ]
     },
-    testimonials: {
-      kicker: "PROOF",
-      heading: "What clients say",
-      sub: "Trusted technical partner for founders, CTOs, and product leaders.",
-      googleBadge: {
-        score: "5.0",
-        stars: "★★★★★",
-        platform: "on Google Reviews",
-        reviewCount: "Highest technical satisfaction rating"
-      },
-      items: [
+    mindset: {
+      kicker: "OUR MINDSET",
+      heading: "Technology that understands business.",
+      sub: "We don't write code for aesthetics or run ads for vanity. Every project follows clear business engineering principles.",
+      cards: [
         {
-          quote: "We needed to build an internal operations system and other agencies quoted crazy budgets with 6-month timelines. Vezzitech delivered the first usable version in 3 weeks, with clean code and no surprises.",
-          author: "Rodrigo Mendonça",
-          role: "Operations Director",
-          company: "Nexus Log Group",
-          projectType: "Custom Internal System"
+          title: "Business First",
+          desc: "First we understand your business model, margins, and sales bottlenecks. Then we engineer the tech.",
+          icon: "briefcase"
         },
         {
-          quote: "The direct communication and deep technical expertise of Vezzitech's team made all the difference. They didn't just build what we asked, but guided our SaaS architecture to handle scale seamlessly.",
-          author: "Camila Guimarães",
-          role: "Founder & CEO",
-          company: "DataFlow Tech",
-          projectType: "B2B SaaS Platform"
+          title: "Built to Perform",
+          desc: "Speed, security, and conversion rates are architected into the product from day one.",
+          icon: "zap"
         },
         {
-          quote: "The process is crystal clear. You know exactly what is being built in every sprint. Post-delivery support has been outstanding and the platform has run flawlessly for over a year.",
-          author: "Lucas Silveira",
-          role: "CTO",
-          company: "Vanguard Imob",
-          projectType: "Web Portal & API"
+          title: "AI Native",
+          desc: "We deploy artificial intelligence and autonomous agents where real productivity and margin gains exist.",
+          icon: "cpu"
+        },
+        {
+          title: "Data Driven",
+          desc: "All media adjustments, decisions, and system updates are grounded in real business data.",
+          icon: "line-chart"
         }
       ]
     },
-    faq: {
-      kicker: "FAQ",
-      heading: "Questions before hiring",
-      sub: "Everything you need to know about our work model, timelines, pricing, and deliverables.",
-      items: [
+    insights: {
+      kicker: "INSIGHTS & INTEL",
+      heading: "Intelligence for companies that want to scale.",
+      sub: "Strategic articles on growth engineering, paid media, AI automation, and data systems.",
+      articles: [
         {
-          q: "How does project pricing work?",
-          a: "We work with fixed-scope pricing or dedicated monthly squads on demand. After initial discovery, we deliver a comprehensive technical proposal with fixed costs, milestone deliverables, and transparent payment terms without hidden fees."
+          category: "Growth Engineering",
+          title: "Why Separating Marketing from Tech is Ruining Your CAC & ROI",
+          excerpt: "Learn why companies integrating tracking, instant web apps, and performance media scale 3x faster.",
+          readTime: "5 min read",
+          date: "August 2026"
         },
         {
-          q: "What is the average turnaround time for software?",
-          a: "It depends on scope complexity: MVPs and lean internal tools typically take 3 to 6 weeks. Larger enterprise platforms take 2 to 4 months, always featuring incremental sprint demos for continuous alignment."
+          category: "Artificial Intelligence",
+          title: "AI Agents Beyond Chatbots: Automating Complex Sales & Support Operations",
+          excerpt: "Practical case studies of companies replacing slow forms with autonomous CRM agents.",
+          readTime: "7 min read",
+          date: "August 2026"
         },
         {
-          q: "Do you help define requirements and software architecture?",
-          a: "Yes. You do not need a ready-made technical spec. We run discovery sessions to understand your business logic, architect the ideal stack, suggest smart simplifications, and write the full technical spec."
-        },
-        {
-          q: "Who owns the source code and software?",
-          a: "100% of the code and intellectual property belongs to your company. We transfer the full Git repository, deployment instructions, and access credentials. No vendor lock-in."
-        },
-        {
-          q: "What is the engagement model (fixed project vs monthly squad)?",
-          a: "For projects with clear start and end milestones (e.g., launching an MVP or building a tool), Fixed Scope is ideal. For businesses requiring continuous iteration and features, we provide Dedicated Monthly Engineering Squads."
-        },
-        {
-          q: "Can you take over or refactor an existing codebase?",
-          a: "Yes. We perform a technical audit on your current repository to assess code quality, propose necessary refactorings, and take over ongoing engineering safely."
+          category: "High Performance Web",
+          title: "The Math of Speed: How 1 Second Faster Load Time Doubles Conversions",
+          excerpt: "Technical breakdown of React/Next architectures and why slow website builders drive clients away.",
+          readTime: "4 min read",
+          date: "July 2026"
         }
       ]
     },
-    contact: {
-      kicker: "LET'S BUILD",
-      heading: "Tell us what you need to build",
-      sub: "You don't need a finished spec. We help you structure technical requirements, architecture, and timeline.",
-      reassurance: "Response within 15 minutes during business hours · No obligation",
+    ctaFinal: {
+      kicker: "STRATEGIC DIAGNOSTIC",
+      heading: "What is your company's biggest growth bottleneck?",
+      sub: "Select your main operational or commercial challenge today. We'll analyze your structure and engineer the ideal solution.",
+      bottlenecks: [
+        { id: "aquisicao", title: "Acquisition", desc: "I need to generate more qualified leads and top-of-funnel opportunities." },
+        { id: "conversao", title: "Conversion", desc: "I have traffic, but my website/landing page isn't converting visitors into clients." },
+        { id: "tecnologia", title: "Technology", desc: "I need custom software, an internal system, or a mobile app built." },
+        { id: "processos", title: "Processes", desc: "My team is losing hours in spreadsheets and slow manual tasks." },
+        { id: "automacao", title: "Automation / AI", desc: "I want to implement AI agents and automated sales workflows." },
+        { id: "dados", title: "Data & Analytics", desc: "I lack clear visibility into metrics, CAC, LTV, and return on investment." }
+      ],
       form: {
-        name: "Your Name",
-        namePlaceholder: "e.g. John Doe",
-        company: "Company Name",
-        companyPlaceholder: "e.g. Acme Software",
-        email: "Work Email",
-        emailPlaceholder: "john@acme.com",
+        title: "Request Strategic Growth Diagnostic",
+        name: "Your name",
+        namePlaceholder: "e.g., Rodrigo Canavese",
+        company: "Company name",
+        companyPlaceholder: "e.g., Vezzitech Corp",
+        email: "Work email",
+        emailPlaceholder: "rodrigo@yourcompany.com",
         phone: "WhatsApp / Phone",
-        phonePlaceholder: "+1 (555) 000-0000",
-        projectType: "Project Type",
-        projectTypePlaceholder: "Select software category",
-        projectTypes: [
-          "Internal Tool / Management System",
-          "SaaS / MVP Digital Product",
-          "Web Platform / Client Portal",
-          "Mobile App (iOS / Android)",
-          "Websites / Landing Pages",
-          "Paid Traffic / Ads Management",
-          "API Integrations / Automations",
-          "Other / Tech Consulting"
+        phonePlaceholder: "+1 (555) 019-2831",
+        website: "Company website (optional)",
+        websitePlaceholder: "https://yourcompany.com",
+        bottleneckLabel: "Selected Bottleneck",
+        submitButton: "Request Strategic Diagnostic",
+        whatsappAlt: "Or if you prefer, speak directly with a specialist on WhatsApp",
+        successMessage: "Diagnostic requested! Our team will reach out in under 2 hours."
+      }
+    },
+    pages: {
+      engineering: {
+        heroTitle: "Growth Engineering.",
+        heroSub: "An approach connecting strategy, technology, marketing, automation, and data to build faster, scalable companies.",
+        sectionTitle: "Growth is not an ad campaign. It's a system.",
+        sectionCopy: "A business grows when different components work in perfect harmony: acquisition, conversion, sales tech, data analytics, and operational workflows.",
+        systemElements: ["Traffic Acquisition", "Web Conversion", "Systems & APIs", "AI Automation", "Data & Analytics", "ROI Optimization"],
+        cta: "Diagnose my operation →"
+      },
+      growth: {
+        heroTitle: "More than traffic.",
+        heroHighlight: "We build acquisition.",
+        heroSub: "We create performance operations focused on demand generation, conversion, and sustainable scale.",
+        flow: [
+          { step: "Traffic", desc: "Google & Meta Ads targeted at high-intent decision makers." },
+          { step: "Conversion", desc: "Instant React/Next landing pages engineered to convert." },
+          { step: "CRM & Sales", desc: "Automatic lead routing directly into your sales pipeline." },
+          { step: "Data & Optimization", desc: "Clear CAC & ROI dashboards for continuous budget scaling." }
         ],
-        budget: "Estimated Budget",
-        budgetPlaceholder: "Select expected range",
-        budgets: [
-          "Up to $5,000",
-          "$5,000 to $10,000",
-          "$10,000 to $25,000",
-          "$25,000+",
-          "Not determined yet"
+        cta: "Accelerate acquisition →"
+      },
+      experience: {
+        heroTitle: "Your website shouldn't just exist.",
+        heroHighlight: "It should work for your business.",
+        heroSub: "We create high-speed, modern websites and applications designed to convert.",
+        comparison: {
+          traditional: [
+            "Slow loading times (WordPress / bloated builders)",
+            "Hard to scale and rigid legacy code",
+            "Zero native integration with sales pipelines",
+            "Generic templates damaging brand trust"
+          ],
+          vezzitech: [
+            "Ultra-high performance React/Next.js with instant response",
+            "Custom architecture built for unlimited scale",
+            "Native connections with CRM, APIs, and AI Agents",
+            "World-class UI/UX with proven high conversion rates"
+          ]
+        },
+        cta: "Modernize my site →"
+      },
+      technology: {
+        heroTitle: "Custom technology for your operation.",
+        heroSub: "When off-the-shelf software falls short, we build the perfect custom solution.",
+        cta: "Discuss my project →"
+      },
+      intelligence: {
+        heroTitle: "Artificial Intelligence applied to business.",
+        heroSub: "Fewer manual tasks. More speed, efficiency, and operational intelligence for your team.",
+        cta: "Find automation opportunities →"
+      },
+      about: {
+        heroTitle: "We build technology to drive impact.",
+        copyParagraphs: [
+          "Vezzitech was founded on the belief that marketing, technology, and data should never exist in silos.",
+          "Companies grow faster when strategy, acquisition, software, automation, and AI operate in a single ecosystem.",
+          "Our mission is to eliminate commercial and operational bottlenecks through Growth Engineering."
         ],
-        timeline: "Desired Timeline",
-        timelinePlaceholder: "When do you need it live?",
-        timelines: [
-          "Urgent (< 30 days)",
-          "1 to 2 months",
-          "3 to 4 months",
-          "Flexible"
+        pillars: [
+          { title: "Business First", desc: "Technology serving real financial metrics." },
+          { title: "Total Transparency", desc: "Clean code, clear docs, and zero lock-in." },
+          { title: "World-Class Engineering", desc: "Global standards for code, speed, and security." }
         ],
-        description: "Briefly describe what you want to build",
-        descriptionPlaceholder: "Tell us about the project goals, key features you imagine, and the problem to solve...",
-        submitButton: "Request Technical Proposal →",
-        whatsappAlt: "Or if you prefer, click here to message directly on WhatsApp",
-        successMessage: "Proposal requested successfully! Our technical team will reach out within 15 minutes.",
-        directContactTitle: "Direct Contact",
-        directContactSub: "Speak directly with one of our software engineers right now."
+        manifesto: [
+          "We don't build tech just to work. We build to drive impact.",
+          "We don't run marketing just to show up. We run it to grow.",
+          "Growth doesn't happen by chance. Growth is engineered."
+        ]
       }
     },
     footer: {
-      description: "Vezzitech is an on-demand software house. We build custom web systems, SaaS platforms, MVPs, mobile apps, and integrations with clean code and agile delivery.",
-      navTitle: "Navigation",
-      servicesTitle: "Services",
+      descriptor: "High-Performance Technology & Marketing",
+      tagline: "We turn technology into growth.",
+      solutionsTitle: "Ecosystem",
+      companyTitle: "Company",
       contactTitle: "Direct Contact",
-      email: "contato@vezzitech.com",
       phone: "+55 (44) 99826-6950",
-      location: "Brazil · 100% Online Delivery Nationwide & Globally",
-      rights: "© {year} Vezzitech Software Development. All rights reserved.",
-      securityBadge: "Clean Code · Secure Cloud Architecture · 100% Client Ownership"
+      email: "contato@vezzitech.com",
+      rights: "© {year} Vezzitech. All rights reserved. Growth Engineering.",
+      description: "We connect strategy, paid traffic, custom software development, automation, and AI to eliminate bottlenecks and accelerate business growth.",
+      securityBadge: "Enterprise Architecture & Compliance Ready",
+      navTitle: "Navigation",
+      servicesTitle: "Solutions",
+      location: "Global Service • HQ in Maringá/PR - Brazil"
     }
   }
 };

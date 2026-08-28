@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -9,93 +9,123 @@
 
 @theme {
   --font-sans: "Inter", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Plus Jakarta Sans", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Custom Design System Colors for Vezzitech On-Demand Software House */
-  --color-primary: #0066FF;
+  /* Vezzitech Master Brand Palette */
+  --color-vezzi-black: #070A12;
+  --color-deep-navy: #10162A;
+  --color-performance-blue: #168BFF;
+  --color-growth-violet: #7047FF;
+  --color-electric-cyan: #16C7FF;
+  --color-soft-white: #F5F7FA;
+  --color-brand-gray: #8992A5;
+
+  --color-primary: #168BFF;
   --color-primary-foreground: #FFFFFF;
-  --color-secondary: #111111;
-  --color-secondary-foreground: #FFFFFF;
-  --color-accent: #0066FF;
+  --color-secondary: #10162A;
+  --color-secondary-foreground: #F5F7FA;
+  --color-accent: #7047FF;
   --color-accent-foreground: #FFFFFF;
-  --color-background: #0A0A0A;
+  --color-background: #070A12;
   --color-foreground: #FFFFFF;
-  --color-muted: #141414;
-  --color-muted-foreground: #9A9A9A;
-  --color-border: #222222;
+  --color-muted: #10162A;
+  --color-muted-foreground: #8992A5;
+  --color-border: rgba(255, 255, 255, 0.08);
   
-  --color-blue: #0066FF;
-  --color-blue-glow: rgba(0, 102, 255, 0.35);
-  --color-dark-surface: #111111;
-  --color-dark-card: #0F0F0F;
+  --color-blue: #168BFF;
+  --color-blue-glow: rgba(22, 139, 255, 0.35);
+  --color-dark-surface: #10162A;
+  --color-dark-card: #0F1626;
   --color-dark-border: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
   body {
-    @apply font-sans overflow-x-hidden antialiased bg-[#0A0A0A] text-[#9A9A9A];
+    @apply font-sans overflow-x-hidden antialiased bg-[#070A12] text-[#8992A5];
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
   
   * {
-    @apply border-[#222222] outline-[#0066FF]/50;
+    @apply border-white/[0.08] outline-[#168BFF]/50;
   }
   
   html {
-    @apply font-sans bg-[#0A0A0A] text-[#9A9A9A];
+    @apply font-sans bg-[#070A12] text-[#8992A5] scroll-smooth;
     color-scheme: dark;
   }
 }
 
 @layer utilities {
+  .bg-performance-gradient {
+    background: linear-gradient(135deg, #16C7FF 0%, #168BFF 50%, #7047FF 100%);
+  }
+  
+  .text-performance-gradient {
+    background: linear-gradient(135deg, #16C7FF 0%, #168BFF 50%, #7047FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .border-performance-gradient {
+    border-image: linear-gradient(135deg, #16C7FF, #168BFF, #7047FF) 1;
+  }
+
   .text-blue-accent {
-    color: #0066FF;
+    color: #168BFF;
   }
   
   .bg-blue-accent {
-    background-color: #0066FF;
+    background-color: #168BFF;
   }
 
   .border-glass-card {
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .shadow-blue-glow {
-    box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+  .bg-navy-card {
+    background-color: #10162A;
+  }
+
+  .shadow-performance-glow {
+    box-shadow: 0 0 30px rgba(22, 139, 255, 0.25), 0 0 60px rgba(112, 71, 255, 0.15);
   }
 
   .shadow-blue-btn {
-    box-shadow: 0 0 25px rgba(0, 102, 255, 0.45);
+    box-shadow: 0 4px 20px rgba(22, 139, 255, 0.4);
   }
 
   .bg-grid-pattern {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background-image: radial-gradient(rgba(22, 199, 255, 0.12) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  
+  .bg-[#070A12] {
+    background-color: #070A12;
   }
 }
 
 :root {
-  --background: #0A0A0A;
+  --background: #070A12;
   --foreground: #FFFFFF;
-  --card: #111111;
+  --card: #10162A;
   --card-foreground: #FFFFFF;
-  --popover: #111111;
+  --popover: #10162A;
   --popover-foreground: #FFFFFF;
-  --primary: #0066FF;
+  --primary: #168BFF;
   --primary-foreground: #FFFFFF;
-  --secondary: #161616;
+  --secondary: #10162A;
   --secondary-foreground: #FFFFFF;
-  --muted: #141414;
-  --muted-foreground: #9A9A9A;
-  --accent: #0066FF;
+  --muted: #10162A;
+  --muted-foreground: #8992A5;
+  --accent: #7047FF;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #222222;
-  --input: #222222;
-  --ring: #0066FF;
-  --radius: 0.75rem;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #168BFF;
+  --radius: 1rem;
 }

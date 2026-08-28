@@ -4,18 +4,22 @@ import { Footer } from './components/Footer';
 import { Language } from './translations';
 
 import { Hero } from './sections/Hero';
-import { ServicesSection } from './sections/ServicesSection';
-import { DeliverablesSection } from './sections/DeliverablesSection';
-import { TestimonialsSection } from './sections/TestimonialsSection';
-import { FAQSection } from './sections/FAQSection';
-import { ContactSection } from './sections/ContactSection';
+import { ProblemSection } from './sections/ProblemSection';
+import { EngineeringSection } from './sections/EngineeringSection';
+import { SolutionsSection } from './sections/SolutionsSection';
+import { DifferentiationSection } from './sections/DifferentiationSection';
+import { ManifestoSection } from './sections/ManifestoSection';
+import { CasesSection } from './sections/CasesSection';
+import { MindsetSection } from './sections/MindsetSection';
+import { InsightsSection } from './sections/InsightsSection';
+import { DiagnosticSection } from './sections/DiagnosticSection';
 import { WhatsAppIcon } from './components/WhatsAppIcon';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('pt');
 
   const whatsappNumber = "+5544998266950";
-  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de falar com a equipe da Vezzitech sobre o desenvolvimento de um software sob demanda.`;
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Olá! Gostaria de conversar com a equipe da Vezzitech sobre a Engenharia de Crescimento para minha empresa.`;
 
   useEffect(() => {
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
@@ -35,39 +39,51 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen text-[#9A9A9A] antialiased selection:bg-[#0066FF]/30 selection:text-white font-sans overflow-x-hidden">
-      {/* 1. Header Fixo */}
+    <div className="bg-[#070A12] min-h-screen text-[#8992A5] antialiased selection:bg-[#168BFF]/30 selection:text-white font-sans overflow-x-hidden">
+      {/* 1. Header */}
       <Header lang={lang} setLang={setLang} />
       
       <main className="w-full">
         {/* 2. Hero */}
         <Hero lang={lang} />
 
-        {/* 3. Serviços */}
-        <ServicesSection lang={lang} />
+        {/* 3. O Problema (Gargalos) */}
+        <ProblemSection lang={lang} />
 
-        {/* 4. Entregas */}
-        <DeliverablesSection lang={lang} />
+        {/* 4. Engenharia de Crescimento (Metodologia) */}
+        <EngineeringSection lang={lang} />
 
-        {/* 5. Depoimentos / Prova */}
-        <TestimonialsSection lang={lang} />
+        {/* 5. Ecossistema Vezzitech (4 Unidades) */}
+        <SolutionsSection lang={lang} />
 
-        {/* 6. FAQ */}
-        <FAQSection lang={lang} />
+        {/* 6. Muito Além de Uma Agência (Diferenciação) */}
+        <DifferentiationSection lang={lang} />
 
-        {/* 7. Formulário de Contato */}
-        <ContactSection lang={lang} />
+        {/* 7. Manifesto Vezzitech */}
+        <ManifestoSection lang={lang} />
+
+        {/* 8. Cases & Impacto */}
+        <CasesSection lang={lang} />
+
+        {/* 9. Nossa Forma de Pensar (4 Pilares) */}
+        <MindsetSection lang={lang} />
+
+        {/* 10. Insights & Inteligência */}
+        <InsightsSection lang={lang} />
+
+        {/* 11. Diagnóstico Estratégico */}
+        <DiagnosticSection lang={lang} />
       </main>
 
-      {/* 8. Footer */}
+      {/* 12. Footer */}
       <Footer lang={lang} />
 
-      {/* 9. Floating WhatsApp Button */}
+      {/* 13. Floating WhatsApp Button */}
       <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 md:w-auto md:h-13 md:px-6 md:py-3.5 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-[0_4px_24px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 font-heading font-black text-xs uppercase tracking-wider group cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 md:w-auto md:h-13 md:px-6 md:py-3.5 bg-performance-gradient hover:opacity-95 text-white rounded-full shadow-performance-glow hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 font-heading font-black text-xs uppercase tracking-wider group cursor-pointer"
         aria-label="Falar no WhatsApp"
       >
         <WhatsAppIcon className="w-5 h-5 text-white shrink-0" />
@@ -76,3 +92,4 @@ export default function App() {
     </div>
   );
 }
+
