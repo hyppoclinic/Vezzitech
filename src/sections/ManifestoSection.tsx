@@ -77,87 +77,8 @@ export const ManifestoSection = ({ lang }: { lang: Language }) => {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <BlurFade delay={0.1} inView>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] font-bold text-[#69B4FF] uppercase tracking-[0.2em] mb-6 backdrop-blur-md shadow-inner">
-              <span className="w-2 h-2 rounded-full bg-[#168BFF] animate-pulse" />
-              <span>{t.badge}</span>
-            </div>
-          </BlurFade>
-
-          <BlurFade delay={0.2} inView>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6 font-heading">
-              {t.title}
-            </h2>
-          </BlurFade>
-
-          <BlurFade delay={0.3} inView>
-            <p className="text-base sm:text-lg text-[#8992A5] leading-relaxed max-w-2xl mx-auto">
-              {t.sub}
-            </p>
-          </BlurFade>
-        </div>
-
-        {/* The 3 Core Paradox Cards (Trinity Cards with Premium Blur & Glassmorphism) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {t.lines.map((item, idx) => {
-            const style = getPillarGlow(item.id);
-            return (
-              <BlurFade key={item.id} delay={0.2 + idx * 0.15} inView>
-                <div className={`relative h-full flex flex-col justify-between rounded-3xl bg-gradient-to-b from-[#10172A]/70 via-[#0B101E]/75 to-[#060810]/90 backdrop-blur-2xl border p-7 sm:p-8 transition-all duration-300 group hover:-translate-y-1.5 overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_16px_36px_rgba(0,0,0,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_24px_48px_rgba(0,0,0,0.6)] ${style.border}`}>
-                  
-                  {/* Frosted Top Specular Highlight */}
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-
-                  {/* Ambient blurred glow orbs behind the glass */}
-                  <div className={`absolute -top-12 -right-12 w-36 h-36 rounded-full blur-[48px] opacity-20 group-hover:opacity-45 transition-all duration-500 pointer-events-none ${style.glowColor}`} />
-                  <div className={`absolute -bottom-10 -left-10 w-28 h-28 rounded-full blur-[40px] opacity-10 group-hover:opacity-30 transition-all duration-500 pointer-events-none ${style.glowColor}`} />
-
-                  {/* Header: Icon + Tag */}
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-between gap-3 mb-6">
-                      <div className={`w-11 h-11 rounded-2xl flex items-center justify-center backdrop-blur-md border shadow-inner transition-all duration-300 group-hover:scale-105 ${style.iconBg}`}>
-                        {getPillarIcon(item.id)}
-                      </div>
-                      <span className={`text-[11px] font-bold px-3 py-1 rounded-full border tracking-wide uppercase shadow-sm ${style.tagStyle}`}>
-                        {item.tag}
-                      </span>
-                    </div>
-
-                    {/* Statement & The Pitfall */}
-                    <div className="mb-6">
-                      <span className="text-xs font-bold text-[#8992A5] uppercase tracking-wider block mb-1.5">
-                        {item.pillar}
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">
-                        {item.statement}
-                      </h3>
-                      <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-xl bg-red-500/[0.08] backdrop-blur-md border border-red-500/25 text-red-300 text-xs font-semibold shadow-inner">
-                        <ShieldAlert className="w-3.5 h-3.5 text-red-400 shrink-0" />
-                        <span>{item.pitfall}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* The Resolution / Vezzitech Approach */}
-                  <div className="relative z-10 pt-6 border-t border-white/[0.08] mt-4 bg-white/[0.01] -mx-7 -mb-7 sm:-mx-8 sm:-mb-8 p-6 sm:p-7 rounded-b-3xl backdrop-blur-sm">
-                    <div className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#00E599] shrink-0 mt-0.5" />
-                      <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-medium">
-                        {item.resolution}
-                      </p>
-                    </div>
-                  </div>
-
-                </div>
-              </BlurFade>
-            );
-          })}
-        </div>
-
         {/* Central Convergence / Nexus Hero Block */}
-        <BlurFade delay={0.5} inView>
+        <BlurFade delay={0.2} inView>
           <div className="relative rounded-[2.5rem] bg-gradient-to-b from-[#0E1528]/80 via-[#090D18]/85 to-[#05070E]/95 backdrop-blur-2xl border border-white/[0.09] p-8 sm:p-12 md:p-16 overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_24px_60px_rgba(0,0,0,0.6)]">
             
             {/* Frosted Top Specular Highlight */}

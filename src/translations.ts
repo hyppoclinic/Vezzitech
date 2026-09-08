@@ -132,12 +132,14 @@ export interface TranslationSchema {
     items: Array<{
       id: string;
       client: string;
+      clientContact?: string;
       segment: string;
       problem: string;
       solution: string;
       tech: string[];
       metrics: string[];
       badge: string;
+      instagram?: string;
     }>;
   };
   mindset: {
@@ -496,40 +498,26 @@ export const translations: Record<Language, TranslationSchema> = {
       brandText: "VEZZITECH — Engenharia de Crescimento"
     },
     cases: {
-      kicker: "CASES E RESULTADOS",
-      heading: "Tecnologia só tem valor quando gera crescimento real.",
-      sub: "Resultados reais em produção gerando receita, redução de custos e ganho de eficiência operacional.",
+      kicker: "CASE DE SUCESSO DESTAQUE",
+      heading: "Tecnologia e tráfego gerando vendas reais.",
+      sub: "Resultados comprovados em produção gerando mais pedidos, vendas e eficiência no comércio local.",
       ctaText: "Solicitar diagnóstico similar →",
       items: [
         {
-          id: "case-1",
-          client: "Nexus Logistics B2B",
-          segment: "Logística & Transporte Nacional",
-          problem: "Processos manuais em planilhas e gargalo na captação de novos contratos corporativos.",
-          solution: "Plataforma web customizada integrada a campanhas de Google/LinkedIn Ads e automação de orçamentos.",
-          tech: ["React", "Node.js", "Google Ads", "PostgreSQL", "WhatsApp AI"],
-          metrics: ["+312% em contratos captados", "70% redução no tempo de cotação", "4.8x ROAS em mídia"],
-          badge: "Growth + Tech"
-        },
-        {
-          id: "case-2",
-          client: "FinPay Plataforma SaaS",
-          segment: "Fintech de Cobranças Recorrentes",
-          problem: "Baixa taxa de conversão na landing page e abandono no onboarding de novos assinantes.",
-          solution: "Redesign completo com Next.js de resposta instantânea, checkout otimizado (CRO) e régua de remarketing.",
-          tech: ["Next.js", "CRO Optimization", "Meta Ads", "Analytics GTM", "Stripe API"],
-          metrics: ["R$ 2.4M+ processados em 90 dias", "+145% aumento na conversão de cadastro", "Carregamento em 0.4s"],
-          badge: "Experience + Growth"
-        },
-        {
-          id: "case-3",
-          client: "IndustriAL Automações",
-          segment: "Equipamentos Industriais",
-          problem: "Equipe comercial perdendo 20+ horas semanais qualificando leads sem perfil.",
-          solution: "Agente de IA via WhatsApp para triagem automática integrado ao CRM e relatórios em tempo real.",
-          tech: ["AI Agents", "Python", "API WhatsApp", "HubSpot CRM", "Power BI"],
-          metrics: ["140h/mês economizadas", "Tempo de resposta reduzido para 5s", "+80% satisfação dos leads"],
-          badge: "Intelligence + AI"
+          id: "case-boi-na-brasa",
+          client: "Açougue Boi Na Brasa",
+          clientContact: "Mayara",
+          segment: "Açougue & Assados do Final de Semana",
+          problem: "Aumentar a demanda e o volume de vendas de assados nos finais de semana e estruturar a presença digital local.",
+          solution: "Estratégia de Tráfego Pago local geolocalizado, otimização do perfil do Instagram e direcionamento direto de pedidos para o WhatsApp.",
+          tech: ["Tráfego Pago (Meta Ads)", "Google Meu Negócio", "Instagram Marketing", "WhatsApp Commercial"],
+          metrics: [
+            "+30% nas vendas de assados ao final de semana",
+            "Crescimento de pedidos e encomendas diretas",
+            "Presença digital consolidada e atração regional"
+          ],
+          badge: "Mídia Local + Growth",
+          instagram: "https://instagram.com/boinabrasagtba"
         }
       ]
     },
@@ -944,40 +932,26 @@ export const translations: Record<Language, TranslationSchema> = {
       brandText: "VEZZITECH — Growth Engineering"
     },
     cases: {
-      kicker: "PROVEN RESULTS",
-      heading: "Technology only matters when it delivers business growth.",
-      sub: "Proven production outcomes driving revenue growth and operational speed.",
+      kicker: "FEATURED SUCCESS CASE",
+      heading: "Technology & local growth generating real revenue.",
+      sub: "Proven production results driving more orders, sales, and local market presence.",
       ctaText: "Request similar diagnostic →",
       items: [
         {
-          id: "case-1",
-          client: "Nexus Logistics B2B",
-          segment: "National Supply Chain & Freight",
-          problem: "Manual spreadsheet bottlenecks and slow corporate contract acquisition.",
-          solution: "Custom web app integrated with Google/LinkedIn Ads campaigns and quotation automation.",
-          tech: ["React", "Node.js", "Google Ads", "PostgreSQL", "WhatsApp AI"],
-          metrics: ["+312% qualified contracts", "70% faster quoting time", "4.8x ROAS on paid media"],
-          badge: "Growth + Tech"
-        },
-        {
-          id: "case-2",
-          client: "FinPay SaaS Platform",
-          segment: "Recurring Billing Fintech",
-          problem: "Low landing page conversion rate and high drop-off during onboarding.",
-          solution: "Complete Next.js redesign with instant loading speed, CRO optimization, and remarketing engine.",
-          tech: ["Next.js", "CRO Optimization", "Meta Ads", "Analytics GTM", "Stripe API"],
-          metrics: ["$2.4M+ processed in 90 days", "+145% signup conversion lift", "0.4s load time"],
-          badge: "Experience + Growth"
-        },
-        {
-          id: "case-3",
-          client: "IndustriAL Automation",
-          segment: "Industrial Equipment",
-          problem: "Sales team losing 20+ hours weekly qualifying unqualified leads.",
-          solution: "WhatsApp AI Agent for automatic lead qualification connected directly to CRM.",
-          tech: ["AI Agents", "Python", "WhatsApp API", "HubSpot CRM", "Power BI"],
-          metrics: ["140h/month saved", "Response time reduced to 5s", "+80% lead satisfaction"],
-          badge: "Intelligence + AI"
+          id: "case-boi-na-brasa",
+          client: "Açougue Boi Na Brasa",
+          clientContact: "Mayara",
+          segment: "Local Butchery & Weekend Roasts",
+          problem: "Scaling weekend roast sales and establishing a strong local digital brand presence.",
+          solution: "Geotargeted paid traffic strategy, Instagram profile optimization, and direct WhatsApp ordering workflow.",
+          tech: ["Paid Traffic (Meta Ads)", "Google Business Profile", "Instagram Marketing", "WhatsApp Commercial"],
+          metrics: [
+            "+30% increase in weekend roast sales",
+            "Consistent regional order volume growth",
+            "Established digital brand presence"
+          ],
+          badge: "Local Media + Growth",
+          instagram: "https://instagram.com/boinabrasagtba"
         }
       ]
     },
