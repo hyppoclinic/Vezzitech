@@ -59,11 +59,13 @@ export const Footer = ({ lang }: { lang: Language }) => {
                   Engenharia
                 </button>
               </li>
-              <li>
-                <button onClick={() => scrollTo('cases')} className="hover:text-white transition-colors cursor-pointer">
-                  Cases & Impacto
-                </button>
-              </li>
+              {translations[lang].cases.items.length > 0 && (
+                <li>
+                  <button onClick={() => scrollTo('cases')} className="hover:text-white transition-colors cursor-pointer">
+                    Cases & Impacto
+                  </button>
+                </li>
+              )}
               <li>
                 <button onClick={() => scrollTo('insights')} className="hover:text-white transition-colors cursor-pointer">
                   Insights

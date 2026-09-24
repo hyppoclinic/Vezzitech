@@ -5,6 +5,10 @@ import { ArrowUpRight, TrendingUp, Instagram, User, CheckCircle2 } from 'lucide-
 export const CasesSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].cases;
 
+  if (!t.items || t.items.length === 0) {
+    return null;
+  }
+
   const scrollToDiagnostic = () => {
     const el = document.getElementById('diagnostico');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -54,34 +58,35 @@ export const CasesSection = ({ lang }: { lang: Language }) => {
 
         {/* Cases Display */}
         {isSingleCase ? (
-          /* Single Featured Case Glass Card Layout */
-          <div className="max-w-4xl mx-auto">
+          /* Single Featured Editorial Case Study Card */
+          <div className="max-w-5xl mx-auto">
             {t.items.map((item) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative rounded-3xl bg-gradient-to-b from-[#10172A]/80 via-[#0B101E]/85 to-[#060810]/95 backdrop-blur-2xl border border-white/[0.09] p-8 sm:p-12 overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_24px_48px_rgba(0,0,0,0.5)] group hover:border-[#168BFF]/40 transition-all duration-300"
+                className="relative rounded-[2.5rem] bg-gradient-to-b from-[#10172A]/80 via-[#0B101E]/85 to-[#060810]/95 backdrop-blur-2xl border border-white/[0.09] p-8 sm:p-12 overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_24px_60px_rgba(0,0,0,0.5)] group hover:border-[#168BFF]/35 transition-all duration-300"
               >
-                {/* Specular Highlight */}
+                {/* Frosted Top Specular Highlight */}
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
                 {/* Ambient glow in background of card */}
-                <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#168BFF]/15 rounded-full blur-[80px] pointer-events-none" />
-                <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[#00E599]/10 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#168BFF]/12 rounded-full blur-[100px] pointer-events-none" />
+                <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-[#00E599]/10 rounded-full blur-[100px] pointer-events-none" />
 
                 <div className="relative z-10 flex flex-col gap-8">
-                  {/* Top Header info */}
+                  
+                  {/* Top Bar: Badges & Social verification */}
                   <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-6">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="text-[11px] font-bold text-[#69B4FF] bg-[#168BFF]/10 px-3.5 py-1.5 rounded-full border border-[#168BFF]/25 uppercase tracking-widest backdrop-blur-md">
                         {item.badge}
                       </span>
                       {item.clientContact && (
-                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-300 bg-white/[0.04] px-3 py-1.5 rounded-full border border-white/[0.08]">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-300 bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-white/[0.08]">
                           <User className="w-3.5 h-3.5 text-[#168BFF]" />
-                          <span>Cliente: {item.clientContact}</span>
+                          <span>Cliente: <strong className="text-white">{item.clientContact}</strong></span>
                         </span>
                       )}
                     </div>
@@ -91,79 +96,107 @@ export const CasesSection = ({ lang }: { lang: Language }) => {
                         href={item.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 border border-purple-500/30 text-white text-xs font-bold transition-all shadow-sm hover:scale-105"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/15 via-pink-600/15 to-rose-600/15 hover:from-purple-600/25 hover:to-pink-600/25 border border-pink-500/30 text-white text-xs font-bold transition-all shadow-sm hover:scale-105"
                       >
                         <Instagram className="w-4 h-4 text-pink-400" />
-                        <span>instagram.com/boinabrasagtba</span>
+                        <span>{item.instagram.replace(/^https?:\/\/(www\.)?/, '')}</span>
                         <ArrowUpRight className="w-3.5 h-3.5 text-pink-300" />
                       </a>
                     )}
                   </div>
 
-                  {/* Main Title & Segment */}
-                  <div>
-                    <span className="text-xs font-bold text-[#8992A5] uppercase tracking-wider block mb-1">
-                      {item.segment}
-                    </span>
-                    <h3 className="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
-                      {item.client}
-                    </h3>
-                  </div>
-
-                  {/* Desafio e Solução */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="p-6 rounded-2xl bg-red-500/[0.04] border border-red-500/15 backdrop-blur-md">
-                      <span className="text-[11px] uppercase text-red-400 font-bold block mb-2 tracking-wider">
-                        Desafio
-                      </span>
-                      <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                        {item.problem}
-                      </p>
-                    </div>
-
-                    <div className="p-6 rounded-2xl bg-[#168BFF]/[0.04] border border-[#168BFF]/20 backdrop-blur-md">
-                      <span className="text-[11px] uppercase text-[#69B4FF] font-bold block mb-2 tracking-wider">
-                        Solução Implementada
-                      </span>
-                      <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                        {item.solution}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Highlight Metrics Box */}
-                  <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#00E599]/10 via-[#168BFF]/10 to-transparent border border-[#00E599]/25 backdrop-blur-md">
-                    <span className="text-xs text-[#00E599] uppercase tracking-wider block font-bold mb-4">
-                      Resultados Alcançados
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      {item.metrics.map((metric, idx) => (
-                        <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-black/30 border border-white/[0.06]">
-                          <TrendingUp className="w-5 h-5 text-[#00E599] shrink-0 mt-0.5" />
-                          <span className="text-sm font-bold text-white leading-snug">{metric}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Tech / Pillars Badges & Action */}
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 border-t border-white/[0.08]">
-                    <div className="flex flex-wrap gap-2 w-full sm:w-auto">
-                      {item.tech.map((techItem) => (
-                        <span key={techItem} className="text-xs font-medium bg-white/[0.04] text-zinc-300 px-3 py-1.5 rounded-full border border-white/[0.08]">
-                          {techItem}
+                  {/* Editorial Grid (2 Columns: Story vs Impact Callout) */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+                    
+                    {/* Left Column (7/12): Narrative Story */}
+                    <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                      <div>
+                        <span className="text-xs font-bold text-[#8992A5] uppercase tracking-wider block mb-2">
+                          {item.segment}
                         </span>
-                      ))}
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight mb-6">
+                          {item.client}
+                        </h3>
+
+                        <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-sans mb-8">
+                          {item.narrative || item.solution}
+                        </p>
+
+                        {/* Implementation Checklist */}
+                        <div className="space-y-3 mb-8">
+                          <span className="text-xs font-bold text-[#8992A5] uppercase tracking-wider block">
+                            Ações Estratégicas:
+                          </span>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <div className="flex items-center gap-2.5 text-xs text-zinc-200 bg-white/[0.02] border border-white/[0.06] p-3 rounded-xl">
+                              <CheckCircle2 className="w-4 h-4 text-[#00E599] shrink-0" />
+                              <span>Tráfego Geolocalizado (Meta Ads)</span>
+                            </div>
+                            <div className="flex items-center gap-2.5 text-xs text-zinc-200 bg-white/[0.02] border border-white/[0.06] p-3 rounded-xl">
+                              <CheckCircle2 className="w-4 h-4 text-[#00E599] shrink-0" />
+                              <span>Vitrine Digital no Instagram</span>
+                            </div>
+                            <div className="flex items-center gap-2.5 text-xs text-zinc-200 bg-white/[0.02] border border-white/[0.06] p-3 rounded-xl sm:col-span-2">
+                              <CheckCircle2 className="w-4 h-4 text-[#00E599] shrink-0" />
+                              <span>Atendimento & Encomendas via WhatsApp</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Tech Pills */}
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {item.tech.map((techItem) => (
+                          <span key={techItem} className="text-[11px] font-medium bg-white/[0.03] text-zinc-400 px-3 py-1 rounded-full border border-white/[0.06]">
+                            {techItem}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
-                    <button
-                      onClick={scrollToDiagnostic}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-performance-gradient hover:opacity-95 text-xs font-extrabold text-white tracking-wider transition-all duration-200 shadow-performance-glow hover:scale-[1.02] cursor-pointer shrink-0"
-                    >
-                      <span>{t.ctaText}</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </button>
+                    {/* Right Column (5/12): Hero Impact Spotlight Card */}
+                    <div className="lg:col-span-5 flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-[#00E599]/10 via-[#168BFF]/10 to-[#0A0E1A]/80 border border-[#00E599]/30 relative overflow-hidden backdrop-blur-xl shadow-2xl">
+                      
+                      {/* Ambient spotlight glow inside stat card */}
+                      <div className="absolute top-0 right-0 w-48 h-48 bg-[#00E599]/15 rounded-full blur-[60px] pointer-events-none" />
+
+                      <div className="relative z-10">
+                        <span className="text-[11px] font-bold text-[#00E599] uppercase tracking-widest block mb-4">
+                          Resultado de Performance
+                        </span>
+
+                        <div className="mb-6">
+                          <div className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-[#00E599] tracking-tight leading-none mb-3">
+                            +30%
+                          </div>
+                          <p className="text-sm font-bold text-white leading-snug">
+                            Crescimento direto nas vendas de assados ao final de semana.
+                          </p>
+                        </div>
+
+                        <div className="space-y-3 pt-6 border-t border-white/[0.1] mb-8">
+                          {item.metrics.slice(1).map((metric, idx) => (
+                            <div key={idx} className="flex items-start gap-2.5 text-xs font-semibold text-zinc-300">
+                              <TrendingUp className="w-4 h-4 text-[#00E599] shrink-0 mt-0.5" />
+                              <span>{metric}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* CTA inside spotlight card */}
+                      <button
+                        onClick={scrollToDiagnostic}
+                        className="relative z-10 w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-performance-gradient hover:opacity-95 text-xs font-extrabold text-white tracking-wider transition-all duration-200 shadow-performance-glow hover:scale-[1.02] cursor-pointer"
+                      >
+                        <span>{t.ctaText}</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </button>
+
+                    </div>
+
                   </div>
+
                 </div>
               </motion.div>
             ))}
@@ -242,7 +275,7 @@ export const CasesSection = ({ lang }: { lang: Language }) => {
                         className="inline-flex items-center gap-2 text-xs text-pink-400 hover:text-pink-300 font-bold transition-colors"
                       >
                         <Instagram className="w-4 h-4" />
-                        <span>instagram.com/boinabrasagtba</span>
+                        <span>{item.instagram.replace(/^https?:\/\/(www\.)?/, '')}</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
                     </div>

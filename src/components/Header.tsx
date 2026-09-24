@@ -72,12 +72,14 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
             >
               {t.engineering}
             </button>
-            <button 
-              onClick={() => scrollTo('cases')} 
-              className="relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-full transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
-            >
-              {t.cases}
-            </button>
+            {translations[lang].cases.items.length > 0 && (
+              <button 
+                onClick={() => scrollTo('cases')} 
+                className="relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-full transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
+              >
+                {t.cases}
+              </button>
+            )}
             <button 
               onClick={() => scrollTo('sobre')} 
               className="relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-full transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
@@ -150,9 +152,11 @@ export const Header = ({ lang, setLang }: { lang: Language, setLang: (l: Languag
               <button onClick={() => scrollTo('engenharia')} className="text-left py-3.5 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
                 {t.engineering} <ArrowUpRight className="w-4 h-4 text-[#168BFF]" />
               </button>
-              <button onClick={() => scrollTo('cases')} className="text-left py-3.5 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
-                {t.cases} <ArrowUpRight className="w-4 h-4 text-[#168BFF]" />
-              </button>
+              {translations[lang].cases.items.length > 0 && (
+                <button onClick={() => scrollTo('cases')} className="text-left py-3.5 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
+                  {t.cases} <ArrowUpRight className="w-4 h-4 text-[#168BFF]" />
+                </button>
+              )}
               <button onClick={() => scrollTo('insights')} className="text-left py-3.5 border-b border-white/[0.06] flex items-center justify-between text-zinc-300">
                 {t.insights} <ArrowUpRight className="w-4 h-4 text-[#168BFF]" />
               </button>

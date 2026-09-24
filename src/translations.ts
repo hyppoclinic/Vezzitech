@@ -136,6 +136,7 @@ export interface TranslationSchema {
       segment: string;
       problem: string;
       solution: string;
+      narrative?: string;
       tech: string[];
       metrics: string[];
       badge: string;
@@ -357,46 +358,46 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     solutions: {
       kicker: "CAPACIDADES E SERVIÇOS",
-      heading: "4 frentes estratégicas para acelerar sua empresa.",
-      sub: "Agrupamos nossa expertise em 4 unidades estratégicas completas para cobrir toda a jornada da sua empresa.",
+      heading: "4 Unidades de Inteligência.",
+      sub: "Capacidades integradas cobrindo mídia, experiência, desenvolvimento e inteligência artificial.",
       units: [
         {
           id: "growth",
           tag: "GROWTH",
-          title: "Transformamos investimento em aquisição.",
-          highlight: "Operações de mídia e aquisição orientadas a CAC e ROI sustentáveis.",
-          desc: "Estratégia completa de marketing de performance, tráfego pago, otimização de mecanismos de busca e inteligência de conversão.",
-          services: ["Google Ads", "Meta Ads", "Performance Marketing", "SEO", "AEO (AI Engine)", "CRO", "Growth Strategy", "Tracking & GTM", "Analytics"],
+          title: "Mídia Paga & Aquisição",
+          highlight: "Mídia paga e aquisição focadas em CAC e ROI sustentáveis.",
+          desc: "Operações de tráfego pago de alta performance e estratégia de crescimento com foco em previsibilidade e retorno real.",
+          services: ["Google Ads", "Meta Ads", "TikTok Ads", "SEO & CRO"],
           cta: "Acelerar aquisição →",
           icon: "trending-up"
         },
         {
           id: "experience",
           tag: "EXPERIENCE",
-          title: "Experiências digitais construídas para converter.",
-          highlight: "Websites ultra velozes e plataformas com design de nível mundial.",
-          desc: "Criamos portais institucionais, landing pages de alta conversão e plataformas web modernas com tecnologia React/Node de resposta instantânea.",
-          services: ["Websites Institucionais", "Landing Pages", "E-commerce", "UX/UI Design", "React / Next.js", "Node.js", "Web Applications", "Redesign de Portais", "Performance Web"],
+          title: "Experiência Digital",
+          highlight: "Design internacional e plataformas ultravelozes.",
+          desc: "Websites, landing pages e plataformas web modernas construídas em React/Next.js projetadas para converter visitantes em clientes.",
+          services: ["Websites & Portais", "Landing Pages", "UX/UI Design", "Performance Web"],
           cta: "Modernizar experiência →",
           icon: "monitor"
         },
         {
           id: "technology",
           tag: "TECHNOLOGY",
-          title: "Tecnologia sob medida para sua operação.",
-          highlight: "Engenharia de software focada em resolver desafios complexos de negócio.",
-          desc: "Quando ferramentas prontas não atendem sua demanda, desenvolvemos softwares nativos, portais de clientes, CRMs sob medida e APIs robustas.",
-          services: ["Software Development", "Sistemas Internos", "CRM sob Medida", "APIs REST & Webhooks", "Integrações de Sistemas", "Portais de Cliente", "Plataformas SaaS", "Dashboards Executivos"],
+          title: "Tecnologia Sob Medida",
+          highlight: "Engenharia de software para operações complexas.",
+          desc: "Desenvolvimento de softwares nativos, portais de clientes, CRMs proprietários e APIs robustas para quem busca escala com segurança.",
+          services: ["Software Sob Medida", "Sistemas & CRMs", "APIs & Integrações", "Portais de Cliente"],
           cta: "Construir tecnologia →",
           icon: "cpu"
         },
         {
           id: "intelligence",
           tag: "INTELLIGENCE",
-          title: "IA, automação e dados aplicados ao negócio.",
-          highlight: "Transformamos tarefas manuais em workflows automatizados e inteligentes.",
-          desc: "Implementação prática de agentes autônomos de Inteligência Artificial, fluxos de automação comercial e dashboards de inteligência de negócios.",
-          services: ["AI Agents", "Automações Comerciais", "Integrações de CRM & ERP", "Business Intelligence", "Dashboards em Tempo Real", "Workflows Operacionais", "Chatbots & WhatsApp AI", "Pipelines de Dados"],
+          title: "IA & Automação",
+          highlight: "Agentes autônomos e dados aplicados ao negócio.",
+          desc: "Implementação prática de agentes de IA, automação de fluxos comerciais e dashboards de inteligência de negócios em tempo real.",
+          services: ["Agentes de IA", "Automação Comercial", "Business Intelligence", "Workflows Operacionais"],
           cta: "Automatizar operação →",
           icon: "bot"
         }
@@ -502,24 +503,7 @@ export const translations: Record<Language, TranslationSchema> = {
       heading: "Tecnologia e tráfego gerando vendas reais.",
       sub: "Resultados comprovados em produção gerando mais pedidos, vendas e eficiência no comércio local.",
       ctaText: "Solicitar diagnóstico similar →",
-      items: [
-        {
-          id: "case-boi-na-brasa",
-          client: "Açougue Boi Na Brasa",
-          clientContact: "Mayara",
-          segment: "Açougue & Assados do Final de Semana",
-          problem: "Aumentar a demanda e o volume de vendas de assados nos finais de semana e estruturar a presença digital local.",
-          solution: "Estratégia de Tráfego Pago local geolocalizado, otimização do perfil do Instagram e direcionamento direto de pedidos para o WhatsApp.",
-          tech: ["Tráfego Pago (Meta Ads)", "Google Meu Negócio", "Instagram Marketing", "WhatsApp Commercial"],
-          metrics: [
-            "+30% nas vendas de assados ao final de semana",
-            "Crescimento de pedidos e encomendas diretas",
-            "Presença digital consolidada e atração regional"
-          ],
-          badge: "Mídia Local + Growth",
-          instagram: "https://instagram.com/boinabrasagtba"
-        }
-      ]
+      items: []
     },
     mindset: {
       kicker: "NOSSOS PILARES",
@@ -797,46 +781,46 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     solutions: {
       kicker: "CAPABILITIES & SERVICES",
-      heading: "4 integrated pillars to scale your business.",
-      sub: "We organize our expertise into 4 strategic units to power your business journey.",
+      heading: "4 Intelligence Units.",
+      sub: "Integrated capabilities across media, digital experience, custom software, and AI.",
       units: [
         {
           id: "growth",
           tag: "GROWTH",
-          title: "We turn investment into customer acquisition.",
+          title: "Paid Media & Acquisition",
           highlight: "Paid media operations driven by sustainable CAC and ROI.",
-          desc: "Full performance marketing strategy, paid ads, SEO, AI search optimization, and conversion rate optimization.",
-          services: ["Google Ads", "Meta Ads", "Performance Marketing", "SEO", "AEO (AI Search)", "CRO", "Growth Strategy", "Tracking & GTM", "Analytics"],
+          desc: "High-performance paid ad operations and growth strategy focused on predictability and measurable revenue.",
+          services: ["Google Ads", "Meta Ads", "TikTok Ads", "SEO & CRO"],
           cta: "Accelerate acquisition →",
           icon: "trending-up"
         },
         {
           id: "experience",
           tag: "EXPERIENCE",
-          title: "Digital experiences built to convert.",
-          highlight: "Ultra-fast websites and world-class design platforms.",
-          desc: "We build corporate portals, high-converting landing pages, and web apps with instant React/Node performance.",
-          services: ["Company Websites", "Landing Pages", "E-commerce", "UX/UI Design", "React / Next.js", "Node.js", "Web Applications", "Website Redesign", "Web Performance"],
+          title: "Digital Experience",
+          highlight: "World-class design and ultra-fast platforms.",
+          desc: "Modern websites, landing pages, and web portals built on React/Next.js engineered to maximize conversion rates.",
+          services: ["Websites & Portals", "Landing Pages", "UX/UI Design", "Web Performance"],
           cta: "Modernize experience →",
           icon: "monitor"
         },
         {
           id: "technology",
           tag: "TECHNOLOGY",
-          title: "Custom technology for your operation.",
-          highlight: "Software engineering focused on solving complex business challenges.",
-          desc: "When off-the-shelf software fails, we build custom web platforms, client portals, tailored CRMs, and APIs.",
-          services: ["Software Development", "Internal Systems", "Custom CRM", "REST APIs & Webhooks", "System Integrations", "Client Portals", "SaaS Platforms", "Executive Dashboards"],
+          title: "Custom Technology",
+          highlight: "Software engineering for complex operations.",
+          desc: "Custom web software, client portals, proprietary CRMs, and robust APIs for businesses requiring secure scale.",
+          services: ["Custom Software", "Systems & CRMs", "APIs & Integrations", "Client Portals"],
           cta: "Build technology →",
           icon: "cpu"
         },
         {
           id: "intelligence",
           tag: "INTELLIGENCE",
-          title: "AI, automation, and data applied to business.",
-          highlight: "Transform manual tasks into intelligent automated workflows.",
-          desc: "Practical deployment of autonomous AI agents, sales automations, and business intelligence dashboards.",
-          services: ["AI Agents", "Sales Automation", "CRM & ERP Integrations", "Business Intelligence", "Real-time Dashboards", "Operational Workflows", "WhatsApp AI Chatbots", "Data Pipelines"],
+          title: "AI & Automation",
+          highlight: "Autonomous agents and applied business data.",
+          desc: "Practical deployment of AI agents, sales workflow automation, and real-time business intelligence dashboards.",
+          services: ["AI Agents", "Sales Automation", "Business Intelligence", "Operational Workflows"],
           cta: "Automate operation →",
           icon: "bot"
         }
@@ -936,24 +920,7 @@ export const translations: Record<Language, TranslationSchema> = {
       heading: "Technology & local growth generating real revenue.",
       sub: "Proven production results driving more orders, sales, and local market presence.",
       ctaText: "Request similar diagnostic →",
-      items: [
-        {
-          id: "case-boi-na-brasa",
-          client: "Açougue Boi Na Brasa",
-          clientContact: "Mayara",
-          segment: "Local Butchery & Weekend Roasts",
-          problem: "Scaling weekend roast sales and establishing a strong local digital brand presence.",
-          solution: "Geotargeted paid traffic strategy, Instagram profile optimization, and direct WhatsApp ordering workflow.",
-          tech: ["Paid Traffic (Meta Ads)", "Google Business Profile", "Instagram Marketing", "WhatsApp Commercial"],
-          metrics: [
-            "+30% increase in weekend roast sales",
-            "Consistent regional order volume growth",
-            "Established digital brand presence"
-          ],
-          badge: "Local Media + Growth",
-          instagram: "https://instagram.com/boinabrasagtba"
-        }
-      ]
+      items: []
     },
     mindset: {
       kicker: "CORE PRINCIPLES",

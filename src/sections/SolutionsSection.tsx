@@ -1,9 +1,19 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { translations, Language } from '../translations';
-import { TrendingUp, Monitor, Cpu, Bot, ArrowRight, CheckCircle2, Sparkles, Layers } from 'lucide-react';
+import { TrendingUp, Monitor, Cpu, Bot, ArrowRight, CheckCircle2, Layers, Image as ImageIcon } from 'lucide-react';
+import { getUnitImages, UnitImages } from '../lib/siteSettings';
 
 export const SolutionsSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].solutions;
+  const [unitImages, setUnitImages] = useState<UnitImages>({});
+
+  useEffect(() => {
+    const unsubscribe = getUnitImages(setUnitImages);
+    return () => {
+      if (typeof unsubscribe === 'function') unsubscribe();
+    };
+  }, []);
 
   const unitIcons: Record<string, React.ReactNode> = {
     'trending-up': <TrendingUp className="w-5 h-5 text-[#16C7FF]" />,
@@ -58,10 +68,11 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
           </motion.p>
         </div>
 
-        {/* 4 Unit Cards Bento Grid Composition */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 gap-4 md:gap-8 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
+        {/* 4 Unit Cards Equal-Sized 4-Column Horizontal Line Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {t.units.map((unit, index) => {
-            const isFeatured = index === 0 || index === 2;
+            const customImg = unitImages[unit.id as keyof UnitImages];
+
             return (
               <motion.div
                 key={unit.id}
@@ -69,68 +80,77 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`w-[85vw] sm:w-[380px] shrink-0 md:w-auto md:shrink snap-center p-8 rounded-[2rem] bg-[#0A0D14]/80 backdrop-blur-sm border transition-all duration-500 flex flex-col justify-between group hover:-translate-y-1 relative shadow-2xl ${
-                  isFeatured
-                    ? 'border-white/[0.08] hover:border-[#16C7FF]/30 bg-gradient-to-br from-[#0B0E1B] via-[#0A0D14] to-[#0B0E1B]'
-                    : 'border-white/[0.05] hover:border-[#168BFF]/30'
-                }`}
+                className="p-6 sm:p-7 rounded-[2rem] bg-gradient-to-br from-[#0C1020] via-[#0A0D16] to-[#060810] border border-white/[0.09] hover:border-[#16C7FF]/40 transition-all duration-500 shadow-2xl overflow-hidden relative group flex flex-col justify-between h-full"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-8 pb-5 border-b border-white/[0.05]">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-[1rem] bg-[#121826] border border-white/[0.08] flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 group-hover:bg-[#168BFF]/10 group-hover:border-[#168BFF]/20 transition-all duration-300">
-                        {unitIcons[unit.icon]}
+                {/* Top Specular Edge Highlight */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                  <div>
+                    {/* Header: Icon + Unit Label + Tag */}
+                    <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-white/[0.08]">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-[#121826] border border-white/[0.08] flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 group-hover:bg-[#168BFF]/10 group-hover:border-[#168BFF]/20 transition-all duration-300">
+                          {unitIcons[unit.icon]}
+                        </div>
+                        <span className="text-[11px] text-[#8992A5] tracking-[0.15em] font-mono font-bold uppercase">
+                          UNIDADE 0{index + 1}
+                        </span>
                       </div>
-                      <span className="text-xs text-[#8992A5] tracking-[0.2em] font-semibold uppercase">
-                        UNIDADE 0{index + 1}
+
+                      <span className="text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-full bg-[#168BFF]/10 text-[#168BFF] border border-[#168BFF]/20 uppercase backdrop-blur-md shrink-0">
+                        {unit.tag}
                       </span>
                     </div>
 
-                    <span className="text-[11px] font-bold tracking-wider px-3.5 py-1.5 rounded-full bg-[#168BFF]/10 text-[#168BFF] border border-[#168BFF]/20 uppercase">
-                      {unit.tag}
-                    </span>
-                  </div>
+                    {/* Custom Admin Image Banner (If uploaded) */}
+                    {customImg && (
+                      <div className="mb-5 rounded-xl overflow-hidden border border-white/10 bg-[#070A12] relative group/img shadow-md">
+                        <img
+                          src={customImg}
+                          alt={unit.title}
+                          className="w-full h-36 object-cover rounded-xl group-hover/img:scale-105 transition-transform duration-500 block"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 rounded-xl border border-white/10 pointer-events-none" />
+                      </div>
+                    )}
 
-                  <h3 className="text-3xl font-heading font-extrabold text-white mb-4 tracking-tight group-hover:text-[#168BFF] transition-colors">
-                    {unit.title}
-                  </h3>
+                    {/* Title */}
+                    <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-white mb-2.5 tracking-tight group-hover:text-[#16C7FF] transition-colors leading-[1.2]">
+                      {unit.title}
+                    </h3>
 
-                  <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#69B4FF] mb-6 bg-[#168BFF]/10 px-3.5 py-1.5 rounded-full border border-[#168BFF]/20">
-                    <Sparkles className="w-4 h-4" />
-                    <span>{unit.highlight}</span>
-                  </div>
+                    {/* Description */}
+                    <p className="text-xs sm:text-sm text-[#8992A5] leading-relaxed mb-5 font-sans min-h-[44px]">
+                      {unit.desc}
+                    </p>
 
-                  <p className="text-base text-[#8992A5] leading-relaxed mb-8 font-sans">
-                    {unit.desc}
-                  </p>
-
-                  {/* Service Tags */}
-                  <div className="pt-6 border-t border-white/[0.05] mb-8">
-                    <div className="text-[11px] text-[#5C667B] uppercase tracking-widest mb-4 font-bold">
-                      Principais Capacidades
+                    {/* Service Tags */}
+                    <div className="pt-3.5 border-t border-white/[0.06] mb-6">
+                      <div className="flex flex-wrap gap-1.5">
+                        {unit.services.map((service) => (
+                          <span
+                            key={service}
+                            className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-white/[0.03] text-zinc-300 border border-white/[0.06] group-hover:border-white/[0.12] hover:bg-white/[0.07] transition-colors cursor-default backdrop-blur-sm whitespace-nowrap"
+                          >
+                            <CheckCircle2 className="w-3 h-3 text-[#168BFF] shrink-0" />
+                            {service}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex flex-wrap gap-2.5">
-                      {unit.services.map((service) => (
-                        <span
-                          key={service}
-                          className="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-full bg-white/[0.03] text-zinc-300 border border-white/[0.05] group-hover:border-white/[0.1] hover:bg-white/[0.06] transition-colors cursor-default"
-                        >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#168BFF]" />
-                          {service}
-                        </span>
-                      ))}
-                    </div>
                   </div>
+
+                  {/* Action Button */}
+                  <button
+                    onClick={scrollToDiagnostic}
+                    className="inline-flex items-center justify-between w-full px-4 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-bold tracking-wide text-white group-hover:border-[#168BFF]/40 transition-all cursor-pointer backdrop-blur-md shadow-sm mt-auto"
+                  >
+                    <span>{unit.cta}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#168BFF] group-hover:translate-x-1 transition-transform ml-2 shrink-0" />
+                  </button>
                 </div>
-
-                {/* Action Button */}
-                <button
-                  onClick={scrollToDiagnostic}
-                  className="inline-flex items-center justify-between w-full p-4 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.05] text-[13px] font-bold tracking-wide text-white group-hover:border-[#168BFF]/30 transition-all cursor-pointer"
-                >
-                  <span>{unit.cta}</span>
-                  <ArrowRight className="w-4 h-4 text-[#168BFF] group-hover:translate-x-1 transition-transform" />
-                </button>
               </motion.div>
             );
           })}
@@ -140,4 +160,5 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
     </section>
   );
 };
+
 

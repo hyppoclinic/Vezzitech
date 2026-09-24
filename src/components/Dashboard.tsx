@@ -3,11 +3,12 @@ import ReactMarkdown from 'react-markdown';
 import { getPosts, addPost, updatePost, deletePost, Post } from '../lib/blog';
 import { getLeads, addLead, updateLead, deleteLead, Lead, getProjects, addProject, updateProject, deleteProject, Project } from '../lib/crm';
 import { getAnalyticsData, saveAnalyticsData, recordEventMetric, MetricItem } from '../lib/analytics';
+import { getUnitImages, saveUnitImages, UnitImages } from '../lib/siteSettings';
 import { auth } from '../lib/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { VezzitechLogo } from './VezzitechLogo';
 import { 
-  LayoutDashboard, Users, FolderKanban, FileText, BarChart3, Settings, LogOut, Globe, PlusCircle, Edit3, Trash2, Search, Target, CheckCircle2, ChevronRight, Upload, Sparkles, AlertCircle, Check
+  LayoutDashboard, Users, FolderKanban, FileText, BarChart3, Settings, LogOut, Globe, PlusCircle, Edit3, Trash2, Search, Target, CheckCircle2, ChevronRight, Upload, Sparkles, AlertCircle, Check, Image as ImageIcon, UploadCloud
 } from 'lucide-react';
 import { 
   ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip
@@ -15,12 +16,14 @@ import {
 
 export const Dashboard = () => {
   const [user, setUser] = useState(auth.currentUser);
-  const [activeMenu, setActiveMenu] = useState<'overview' | 'leads' | 'projects' | 'blog' | 'analytics'>('overview');
+  const [activeMenu, setActiveMenu] = useState<'overview' | 'leads' | 'projects' | 'blog' | 'analytics' | 'media'>('overview');
   
   // Data States
   const [posts, setPosts] = useState<Post[]>([]);
   const [leads, setLeads] = useState<Lead[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
+  const [unitImagesState, setUnitImagesState] = useState<UnitImages>({});
+  const [savingUnitImages, setSavingUnitImages] = useState(false);
   
   // Loading & Messages
   const [loading, setLoading] = useState(false);
@@ -75,6 +78,43 @@ export const Dashboard = () => {
       loadData();
     }
   }, [user]);
+
+  useEffect(() => {
+    const unsubscribe = getUnitImages((imgs) => {
+      setUnitImagesState(imgs || {});
+    });
+    return () => {
+      if (typeof unsubscribe === 'function') unsubscribe();
+    };
+  }, []);
+
+  const handleUnitImageUpload = (unitId: keyof UnitImages, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      showStatus('error', 'A imagem deve ter no máximo 5MB.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const result = event.target?.result as string;
+      setUnitImagesState((prev) => ({ ...prev, [unitId]: result }));
+      showStatus('success', `Imagem pré-carregada. Clique em "Salvar Alterações" para publicar no site.`);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSaveUnitImages = async () => {
+    setSavingUnitImages(true);
+    try {
+      await saveUnitImages(unitImagesState);
+      showStatus('success', 'Imagens das Soluções publicadas com sucesso no site!');
+    } catch (err: any) {
+      showStatus('error', 'Erro ao salvar imagens: ' + err.message);
+    } finally {
+      setSavingUnitImages(false);
+    }
+  };
 
   const loadData = async () => {
     const unsubscribePosts = getPosts(setPosts);
@@ -383,6 +423,12 @@ export const Dashboard = () => {
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeMenu === 'analytics' ? 'bg-[#33BC65] text-black font-bold' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
             >
               <BarChart3 size={18} /> Analytics
+            </button>
+            <button 
+              onClick={() => setActiveMenu('media')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeMenu === 'media' ? 'bg-[#33BC65] text-black font-bold' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+            >
+              <ImageIcon size={18} /> Imagens / Soluções
             </button>
           </nav>
         </div>
@@ -784,6 +830,123 @@ export const Dashboard = () => {
               <BarChart3 size={48} className="mx-auto text-[#12DCEF] mb-4 opacity-50" />
               <h2 className="text-xl font-bold mb-2">Analytics & Performance</h2>
               <p className="text-gray-400">Módulo de monitoramento SEO e AEO em construção ou disponível via Google Search Console.</p>
+            </div>
+          )}
+
+          {/* MEDIA / SOLUÇÕES IMAGES MANAGER */}
+          {activeMenu === 'media' && (
+            <div className="animate-fadeIn space-y-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <ImageIcon className="text-[#33BC65]" size={22} />
+                    Gestor de Imagens das Soluções
+                  </h2>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Adicione ou atualize as imagens dos cards das 4 Unidades de Negócio. As alterações serão refletidas em tempo real no site.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleSaveUnitImages}
+                  disabled={savingUnitImages}
+                  className="bg-[#33BC65] hover:opacity-90 disabled:opacity-50 text-black font-extrabold px-6 py-3 rounded-xl text-xs transition-all flex items-center gap-2 cursor-pointer shrink-0 shadow-lg"
+                >
+                  {savingUnitImages ? (
+                    <>
+                      <div className="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      <span>Publicando...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Check size={16} />
+                      <span>Salvar Alterações</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* 4 Unit Image Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  { id: 'growth', name: 'Unidade 01 — Growth & Aquisição', tag: 'Mídia Paga & Performance' },
+                  { id: 'experience', name: 'Unidade 02 — Experiência Digital', tag: 'Websites & Portais Premium' },
+                  { id: 'technology', name: 'Unidade 03 — Tecnologia Sob Medida', tag: 'Sistemas & Nuvem' },
+                  { id: 'intelligence', name: 'Unidade 04 — IA & Automação', tag: 'Agentes & Modelos' }
+                ].map((unit) => {
+                  const currentImage = unitImagesState[unit.id as keyof UnitImages] || '';
+
+                  return (
+                    <div key={unit.id} className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                      <div>
+                        <div className="flex justify-between items-center mb-3">
+                          <h3 className="font-bold text-white text-sm">{unit.name}</h3>
+                          <span className="text-[10px] uppercase font-mono font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            {unit.tag}
+                          </span>
+                        </div>
+
+                        {/* Image Preview Container */}
+                        <div className="relative w-full h-48 rounded-xl border border-white/10 bg-neutral-900 overflow-hidden flex items-center justify-center mb-4 group">
+                          {currentImage ? (
+                            <>
+                              <img
+                                src={currentImage}
+                                alt={unit.name}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => setUnitImagesState((prev) => ({ ...prev, [unit.id]: '' }))}
+                                  className="bg-rose-500/80 hover:bg-rose-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 transition-all cursor-pointer"
+                                >
+                                  <Trash2 size={12} /> Remover
+                                </button>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="text-center p-4">
+                              <UploadCloud size={32} className="mx-auto text-gray-600 mb-2" />
+                              <p className="text-xs text-gray-500 font-medium">Nenhuma imagem definida</p>
+                              <p className="text-[10px] text-gray-600 mt-1">Selecione um arquivo ou insira uma URL</p>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* File Upload Input */}
+                        <div className="space-y-3">
+                          <div>
+                            <label className="text-[11px] font-semibold text-gray-400 mb-1 block">
+                              Upload de Arquivo (PNG, JPG, WEBP - max 5MB)
+                            </label>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handleUnitImageUpload(unit.id as keyof UnitImages, e)}
+                              className="w-full text-xs text-gray-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-white/10 file:text-white hover:file:bg-white/20 cursor-pointer"
+                            />
+                          </div>
+
+                          {/* URL Input */}
+                          <div>
+                            <label className="text-[11px] font-semibold text-gray-400 mb-1 block">
+                              Ou Cole a URL da Imagem
+                            </label>
+                            <input
+                              type="url"
+                              placeholder="https://..."
+                              value={currentImage}
+                              onChange={(e) => setUnitImagesState((prev) => ({ ...prev, [unit.id]: e.target.value }))}
+                              className="w-full bg-white/5 border border-white/10 p-2.5 rounded-xl focus:border-[#33BC65] outline-none text-xs placeholder:text-gray-600 font-mono text-white"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
 
