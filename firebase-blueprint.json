@@ -1,55 +1,28 @@
 {
-  "entities": {
-    "Post": {
-      "title": "Blog Post",
-      "description": "A single blog post entry",
-      "type": "object",
-      "required": ["title", "content", "createdAt", "slug"],
-      "properties": {
-        "title": { "type": "string", "description": "The title of the post" },
-        "content": { "type": "string", "description": "The markdown content of the post" },
-        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of post creation" },
-        "slug": { "type": "string", "description": "URL-friendly version of the title" },
-        "author": { "type": "string", "description": "ID of the author" }
-      }
-    },
-    "AnalyticsMetrics": {
-      "title": "Analytics Metrics",
-      "description": "Historical analytics metrics for different periods",
-      "type": "object",
-      "properties": {
-        "data": { "type": "array", "description": "Array of names, Google Clicks, AI Citations and CTR numbers" }
-      }
-    },
-    "Case": {
-      "title": "Client Case",
-      "description": "A success story or portfolio entry showing a real client website screenshot and results",
-      "type": "object",
-      "required": ["name", "niche", "tagline", "description", "createdAt"],
-      "properties": {
-        "name": { "type": "string", "description": "The name of the client" },
-        "niche": { "type": "string", "description": "The client niche/industry" },
-        "tagline": { "type": "string", "description": "Brief outcome tagline" },
-        "description": { "type": "string", "description": "A description of the project" },
-        "metrics": { "type": "array", "description": "Array of key-value metrics like ROI, Setup Time" },
-        "deliverables": { "type": "array", "description": "List of delivered services" },
-        "printUrl": { "type": "string", "description": "The base64 or URL of the homepage print/screenshot" },
-        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of case creation" }
-      }
-    }
-  },
   "firestore": {
-    "/posts/{postId}": {
-      "schema": { "$ref": "#/entities/Post" },
-      "description": "Collection of blog posts"
-    },
-    "/analytics_metrics/{id}": {
-      "schema": { "$ref": "#/entities/AnalyticsMetrics" },
-      "description": "Historical performance matrices"
-    },
-    "/cases/{caseId}": {
-      "schema": { "$ref": "#/entities/Case" },
-      "description": "Collection of client cases"
+    "collections": {
+      "posts": {
+        "fields": {
+          "title": "string",
+          "slug": "string",
+          "content": "string",
+          "excerpt": "string",
+          "author": "string",
+          "imageUrl": "string",
+          "publishedAt": "timestamp",
+          "status": "string"
+        }
+      },
+      "site_settings": {
+        "fields": {
+          "unit_images": {
+            "growth": "string",
+            "experience": "string",
+            "technology": "string",
+            "intelligence": "string"
+          }
+        }
+      }
     }
   }
 }

@@ -69,7 +69,7 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
         </div>
 
         {/* 4 Unit Cards Equal-Sized 4-Column Horizontal Line Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {t.units.map((unit, index) => {
             const customImg = unitImages[unit.id as keyof UnitImages];
 
@@ -80,13 +80,13 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 sm:p-7 rounded-[2rem] bg-gradient-to-br from-[#0C1020] via-[#0A0D16] to-[#060810] border border-white/[0.09] hover:border-[#16C7FF]/40 transition-all duration-500 shadow-2xl overflow-hidden relative group flex flex-col justify-between h-full"
+                className="h-full p-6 sm:p-7 rounded-[2rem] bg-gradient-to-br from-[#0C1020] via-[#0A0D16] to-[#060810] border border-white/[0.09] hover:border-[#16C7FF]/40 transition-all duration-500 shadow-2xl overflow-hidden relative group flex flex-col"
               >
                 {/* Top Specular Edge Highlight */}
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
-                <div className="relative z-10 flex flex-col justify-between h-full">
-                  <div>
+                <div className="relative z-10 flex flex-col flex-grow">
+                  <div className="flex-grow">
                     {/* Header: Icon + Unit Label + Tag */}
                     <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-white/[0.08]">
                       <div className="flex items-center gap-3">
@@ -122,7 +122,7 @@ export const SolutionsSection = ({ lang }: { lang: Language }) => {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-[#8992A5] leading-relaxed mb-5 font-sans min-h-[44px]">
+                    <p className="text-xs sm:text-sm text-[#8992A5] leading-relaxed mb-5 font-sans">
                       {unit.desc}
                     </p>
 
