@@ -1012,14 +1012,15 @@ async function startServer() {
     });
   }
 
-  const isNamedPipeOrSocket = typeof PORT === "string" && isNaN(Number(PORT));
+  const port = process.env.PORT || 3000;
+  const isPassenger = typeof (global as any).PhusionPassenger !== "undefined";
 
-  const server = isNamedPipeOrSocket
-    ? app.listen(PORT, () => {
-        console.log(`Server listening on socket/pipe: ${PORT}`);
+  const server = isPassenger
+    ? app.listen("passenger", () => {
+        console.log("[Server] Running under Phusion Passenger");
       })
-    : app.listen(Number(PORT), "0.0.0.0", () => {
-        console.log(`Server running on http://0.0.0.0:${PORT}`);
+    : app.listen(port, () => {
+        console.log(`[Server] Running on port ${port}`);
       });
 
   server.on("error", (err: any) => {
