@@ -125,10 +125,6 @@
   .corner-crosshairs::after {
     display: none;
   }
-  
-  .bg-[#070A12] {
-    background-color: #070A12;
-  }
 }
 
 :root {
