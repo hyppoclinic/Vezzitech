@@ -1,9 +1,11 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
-import { createServer as createViteServer } from "vite";
+import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
 import { google } from "googleapis";
+
+dotenv.config();
 
 // Helper function to handle content generation with retries and fallback for stability against 503 error
 async function generateContentWithRetryAndFallback(ai: any, params: any, maxRetries = 2) {
@@ -47,7 +49,12 @@ async function generateContentWithRetryAndFallback(ai: any, params: any, maxRetr
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = process.env.PORT || 3000;
+
+  // Health check endpoint for host proxies and container monitors
+  app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok", uptime: process.uptime(), timestamp: new Date().toISOString() });
+  });
 
   // Middleware for parsing JSON requests with increased limit to support larger payloads
   app.use(express.json({ limit: "15mb" }));
@@ -903,8 +910,11 @@ async function startServer() {
     }
   });
 
-  // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
+  // Check execution mode (Production for Hostinger/cPanel/cloud builds or when dist exists without dev script)
+  const isProduction = process.env.NODE_ENV === "production" || process.env.npm_lifecycle_event === "start";
+
+  if (!isProduction) {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true, hmr: false, ws: false as const },
       appType: "spa",
@@ -923,13 +933,22 @@ async function startServer() {
     
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath, { index: false })); // Do not serve index.html automatically so we can catch it
+    const possibleDistPaths = [
+      path.join(process.cwd(), 'dist'),
+      path.resolve(__dirname),
+      path.resolve(__dirname, '..', 'dist'),
+      path.join(process.cwd(), 'public_html'),
+      path.join(process.cwd()),
+    ];
+    const distPath = possibleDistPaths.find(p => fs.existsSync(path.join(p, 'index.html'))) || path.join(process.cwd(), 'dist');
     
+    console.log(`[Production] Serving static files from: ${distPath}`);
+    app.use(express.static(distPath, { index: false }));
+
     app.get('*', async (req, res) => {
       const indexPath = path.join(distPath, 'index.html');
       if (!fs.existsSync(indexPath)) {
-        return res.status(404).send('Not found');
+        return res.status(404).send('Not found: dist/index.html is missing. Please run "npm run build".');
       }
       
       let html = fs.readFileSync(indexPath, 'utf-8');
@@ -964,7 +983,7 @@ async function startServer() {
                if (data && data.length > 0 && data[0].document) {
                  const doc = data[0].document.fields;
                  const title = doc.title?.stringValue || "Vezzitech Blog";
-                 let description = doc.content?.stringValue ? doc.content.stringValue.substring(0, 160).replace(/\\n/g, ' ') : "Acompanhe nosso blog";
+                 let description = doc.content?.stringValue ? doc.content.stringValue.substring(0, 160).replace(/\n/g, ' ') : "Acompanhe nosso blog";
                  const imageUrl = doc.imageUrl?.stringValue || "https://vezzitech.com.br/og-image.png";
 
                  // Inject OG meta tags
@@ -993,9 +1012,15 @@ async function startServer() {
     });
   }
 
-  const server = app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+  const isNamedPipeOrSocket = typeof PORT === "string" && isNaN(Number(PORT));
+
+  const server = isNamedPipeOrSocket
+    ? app.listen(PORT, () => {
+        console.log(`Server listening on socket/pipe: ${PORT}`);
+      })
+    : app.listen(Number(PORT), "0.0.0.0", () => {
+        console.log(`Server running on http://0.0.0.0:${PORT}`);
+      });
 
   server.on("error", (err: any) => {
     if (err.code === "EADDRINUSE") {
