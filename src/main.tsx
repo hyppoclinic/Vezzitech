@@ -3,20 +3,54 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
 import { AdminRoute } from './components/admin/AdminRoute.tsx';
-import { DashboardLayout } from './components/admin/DashboardLayout.tsx';
+import { Dashboard } from './components/Dashboard.tsx';
+import { LoginForm } from './components/admin/LoginForm.tsx';
 import './index.css';
 
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
   { 
-    path: "/admin/*", 
+    path: '/', 
+    element: <App /> 
+  },
+  { 
+    path: '/admin', 
     element: (
       <AdminRoute>
-        <DashboardLayout>
-          <div>CMS Dashboard</div>
-        </DashboardLayout>
+        <Dashboard />
       </AdminRoute>
     ) 
+  },
+  { 
+    path: '/admin/*', 
+    element: (
+      <AdminRoute>
+        <Dashboard />
+      </AdminRoute>
+    ) 
+  },
+  { 
+    path: '/dashboard', 
+    element: (
+      <AdminRoute>
+        <Dashboard />
+      </AdminRoute>
+    ) 
+  },
+  { 
+    path: '/dashboard/*', 
+    element: (
+      <AdminRoute>
+        <Dashboard />
+      </AdminRoute>
+    ) 
+  },
+  { 
+    path: '/login', 
+    element: <LoginForm /> 
+  },
+  { 
+    path: '*', 
+    element: <App /> 
   },
 ]);
 

@@ -64,11 +64,8 @@ export const Dashboard = () => {
   const [projectProgress, setProjectProgress] = useState(0);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      if (!user) {
-        window.location.href = '/login';
-      }
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
     });
     return () => unsubscribe();
   }, []);
@@ -132,7 +129,7 @@ export const Dashboard = () => {
 
   const handleLogout = async () => {
     await signOut(auth);
-    window.location.href = '/login';
+    window.location.href = '/admin';
   };
 
   // --- Lead Handlers ---

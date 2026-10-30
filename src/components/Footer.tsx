@@ -76,6 +76,11 @@ export const Footer = ({ lang }: { lang: Language }) => {
                   Sobre a Vezzitech
                 </button>
               </li>
+              <li>
+                <a href="/admin" className="hover:text-[#168BFF] transition-colors cursor-pointer text-xs font-mono text-[#8992A5]">
+                  Acesso CMS / Admin
+                </a>
+              </li>
             </ul>
           </div>
 
